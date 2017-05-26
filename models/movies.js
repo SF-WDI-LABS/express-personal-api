@@ -4,8 +4,9 @@
  var MovieSchema = new Schema({
      title: String,
      genre: String,
-     releaseDate: Date,
-     haveIseenIt: Boolean
+     Tomatometer: Number,
+     haveIseenIt: Boolean, 
+     image: String
  });
 
  var Movie = mongoose.model('Movie', MovieSchema);
