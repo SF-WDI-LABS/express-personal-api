@@ -61,6 +61,19 @@ app.get('/api', function apiIndex(req, res) {
   })
 });
 
+app.get('/api/profile', function profile(req, res) {
+    res.json({
+        name: 'Younji Woo',
+        githubUsername: 'younjiwoo',
+        githubLink: 'https://github.com/younjiwoo',
+        githubProfileImage: 'https://avatars0.githubusercontent.com/u/16580897?v=3&u=b837dc0be5f0efcf0acae8a79454dd239131411f&s=400',
+        personalSiteLink: 'https://younjiwoo.github.io/',
+        currentCity: 'San Mateo, California',
+        pets: [{name: 'Casey', type: 'Dog', breed: 'German Shepherd and Collie'},
+              {name: 'Mondu', type: 'Dog', breed: 'Samoyed'}]
+    })
+});
+
 /**********
  * SERVER *
  **********/
