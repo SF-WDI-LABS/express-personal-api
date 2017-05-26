@@ -4,7 +4,7 @@
  var MovieSchema = new Schema({
      title: String,
      genre: String,
-     Tomatometer: Number,
+     tomatoMeter: Number,
      haveIseenIt: Boolean, 
      image: String
  });
