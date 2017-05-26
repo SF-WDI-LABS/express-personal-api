@@ -4,13 +4,13 @@ Schema = mongoose.Schema;
 var DuckSchema = new Schema({
   name: String,
   bff: String,
-  fav-quote: String,
+  favQuote: String,
   age: {
     type: Number,
     default: 1
   }
 });
 
-var Duck = mongoose.model('Duck', duckSchema);
+var Duck = mongoose.model('Duck', DuckSchema);
 
 module.exports = Duck;
