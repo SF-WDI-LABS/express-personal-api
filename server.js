@@ -48,13 +48,13 @@ app.get('/api', function apiIndex(req, res) {
   // But you should change almost every line of this response.
   res.json({
     //woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
-    message: "Welcome to my personal api! Here's what you need to know!",
+    message: "Welcome to the protected brushlands api documentation",
     documentationUrl: "https://github.com/alyshae/express-personal-api/blob/master/README.md", //changed
     baseUrl: "https://protected-brushlands-10545.herokuapp.com/", //changed
     endpoints: [
-      {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", path: "/api", description: "Describes all available endpoints for this website"},
+      {method: "GET", path: "/api/profile", description: "About Aly"}, //changed
+      {method: "POST", path: "/api/ducks", description: "Add your feathered full-stack friend"} //changed
     ]
   })
 });
