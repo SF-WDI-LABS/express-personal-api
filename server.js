@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
 
 /**********
  * ROUTES *
@@ -34,7 +34,7 @@ app.use(express.static('public'));
  * HTML Endpoints
  */
 
-app.get('/', function homepage(req, res) {
+app.get('/api/hackathons', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
@@ -43,19 +43,49 @@ app.get('/', function homepage(req, res) {
  * JSON API Endpoints
  */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.get('/api', function apiIndex(req, res) {
   // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
   // It would be seriously overkill to save any of this to your database.
   // But you should change almost every line of this response.
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
+    name: "John Ko"
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/umichdoe/express-personal-api/README.md", // CHANGE ME
     baseUrl: "https://sheltered-ravine-19400.herokuapp.com/", // CHANGE ME
     endpoints: [
-      {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", path: "/api", description: "Describes all available endpoints"}, // DONE #1
+      {method: "GET", path: "/api/profile", description: "A little about me"}, // DONE #2 PROFILE
+      {method: "GET", path: "/api/hackathons", description: "Index of all the popular languages used at hackathons"}, // DONE #3
+      {method: "POST", path: "/api/hackathons", description: "Create or add a new hackathon language"}, // DONE #4
+      {method: "PUT", path: "/api/hackathons/:id", description: "Edit a hackathon language and update it."}, //  DONE #5
+      {method: "DELETE", path: "/api/hackathons/:id", description: "Destroy a hackathon language"} // #6
     ]
   })
 });

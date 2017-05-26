@@ -1,0 +1,43 @@
+JSON API Endpoint           Response JSON
+=============               =============
+GET /api/profile            {
+                              name: "John Ko",
+                              githubLink: "http://github.com/umichdoe",
+                              linkedinLink: "http://www.linkedin.com/in/umichdoe "
+                              currentCity: "San Francisco",
+                              isStudent: true,
+                              favoriteFoods: [
+                                { name: 'pizza', origin: 'Italy' },
+                                { name: 'ramen', origin: 'China' },
+                                { name: 'sushi', origin: 'Japan' },
+                                { name: 'french fries', origin: 'Belgium' },
+                                { name: 'burgers', origin: 'Germany' }
+                              ]
+                            }
+
+GET /api/projects           [
+                             {
+                                \_id: 1,
+                                name: 'Palindrome',
+                                type: 'word game',
+                                opponents: [ 'Mance Rayder', 'Lord of Bones'],
+                                status: 'resolved'
+                             },
+                             {
+                                \_id: 2,
+                                name: 'Bottles of Beer',
+                                type: 'outputs song until end',
+                                opponents: ['the Night Watch', 'the Others'],
+                                status: 'pending'
+                             }
+                            ]
+
+GET /api/projects?limit=1   [ { \_id: 2, name:'Defeat...' } ]
+
+GET /api/projects?status=pending
+                            [ { \_id: 3, name:'Save...' } ]
+GET /api/projects/2         { \_id: 2, name:'Defeat...' }
+
+POST /api/projects          etc
+PUT /api/projects/2         etc
+DELETE /api/projects/2      etc
