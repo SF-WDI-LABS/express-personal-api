@@ -19,7 +19,8 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
+
 
 /**********
  * ROUTES *
@@ -47,17 +48,27 @@ app.get('/api', function apiIndex(req, res) {
   // It would be seriously overkill to save any of this to your database.
   // But you should change almost every line of this response.
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
+    woopsIForgotToDocumentAllMyEndpoints: false, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
     baseUrl: "https://floating-sands-94136.herokuapp.com/", // herokuapp url
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "digital strategist, analyst, and graphic designer learning to code."}, // brief about me
+      {method: "GET", path: "/api/profile", description: "digital strategist, analyst, and graphic designer, learning to code."}, // brief about me
       {method: "POST", path: "/api/campsites", description: "pie is love"} // app description
     ]
   })
 });
+
+// PROFILE ENDPOINT
+app.get("/api/profile", function profile(req, res){
+    let myProfile = {
+        name: "kat tsukuda",
+        githubUsername: "KatTsukuda"
+    };
+    res.json(myProfile);
+});
+
 
 /**********
  * SERVER *
