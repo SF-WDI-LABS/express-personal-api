@@ -48,7 +48,6 @@ app.get('/api', function apiIndex(req, res) {
   // It would be seriously overkill to save any of this to your database.
   // But you should change almost every line of this response.
   res.json({
-    //woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
     message: "Welcome to the protected brushlands api documentation",
     documentationUrl: "https://github.com/alyshae/express-personal-api/blob/master/README.md", //changed
     baseUrl: "https://protected-brushlands-10545.herokuapp.com/", //changed
@@ -56,11 +55,26 @@ app.get('/api', function apiIndex(req, res) {
       {method: "GET", path: "/api", description: "Describes all available endpoints for this website"},
       {method: "GET", path: "/api/profile", description: "About Aly"}, //changed
       {method: "GET", path: "/api/ducks", description: "Index of all the WDI38 ducks"},
-      {method: "POST", path: "/api/ducks", description: "Add your feathered full-stack friend"}, //changed
+      {method: "POST", path: "/api/ducks", description: "Add your feathered, full-stack friend"}, //changed
       {method: "PUT", path: "/api/ducks/:id", description: "Edit information about a duck"},
       {method: "DELETE", path: "/api/ducks/:id", description: "Remove a duck who has gone up to the big pond in the sky"}
     ]
   })
+});
+
+
+app.get('/api/profile', function apiProfile(req, res) {
+  res.json({
+    name: "Aly Walas",
+    githubUsername: "https://github.com/alyshae",
+    githubProfileImage: "https://avatars1.githubusercontent.com/u/23345886?v=3&u=426d1edbf944c84580e5a03d9cc9cd25ee61cf76&s=400",
+    currentCity: "San Francisco, CA",
+    pets: [{
+      name: "Quintzy Polamalu Sunset McTinyPaws",
+      type: "Feline",
+      breed: "Calico"
+    }]
+  });
 });
 
 /**********
