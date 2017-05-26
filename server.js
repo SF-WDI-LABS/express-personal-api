@@ -54,7 +54,10 @@ app.get('/api', function apiIndex(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints for this website"},
       {method: "GET", path: "/api/profile", description: "About Aly"}, //changed
-      {method: "POST", path: "/api/ducks", description: "Add your feathered full-stack friend"} //changed
+      {method: "GET", path: "/api/ducks", description: "Index of all the WDI38 ducks"},
+      {method: "POST", path: "/api/ducks", description: "Add your feathered full-stack friend"}, //changed
+      {method: "PUT", path: "/api/ducks/:id", description: "Edit information about a duck"},
+      {method: "DELETE", path: "/api/ducks/:id", description: "Remove a duck who has gone up to the big pond in the sky"}
     ]
   })
 });
