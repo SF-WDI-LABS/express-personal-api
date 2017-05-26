@@ -50,7 +50,7 @@ app.get('/api', function apiIndex(req, res) {
     woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
-    baseUrl: "https://protected-brushlands-10545.herokuapp.com/", // herokuapp url
+    baseUrl: "https://floating-sands-94136.herokuapp.com/", // herokuapp url
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "digital strategist, analyst, and graphic designer learning to code."}, // brief about me
