@@ -42,6 +42,37 @@ app.get('/api/hackathons', function homepage(req, res) {
 /*
  * JSON API Endpoints
  */
+ //
+ // app.get("/api/unicorns", function index(req, res){
+ //   Unicorn.find({}, function(err, unicorns){
+ //     res.send(unicorns); // all the unicorns
+ //   });
+ // })
+ //
+ // app.get("/api/unicorns/:id", function show(req, res){
+ //   var id = req.params.id;
+ //   Unicorn.findOne({_id: id}, function(err, unicorn){
+ //     res.send(unicorn); // one unicorn
+ //   });
+ // })
+ //
+ // app.post("/api/unicorns", function create(req, res){
+ //   console.log("Hit POST /api/unicorns, with the following:")
+ //   console.log("params:", req.params)
+ //   console.log("query:", req.query)
+ //   console.log("body:", req.body)
+ //   res.send({});  // one newly created unicorn
+ // })
+ //
+ // app.delete("/api/unicorns/:id", function destroy(req, res){
+ //   res.sendStatus(204); // just saying we did it
+ // })
+ //
+ // app.put("/api/unicorns/:id", function update(req, res){
+ //   res.send({}) // one updated unicorn
+ // })
+ //
+ //
 
 
 
@@ -64,10 +95,7 @@ app.get('/api/hackathons', function homepage(req, res) {
 
 
 
-
-
-
-
+console.log("hello");
 
 
 app.get('/api', function apiIndex(req, res) {
@@ -75,7 +103,7 @@ app.get('/api', function apiIndex(req, res) {
   // It would be seriously overkill to save any of this to your database.
   // But you should change almost every line of this response.
   res.json({
-    name: "John Ko"
+    name: "John Ko",
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/umichdoe/express-personal-api/README.md", // CHANGE ME
     baseUrl: "https://sheltered-ravine-19400.herokuapp.com/", // CHANGE ME
