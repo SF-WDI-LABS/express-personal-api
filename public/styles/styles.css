@@ -1,7 +1,7 @@
 body {
-  color: #333;
-  font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  color: #000000;
+  font-family: 'Roboto', sans-serif;
+  background-color: #FFFFFF;
 }
 
 h1 {
