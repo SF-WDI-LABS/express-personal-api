@@ -1,6 +1,7 @@
 // require express and other modules
 var express = require('express'),
-    app = express();
+    app     = express(),
+    db      = require('./models');
 
 // parse incoming urlencoded form data
 // and populate the req.body object
@@ -19,24 +20,31 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-var db = require('./models');
-var Restaurant = db.Resturant;
 
 /**********
  * ROUTES *
  **********/
 
- app.get('api/restaurants', function(){
-   console.log([{}]);
+
+// GET all the restaurants
+ app.get('/api/restaurant', function index(req, res) {
+   console.log("Route to api/restaurant")
+   console.log(req.body)
+   db.Restaurants.find({}, function(err, restaurants){
+     console.log(restaurants)
+     res.json(restaurants)
+   })
+ })
+
+ app.get('/api/restaurant/:id', function show(req, res){
+   console.log(req.params)
+   console.log("Route to api/restaurants/:id")
  });
 
- app.get('api/restaurants/:id', function(){
-   console.log({});
- });
+// app.post('/api/restaurants', function(){
+//   console.log({})
+// });
 
- app.post('api/restaurants', function(){
-   console.log({})
- });
 
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`

@@ -1,10 +1,10 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+var mongoose  = require("mongoose"),
+    Schema    = mongoose.Schema;
 
-var restaurantSchema = new Schema({
+var RestaurantSchema = new Schema({
   name: String,
   type: String,
-  number_of_stars: Number
+  number_of_stars: Number,
   address: String
 });
 
@@ -12,6 +12,6 @@ var restaurantSchema = new Schema({
 
 
 
-var Restuarants = mongoose.model("Restaurant", restaurantSchema);
+var Restaurants = mongoose.model("Restaurants", RestaurantSchema);
 
-module.exports = Restaurant;
+module.exports = Restaurants;
