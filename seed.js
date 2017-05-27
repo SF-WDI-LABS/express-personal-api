@@ -25,16 +25,16 @@ var duckList = [{
 
 
 // remove all records that match {} -- which means remove ALL records
-db.Duck.remove({}, function(err, ducks){
+db.Duck.remove({}, function itsDuckSeason(err, ducks){
   if(err) {
     console.log('Error occurred in remove', err);
   } else {
-    console.log('removed all ducks');
+    console.log("It's duck season! All ducks removed.");
 
     // create new records based on the array duckList
-    db.Duck.create(duckList, function(err, ducks){
+    db.Duck.create(duckList, function quackAttack(err, ducks){
       if (err) { return console.log('error: ', err); }
-      console.log("created ", ducks.length, " ducks");
+      console.log("QUACK ATTACK!! Created ", ducks.length, " ducks.");
       process.exit();
     });
   }

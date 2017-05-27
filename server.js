@@ -31,18 +31,18 @@ app.use(function(req, res, next) {
 // i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));
 
-/*
- * HTML Endpoints
- */
+/**********************
+ * HTML API ENDPOINTS *
+ **********************/
 
 app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
 
-/*
- * JSON API Endpoints
- */
+/**********************
+ * JSON API ENDPOINTS *
+ **********************/
 
 app.get('/api', function apiIndex(req, res) {
   // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
@@ -81,15 +81,14 @@ app.get('/api/profile', function apiProfile(req, res) {
 
 // /api/ducks index all ducks:
 app.get('/api/ducks', function(req, res) {
-  Duck.find({})
-  .populate('bff')
-  .exec(function(err, ducks) {
+  Duck.find({}, function(err, ducks) {
     if (err) {
       return console.log("error: ", err)
     }
-    res.json(ducks); 
+    res.json(ducks);
   });
 });
+
 
 /**********
  * SERVER *
