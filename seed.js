@@ -1,7 +1,7 @@
 // This file allows us to seed our application with data
 // simply run: `node seed.js` from the root of this project folder.
 
- var db = require('./models');
+ var db = require('./models'); // This is the index.js file.
 
 // var new_campsite = {description: "Sharp rocks. Middle of nowhere."}
 
@@ -51,3 +51,57 @@ let movie_listings = [
         image: 'https://resizing.flixster.com/wx-IBk9diQ5EMelmhnDSaPNDB-4=/206x305/v1.bTsxMjQwMTA0NTtqOzE3MzMzOzEyMDA7NjM5Ozk0Ng'
     }
 ]
+
+// Remove everything first.
+db.Movie.remove({}, function() {
+    console.log('removed all movies! yay!');
+    // 
+    db.Movie.create(movie_listings, function(err, moviesArray){
+        if (err) {
+          console.log(err);
+          return;
+        }
+        console.log('Created all movies!');
+        console.log("Created", moviesArray.length, "movies!");
+    })
+    
+})
+
+//db.Author.remove({}, function(err, authors) {
+//  console.log('removed all authors');
+//  db.Author.create(authors_list, function(err, authors){
+//    if (err) {
+//      console.log(err);
+//      return;
+//    }
+//    console.log('recreated all authors');
+//    console.log("created", authors.length, "authors");
+//
+//
+//    db.Book.remove({}, function(err, books){
+//      console.log('removed all books');
+//      books_list.forEach(function (bookData) {
+//        var book = new db.Book({
+//          title: bookData.title,
+//          image: bookData.image,
+//          releaseDate: bookData.releaseDate
+//        });
+//        db.Author.findOne({name: bookData.author}, function (err, foundAuthor) {
+//          console.log('found author ' + foundAuthor.name + ' for book ' + book.title);
+//          if (err) {
+//            console.log(err);
+//            return;
+//          }
+//          book.author = foundAuthor;
+//          book.save(function(err, savedBook){
+//            if (err) {
+//              return console.log(err);
+//            }
+//            console.log('saved ' + savedBook.title + ' by ' + foundAuthor.name);
+//          });
+//        });
+//      });
+//    });
+//
+//  });
+//});
