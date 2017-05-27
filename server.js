@@ -25,6 +25,18 @@ app.use(function(req, res, next) {
  * ROUTES *
  **********/
 
+ app.get('api/restaurants', function(){
+   console.log([{}]);
+ });
+
+ app.get('api/restaurants/:id', function(){
+   console.log({});
+ });
+
+ app.post('api/restaurants'), function(){
+   console.log({})
+ }):
+
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));
@@ -47,14 +59,16 @@ app.get('/api', function apiIndex(req, res) {
   // It would be seriously overkill to save any of this to your database.
   // But you should change almost every line of this response.
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
     baseUrl: "https://nameless-wildwood-79906.herokuapp.com/",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", path: "/api/profile", description: "Data about me"},
+      {method: "GET", path:"/api/restaurants", description: "Data about all the best restaurants in Berkeley"},
+      {method: "POST", path: "/api/", description: "Create new entry for a great restaurant"}, // CHANGE ME
+      {method: "PUT", path: "/api/the-thing/:id", decription: "Update information about the restaurant"},
+      {method: "DELETE", path: "/api/the-thing/:id", description: "delete a restaurant"}
     ]
   })
 });
