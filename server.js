@@ -79,8 +79,8 @@ app.get('/api/profile', function apiProfile(req, res) {
 });
 
 
-// /api/ducks index all ducks:
-app.get('/api/ducks', function(req, res) {
+//  index - "get" all ducks:
+app.get('/api/ducks', function index(req, res) {
   Duck.find({}, function(err, ducks) {
     if (err) {
       return console.log("error: ", err)
@@ -88,6 +88,36 @@ app.get('/api/ducks', function(req, res) {
     res.json(ducks);
   });
 });
+
+
+//   show - "get" one duck by id:
+app.get('/api/ducks/:id', function show(req, res) {
+  var idNum = req.params.id;
+  Duck.findOne({_id: id}, function(err, duck) {
+    if (err) {
+      return console.log("error: ", err)
+    }
+    res.json(duck);
+  });
+});
+
+
+//    create - "post" new duck (& save):
+app.post("/api/ducks", function create(req, res) {
+  console.log(`made it to the POST route with: params: ${req.params}, query: ${req.query} and body: ${req.body}.`);
+
+  var newDuck = new Duck(req.body);
+  newDuck.save(function(err, duck) {
+    if (err) {
+      console.log("error: ", err);
+      res.sendStatus(404);
+    }
+    res.send(duck);
+  });
+});
+
+
+//   destroy - "delete" one duck by id:
 
 
 /**********
