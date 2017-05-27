@@ -1,6 +1,7 @@
 // require express and other modules
 var express = require('express'),
-    app = express();
+    app = express(),
+    db = require('./models');
 
 // parse incoming urlencoded form data
 // and populate the req.body object
@@ -61,6 +62,7 @@ app.get('/api', function apiIndex(req, res) {
   })
 });
 
+// Profile.
 app.get('/api/profile', function profile(req, res) {
     res.json({
         name: 'Younji Woo',
@@ -73,6 +75,18 @@ app.get('/api/profile', function profile(req, res) {
               {name: 'Mondu', type: 'Dog', breed: 'Samoyed'}]
     })
 });
+
+// Get all movies.
+app.get('/api/movies', function showMovies(req, res) {
+    db.Movie.find({}).exec(function(err, movies) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        res.send(movies);
+    })
+})
+
 
 /**********
  * SERVER *
