@@ -50,7 +50,7 @@ app.get('/api', function apiIndex(req, res) {
   res.json({
     woopsIForgotToDocumentAllMyEndpoints: false, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
+    documentationUrl: "https://github.com/KatTsukuda/kat-tsukuda-pie-api", // CHANGE ME
     baseUrl: "https://floating-sands-94136.herokuapp.com/", // herokuapp url
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
@@ -64,7 +64,9 @@ app.get('/api', function apiIndex(req, res) {
 app.get("/api/profile", function profile(req, res){
     let myProfile = {
         name: "kat tsukuda",
-        githubUsername: "KatTsukuda"
+        githubUsername: "KatTsukuda",
+        currentCity: "SF",
+        favoriteFood: "oatmeal with berries"
     };
     res.json(myProfile);
 });

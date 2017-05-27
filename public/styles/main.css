@@ -1,0 +1,23 @@
+body {
+    color: #000000;
+    background-color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+}
+
+div.header {
+    background-color: #AE6D8B;
+}
+h1 {
+    font-family: 'Amatic SC', cursive;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 55px
+}
+#time-elapsed {
+    font-size: 15px;
+    margin: 25px 0;
+}
+.grumpy-bear {
+    width: 250px;
+    height: auto;
+}
