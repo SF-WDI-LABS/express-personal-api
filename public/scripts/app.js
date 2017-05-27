@@ -5,10 +5,18 @@ $(document).ready(function(){
 // your code
 $.ajax({
   method: 'GET',
-  url: 'api/restaurant',
-  success: function(){
-    console.log("success")
-  }
+  url: '/api/restaurant',
+  success: function(restaurants){
+        console.log(restaurants)
+        console.log("success")
+        $('#restaurant_target').append(`
+          <li>${restaurants[0].name}</li>
+          `)
+
+      },
+      error: function(){
+        alert("Wow. Bad thing.")
+      }
 })
 
 });

@@ -31,8 +31,9 @@ app.use(function(req, res, next) {
    //console.log("Route to api/restaurant")
    //console.log(req.body)
    db.Restaurant.find({}, function(err, restaurants){
-     //console.log(restaurants)
-     res.json(restaurants)
+     console.log(restaurants)
+     res.send(restaurants)
+
    })
  })
 
