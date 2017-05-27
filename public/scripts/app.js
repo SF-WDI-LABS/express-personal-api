@@ -9,9 +9,9 @@ $(document).ready(function(){
     //error: handleError
   });
 
-//});
+});
 
 function getAllDucks(ducks) {
   console.log("Ducky Listing Test: ", ducks);
-  $('#restaurant_target').append(`<li>${ducks[0].name}</li>`)
+  $('#ducks_target').append(`<li>${ducks[0]}</li>`);
 };

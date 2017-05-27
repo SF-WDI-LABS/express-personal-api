@@ -3,16 +3,20 @@
 
 var db = require('./models');
 
-var new_duck = {type: "Rubber"}
+// var new_duck = {type: "Rubber"}
+//
+// db.Duck.create(new_duck, function(err, duck){
+//   if (err){
+//     return console.log("Error:", err);
+//   }
+//
+//   console.log("Created new duck", duck._id)
+//   process.exit();
+// });
 
-db.Duck.create(new_duck, function(err, duck){
-  if (err){
-    return console.log("Error:", err);
-  }
 
-  console.log("Created new duck", duck._id)
-  process.exit();
-});
+
+
 
 var duckList = [{
   name: "Princess Sadness",
@@ -21,6 +25,14 @@ var duckList = [{
   favQuote: "You've got a friend in me.",
   celebrityDoppleganger: "Anna Chlumsky",
   cohort: "WDI38"
+},
+{
+  name: "Fake Duck",
+  bff: "Freddy",
+  description: "Fake duck is imaginary.",
+  favQuote: "None.",
+  celebrityDoppleganger: "None",
+  cohort: "None"
 }];
 
 
@@ -29,15 +41,16 @@ db.Duck.remove({}, function itsDuckSeason(err, ducks){
   if(err) {
     console.log('Error occurred in remove', err);
   } else {
-    console.log("It's duck season! All ducks removed.");
-
+    console.log("It's duck season! All ducks removed.")
+  }
     // create new records based on the array duckList
+
     db.Duck.create(duckList, function quackAttack(err, ducks){
       if (err) { return console.log('error: ', err); }
-      console.log("QUACK ATTACK!! Created ", ducks.length, " ducks.");
+      console.log(`QUACK ATTACK!! Created ", ${ducks.length}  ducks.`);
       process.exit();
     });
-  }
+
 });
 
 // var studentList = [{
