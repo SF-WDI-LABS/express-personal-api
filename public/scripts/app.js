@@ -13,5 +13,7 @@ $(document).ready(function(){
 
 function getAllDucks(ducks) {
   console.log("Ducky Listing Test: ", ducks);
-  $('#ducks_target').append(`<li>${ducks[0].name}</li>`);
+  ducks.forEach(function(d){
+    $('#ducks_target').append(`<li>${d.name} belongs to ${d.bff}. ${d.description} Her/His favorite quote is '${d.favQuote}'</li>`);
+  });
 };
