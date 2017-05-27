@@ -19,7 +19,8 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
+
 
 var things = [
   {
@@ -123,8 +124,21 @@ app.get('/api/things/:id', function show(req, res) {
 app.post('/api/things/', function create(req, res) {
   console.log("req body: ", req.body);
   console.log("req query: ", req.query);
-  things.push(req.query);
-  res.json(req.query);
+  /*
+  // for use with query ? (postman)
+  var newThing = new db.Thing ({
+    name: req.query.name,
+    description: req.query.description
+  });
+  */
+  // for user with data: {}
+  var newThing = new db.Thing ({
+    name: req.body.name,
+    description: req.body.description
+  });
+  newThing.save();
+  things.push(req.body);
+  res.json(req.body);
 });
 
 app.put('/api/things/:id', function update(req, res) {

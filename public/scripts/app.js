@@ -13,4 +13,22 @@ $(document).ready(function(){
     console.log("display button clicked");
   });
 
+  $('.post-test').on('click', function() {
+    $.ajax({
+      method: 'POST',
+      url: '/api/things',
+      data: { id: 100, name: "thing", description: "thing description" },
+      success: postOnSuccess,
+      error: postOnError
+    });
+  });
+
+  function postOnSuccess() {
+    console.log("post was successfull");
+  }
+
+  function postOnError() {
+    console.log("post had error");
+  }
+
 });
