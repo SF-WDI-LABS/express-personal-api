@@ -107,7 +107,13 @@ app.get('/api/profile', function apiIndex(req, res) {
 });
 
 app.get('/api/things', function index(req, res) {
-  res.json(things);
+
+  // find all the things
+  db.Thing.find({}, function(err, docs) {
+    res.json(docs);
+  });
+  
+  //res.json(things);
 });
 
 app.get('/api/things/:id', function show(req, res) {
