@@ -92,12 +92,12 @@ app.get('/api/ducks', function index(req, res) {
 
 //   show - "get" one duck by id:
 app.get('/api/ducks/:id', function show(req, res) {
-  var idNum = req.params.id;
-  Duck.findOne({_id: id}, function(err, duck) {
+  var duckId = req.params.id;
+  Duck.findOne({_id: duckId}, function(err, selectedDuck) {
     if (err) {
       return console.log("error: ", err)
     }
-    res.json(duck);
+    res.json(selectedDuck);
   });
 });
 
@@ -105,20 +105,27 @@ app.get('/api/ducks/:id', function show(req, res) {
 //    create - "post" new duck (& save):
 app.post("/api/ducks", function create(req, res) {
   console.log(`made it to the POST route with: params: ${req.params}, query: ${req.query} and body: ${req.body}.`);
-
   var newDuck = new Duck(req.body);
+
   newDuck.save(function(err, duck) {
     if (err) {
       console.log("error: ", err);
       res.sendStatus(404);
     }
-    res.send(duck);
+    res.json(duck);
   });
 });
 
 
 //   destroy - "delete" one duck by id:
+app.delete("/api/ducks/:id", function destroy(req, res) {
+  console.log(`made it to the DELETE route with: params: ${req.params}, query: ${req.query} and body: ${req.body}.`);
+  var duckId = req.params.id;
 
+  db.Duck.findOneAndRemove({ _id: duckId }, function (err, deadDuck) {
+    res.json(deadDuck);
+  });
+});
 
 /**********
  * SERVER *
