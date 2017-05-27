@@ -63,7 +63,7 @@ app.get('/api', function apiIndex(req, res) {
   })
 });
 
-
+//  /api/profile hard-coded information:
 app.get('/api/profile', function apiProfile(req, res) {
   res.json({
     name: "Aly Walas",
@@ -75,6 +75,19 @@ app.get('/api/profile', function apiProfile(req, res) {
       type: "Feline",
       breed: "Calico"
     }]
+  });
+});
+
+
+// /api/ducks index all ducks:
+app.get('/api/ducks', function(req, res) {
+  Duck.find({})
+  .populate('bff')
+  .exec(function(err, ducks) {
+    if (err) {
+      return console.log("error: ", err)
+    }
+    res.json(ducks); 
   });
 });
 
