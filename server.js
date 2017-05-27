@@ -55,7 +55,7 @@ app.get('/api', function apiIndex(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "digital strategist, analyst, and graphic designer, learning to code."}, // brief about me
-      {method: "POST", path: "/api/campsites", description: "pie is love"} // app description
+      {method: "POST", path: "/api/pies", description: "pie is love"} // app description
     ]
   })
 });

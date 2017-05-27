@@ -21,18 +21,45 @@
   </head>
   <body>
     <div class="container">
-      <div class="row header">
+      <div class="row">
         <div class="col-md-8 col-md-offset-2">
           <h1>Bear Hearts Pie</h1>
         </div>
       </div>
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-              <div id="time-elapsed"></div>
-              <img class="grumpy-bear" src="/images/grumpybear.png">
-              <p>Hello! My name is Bear. I love to eat pies &mdash; sweet and savory&mdash; but I can never seem to get enough. <strong>Won't you ease my grumbly tummy and feed me a pie?</strong></p>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div id="time-elapsed"></div>
+            <img class="grumpy-bear" src="/images/grumpybear.png">
+            <p>Hello! My name is Bear. I love to eat pies &mdash; sweet and savory&mdash; but I can never seem to get enough. <strong>Won't you ease my grumbly tummy and feed me a pie?</strong></p>
           </div>
         </div>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <h4>Bake me a pie!</h4>
+          <form method="POST" action="/api/pies">
+            <div class="form-group">
+              <label for="pie-donor">Pie Donor</label>
+              <input type="text" name="name" value="" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <label for="pie-type">Pie Type</label>
+              <input type="text" name="name" value="" placeholder="ex: peach pie">
+            </div>
+            <div class="form-group">
+              <label for="pie-quantity">How many pies are you donating? (psst... 5 is my limit)</label>
+              <select class="form-control" id="exampleSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>
