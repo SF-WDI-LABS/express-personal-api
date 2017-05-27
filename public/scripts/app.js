@@ -2,7 +2,7 @@ console.log("Sanity Check: JS is working!");
 
 $(document).ready(function(){
 
-//  COUNTER CLOCK - RESETS EVERYTIME PAGE IS REFRESHED
+    //  COUNTER CLOCK - RESETS EVERYTIME PAGE IS REFRESHED
     var startDateTime = new Date();
     var startStamp = startDateTime.getTime();
 
@@ -26,9 +26,29 @@ $(document).ready(function(){
 
         var seconds = diff;
 
-        document.getElementById("time-elapsed").innerHTML = days +" day(s), "+ hours +" hour(s), "+ minutes +" minute(s), "+ seconds +" second(s) craving pie";
+        document.getElementById("time-elapsed").innerHTML = days +" day(s), "+ hours +" hour(s), "+ minutes +" minute(s), "+ seconds +" second(s) wasting away without pie";
     }
 
     setInterval(updateClock, 1000); // clock changes by 1 second
+
+    // PIES DONATED AS JSON INTO HTML
+    $.ajax({
+        method: "GET",
+        url: "/api/pies",
+        success: function(pies){
+            console.log("pies received!")
+
+        pies.forEach(function(pie){
+          $(".pie-list").append(`
+            <div class="pie" id="pie-${pie._id}">
+              <p>${pie.donor_name} sent Bear ${pie.pie_quantity} ${pie.pie_type} pie(s)</p><br><br>
+            </div>
+          `);
+        })
+      },
+      error: function(){
+        alert("Pie Error! :(")
+      }
+    })
 
 });

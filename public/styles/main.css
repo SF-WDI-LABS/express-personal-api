@@ -5,10 +5,10 @@ body {
 }
 
 h1 {
-    font-family: 'Amatic SC', cursive;
+    font-family: 'Barrio', cursive;
     text-align: left;
     text-transform: uppercase;
-    font-size: 55px
+    font-size: 40px
 }
 #time-elapsed {
     font-size: 15px;

@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="/styles/main.css">
     <!-- FONTS -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barrio|Poppins" rel="stylesheet">
     <!-- VENDOR SCRIPTS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 
@@ -35,29 +34,29 @@
         </div>
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h4>Bake me a pie!</h4>
+          <h4>Send me a pie!</h4>
           <form method="POST" action="/api/pies">
             <div class="form-group">
-              <label for="pie-donor">Pie Donor</label>
+              <label for="pie-donor">Donor</label>
               <input type="text" name="name" value="" placeholder="Name">
             </div>
             <div class="form-group">
               <label for="pie-type">Pie Type</label>
-              <input type="text" name="name" value="" placeholder="ex: peach pie">
+              <input type="text" name="name" value="" placeholder="ex: strawberry apple">
             </div>
             <div class="form-group">
-              <label for="pie-quantity">How many pies are you donating? (psst... 5 is my limit)</label>
-              <select class="form-control" id="exampleSelect1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
+              <label for="pie-quantity">Amount of Pies</label>
+              <input class="form-control" type="number" value="" placeholder="ex: 2">
             </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+            <button type="submit" class="btn btn-warning">Feed Bear</button>
+        </div>
+        </form>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <h4>Pies for Bear</h4>
+          <div class="pie-list"></div>
         </div>
       </div>
     </div>

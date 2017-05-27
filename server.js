@@ -5,6 +5,7 @@ var express = require('express'),
 // parse incoming urlencoded form data
 // and populate the req.body object
 var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // allow cross origin requests (optional)
@@ -20,6 +21,7 @@ app.use(function(req, res, next) {
  ************/
 
 var db = require('./models');
+
 
 
 /**********
@@ -71,6 +73,45 @@ app.get("/api/profile", function profile(req, res){
     res.json(myProfile);
 });
 
+// SHOW ALL THE PIES
+app.get("/api/pies", function index(req, res) {
+    db.Pie.find({}, function(err, pies) {
+        res.send(pies);
+    })
+
+})
+
+// GET PIE DONATION INFO BY ID
+app.get("/api/pies/:id", function show(req, res){
+  var id = req.params.id;
+  db.Pie.findOne({_id: id}, function(err, pie){
+    res.send(pie);
+  });
+})
+
+// CREATE NEW PIE DONATION LOG
+app.post("/api/pies", function create(req, res) {
+    console.log("Hit POST /api/pies, with the following: ")
+    console.log("params:", req.params)
+    console.log("query:", req.query)
+    console.log("body:", req.body)
+
+    let newPieDonor = new db.Pie(req.body);
+    newPieDonor.save(function(err, pie) {
+        if(err) {res.sendStatus(404); }
+        res.send(pie); // one newly created pie donation
+    });
+});
+
+// RETRACT AND REMOVE PIE DONATION ORDER
+app.delete("/api/pies/:id", function(req, res) {
+  res.sendStatus(204); // confirmation
+})
+
+// UPDATE PIE DONATION ORDER
+app.put("/api/pies/:id", function update(req, res){
+  res.send({});
+})
 
 /**********
  * SERVER *
