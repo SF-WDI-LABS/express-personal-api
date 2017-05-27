@@ -112,7 +112,7 @@ app.get('/api/things', function index(req, res) {
   db.Thing.find({}, function(err, docs) {
     res.json(docs);
   });
-  
+
   //res.json(things);
 });
 
@@ -162,8 +162,12 @@ app.put('/api/things/:id', function update(req, res) {
 });
 
 app.delete('/api/things/:id', function destroy(req, res) {
-  thingID = parseInt(req.params.id);
+  thingID = req.params.id;
   console.log("destroy thingID: ", thingID);
+  db.Thing.findOneAndRemove({ _id: thingID }, function(err, deletedThing) {
+    res.json(deletedThing);
+  });
+  /*
   things.forEach(function(element, index) {
     if (element.id === thingID) {
       things.splice(index, 1);
@@ -171,6 +175,7 @@ app.delete('/api/things/:id', function destroy(req, res) {
       return;
     }
   })
+  */
 });
 
 

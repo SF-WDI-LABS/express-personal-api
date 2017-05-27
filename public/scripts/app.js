@@ -1,8 +1,12 @@
 console.log("Sanity Check: JS is working!");
+var $list;
+
 
 $(document).ready(function(){
 
   console.log("Document is ready, JQuery is working!")
+
+  $list = $('#resultsList');
 
   $(".display").on("click", function() {
     console.log("display button clicked");
@@ -24,12 +28,31 @@ $(document).ready(function(){
     });
   });
 
+  $list.on('click', '.delete', function() {
+    console.log('clicked delete button to', '/api/things/'+$(this).attr('data-id'));
+    $.ajax({
+      method: 'DELETE',
+      url: '/api/things/'+$(this).attr('data-id'),
+      success: deleteOnSuccess,
+      error: deleteOnError
+    });
+  });
+
   function postOnSuccess() {
     console.log("post was successfull");
   }
 
   function postOnError() {
     console.log("post had error");
+  }
+
+  function deleteOnSuccess() {
+    console.log("delete was successfull");
+    displayAllResults();
+  }
+
+  function deleteOnError() {
+    console.log("delete had error");
   }
 
   function displayAllResults() {
@@ -42,7 +65,7 @@ $(document).ready(function(){
         console.log(json);
         $(".results").empty();
         json.forEach(function(element,index) {
-          $(".results").append(`<p>name: ${element.name}, description: ${element.description}</p>`);
+          $(".results").append(`<p>name: ${element.name}, description: ${element.description}<input type=\"button\" name=\"delete\" value=\"Delete\" class=\"btn delete\" data-id=\"${element._id}\"><input type=\"button\" name=\"update\" value=\"Update\" class=\"btn update\" data-id=\"${element._id}\"></p>`);
         })
       },
       error: function() {
