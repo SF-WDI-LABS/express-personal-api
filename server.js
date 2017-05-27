@@ -32,7 +32,7 @@ app.use(function(req, res, next) {
    //console.log(req.body)
    db.Restaurant.find({}, function(err, restaurants){
      console.log(restaurants)
-     res.send(restaurants)
+     res.json(restaurants)
 
    })
  })
