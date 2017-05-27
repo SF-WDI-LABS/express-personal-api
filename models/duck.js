@@ -3,13 +3,14 @@ Schema = mongoose.Schema;
 
 var DuckSchema = new Schema({
   name: String,
-  bff: {
-    type: Schema.Types.ObjectId,
-    ref: "Student"
-  },
+  bff: String,
   description: String,
   favQuote: String,
   celebrityDoppleganger: String,
+  cohort: {
+    type: String,
+    default: "WDI38"
+  }
 });
 
 var Duck = mongoose.model('Duck', DuckSchema);
