@@ -76,7 +76,8 @@ app.get('/api/profile', function profile(req, res) {
     })
 });
 
-// Get all movies.
+
+// Index: Get all movies.
 app.get('/api/movies', function showMovies(req, res) {
     db.Movie.find({}).exec(function(err, movies) {
         if (err) {
@@ -87,6 +88,24 @@ app.get('/api/movies', function showMovies(req, res) {
     })
 })
 
+// Show.
+app.get('/api/movies/:id', function showOneMovie(req, res) {
+    db.Movie.findById(req.params.id)
+        .exec(function(err, movie) {
+        if (err) {
+            res.sendStatus(404);
+            return;
+        }
+        res.json(movie);
+    })
+})
+
+// Create.
+
+
+// Update.
+
+// Delete.
 
 /**********
  * SERVER *
