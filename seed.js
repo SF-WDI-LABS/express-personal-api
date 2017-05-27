@@ -7,12 +7,12 @@ var restaurant_data = [
   {
     name: "Eureka",
     type: "American",
-    number_of_stars: 4.2
+    number_of_stars: 4.2,
     address: "2068 Center St., Berkeley, CA 94704"
 }
 ];
 
-Restaurants.create(new_restaurant_data, function(err, restaurant){
+db.Restaurant.create(restaurant_data, function(err, restaurant){
    if (err){
      return console.log("Oops, something went wrong.", err);
    }

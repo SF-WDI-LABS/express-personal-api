@@ -1,4 +1,4 @@
 var mongoose = require("mongoose");
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/personal-api");
 
-module.exports.Restaurants = require("./restaurants.js");
+module.exports.Restaurant = require("./restaurants.js");

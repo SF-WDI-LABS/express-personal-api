@@ -28,10 +28,10 @@ app.use(function(req, res, next) {
 
 // GET all the restaurants
  app.get('/api/restaurant', function index(req, res) {
-   console.log("Route to api/restaurant")
-   console.log(req.body)
-   db.Restaurants.find({}, function(err, restaurants){
-     console.log(restaurants)
+   //console.log("Route to api/restaurant")
+   //console.log(req.body)
+   db.Restaurant.find({}, function(err, restaurants){
+     //console.log(restaurants)
      res.json(restaurants)
    })
  })
