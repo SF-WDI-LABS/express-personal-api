@@ -30,9 +30,9 @@ app.use(function(req, res, next) {
  app.get('/api/restaurant', function index(req, res) {
    //console.log("Route to api/restaurant")
    //console.log(req.body)
-   db.Restaurant.find({}, function(err, restaurants){
-     console.log(restaurants)
-     res.json(restaurants)
+   db.Restaurant.find({}, function(err, allRestaurants){
+     console.log({restaurants: allRestaurants})
+     res.json({restaurants: allRestaurants})
 
    })
  })
