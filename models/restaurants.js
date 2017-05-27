@@ -10,7 +10,7 @@ var RestaurantSchema = new Schema({
 
 
 
-
+  
 
 var Restaurant = mongoose.model("Restaurant", RestaurantSchema);
 

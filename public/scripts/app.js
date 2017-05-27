@@ -10,7 +10,7 @@ $.ajax({
         console.log(restaurants)
         console.log("success")
         $('#restaurant_target').append(`
-          <li>${restaurants[0].name}</li>
+          <li>${restaurants.restaurants[0].name}</li>
           `)
 
       },
