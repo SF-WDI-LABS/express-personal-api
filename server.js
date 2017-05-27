@@ -19,7 +19,8 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
+var Restaurant = db.Resturant;
 
 /**********
  * ROUTES *
@@ -33,9 +34,9 @@ app.use(function(req, res, next) {
    console.log({});
  });
 
- app.post('api/restaurants'), function(){
+ app.post('api/restaurants', function(){
    console.log({})
- }):
+ });
 
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
