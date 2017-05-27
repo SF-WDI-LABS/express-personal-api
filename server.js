@@ -137,7 +137,7 @@ app.post('/api/things/', function create(req, res) {
     description: req.query.description
   });
   */
-  // for user with data: {}
+  // for use with data: {} or body parser (elements within form)
   var newThing = new db.Thing ({
     name: req.body.name,
     description: req.body.description
