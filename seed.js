@@ -3,20 +3,6 @@
 
 var db = require('./models');
 
-// var new_duck = {type: "Rubber"}
-//
-// db.Duck.create(new_duck, function(err, duck){
-//   if (err){
-//     return console.log("Error:", err);
-//   }
-//
-//   console.log("Created new duck", duck._id)
-//   process.exit();
-// });
-
-
-
-
 
 var duckList = [{
   name: "Princess Sadness",

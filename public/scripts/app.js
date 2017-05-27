@@ -13,5 +13,5 @@ $(document).ready(function(){
 
 function getAllDucks(ducks) {
   console.log("Ducky Listing Test: ", ducks);
-  $('#ducks_target').append(`<li>${ducks[0]}</li>`);
+  $('#ducks_target').append(`<li>${ducks[0].name}</li>`);
 };
