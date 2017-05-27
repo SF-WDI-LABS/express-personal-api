@@ -5,8 +5,8 @@ $(document).ready(function(){
   $.ajax({
     method: 'GET',
     url: '/api/ducks',
-    success: handleSuccess,
-    error: handleError
+    success: getAllDucks,
+    //error: handleError
   });
 
 });
