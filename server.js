@@ -6,7 +6,7 @@ var express = require('express'),
 // parse incoming urlencoded form data
 // and populate the req.body object
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-var db = require('./models');
+// var db = require('./models');
 
 /**********
  * ROUTES *
@@ -34,52 +34,59 @@ app.use(express.static('public'));
  * HTML Endpoints
  */
 
-app.get('/api/hackathons', function homepage(req, res) {
-  res.sendFile(__dirname + '/views/index.html');
-});
+// app.get('/api/hackathons', function homepage(req, res) {
+//   res.sendFile(__dirname + '/views/index.html');
+// });
 
 
 /*
  * JSON API Endpoints
  */
- //
- // app.get("/api/unicorns", function index(req, res){
- //   Unicorn.find({}, function(err, unicorns){
- //     res.send(unicorns); // all the unicorns
- //   });
- // })
- //
- // app.get("/api/unicorns/:id", function show(req, res){
- //   var id = req.params.id;
- //   Unicorn.findOne({_id: id}, function(err, unicorn){
- //     res.send(unicorn); // one unicorn
- //   });
- // })
- //
- // app.post("/api/unicorns", function create(req, res){
- //   console.log("Hit POST /api/unicorns, with the following:")
- //   console.log("params:", req.params)
- //   console.log("query:", req.query)
- //   console.log("body:", req.body)
- //   res.send({});  // one newly created unicorn
- // })
- //
- // app.delete("/api/unicorns/:id", function destroy(req, res){
- //   res.sendStatus(204); // just saying we did it
- // })
- //
- // app.put("/api/unicorns/:id", function update(req, res){
- //   res.send({}) // one updated unicorn
- // })
- //
- //
+
+app.get('/api', function (req, res) {
+  console.log('is this working?');
+  res.send({ name: "Javascriptttt"});
+});
 
 
+//working
+app.get("/api/hackathons", function index(req, res){
+   console.log("ryu and luigi");
+   res.send("mario and guile");
+   res.end();
+ })
 
 
+//  app.get("/api/hackathons/:id", function show(req, res){
+//    var id = req.params.id;
+//    Hackathon.findOne({_id: id}, function(err, hackathon){
+//      res.send(hackathon); // one hackathon
+//    });
+//  })
+//
 
+//tested and working
+ app.post("/api/hackathons", function create(req, res){
+   console.log("Hit POST /api/hackathons, with the following:")
+  //  console.log("params:", req.params)
+  //  console.log("query:", req.query)
+   console.log("body:", req.body)
+   res.send(req.body);  // one newly created hackathon
+ })
 
-
+//  app.delete("/api/hackathons/:id", function destroy(req, res){
+//    res.sendStatus(204); // just saying we did it
+//  })
+//
+//  app.put("/api/hackathons/:id", function update(req, res){
+//    res.send({}) // one updated hackathon
+//  })
+//
+//
+//
+//
+//
+//
 
 
 
@@ -123,4 +130,4 @@ app.get('/api', function apiIndex(req, res) {
  **********/
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 3000);
