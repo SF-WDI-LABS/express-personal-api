@@ -10,10 +10,9 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 //error handling middleware
-app.use(function (err, req, res, next) {
-  res.status(422).send({error: err.message});
-  //console.log(err);
-});
+// app.use(function (err, req, res, next) {
+//   res.status(422).send({error: err.message});
+// });
 
 
 // allow cross origin requests (optional)
@@ -29,7 +28,6 @@ app.use(function(req, res, next) {
 ************/
 
 var db = require('./models');
-// var Hackathon = db.Hackathon;
 
 /**********
 * ROUTES *
@@ -52,17 +50,12 @@ app.use(express.static('public'));
 * JSON API Endpoints
 */
 
-app.get('/api', function (req, res, next) {
-  console.log('is this working?');
-  res.send({ name: "Javascriptttt"});
-});
 
-
-//Read -- working
-app.get("/api/hackathons", function index(req, res, next){
-  console.log("ryu and luigi");
-  res.send("mario and guile");
-  res.end();
+//Read -- Get all the hackathon lanugages
+app.get("/api/hackathons", function index(req, res){
+  Hackathon.find({}, function(err, hackathons){
+    res.send(hackathons);
+  });
 })
 
 //Create -- tested and working
@@ -79,31 +72,14 @@ app.delete("/api/hackathons/:id", function destroy(req, res, next){
   });
 });
 
-
-
-//  app.put("/api/hackathons/:id", function update(req, res){
-//    res.send({}) // one updated hackathon
-//  })
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//Update -- tested and working
+app.put("/api/hackathons/:id", function update(req, res, next){
+  Hackathon.findByIdAndUpdate({_id: req.params.id}, req.body).then(function (hackathon) {
+    Hackathon.findOne({_id: req.params.id}).then(function (hackathon) {
+      res.send(hackathon);
+    });
+  });
+});
 
 console.log("hello");
 
