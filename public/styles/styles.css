@@ -1,7 +1,12 @@
 body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: cornflowerblue; /* Sanity Check! */
+  background-color: white; /* Sanity Check! */
+}
+
+.header-title {
+  font-family: "Helvetica", sans-serif;
+  font-size: 20px;
 }
 
 h1 {

@@ -148,6 +148,17 @@ app.post('/api/things/', function create(req, res) {
 });
 
 app.put('/api/things/:id', function update(req, res) {
+  console.log('put params:', req.params);
+  var id = req.params.id;
+  var updatedThing = {
+    name: req.body.name,
+    description: req.body.description
+  };
+  db.Thing.findOneAndUpdate({ _id: id }, updatedThing, {}, function(err, updatedThing) {
+    res.json(updatedThing);
+  })
+
+  /*
   thingID = parseInt(req.params.id);
   console.log("put thingID: ", thingID);
   console.log("req query: ", req.query);
@@ -159,6 +170,8 @@ app.put('/api/things/:id', function update(req, res) {
       return;
     }
   })
+  */
+
 });
 
 app.delete('/api/things/:id', function destroy(req, res) {
