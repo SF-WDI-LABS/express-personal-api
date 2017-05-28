@@ -11,7 +11,25 @@ body {
 }
 
 .slug-line {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Archivo Narrow', sans-serif;
+  letter-spacing: .03em;
+  font-size: 18px;
+}
+
+.form-header {
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  margin-top: 20px;
+}
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  font-family: 'Archivo Narrow', sans-serif;
+  letter-spacing: .03em;
 }
 
 .header {
@@ -49,4 +67,8 @@ p {
 .images {
   height: 70px;
   width: 70px;
+}
+
+footer {
+  background-color: #b2aeae;
 }

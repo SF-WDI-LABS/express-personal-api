@@ -9,7 +9,8 @@ var restaurant_data = [
     type: "American",
     number_of_stars: 4.2,
     address: "2068 Center St., Berkeley, CA 94704",
-    image: "https://s3-media3.fl.yelpcdn.com/bphoto/bgNxOJQ71AxNdh4mhDF4WQ/ls.jpg"
+    image: "https://s3-media3.fl.yelpcdn.com/bphoto/bgNxOJQ71AxNdh4mhDF4WQ/ls.jpg",
+    notes: "Great bar with super beer selection. Awesome on a nice day for people watching"
 }
 ];
 

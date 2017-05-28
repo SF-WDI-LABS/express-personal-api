@@ -22,7 +22,9 @@ $.ajax({
                 <p class="address">${restaurants.restaurants[0].address}</p>
                 <p class="text-muted"><em>${restaurants.restaurants[0].type}</em></p>
               </div>
-              <div class="col-xs-5">
+              <div class="col-xs-4">
+                <p><strong>Notes:</strong></p>
+                <p class="notes">${restaurants.restaurants[0].notes}</p>
               </div>
             </div>
           </div>
