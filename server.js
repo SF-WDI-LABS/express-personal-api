@@ -41,9 +41,9 @@ app.use(express.static('public'));
 * HTML Endpoints
 */
 
-app.get('/api/hackathons', function homepage(req, res) {
-  res.sendFile(__dirname + '/views/index.html');
-});
+// app.get('/api/hackathons', function homepage(req, res) {
+//   res.sendFile(__dirname + '/views/index.html');
+// });
 
 
 /*
