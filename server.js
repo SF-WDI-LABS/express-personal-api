@@ -1,12 +1,17 @@
-//doing first git commit
-// require express and other modules
-var express = require('express'),
-    app = express();
 
+// require express and other modules
+const express = require('express');
+var app = express();
+const mongoose = require('mongoose');
+const Hackathon = require('./models/hackathon');
 // parse incoming urlencoded form data
 // and populate the req.body object
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
+
+//for Mongodb error
+// mongoose.Promise = global.Promise
+
 
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
@@ -20,7 +25,8 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
+// var Hackathon = db.Hackathon;
 
 /**********
  * ROUTES *
@@ -67,12 +73,13 @@ app.get("/api/hackathons", function index(req, res){
 
 //tested and working
  app.post("/api/hackathons", function create(req, res){
-   console.log("Hit POST /api/hackathons, with the following:")
-  //  console.log("params:", req.params)
-  //  console.log("query:", req.query)
-   console.log("body:", req.body)
-   res.send(req.body);  // one newly created hackathon
- })
+   Hackathon.create(req.body).then(function(hackathon) {
+     res.send(hackathon);
+   });
+ });
+
+
+
 
 //  app.delete("/api/hackathons/:id", function destroy(req, res){
 //    res.sendStatus(204); // just saying we did it
