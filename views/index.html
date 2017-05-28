@@ -26,8 +26,12 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-8 col-xs-offset-2" id="ducks_target">
-        </div>
+        <h4>Add a new feathered, full-stack friend!</h4>
+        <form method="POST" action="/api/ducks" id="newDuckForm">
+          <input type="text" name="name" value="">
+          <input type="submit">
+        </form>
+        <div class="col-xs-12" id="ducksTarget"></div>
       </div>
     </div>
   </body>
