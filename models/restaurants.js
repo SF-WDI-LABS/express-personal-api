@@ -5,12 +5,14 @@ var RestaurantSchema = new Schema({
   name: String,
   type: String,
   number_of_stars: Number,
-  address: String
+  address: String,
+  image: String,
+  notes: String
 });
 
 
 
-  
+
 
 var Restaurant = mongoose.model("Restaurant", RestaurantSchema);
 

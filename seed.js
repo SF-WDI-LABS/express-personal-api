@@ -8,7 +8,8 @@ var restaurant_data = [
     name: "Eureka",
     type: "American",
     number_of_stars: 4.2,
-    address: "2068 Center St., Berkeley, CA 94704"
+    address: "2068 Center St., Berkeley, CA 94704",
+    image: "https://s3-media3.fl.yelpcdn.com/bphoto/bgNxOJQ71AxNdh4mhDF4WQ/ls.jpg"
 }
 ];
 
