@@ -1,6 +1,7 @@
 // require express and other modules
 var express = require('express'),
     app = express();
+    var db = require('./models');
 
 // parse incoming urlencoded form data
 // and populate the req.body object
@@ -41,6 +42,84 @@ app.get('/', function homepage(req, res) {
 /*
  * JSON API Endpoints
  */
+
+ app.get('/api/places', function (req, res) {
+  // send all books as JSON response
+  db.Place.find({}, function(err, places){
+      if (err) { return console.log("index error: " + err); }
+      res.json(places);
+      //res.sendFile(__dirname + '/views/index.html');
+    });
+});
+
+// get one place
+app.get('/api/places/:id', function (req, res) {
+  // find one place by its id
+  console.log('places show', req.params);
+
+  db.Place.findById(req.params.id, function(err, place){
+
+    if (err) {
+      console.log("index error: " + err);
+      res.sendStatus(500);
+    }
+    res.json(place);
+  //});
+
+  });
+});
+// create new place
+app.post('/api/places', function (req, res) {
+  // create new place with form data (`req.body`)
+  console.log('places create', req.body);
+  console.log(req.body);
+
+   var newPlace = new db.Place(req.body);
+  newPlace.save(function(err){
+  console.log("Success");
+});
+  res.json(newPlace);
+});
+
+// delete place
+app.delete('/api/places/:id', function (req, res) {
+  // get book id from url params (`req.params`)
+  console.log('places delete', req.params);
+  var placeId = req.params.id;
+  db.Place.remove({ _id: placeId }, function(err,places){
+    if (err) {
+      console.log("index error: " + err);
+      res.sendStatus(500);
+    }
+    res.send("Deleted Successfully book with id: " + placeId );
+
+  });
+  //res.sendFile('views/index.html' , { root : __dirname});
+});
+
+// update book
+app.put('/api/places/:id', function(req,res){
+// get book id from url params (`req.params`)
+  console.log('place update', req.params);
+  var placeId = req.params.id;
+  // find the index of the book we want to remove
+  var updatePlaceIndex = db.Place.findById(placeId, function(err, place) {
+    if (err) {
+      console.log("index error: " + err);
+      res.sendStatus(500);
+    }
+    var placeToUpdate = place;
+    console.log(placeToUpdate);
+    placeToUpdate.name = req.body.name;
+    placeToUpdate.description = req.body.description;
+    placeToUpdate.image = req.body.image;
+    placeToUpdate.save();
+
+    res.json({placeToUpdate});
+    //res.sendFile('views/index.html' , { root : __dirname}
+  });
+  //console.log('updating book with index', bookToUpdate);
+});
 
 app.get('/api', function apiIndex(req, res) {
   // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
