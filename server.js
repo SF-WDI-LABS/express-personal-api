@@ -120,8 +120,15 @@ app.post('/api/movies', function addMovie(req, res) {
 })
 
 // Update.
+//app.put('/api/movies')
 
 // Delete.
+app.delete('/api/movies/:id', function (req, res) {
+    db.Movie.findOneAndRemove({ _id: req.params.id }, function (err, deletedMovie) {
+        res.json(deletedMovie);
+    })
+})
+
 
 /**********
  * SERVER *
