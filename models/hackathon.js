@@ -1,10 +1,14 @@
-var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var HackathonSchema = new Schema({
-  description: String
+const HackathonSchema = new Schema({
+  name: String,
+  language: String,
+  difficulty: String,
+  popularity: Number,
+  salary: String
 });
 
-var Hackathon = mongoose.model('Hackathon', HackathonSchema);
+const Hackathon = mongoose.model('hackathon', HackathonSchema);
 
 module.exports = Hackathon;
