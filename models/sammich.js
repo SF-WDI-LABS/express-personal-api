@@ -16,4 +16,4 @@ var sammichSchema = new Schema({
 
 var Sammich = mongoose.model("Sammich", sammichSchema);
 
-module.exports = Sammmich;
+module.exports = Sammich;
