@@ -41,9 +41,9 @@ app.use(express.static('public'));
 * HTML Endpoints
 */
 
-// app.get('/api/hackathons', function homepage(req, res) {
-//   res.sendFile(__dirname + '/views/index.html');
-// });
+app.get('/api/hackathons', function homepage(req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
 
 
 /*
@@ -83,6 +83,23 @@ app.put("/api/hackathons/:id", function update(req, res, next){
 
 console.log("hello");
 
+// Profile
+app.get('/api/profile', function profile(req, res, next) {
+  res.json({
+    name: "John Ko",
+    githubUsername: "umichdoe",
+    githubLink: "https://github.com/umichdoe/",
+    personalSiteLink: "https://umichdoe.github.io/",
+    currentCity: "San Francisco",
+    favoriteFoods: [
+      { name: 'pizza', origin: 'Italy' },
+      { name: 'ramen', origin: 'China' },
+      { name: 'sushi', origin: 'Japan' },
+      { name: 'french fries', origin: 'Belgium' },
+      { name: 'burgers', origin: 'Germany' }
+    ]
+  });
+});
 
 app.get('/api', function apiIndex(req, res, next) {
   // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
