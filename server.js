@@ -109,7 +109,7 @@ app.get('/api', function apiIndex(req, res, next) {
     name: "John Ko",
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/umichdoe/express-personal-api/README.md", // CHANGE ME
-    baseUrl: "https://sheltered-ravine-19400.herokuapp.com/", // CHANGE ME
+    baseUrl: "https://sheltered-ravine-19400.herokuapp.com/",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"}, // DONE #1
       {method: "GET", path: "/api/profile", description: "A little about me"}, // DONE #2 PROFILE
