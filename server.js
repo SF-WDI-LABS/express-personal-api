@@ -9,8 +9,11 @@ const Hackathon = require('./models/hackathon');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-//for Mongodb error
-// mongoose.Promise = global.Promise
+//error handling middleware
+app.use(function (err, req, res, next) {
+  res.status(422).send({error: err.message});
+  //console.log(err);
+});
 
 
 // allow cross origin requests (optional)
@@ -22,23 +25,23 @@ app.use(function(req, res, next) {
 });
 
 /************
- * DATABASE *
- ************/
+* DATABASE *
+************/
 
 var db = require('./models');
 // var Hackathon = db.Hackathon;
 
 /**********
- * ROUTES *
- **********/
+* ROUTES *
+**********/
 
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));
 
 /*
- * HTML Endpoints
- */
+* HTML Endpoints
+*/
 
 // app.get('/api/hackathons', function homepage(req, res) {
 //   res.sendFile(__dirname + '/views/index.html');
@@ -46,45 +49,38 @@ app.use(express.static('public'));
 
 
 /*
- * JSON API Endpoints
- */
+* JSON API Endpoints
+*/
 
-app.get('/api', function (req, res) {
+app.get('/api', function (req, res, next) {
   console.log('is this working?');
   res.send({ name: "Javascriptttt"});
 });
 
 
-//working
-app.get("/api/hackathons", function index(req, res){
-   console.log("ryu and luigi");
-   res.send("mario and guile");
-   res.end();
- })
+//Read -- working
+app.get("/api/hackathons", function index(req, res, next){
+  console.log("ryu and luigi");
+  res.send("mario and guile");
+  res.end();
+})
 
+//Create -- tested and working
+app.post("/api/hackathons", function create(req, res, next){
+  Hackathon.create(req.body).then(function(hackathon) {
+    res.send(hackathon);
+  });
+});
 
-//  app.get("/api/hackathons/:id", function show(req, res){
-//    var id = req.params.id;
-//    Hackathon.findOne({_id: id}, function(err, hackathon){
-//      res.send(hackathon); // one hackathon
-//    });
-//  })
-//
-
-//tested and working
- app.post("/api/hackathons", function create(req, res){
-   Hackathon.create(req.body).then(function(hackathon) {
-     res.send(hackathon);
-   });
- });
-
+//Delete -- tested and working
+app.delete("/api/hackathons/:id", function destroy(req, res, next){
+  Hackathon.findByIdAndRemove({_id: req.params.id}).then(function (hackathon) {
+    res.send(hackathon);
+  });
+});
 
 
 
-//  app.delete("/api/hackathons/:id", function destroy(req, res){
-//    res.sendStatus(204); // just saying we did it
-//  })
-//
 //  app.put("/api/hackathons/:id", function update(req, res){
 //    res.send({}) // one updated hackathon
 //  })
@@ -112,7 +108,7 @@ app.get("/api/hackathons", function index(req, res){
 console.log("hello");
 
 
-app.get('/api', function apiIndex(req, res) {
+app.get('/api', function apiIndex(req, res, next) {
   // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
   // It would be seriously overkill to save any of this to your database.
   // But you should change almost every line of this response.
@@ -133,8 +129,8 @@ app.get('/api', function apiIndex(req, res) {
 });
 
 /**********
- * SERVER *
- **********/
+* SERVER *
+**********/
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
 app.listen(process.env.PORT || 3000);
