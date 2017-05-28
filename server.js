@@ -120,7 +120,27 @@ app.post('/api/movies', function addMovie(req, res) {
 })
 
 // Update.
-//app.put('/api/movies')
+app.put('/api/movies/:id', function(req, res) {
+    let movie = db.Movie.findById(req.params.id, function(err, movie) {
+        if (err) {
+           console.log('error, movie not found');
+        }
+        let formData = {
+            title: req.body.title || movie.title,
+            genre: req.body.genre  || movie.genre,
+            tomatoMeter: req.body.tomatoMeter || movie.tomatoMeter,
+            haveIseenIt: req.body.haveIseenIt || movie.haveIseenIt,
+            image: req.body.image || movie.image
+        };
+        db.Movie.update(movie, formData, function(err, updatedMovieListings) {
+            if (err) {
+               console.log('update movie failed!');
+            }
+            res.send(updatedMovieListings);
+            console.log('movie updated!');
+        });
+    });
+});
 
 // Delete.
 app.delete('/api/movies/:id', function (req, res) {
