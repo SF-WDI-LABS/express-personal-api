@@ -101,7 +101,23 @@ app.get('/api/movies/:id', function showOneMovie(req, res) {
 })
 
 // Create.
-
+app.post('/api/movies', function addMovie(req, res) {
+    console.log(req.body);
+    db.Movie.create({
+        title: req.body.title,
+        genre: req.body.genre,
+        tomatoMeter: req.body.tomatoMeter,
+        haveIseenIt: req.body.haveIseenIt,
+        image: req.body.image
+    }, function(err, movie) {
+        if (err) {
+            return console.log('This is a save err: ' + err);
+        }
+        console.log(movie.title, ' is saved! Yay!');
+        // send back the movie.
+        res.json(movie);
+    });
+})
 
 // Update.
 

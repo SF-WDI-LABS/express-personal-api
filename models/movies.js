@@ -2,10 +2,16 @@
      Schema = mongoose.Schema;
 
  var MovieSchema = new Schema({
-     title: String,
+     title: {
+         type: String,
+         required: true
+     },
      genre: String,
      tomatoMeter: Number,
-     haveIseenIt: Boolean, 
+     haveIseenIt: {
+         type: Boolean,
+         required: true
+     },
      image: String
  });
 
