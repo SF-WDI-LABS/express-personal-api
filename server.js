@@ -30,6 +30,16 @@ app.use(function(req, res, next) {
 // i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));
 
+var profile = {
+  name: "Kabita Chatterjee",
+  location: "San Francisco",
+  email: "chatterjeekavita01@gmail.com",
+  githubUsername: "kabitachatterjee",
+  githubLink: "https://github.com/kabitachatterjee",
+  linkedIn: "https://www.linkedin.com/in/kabitachatterjee/",
+  career: "Freelance web-developer with a passion for making user-friendly  and creative web applications.I have worked in different industries from telecom to healthcare and would love to bring my experience in making the web simpler and user-friendly."
+};
+
 /*
  * HTML Endpoints
  */
@@ -38,12 +48,17 @@ app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+app.get('/api/profile', function (req, res) {
+  // send all books as JSON response
+  console.log('myprofile index');
+  res.json(profile);
+});
 
 /*
  * JSON API Endpoints
  */
 
- app.get('/api/places', function (req, res) {
+ app.get('/api/places', function index(req, res) {
   // send all books as JSON response
   db.Place.find({}, function(err, places){
       if (err) { return console.log("index error: " + err); }
@@ -53,7 +68,7 @@ app.get('/', function homepage(req, res) {
 });
 
 // get one place
-app.get('/api/places/:id', function (req, res) {
+app.get('/api/places/:id', function show(req, res) {
   // find one place by its id
   console.log('places show', req.params);
 
@@ -69,7 +84,7 @@ app.get('/api/places/:id', function (req, res) {
   });
 });
 // create new place
-app.post('/api/places', function (req, res) {
+app.post('/api/places', function create(req, res) {
   // create new place with form data (`req.body`)
   console.log('places create', req.body);
   console.log(req.body);
@@ -78,11 +93,12 @@ app.post('/api/places', function (req, res) {
   newPlace.save(function(err){
   console.log("Success");
 });
-  res.json(newPlace);
+  //res.json(newPlace);
+  res.sendFile(__dirname + '/views/index.html');
 });
 
 // delete place
-app.delete('/api/places/:id', function (req, res) {
+app.delete('/api/places/:id', function destroy(req, res) {
   // get book id from url params (`req.params`)
   console.log('places delete', req.params);
   var placeId = req.params.id;
@@ -98,7 +114,7 @@ app.delete('/api/places/:id', function (req, res) {
 });
 
 // update book
-app.put('/api/places/:id', function(req,res){
+app.put('/api/places/:id', function update(req,res){
 // get book id from url params (`req.params`)
   console.log('place update', req.params);
   var placeId = req.params.id;

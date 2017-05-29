@@ -6,6 +6,13 @@ $(document).ready(function(){
 // your code
 
 $placesList = $('#target');
+
+$.ajax({
+  method: 'GET',
+  url: '/api/profile',
+  success: handleProfileSuccess,
+  error: handleProfileError
+});
   $.ajax({
     method: 'GET',
     url: '/api/places',
@@ -45,23 +52,60 @@ $placesList = $('#target');
     });
   });
 
+
+  function getProfileHtml(profile) {
+    console.log(profile);
+    return `<div class="col-md-4">
+      <img id="self" class="img-responsive" src="/images/me.png" alt="profile photo">
+    </div>
+
+  <div class="col-md-4 text-left">
+    <h2> Career</h2>
+    <p>${profile.career}</p>
+    <h2> Education</h2>
+    <p>Bachelors in Optical Engineering <br>
+    Bachelors in Physics</p>
+  </div>
+
+  <div class="col-md-4 text-left">
+    <h4> Available for:</h4>
+    <p>Web Development <br>
+      Data Analysis<br>
+      Consulting
+    </p>
+  </div>
+  <div class="col-md-4 text-left">
+    <h4> Contact:</h4>
+    <p>Cell : 650-307-8070 <br>
+      E-mail : ${profile.email}<br>
+    </p>
+  </div>
+  <div id="social" class="col-md-4"><h4>Social links:</h4>
+    <a href="${profile.githubLink}" target="_blank"><img src="/images/github.png" alt="github logo"></a>
+    <a href="${profile.linkedIn}" target="_blank"><img src="/images/linkedin.png" alt="linkedin logo"></a>
+</div>`;
+  }
   function getPlacesHtml(place) {
     console.log(place);
-    return `<div class="col-md-4">
+    return `<div class="card col-md-4">
             <img src="${place.image}" alt="${place.name}" class="img-responsive" data-toggle="modal" data-target="${place._id}">
             <h4 class="text-uppercase">${place.name}</h4>
             <div class="row">
             <div class="col-md-12">${place.description}</div>
             </div>
-            <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${place._id}>Delete</button>
-            <button type="button" name="button" class="updateBtn btn btn-danger pull-right" data-id=${place._id}>Update</button>
-            </div>`;
+            <div class="footer">
+            <button type="button" name="button" class="deleteBtn btn btn-default pull-right" data-id=${place._id}>Delete</button>
+            <button type="button" name="button" class="updateBtn btn btn-default pull-right" data-id=${place._id}>Update</button>
+            </div></div>`;
   }
 
   function getAllPlacesHtml(places) {
     return places.map(getPlacesHtml).join("");
   }
-  function render () {
+  function renderProfile() {
+    $("#profile").append(getProfileHtml(profile));
+  }
+  function render() {
   // empty existing posts from view
   $placesList.empty();
 
@@ -72,6 +116,16 @@ $placesList = $('#target');
   $placesList.append(placesHtml);
 };
 
+function handleProfileSuccess(json) {
+  console.log(json);
+  profile = json;
+  renderProfile();
+}
+
+function handleProfileError(e) {
+  console.log('uh oh');
+  $('#profile').text('Failed to load profile, is the server working?');
+}
 function handleSuccess(json) {
   console.log(json);
   allPlaces = json;
