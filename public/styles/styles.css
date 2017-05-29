@@ -5,8 +5,8 @@ body {
 }
 
 .header-title {
-  font-family: "Helvetica", sans-serif;
-  font-size: 20px;
+  color: rgb(0, 0, 0);
+  font-size: 22px;
 }
 
 .input-form {
@@ -14,10 +14,27 @@ body {
   margin-bottom: 100px;
 }
 
-h1 {
+.home-page {
   margin-top: 100px;
+  text-align: justify;
+  font-size: 14px;
+}
+
+.title {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.home-image {
+  margin-top: 50px;
   text-align: center;
 }
+
+.image-container {
+  text-align: center;
+}
+
 
 .controls {
   text-align: center;

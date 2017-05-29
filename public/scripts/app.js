@@ -237,9 +237,6 @@ function findIndexByDBId(arr, id) {
 
 
 
-
-
-
 // display the bootstrap form for add or update
 function showForm() {
 
@@ -278,6 +275,24 @@ function hideForm() {
 
 // FUNCTIONS RETURNING HTML STRINGS
 // --------------------------------
+
+// html for home page
+function getHomeHTML() {
+
+  var html = `
+    <div class='col-md-6 col-md-offset-3 home-page'>
+      <p class='title'>San Francisco Public Stairways</p>
+      <p>Stairways are cool.  Whenever I discover a new one I feel compelled to take it, for reasons that aren’t always clear to me.  I suppose they offer different things to different people: an easier way to climb a hill, a shortcut, an opportunity to get your heart racing, a way to get your bearings, a portal to a new street or neighborhood that you haven’t seen before.  Many have spectacular views from the top on a clear day.  Some have beautiful gardens intertwined.  A couple even have slides running parallel that you can chute down. </p>
+      <p>Reportedly there are over 600 stairways in San Francisco.  If you know of one that is not included here and would like to add it, please go ahead, and don’t forget to link to a photo!</p>
+    </div>
+
+    <img class='home-image' src='../images/moraga_steps_home.jpg'>
+  `
+
+  return html;
+
+}
+
 
 // form for adds and updates
 function getFormHTML() {
