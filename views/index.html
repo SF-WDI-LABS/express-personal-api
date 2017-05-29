@@ -63,7 +63,30 @@
         <p>{{tomatoMeter}}</p>
         <p>{{haveIseenIt}}</p>
         <button class='delete' data-id={{_id}}>Delete</button>
-        <button class='edit'>Edit</button>
+
+        <form class='editMovieForm'>
+            <div>
+                <label for='title' type='text'>Title</label>
+                <input name='title' id='title'>
+            </div>
+            <div>
+                <label for='genre' type='text'>Genre</label>
+                <input name='genre' id='genre'>
+            </div>
+            <div>
+                <label for='tomatoMeter' type='number'>Tomatometer</label>
+                <input name='tomatoMeter' id='tomatoMeter'>
+            </div>
+            <div>
+                <label for='haveIseenIt' type='text'>Have I seen it?</label>
+                <input name='haveIseenIt' id='haveIseenIt'>
+            </div>
+            <div>
+                <label for='image'>Image</label>
+                <input name='image' id='image'>
+            </div>
+            <button type='submit' class='submitEdit' data-id={{_id}}>Submit Your Change</button>
+        </form>
     </script>
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
