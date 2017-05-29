@@ -31,8 +31,8 @@ app.use(function(req, res, next) {
    //console.log("Route to api/restaurant")
    //console.log(req.body)
    db.Restaurant.find({}, function(err, allRestaurants){
-     console.log({restaurants: allRestaurants})
-     res.json({restaurants: allRestaurants})
+     console.log("responding with: " + allRestaurants)
+     res.json(allRestaurants)
 
    })
  })
@@ -42,9 +42,16 @@ app.use(function(req, res, next) {
    console.log("Route to api/restaurants/:id")
  });
 
-// app.post('/api/restaurants', function(){
-//   console.log({})
-// });
+ app.post('/api/restaurant', function(req, res){
+   console.log(req.body)
+   let newRest = new db.Restaurant({
+     name: req.body.name
+   })
+
+   newRest.save(function(err, book){
+     res.json(newRest)
+   })
+})
 
 
 // Serve static files from the `/public` directory:
