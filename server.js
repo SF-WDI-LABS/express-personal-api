@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
 
 //====================================
 // ROUTES
-let Mushroom = db.Mushroom;
+// let Mushroom = db.Mushroom;
 
 // Serve static files from the `/public` directory:
 app.use(express.static('public'));
@@ -33,14 +33,13 @@ app.get('/api/mushrooms', function index(request, response) {
   Mushroom.find({}, function(err, mushrooms){
   response.send(mushrooms); // Return all mushrooms
 // response.sendFile('/api/mushrooms/views/index.html');
-  }
 });
 
 app.get('/api/mushrooms/:id', function index(request, response) {
   Mushroom.findOne({_id: id}, function(err, mushroom){
   let id = request.params.id;
   response.send(mushroom); // Return new mushroom
-  )}
+  })
 });
 
 app.post("/api/mushrooms:id", function create(request, response){
@@ -52,11 +51,11 @@ app.post("/api/mushrooms:id", function create(request, response){
 
 app.delete("/api/unicorns/:id", function destroy(request, response){
   response.sendStatus(204); // Return delete-succeess message
-})
+});
 
 app.put("/api/unicorns/:id", function update(request, response){
   response.send({}) // Return the updated mushroom
-})
+});
 
 
 });
