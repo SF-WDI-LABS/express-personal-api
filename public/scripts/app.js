@@ -14,6 +14,16 @@ $(document).ready(function(){
     //error: handleError
   });
 
+  $('#newDuckForm').on('submit', function(el) {
+    el.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: '/api/ducks',
+      data: $(this).serialize(),
+      success: newDuckSuccess,
+      //error: newDuckError
+    });
+  });
 });
 
 
@@ -21,10 +31,17 @@ $(document).ready(function(){
 // get duck formatted into HTML elements
 function getDuckHTML(d) {
   let g;
-  d.gender === "Female" ? g = ["She", "Her"] : g = ["He", "His"];
+  `${d.gender}` === "Female" ? g = ["She", "Her"] : g = ["He", "His"];
   return
-  `<li>${d.name} belongs to ${d.bff}. ${d.description} ${g[1]} favorite quote is '${d.favQuote}'</li>
-  <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${d._id}>Delete Duck</button>`;
+  $('#ducksTarget').append(
+    `<div class="row>">
+      <div class="col-xs-10">
+        <li>${d.name} belongs to ${d.bff}. ${d.description} ${g[1]} favorite quote is '${d.favQuote}'</li>
+      </div>
+      <div class="col-xs-2">
+        <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${d._id}>Delete Duck</button>
+      </div>
+    </div><br/>`);
 };
 
 // get all ducks in given array formatted into HTML elements
@@ -35,10 +52,10 @@ function getAllDucksHTML(ducks) {
     d.gender === "Female" ? g = ["She", "Her"] : g = ["He", "His"];
     $('#ducksTarget').append(
       `<div class="row>">
-        <div class="col-xs-8-offset-1">
+        <div class="col-xs-10">
           <li>${d.name} belongs to ${d.bff}. ${d.description} ${g[1]} favorite quote is '${d.favQuote}'</li>
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-2">
           <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${d._id}>Delete Duck</button>
         </div>
       </div><br/>`
@@ -56,7 +73,16 @@ function render() {
   $duckiesArray.append(duxHTML);
 }
 
+//
 function handleSuccess(jsonData) {
   allDucks = jsonData;
+  render();
+};
+
+
+// new duck:
+function newDuckSuccess(jsonData) {
+  $('#newDuckForm input').val('');
+  allDucks.push(jsonData);
   render();
 };
