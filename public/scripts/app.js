@@ -28,7 +28,7 @@ $(document).ready(function(){
   });
 
   //  deleting duck data:
-  $duckiesArray.click('.deleteBtn', function(e) {
+  $duckiesArray.on('click', '.deleteBtn', function() {
 
     $.ajax({
       method: 'DELETE',
@@ -64,13 +64,15 @@ function getAllDucksHTML(ducks) {
   let result = ducks.forEach(function(d){
     let g;
     d.gender === "Female" ? g = ["She", "Her"] : g = ["He", "His"];
+    let duckId = d._id;
+    console.log(duckId);
     $('#ducksTarget').append(
       `<div class="row>">
         <div class="col-xs-10">
           <li>${d.name} belongs to ${d.bff}. ${d.description} ${g[1]} favorite quote is '${d.favQuote}'</li>
         </div>
         <div class="col-xs-2">
-          <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${d._id}>Delete Duck</button>
+          <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${duckId}>Delete Duck</button>
         </div>
       </div><br/>`
     );
@@ -104,12 +106,13 @@ function newDuckSuccess(jsonData) {
 // delete duck:
 function duckDeleteSuccess(duck) {
   let duckId = duck._id;
-  console.log(duckId);
-  return allDucks.filter(function(e) {
-    return e._id !== duckId;
+  allDucks.filter(function(e) {
+    e._id !== duckId;
+    render();
   });
+
 }
 
 function duckDeleteError() {
-  console.log("error");
+  console.log("error", '/api/ducks/'+$(this).attr('data-id'));
 };
