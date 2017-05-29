@@ -33,6 +33,7 @@ app.use(express.static('public'));
 var profile = {
   name: "Kabita Chatterjee",
   location: "San Francisco",
+  cell: "650-307-8070",
   email: "chatterjeekavita01@gmail.com",
   githubUsername: "kabitachatterjee",
   githubLink: "https://github.com/kabitachatterjee",
@@ -107,10 +108,11 @@ app.delete('/api/places/:id', function destroy(req, res) {
       console.log("index error: " + err);
       res.sendStatus(500);
     }
-    res.send("Deleted Successfully book with id: " + placeId );
+    //res.send("Deleted Successfully book with id: " + placeId );
+    console.log("Deleted Successfully book with id: " + placeId);
 
   });
-  //res.sendFile('views/index.html' , { root : __dirname});
+  res.sendFile('views/index.html' , { root : __dirname});
 });
 
 // update book
@@ -118,8 +120,9 @@ app.put('/api/places/:id', function update(req,res){
 // get book id from url params (`req.params`)
   console.log('place update', req.params);
   var placeId = req.params.id;
+  console.log(req.body.name);
   // find the index of the book we want to remove
-  var updatePlaceIndex = db.Place.findById(placeId, function(err, place) {
+  db.Place.findById(placeId, function(err, place) {
     if (err) {
       console.log("index error: " + err);
       res.sendStatus(500);

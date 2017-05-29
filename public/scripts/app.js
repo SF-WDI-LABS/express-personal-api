@@ -3,7 +3,6 @@ var $placesList;
 var allPlaces = [];
 $(document).ready(function(){
 
-// your code
 
 $placesList = $('#target');
 
@@ -76,7 +75,7 @@ $.ajax({
   </div>
   <div class="col-md-4 text-left">
     <h4> Contact:</h4>
-    <p>Cell : 650-307-8070 <br>
+    <p>Cell : ${profile.cell} <br>
       E-mail : ${profile.email}<br>
     </p>
   </div>
@@ -137,7 +136,6 @@ function handleError(e) {
   $('#target').text('Failed to load books, is the server working?');
 }
 
-});
 
 function newPlaceSuccess(json) {
   $('#newDestinationForm input').val('');
@@ -154,11 +152,11 @@ function deletePlaceSuccess(json) {
   console.log(json);
   var placeId = place._id;
   console.log('delete place', placeId);
-  // find the book with the correct ID and remove it from our allBooks array
+  // find the place with the correct ID and remove it from our allPlaces array
   for(var index = 0; index < allPlaces.length; index++) {
     if(allPlaces[index]._id === placeId) {
       allPlaces.splice(index, 1);
-      break;  // we found our book - no reason to keep searching (this is why we didn't use forEach)
+      break;
     }
   }
   render();
@@ -174,14 +172,14 @@ function updatePlaceSuccess(json) {
   $('#newDestinationForm input').val('');
   var placeId = place._id;
   console.log('update place', placeId);
-  // find the book with the correct ID and update it
+  // find the place with the correct ID and update it
   for(var index = 0; index < allPlaces.length; index++) {
     if(allPlaces[index]._id === placeId) {
       console.log(place);
       allPlaces[index].name = place.name;
       allPlaces[index].description = place.description;
       allPlaces[index].image = place.image;
-      break;  // we found our book - no reason to keep searching (this is why we didn't use forEach)
+      break;
     }
   }
   render();
@@ -190,3 +188,5 @@ function updatePlaceSuccess(json) {
 function updatePlaceError() {
   console.log('update place error!');
 }
+
+});
