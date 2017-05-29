@@ -344,9 +344,9 @@ function displayStairways(arr) {
 
   // build the html string that will be appended to the main container div
   var html = "";
-  arr.forEach(function(element,index {
+  arr.forEach(function(element,index) {
     console.log(element);
-  }));
+  });
 
 }
 
