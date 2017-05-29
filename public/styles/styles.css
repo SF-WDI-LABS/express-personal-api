@@ -53,6 +53,10 @@ main div.project-content-design
     padding-top: 24px;
 }
 
+main {
+  margin-bottom: 130px;
+}
+
 main p {
   padding: 10px;
   height: 100%;

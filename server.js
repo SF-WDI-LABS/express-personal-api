@@ -1,11 +1,9 @@
 // require express and other modules
-var express = require('express'),
+let express = require('express'),
     app = express();
 
-// parse incoming urlencoded form data
-// and populate the req.body object
-var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+let bodyParser = require('body-parser');
+    app.use(bodyParser.urlencoded({ extended: true }));
 
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
@@ -15,32 +13,57 @@ app.use(function(req, res, next) {
   next();
 });
 
-/************
- * DATABASE *
- ************/
+//====================================
+// DATABASE
 
 // var db = require('./models');
 
-/**********
- * ROUTES *
- **********/
+//====================================
+// ROUTES
+let Mushroom = db.Mushroom;
 
 // Serve static files from the `/public` directory:
-// i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));
 
-/*
- * HTML Endpoints
- */
+//====================================
+//HTML Endpoints
 
-app.get('/', function homepage(req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+
+app.get('/api/mushrooms', function index(request, response) {
+  Mushroom.find({}, function(err, mushrooms){
+  response.send(mushrooms); // Return all mushrooms
+// response.sendFile('/api/mushrooms/views/index.html');
+  }
+});
+
+app.get('/api/mushrooms/:id', function index(request, response) {
+  Mushroom.findOne({_id: id}, function(err, mushroom){
+  let id = request.params.id;
+  response.send(mushroom); // Return new mushroom
+  )}
+});
+
+app.post("/api/mushrooms:id", function create(request, response){
+  let id = request.params.id;
+  let body = request.params.body;
+  Mushroom.createOne(body);
+  response.send({});  // Return the new mushroom
+});
+
+app.delete("/api/unicorns/:id", function destroy(request, response){
+  response.sendStatus(204); // Return delete-succeess message
+})
+
+app.put("/api/unicorns/:id", function update(request, response){
+  response.send({}) // Return the updated mushroom
+})
+
+
 });
 
 
-/*
- * JSON API Endpoints
- */
+//====================================
+// JSON API Endpoints
 
 app.get('/api', function apiIndex(req, res) {
   // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
