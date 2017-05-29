@@ -62,6 +62,58 @@ div.project-content-dev {
   background-color: #FFF;
 }
 
+div.entry {
+  clear: both;
+  padding: 15px;
+}
+
+div.image-container {
+  width: 50%;
+  padding: 15px;
+}
+
+div.edibility-label {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0,0,0,.4);
+  color: white;
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+}
+
+div.certainty {
+  display: inline;
+  position: relative;
+  float: left;
+  width: 25%;
+  line-height: 20px;
+}
+
+div.percentage {
+  font-size: 18px;
+  font-weight: 300;
+  text-align: center;
+}
+
+div.certain {
+  font-size: 14px;
+  text-align: center;
+}
+
+div.edible-poisonous{
+  display: inline;
+  position: relative;
+  float: left;
+  margin: 0 auto;
+  font-size: 18px;
+  text-align: center;
+  width: 75%;
+  height: 100%;
+  line-height: 40px;
+
+}
+
 /*Footer*/
 
 footer {
@@ -111,6 +163,19 @@ h2 {
   color: #333;
   margin-top: 10px;
   padding: 10px 0 0 10px;
+}
+
+h3 {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+h4 {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  color: #333;
 }
 
 main {
@@ -174,6 +239,10 @@ footer img {
   height:19px;
   width:19px;
   vertical-align: text-top;
+}
+
+img.mushroom-pic{
+  width: 100%;
 }
 
 
