@@ -8,7 +8,7 @@ let MushroomSchema = new Schema({
   Taxonomy: String,
   DateFound: Date,
   LocationFound: String,
-  Edibility: Boolean,
+  Edibility: String,
   Certainty: Number,
   Photo: String
 });
