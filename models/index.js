@@ -2,4 +2,4 @@ var mongoose = require("mongoose");
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/personal-api");
 
 module.exports.Thing = require("./thing.js");
-//module.exports.Author = require("./author.js");
+module.exports.Stairway = require("./stairway.js");

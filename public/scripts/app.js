@@ -5,6 +5,8 @@ var $list;
 var $body, $main;
 var allResults = [];
 var updateID;
+var stairways = [];   // global array to hold all stairway objects
+
 
 $(document).ready(function(){
 
@@ -20,6 +22,9 @@ $(document).ready(function(){
 
   // display the form for adding a new stairway when the navbar Add button is clicked
   $body.on("click", ".btnAddStairway", showForm);
+
+  // hide the form if the user cancels out of adding a new stairway
+  $main.on("click", ".btnAddSave", saveNewStairway);
 
   // hide the form if the user cancels out of adding a new stairway
   $main.on("click", ".btnAddCancel", hideForm);
@@ -238,6 +243,13 @@ function findIndexByDBId(arr, id) {
 };
 
 
+
+
+// NEW CODE HERE
+// -------------
+
+
+
 function showHomePage() {
 
   // empty the contents of the main container div
@@ -289,6 +301,57 @@ function hideForm() {
 }
 
 
+// save a new stairway after the form is filled out and the save button is clicked
+function saveNewStairway() {
+
+  $.ajax({
+    method: 'POST',
+    url: '/api/stairways',
+    data: {
+      name: $("#txtName").val(),
+      description: $("#txtDescription").val(),
+      neighborhood: $("#txtNeighborhood").val(),
+      photoURL: $("#txtPhoto").val(),
+      numSteps: $("#txtNumSteps").val(),
+      rating: 5,
+      difficulty: "Medium",
+      favorite: $("#chkFavorite").val()
+    },
+    success: function(json) {
+      console.log("success!");
+      console.log(json);
+
+
+      // add the returned json object (from the database, including _id), to the stairways array
+      stairways.push(json);
+
+      // filter the array down to only the stairway object that was just added
+
+      // display the added stairway
+
+
+    },
+    error: function() {
+      console.log("there was an error attempting to save new stairway");
+    }
+
+  });
+
+}
+
+
+function displayStairways(arr) {
+
+  // build the html string that will be appended to the main container div
+  var html = "";
+  arr.forEach(function(element,index {
+    console.log(element);
+  }));
+
+}
+
+
+
 // FUNCTIONS RETURNING HTML STRINGS
 // --------------------------------
 
@@ -312,7 +375,7 @@ function getHomeHTML() {
 }
 
 
-// form for adds and updates
+// html for input form for add/update
 function getFormHTML() {
 
   var html = `
@@ -381,6 +444,37 @@ function getFormHTML() {
 
         </form>
       </div>
+    </div>
+  `
+
+  return html;
+
+}
+
+
+// html to get single result / one stairway based on _id
+function getResultHTML() {
+
+  var html = `
+    <div class='results' id='resultsList'>
+
+      <div class="results-item">
+        <div class="results-left-container">
+          <img class="results-image" src="http://i.imgur.com/XgKprd6.jpg" alt="(no photo)">
+        </div>
+        <div class="results-right-container">
+          <p class="results-name">Lyon Street Steps</p>
+          <p class="results-description">Just being at the summit of these steps is a mystical Zen experience truly difficult to describe. The feeling of the sky and air where you are standing is amazing. And, spread out before you are fabulous views of the Palace of Fine Arts Dome, the blue San Francisco Bay, and a fog shrouded sky beyond. To the west is the Presidio forest and to the east are amazing old Pacific Heights mansions with their manicured lawns and many balconies.</p>
+          <p class="results-neighborhood">Neighborhood:  Pacific Heights</p>
+          <p class="results-numsteps">Number of Steps:  56</p>
+          <p class="results-difficulty">Difficulty:  Easy</p>
+          <p class="results-rating">Rating:  1</p>
+          <p class="results-favorite">Favorite:  No</p>
+          <button type='button' class='btn btn-default btnUpdate'>Update</button>
+          <button type='button' class='btn btn-default btnDelete'>Delete</button>
+        </div>
+      </div>
+
     </div>
   `
 
