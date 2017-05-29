@@ -15,30 +15,32 @@ $(document).ready(function(){
     //error: handleError
   });
 
-  $('#newDuckForm').on('submit', function(el) {
-    el.preventDefault();
-    $.ajax({
-      method: 'POST',
-      url: '/api/ducks',
-      data: $(this).serialize(),
-      success: newDuckSuccess,
-      //error: newDuckError
-    });
+  // $('#newDuckForm').on('submit', function(el) {
+  //   el.preventDefault();
+  //   $.ajax({
+  //     method: 'POST',
+  //     url: '/api/ducks',
+  //     data: $(this).serialize(),
+  //     success: newDuckSuccess,
+  //     //error: newDuckError
+  //   });
 
 });
 
 function getAllDucks(ducks) {
   console.log("Ducky Listing Test: ", ducks);
   ducks.forEach(function(d){
-    $('#ducksTarget').append(`<li>${d.name} belongs to ${d.bff}. ${d.description} Her/His favorite quote is '${d.favQuote}'</li>`);
+    let g;
+    d.gender === "female" ? g = ["she", "her"] : g = ["he", "his"];
+    $('#ducksTarget').append(`<li>${d.name} belongs to ${d.bff}. ${d.description} ${g[1]} favorite quote is '${d.favQuote}'</li>`);
   });
 };
 
 
 
-function newDuckSuccess(jsonDuck) {
-  $('#newDuckForm input').val('');
-  newDuckArray.push(jsonDuck);
-
-  getAllDucks(newDuckArray);
-}
+// function newDuckSuccess(jsonDuck) {
+//   $('#newDuckForm input').val('');
+//   newDuckArray.push(jsonDuck);
+//
+//   getAllDucks(newDuckArray);
+// }

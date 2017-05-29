@@ -10,7 +10,8 @@ var DuckSchema = new Schema({
   cohort: {
     type: String,
     default: "WDI38"
-  }
+  },
+  gender: String
 });
 
 var Duck = mongoose.model('Duck', DuckSchema);

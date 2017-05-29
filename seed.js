@@ -10,7 +10,8 @@ var duckList = [{
   description: "While her pretty, pink crown and her accessories say 'it-girl', her eternally down-turned gaze should make clear, there's more to this fancy, feathered, flock-popular girl than meets the eye. She's got a knack for problem solving.",
   favQuote: "You've got a friend in me.",
   celebrityDoppleganger: "Anna Chlumsky",
-  cohort: "WDI38"
+  cohort: "WDI38",
+  gender: "female"
 },
 {
   name: "Mortimer",
@@ -18,7 +19,8 @@ var duckList = [{
   description: "Mortimer loves racquetball. He is rarely seen without his Champion brand cross-trainers and his plastic, protective sports-goggles. When he's not winding-up his backswing on the four-wall court, you can be sure he's not floating around the lazy-pond...Mortimer is an All-Star coach and he gets Team Michelle across the finish line every time!!",
   favQuote: "The ball is in your court, now go score!",
   celebrityDoppleganger: "Chris Kattan",
-  cohort: "Many"
+  cohort: "Many",
+  gender: "Male"
 },
 {
   name: "Orren",
@@ -26,7 +28,8 @@ var duckList = [{
   description: "TBD.",
   favQuote: "TBD.",
   celebrityDoppleganger: "Rowan Atkinson",
-  cohort: "Many"
+  cohort: "Many",
+  gender: "Male"
 }];
 
 
@@ -46,56 +49,3 @@ db.Duck.remove({}, function itsDuckSeason(err, ducks){
     });
 
 });
-
-// var studentList = [{
-//   name: "Aly",
-//   cohort: "WDI38"
-// },
-// {
-//   name: "Ryan",
-//   cohort: "WDI38"
-// },
-// {
-//   name: "Shridar",
-//   cohort: "WDI38"
-// },
-// {
-//   name: "John",
-//   cohort: "WDI38"
-// },
-// {
-//   name: "Matt",
-//   cohort: "WDI38"
-// },
-// {
-//   name: "Justin",
-//   cohort: "WDI38"
-// },
-// {
-//   name: "Bill",
-//   cohort: "WDI38"
-// },
-// {
-//   name: "Ibrahim",
-//   cohort: "WDI38"
-// },
-// {
-//   name: "Cat",
-//   cohort: "WDI38"
-// },
-// {
-//   name: "Younji",
-//   cohort: "WDI38"
-// },
-// {
-//   name: "Kabita",
-//   cohort: "WDI38"
-// },
-// {
-//   name: "Cindy",
-//   cohort: "WDI38"
-// },
-// {
-//   name: "Nuranne",
-//   cohort: "WDI38"
-// }];
