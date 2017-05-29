@@ -6,7 +6,6 @@ var DuckSchema = new Schema({
   bff: String,
   description: String,
   favQuote: String,
-  celebrityDoppleganger: String,
   cohort: {
     type: String,
     default: "WDI38"

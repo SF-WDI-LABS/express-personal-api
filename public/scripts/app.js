@@ -31,7 +31,7 @@ function getAllDucks(ducks) {
   console.log("Ducky Listing Test: ", ducks);
   ducks.forEach(function(d){
     let g;
-    d.gender === "female" ? g = ["she", "her"] : g = ["he", "his"];
+    d.gender === "Female" ? g = ["She", "Her"] : g = ["He", "His"];
     $('#ducksTarget').append(`<li>${d.name} belongs to ${d.bff}. ${d.description} ${g[1]} favorite quote is '${d.favQuote}'</li>`);
   });
 };
