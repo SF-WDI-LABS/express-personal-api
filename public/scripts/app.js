@@ -59,11 +59,32 @@ function addNewMovie() {
     })
 }
 
+function deleteMovie() {
+    $('main').on('click', 'button.delete', function(e) {
+        console.log('annyoung?');
+        let movieId = $(e.target).attr('data-id');
+        $.ajax({
+            method: 'DELETE',
+            dataType: 'json',
+            url: `/api/movies/${movieId}`,
+            success: function(responseData) {
+                renderAllMovies();
+            }
+        })
+    })
+}
+
+function editMovie() {
+    
+}
+
 $(document).ready(function(){
     
     renderAllMovies();
     showOneMovie();
     rerenderHome();
     addNewMovie();
+    deleteMovie();
+    editMovie();
 
 });

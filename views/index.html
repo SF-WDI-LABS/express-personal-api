@@ -48,10 +48,6 @@
                 <p>{{tomatoMeter}}</p>
                 <p>{{haveIseenIt}}</p>
                 <button class='show' data-id={{_id}}>Show</button>
-<!--
-                <button class='edit'>Edit</button>
-                <button class='delete'>Delete</button>
--->
             </li>
             {{/each}}
         </ul>
@@ -66,6 +62,8 @@
         <p>{{genre}}</p>
         <p>{{tomatoMeter}}</p>
         <p>{{haveIseenIt}}</p>
+        <button class='delete' data-id={{_id}}>Delete</button>
+        <button class='edit'>Edit</button>
     </script>
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
