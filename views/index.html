@@ -13,6 +13,7 @@
     <!-- VENDOR SCRIPTS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<!--This is a template to show all the movies.-->
     <script id="handlebars-template" type="text/x-handlebars-template">
         <h2>Here are all the movie listings:</h2>
         <ul>
@@ -23,9 +24,24 @@
                 <p>{{genre}}</p>
                 <p>{{tomatoMeter}}</p>
                 <p>{{haveIseenIt}}</p>
+                <button class='show' data-id={{_id}}>Show</button>
+<!--
+                <button class='edit'>Edit</button>
+                <button class='delete'>Delete</button>
+-->
             </li>
             {{/each}}
         </ul>
+    </script>
+      
+<!--This is a separate template just to show one movie.-->
+    <script id="one-movie-template" type="text/x-handlebars-template">
+        <h2>Here is one movie you clicked:</h2>
+        <img src={{image}}>
+        <h3>{{title}}</h3>
+        <p>{{genre}}</p>
+        <p>{{tomatoMeter}}</p>
+        <p>{{haveIseenIt}}</p>
     </script>
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
