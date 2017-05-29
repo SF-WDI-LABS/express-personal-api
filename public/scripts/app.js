@@ -1,7 +1,6 @@
 console.log("Sanity Check: JS is working!");
 
-$(document).ready(function(){
-
+function renderAllMovies() {
     $.ajax({
         method: 'GET',
         dataType: 'json',
@@ -13,8 +12,10 @@ $(document).ready(function(){
             $('main').html(html);
         }
     })
-    
-    $('main').on('click', 'button.show', function(e){
+}
+
+function showOneMovie() {
+    $('main').on('click', 'button.show', function(e) {
         let movieId = $(e.target).attr('data-id');
         $.ajax({
             method: 'GET',
@@ -28,8 +29,20 @@ $(document).ready(function(){
             }
         })
     })
+}
+
+function rerenderHome() {
+    $('main').on('click', 'button.home', function(e) {
+        renderAllMovies();
+    })
+}
+
+
+$(document).ready(function(){
     
-    
-    
+    renderAllMovies();
+    showOneMovie();
+    rerenderHome();
+
 
 });
