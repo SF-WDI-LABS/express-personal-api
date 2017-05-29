@@ -44,10 +44,10 @@
             <li class='row'>
                 <div class='col-sm-5'><img src={{image}}></div>
                 <div class='col-sm-5'>
-                    <h3>{{title}}</h3>
-                    <p>{{genre}}</p>
-                    <p>{{tomatoMeter}}</p>
-                    <p>{{haveIseenIt}}</p>
+                    <h2>{{title}}</h2>
+                    <h4>Genre:</h4><p>  {{genre}}</p>
+                    <h4>Tomatometer:</h4><p> {{tomatoMeter}}</p>
+                    <h4>Have I seen it?</h4><p> {{haveIseenIt}}</p>
                     <button class='show btn btn-primary' data-id={{_id}}>Show</button>
                 </div>
             </li>
@@ -57,7 +57,6 @@
       
 <!--This is a separate template just to show one movie.-->
     <script id="one-movie-template" type="text/x-handlebars-template">
-        <button class='home btn btn-primary'>Go back home</button>
         <h2>{{title}}</h2>
         <img src={{image}}>
         <p>{{genre}}</p>
@@ -65,8 +64,10 @@
         <p>{{haveIseenIt}}</p>
         <button class='delete btn btn-danger' data-id={{_id}}>Delete</button>
         
+        <button class='home btn btn-success btn-lg btn-block'>Go back home</button>
+
         <form class='editMovieForm'>
-            <h4>Edit the movie below. :)</h4>
+            <h4>Edit the movie below if you want. :)</h4>
             <div>
                 <label for='title' type='text'>Title</label>
                 <input name='title' id='title' class="form-control" placeholder={{title}}>
