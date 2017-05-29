@@ -1,5 +1,8 @@
 console.log("Sanity Check: JS is working!");
+
+// declare globals
 var $list;
+var $body, $main;
 var allResults = [];
 var updateID;
 
@@ -7,7 +10,18 @@ $(document).ready(function(){
 
   console.log("Document is ready, JQuery is working!")
 
+  // get references to the div elements
   $list = $('#resultsList');
+  $body = $('body');
+  $main = $('#main');
+
+  // display the form for adding a new stairway when the navbar Add button is clicked
+  $body.on("click", ".btnAddStairway", showForm);
+
+  // hide the form if the user cancels out of adding a new stairway
+  $main.on("click", ".btnAddCancel", hideForm);
+
+
 
   $(".display").on("click", function() {
     console.log("display button clicked");
@@ -219,3 +233,124 @@ function findIndexByDBId(arr, id) {
   });
   return foundIndex;
 };
+
+
+
+
+
+
+
+// display the bootstrap form for add or update
+function showForm() {
+
+  // empty the contents of the main container div
+  $(".main-container").empty();
+
+  // get the new html to insert
+  var html = getFormHTML();
+
+  // append the html to the main container div
+  $(".main-container").append(html);
+
+  // temp test to populate values
+  $("#txtName").val("Lyon Street Steps");
+
+}
+
+
+// hide the form
+function hideForm() {
+
+  console.log("name:", $("#txtName").val());
+  console.log("description:", $("#txtDescription").val());
+  console.log("neighborhood:", $("#txtNeighborhood").val());
+  console.log("photoURL:", $("#txtPhoto").val());
+  console.log("number of steps:", $("#txtNumSteps").val());
+  console.log("difficulty:", $("#optDifficulty").val());
+  console.log("favorite:", $("#chkFavorite").val());
+
+  // empty the contents of the main container div
+  $(".main-container").empty();
+
+
+}
+
+
+// FUNCTIONS RETURNING HTML STRINGS
+// --------------------------------
+
+// form for adds and updates
+function getFormHTML() {
+
+  var html = `
+    <div class='col-md-6 col-md-offset-3 input-form'>
+      <div class='inner-form-container'>
+        <form class='main-form'>
+
+          <div class='form-group'>
+            <label for='txtName'>Name</label>
+            <input type='text' class='form-control' id='txtName' placeholder='Enter staircase name'>
+          </div>
+
+          <div class='form-group'>
+            <label for='txtDescription'>Description</label>
+            <textarea class='form-control' id='txtDescription' rows='3' placeholder='Enter description'></textarea>
+          </div>
+
+          <div class='form-group'>
+            <label for='txtNeighborhood'>Neighborhood</label>
+            <input type='text' class='form-control' id='txtNeighborhood' placeholder='Enter neighborhood'>
+          </div>
+
+          <div class='form-group'>
+            <label for='txtPhoto'>Link to Photo</label>
+            <input type='text' class='form-control' id='txtPhoto' placeholder='Enter URL'>
+          </div>
+
+          <div class='form-group'>
+            <label for='txtNumSteps'>Number of Steps</label>
+            <input type='number' class='form-control' id='txtNumSteps' placeholder='Enter number of steps'>
+          </div>
+
+          <fieldset class='form-group form-check-inline' id='optDifficulty'>
+            <label>Difficulty</label>
+            <div class='form-check form-check-inline'>
+              <label class='form-check-label'>
+                <input type='radio' class='form-check-input' name='optionsRadios' id='optionsRadios1' value='easy' checked>
+                Easy
+              </label>
+            </div>
+            <div class='form-check form-check-inline'>
+              <label class='form-check-label'>
+                <input type='radio' class='form-check-input' name='optionsRadios' id='optionsRadios2' value='medium'>
+                Medium
+              </label>
+            </div>
+            <div class='form-check form-check-inline'>
+              <label class='form-check-label'>
+                <input type='radio' class='form-check-input' name='optionsRadios' id='optionsRadios3' value='difficult'>
+                Difficult
+              </label>
+            </div>
+          </fieldset>
+
+          <div class='form-check'>
+            <label class='form-check-label'>
+              <input type='checkbox' class='form-check-input' id='chkFavorite'>
+              Favorite
+            </label>
+          </div>
+
+          <div class="save-cancel-buttons">
+            <button type='button' class='btn btn-primary btnAddSave'>Save</button>
+            <button type='button' class='btn btn-primary btnAddCancel'>Cancel</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  `
+
+  return html;
+
+}
