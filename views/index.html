@@ -26,6 +26,7 @@
           <a href='/' class='navbar-text header-title'>San Francisco Stairways DB</a>
         </div>
         <form class='navbar-form navbar-right' role='search'>
+          <button type='button' class='btn btn-default navbar-btn btnHome'>Home</button>
           <button type='button' class='btn btn-default navbar-btn btnDisplayAll'>Display All</button>
           <div class='form-group'>
             <input type='text' class='form-control' placeholder='Search'>
@@ -39,25 +40,46 @@
     <!-- main section container to append home page html, input form for add/update, or results  -->
     <div class='main-container' id='main'>
 
-      <div class='col-md-6 col-md-offset-3 home-page'>
-        <p class='title'>San Francisco Public Stairways</p>
-        <p>Stairways are cool.  Whenever I discover a new one I feel compelled to take it, for reasons that aren’t always clear to me.  I suppose they offer different things to different people: an easier way to climb a hill, a shortcut, an opportunity to get your heart racing, a way to get your bearings, a portal to a new street or neighborhood that you haven’t seen before.  Many have spectacular views from the top on a clear day.  Some have beautiful gardens intertwined.  A couple even have slides running parallel that you can chute down. </p>
-        <p>Reportedly there are over 600 stairways in San Francisco.  If you know of one that is not included here and would like to add it, please go ahead, and don’t forget to link to a photo!</p>
-      </div>
+      <div class='results' id='resultsList'>
 
-      <div class='image-container'>
-        <img class='home-image' src='../images/moraga_steps_home.jpg'>
+        <div class="results-item">
+          <div class="results-left-container">
+            <img class="results-image" src="http://i.imgur.com/XgKprd6.jpg" alt="(no photo)">
+          </div>
+          <div class="results-right-container">
+            <p class="results-name">Lyon Street Steps</p>
+            <p class="results-description">Just being at the summit of these steps is a mystical Zen experience truly difficult to describe. The feeling of the sky and air where you are standing is amazing. And, spread out before you are fabulous views of the Palace of Fine Arts Dome, the blue San Francisco Bay, and a fog shrouded sky beyond. To the west is the Presidio forest and to the east are amazing old Pacific Heights mansions with their manicured lawns and many balconies.</p>
+            <p class="results-neighborhood">Neighborhood:  Pacific Heights</p>
+            <p class="results-numsteps">Number of Steps:  56</p>
+            <p class="results-difficulty">Difficulty:  Easy</p>
+            <p class="results-rating">Rating:  1</p>
+            <p class="results-favorite">Favorite:  No</p>
+            <button type='button' class='btn btn-default btnUpdate'>Update</button>
+            <button type='button' class='btn btn-default btnDelete'>Delete</button>
+          </div>
+        </div>
+
+        <div class="results-item">
+          <div class="results-left-container">
+            <img class="results-image" src="http://i.imgur.com/XgKprd6.jpg" alt="(no photo)">
+          </div>
+          <div class="results-right-container">
+            <p class="results-name">Lyon Street Steps</p>
+            <p class="results-description">Just being at the summit of these steps is a mystical Zen experience truly difficult to describe. The feeling of the sky and air where you are standing is amazing. And, spread out before you are fabulous views of the Palace of Fine Arts Dome, the blue San Francisco Bay, and a fog shrouded sky beyond. To the west is the Presidio forest and to the east are amazing old Pacific Heights mansions with their manicured lawns and many balconies.</p>
+            <p class="results-neighborhood">Neighborhood:  Pacific Heights</p>
+            <p class="results-numsteps">Number of Steps:  56</p>
+            <p class="results-difficulty">Difficulty:  Easy</p>
+            <p class="results-rating">Rating:  1</p>
+            <p class="results-favorite">Favorite:  No</p>
+          </div>
+        </div>
+
       </div>
 
     </div>
 
 
-    <div class='results' id='resultsList'>
-      <!-- rendered html gets appended here -->
 
-      <p>some results here in this box</p>
-
-    </div>
 
 
     <!--
@@ -77,6 +99,18 @@
         <input type='submit' name='Clear' value='Clear' class='btn clear'>
         <input type='submit' name='Post' value='Post Test' class='btn post-test'>
         <input type='submit' name='Add' value='Add' class='btn add'>
+    </div>
+    -->
+
+    <!--
+    <div class='col-md-6 col-md-offset-3 home-page'>
+      <p class='title'>San Francisco Public Stairways</p>
+      <p>Stairways are cool.  Whenever I discover a new one I feel compelled to take it, for reasons that aren’t always clear to me.  I suppose they offer different things to different people: an easier way to climb a hill, a shortcut, an opportunity to get your heart racing, a way to get your bearings, a portal to a new street or neighborhood that you haven’t seen before.  Many have spectacular views from the top on a clear day.  Some have beautiful gardens intertwined.  A couple even have slides running parallel that you can chute down. </p>
+      <p>Reportedly there are over 600 stairways in San Francisco.  If you know of one that is not included here and would like to add it, please go ahead, and don’t forget to link to a photo!</p>
+    </div>
+
+    <div class='image-container'>
+      <img class='home-image' src='../images/moraga_steps_home.jpg'>
     </div>
     -->
 

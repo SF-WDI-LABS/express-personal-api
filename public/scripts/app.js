@@ -15,6 +15,9 @@ $(document).ready(function(){
   $body = $('body');
   $main = $('#main');
 
+  // display the home page
+  $body.on("click", ".btnHome", showHomePage);
+
   // display the form for adding a new stairway when the navbar Add button is clicked
   $body.on("click", ".btnAddStairway", showForm);
 
@@ -235,6 +238,19 @@ function findIndexByDBId(arr, id) {
 };
 
 
+function showHomePage() {
+
+  // empty the contents of the main container div
+  $(".main-container").empty();
+
+  // get the new html to insert
+  var html = getHomeHTML();
+
+  // append the html to the main container div
+  $(".main-container").append(html);
+
+}
+
 
 
 // display the bootstrap form for add or update
@@ -286,7 +302,9 @@ function getHomeHTML() {
       <p>Reportedly there are over 600 stairways in San Francisco.  If you know of one that is not included here and would like to add it, please go ahead, and don’t forget to link to a photo!</p>
     </div>
 
-    <img class='home-image' src='../images/moraga_steps_home.jpg'>
+    <div class='image-container'>
+      <img class='home-image' src='../images/moraga_steps_home.jpg'>
+    </div>
   `
 
   return html;
