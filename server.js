@@ -147,44 +147,6 @@ app.post('/api/things/', function create(req, res) {
   res.json(req.body);
 });
 
-
-app.post('/api/stairways/', function create(req, res) {
-  console.log("req body: ", req.body);
-  console.log("req query: ", req.query);
-  /*
-  // for use with query ? (postman)
-  var newThing = new db.Thing ({
-    name: req.query.name,
-    description: req.query.description
-  });
-  */
-  // for use with data: {} or body parser (elements within form)
-  var newStairway = new db.Stairway ({
-    name: req.body.name,
-    description: req.body.description,
-    neighborhood: req.body.neighborhood,
-    photoURL: req.body.photoURL,
-    numSteps: req.body.numSteps,
-    rating: req.body.rating,
-    difficulty: req.body.difficulty,
-    favorite: true
-  });
-  newStairway.save(function (err, product, numAffected) {
-    console.log(product);
-    res.json(product);
-  })
-
-});
-
-
-
-
-
-
-
-
-
-
 app.put('/api/things/:id', function update(req, res) {
   console.log('put params:', req.params);
   var id = req.params.id;
@@ -228,6 +190,43 @@ app.delete('/api/things/:id', function destroy(req, res) {
   })
   */
 });
+
+
+
+
+
+
+
+
+// STAIRWAYS ENDPOINTS
+// -------------------
+
+app.get('/api/stairways', function index(req, res) {
+  db.Stairway.find({}, function(err, docs) {
+    res.json(docs);
+  });
+});
+
+
+app.post('/api/stairways/', function create(req, res) {
+  var newStairway = new db.Stairway ({
+    name: req.body.name,
+    description: req.body.description,
+    neighborhood: req.body.neighborhood,
+    photoURL: req.body.photoURL,
+    numSteps: req.body.numSteps,
+    rating: req.body.rating,
+    difficulty: req.body.difficulty,
+    favorite: true
+  });
+  newStairway.save(function (err, product, numAffected) {
+    console.log(product);
+    res.json(product);
+  })
+});
+
+
+
 
 
 /**********

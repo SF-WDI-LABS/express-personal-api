@@ -20,6 +20,9 @@ $(document).ready(function(){
   // display the home page
   $body.on("click", ".btnHome", showHomePage);
 
+  // display all the stairways
+  $body.on("click", ".btnDisplayAll", displayAllStairways);
+
   // display the form for adding a new stairway when the navbar Add button is clicked
   $body.on("click", ".btnAddStairway", showForm);
 
@@ -321,14 +324,16 @@ function saveNewStairway() {
       console.log("success!");
       console.log(json);
 
-
       // add the returned json object (from the database, including _id), to the stairways array
       stairways.push(json);
 
       // filter the array down to only the stairway object that was just added
+      var stairway = stairways.filter(function(element, index) {
+        return element._id === json._id;
+      });
 
       // display the added stairway
-
+      displayStairways(stairway);
 
     },
     error: function() {
@@ -340,13 +345,44 @@ function saveNewStairway() {
 }
 
 
+function displayAllStairways() {
+
+  $.ajax({
+    method: 'GET',
+    url: '/api/stairways',
+    success: function(json) {
+      console.log("success getting all results");
+      //console.log(json);
+      stairways = [];
+      json.forEach(function(element,index) {
+        stairways.push(element);
+      })
+      console.log(stairways);
+    },
+    error: function() {
+      console.log("there was an error attempting to get all the results");
+    }
+  });
+
+  displayStairways(stairways);
+
+}
+
 function displayStairways(arr) {
 
   // build the html string that will be appended to the main container div
   var html = "";
   arr.forEach(function(element,index) {
-    console.log(element);
+    html = html + getResultHTML(element);
   });
+
+  //console.log(html);
+
+  // empty the contents of the main container div
+  $(".main-container").empty();
+
+  // append the html to the main container div
+  $(".main-container").append(html);
 
 }
 
@@ -361,7 +397,7 @@ function getHomeHTML() {
   var html = `
     <div class='col-md-6 col-md-offset-3 home-page'>
       <p class='title'>San Francisco Public Stairways</p>
-      <p>Stairways are cool.  Whenever I discover a new one I feel compelled to take it, for reasons that aren’t always clear to me.  I suppose they offer different things to different people: an easier way to climb a hill, a shortcut, an opportunity to get your heart racing, a way to get your bearings, a portal to a new street or neighborhood that you haven’t seen before.  Many have spectacular views from the top on a clear day.  Some have beautiful gardens intertwined.  A couple even have slides running parallel that you can chute down. </p>
+      <p>Stairways are cool.  Whenever I discover a new one I feel compelled to take it, for reasons that aren’t always clear to me.  I suppose they offer different things to different people: an easier way to climb a hill, a shortcut, an opportunity to get your heart racing, a way to get your bearings, a portal to a new street or neighborhood that you haven’t seen before.  Many have spectacular views from the top on a clear day.  Some have beautiful gardens intertwined.  A couple even have slides running parallel that you can chute down - how cool is that? </p>
       <p>Reportedly there are over 600 stairways in San Francisco.  If you know of one that is not included here and would like to add it, please go ahead, and don’t forget to link to a photo!</p>
     </div>
 
@@ -379,7 +415,7 @@ function getHomeHTML() {
 function getFormHTML() {
 
   var html = `
-    <div class='col-md-6 col-md-offset-3 input-form'>
+    "<div class='col-md-6 col-md-offset-3 input-form'>
       <div class='inner-form-container'>
         <form class='main-form'>
 
@@ -437,14 +473,14 @@ function getFormHTML() {
             </label>
           </div>
 
-          <div class="save-cancel-buttons">
+          <div class='save-cancel-buttons'>
             <button type='button' class='btn btn-primary btnAddSave'>Save</button>
             <button type='button' class='btn btn-primary btnAddCancel'>Cancel</button>
           </div>
 
         </form>
       </div>
-    </div>
+    </div>"
   `
 
   return html;
@@ -453,25 +489,25 @@ function getFormHTML() {
 
 
 // html to get single result / one stairway based on _id
-function getResultHTML() {
+function getResultHTML(obj) {
 
   var html = `
     <div class='results' id='resultsList'>
 
-      <div class="results-item">
-        <div class="results-left-container">
-          <img class="results-image" src="http://i.imgur.com/XgKprd6.jpg" alt="(no photo)">
+      <div class='results-item' data-id='${obj._id}'>
+        <div class='results-left-container'>
+          <img class='results-image' src='${obj.photoURL}' alt='(no photo)'>
         </div>
-        <div class="results-right-container">
-          <p class="results-name">Lyon Street Steps</p>
-          <p class="results-description">Just being at the summit of these steps is a mystical Zen experience truly difficult to describe. The feeling of the sky and air where you are standing is amazing. And, spread out before you are fabulous views of the Palace of Fine Arts Dome, the blue San Francisco Bay, and a fog shrouded sky beyond. To the west is the Presidio forest and to the east are amazing old Pacific Heights mansions with their manicured lawns and many balconies.</p>
-          <p class="results-neighborhood">Neighborhood:  Pacific Heights</p>
-          <p class="results-numsteps">Number of Steps:  56</p>
-          <p class="results-difficulty">Difficulty:  Easy</p>
-          <p class="results-rating">Rating:  1</p>
-          <p class="results-favorite">Favorite:  No</p>
-          <button type='button' class='btn btn-default btnUpdate'>Update</button>
-          <button type='button' class='btn btn-default btnDelete'>Delete</button>
+        <div class='results-right-container'>
+          <p class='results-name'>${obj.name}</p>
+          <p class='results-description'>${obj.description}</p>
+          <p class='results-neighborhood'>Neighborhood:  ${obj.neighborhood}</p>
+          <p class='results-numsteps'>Number of Steps:  ${obj.numSteps}</p>
+          <p class='results-difficulty'>Difficulty:  ${obj.difficulty}</p>
+          <p class='results-rating'>Rating:  ${obj.rating}</p>
+          <p class='results-favorite'>Favorite:  ${obj.favorite}</p>
+          <button type='button' class='btn btn-default btnUpdate' data-id='${obj._id}'>Update</button>
+          <button type='button' class='btn btn-default btnDelete' data-id='${obj._id}'>Delete</button>
         </div>
       </div>
 
