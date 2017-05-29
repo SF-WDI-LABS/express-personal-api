@@ -7,6 +7,7 @@ $(document).ready(function(){
 
   $duckiesArray = $('#ducksTarget');
 
+  // collecting duck data:
   $.ajax({
     method: 'GET',
     url: '/api/ducks',
@@ -14,8 +15,9 @@ $(document).ready(function(){
     //error: handleError
   });
 
-  $('#newDuckForm').on('submit', function(el) {
-    el.preventDefault();
+  //  adding new duck data:
+  $('#newDuckForm').on('submit', function(e) {
+    e.preventDefault();
     $.ajax({
       method: 'POST',
       url: '/api/ducks',
@@ -24,6 +26,18 @@ $(document).ready(function(){
       //error: newDuckError
     });
   });
+
+  //  deleting duck data:
+  $duckiesArray.click('.deleteBtn', function(e) {
+
+    $.ajax({
+      method: 'DELETE',
+      url: '/api/ducks/'+$(this).attr('data-id'),
+      success: duckDeleteSuccess,
+      error: duckDeleteError
+    });
+  });
+
 });
 
 
@@ -85,4 +99,17 @@ function newDuckSuccess(jsonData) {
   $('#newDuckForm input').val('');
   allDucks.push(jsonData);
   render();
+};
+
+// delete duck:
+function duckDeleteSuccess(duck) {
+  let duckId = duck._id;
+  console.log(duckId);
+  return allDucks.filter(function(e) {
+    return e._id !== duckId;
+  });
+}
+
+function duckDeleteError() {
+  console.log("error");
 };

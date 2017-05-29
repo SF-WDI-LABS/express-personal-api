@@ -119,8 +119,8 @@ app.post("/api/ducks", function create(req, res) {
 
 //   destroy - "delete" one duck by id:
 app.delete("/api/ducks/:id", function destroy(req, res) {
-  console.log(`made it to the DELETE route with: params: ${req.params}, query: ${req.query} and body: ${req.body}.`);
   var duckId = req.params.id;
+  console.log(`made it to the DELETE route with: params: ${duckId}.`);
 
   db.Duck.findOneAndRemove({ _id: duckId }, function (err, deadDuck) {
     res.json(deadDuck);
