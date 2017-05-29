@@ -3,6 +3,25 @@ console.log("You're sane.");
 
 
 $( document ).ready(function() {
+  $.ajax({
+    method: "GET",
+    url: "/api/mushrooms",
+    success: function(mushrooms){
+      console.log("success")
+
+      mushrooms.forEach(function(mushroom){
+        $(".unicorn-list").append(`<div class="unicorn" id="unicorn-${unicorn._id}">
+            <li>${unicorn.name} has ${unicorn.number_of_horns} horns</li>
+          </div>
+        `);
+      })
+
+    },
+    error: function(){
+      alert("Wow. Bad thing.")
+    }
+  })
+
 
 function addMushrooms(entries){
   for (let i = 0; i < entries.length; i++) {

@@ -62,19 +62,19 @@
         <div id="form" class="row">
           <div class="col-sm-12">
             <h2>Add a Mushroom</h2>
-            <form class="mushroom_input" action="index.html" method="post">
-              <label>Name:<input type="text" placeholder="Common name"><input type="text" placeholder="Scientific name"></label>
-              <label>Date:<input type="date" size="15"/></label>
-              <label>Location:<input type="text"/></label>
-              <label>Image:<input type="text" placeholder="Image URL"/></label>
+            <form class="mushroom_input" method="POST" action="/mushrooms">
+              <label>Name:<input type="text" name="CommonName" placeholder="Common name"><input type="text" name="Taxonomy" placeholder="Scientific name"></label>
+              <label>Date:<input type="date" name="DateFound" size="15"/></label>
+              <label>Location:<input name="LocationFound" type="text"/></label>
+              <label>Image:<input name="Photo" type="text" placeholder="Image URL"/></label>
               <label>Would this kill me?
                   <div>
-                    <input name="edibility" type="radio"> Probably<br>
-                    <input name="edibility" type="radio"> Probably not
+                    <input name="edibility" name="Edibility" value="Poisonous" type="radio"> Probably<br>
+                    <input name="edibility" name="Edibility" value="Edible" type="radio"> Probably not
                   </div>
               </label>
-              <label>How sure am I?<input type="number"min="0" max="100" maxlength="3"/>%</label>
-              <input type="submit" value="Add My Mushroom" />
+              <label>How sure am I?<input type="number" name="Certainty" min="0" max="100" maxlength="3"/>%</label>
+              <input type="submit" />
             </form>
           </div>
         </div>
