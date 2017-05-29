@@ -4,7 +4,7 @@ function renderAllMovies() {
     $.ajax({
         method: 'GET',
         dataType: 'json',
-        url: 'https://agile-inlet-98335.herokuapp.com/api/movies',
+        url: '/api/movies',
         success: function(responseData){
             let source   = $("#handlebars-template").html();
             let template = Handlebars.compile(source); // turn it into HTML.
@@ -20,7 +20,7 @@ function showOneMovie() {
         $.ajax({
             method: 'GET',
             dataType: 'json',
-            url: `https://agile-inlet-98335.herokuapp.com/api/movies/${movieId}`,
+            url: `/api/movies/${movieId}`,
             success: function(responseData){
                 let source   = $("#one-movie-template").html();
                 let template = Handlebars.compile(source); // turn it into HTML.
@@ -37,12 +37,33 @@ function rerenderHome() {
     })
 }
 
+function addNewMovie() {
+    $('main').on('click', 'button.submitAdd', function(e) {
+        e.preventDefault();
+        let addedMovieObj = {};
+        $('form.addMovieForm').serializeArray().forEach(function(attr) {
+            addedMovieObj[attr.name] = attr.value;
+        })
+        console.log(addedMovieObj);
+        
+        // Now send the added movie object to the database via the server.
+        $.ajax({
+            method: 'POST',
+            data: addedMovieObj,
+            dataType: 'json',
+            url: '/api/movies',
+            success: function(responseData) {
+                renderAllMovies();
+            }
+        })
+    })
+}
 
 $(document).ready(function(){
     
     renderAllMovies();
     showOneMovie();
     rerenderHome();
-
+    addNewMovie();
 
 });

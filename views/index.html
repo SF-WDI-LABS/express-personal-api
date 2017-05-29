@@ -16,6 +16,29 @@
 <!--This is a template to show all the movies.-->
     <script id="handlebars-template" type="text/x-handlebars-template">
         <h2>Here are all the movie listings:</h2>
+        <form class='addMovieForm'>
+            <div>
+                <label for='title' type='text'>Title</label>
+                <input name='title' id='title'>
+            </div>
+            <div>
+                <label for='genre' type='text'>Genre</label>
+                <input name='genre' id='genre'>
+            </div>
+            <div>
+                <label for='tomatoMeter' type='number'>Tomatometer</label>
+                <input name='tomatoMeter' id='tomatoMeter'>
+            </div>
+            <div>
+                <label for='haveIseenIt' type='text'>Have I seen it?</label>
+                <input name='haveIseenIt' id='haveIseenIt'>
+            </div>
+            <div>
+                <label for='image'>Image</label>
+                <input name='image' id='image'>
+            </div>
+            <button type='submit' class='submitAdd'>Submit</button>
+        </form>
         <ul>
             {{#each movies}}
             <li>
