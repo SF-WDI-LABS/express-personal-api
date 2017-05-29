@@ -12,7 +12,21 @@
 
     <!-- VENDOR SCRIPTS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+    <script id="handlebars-template" type="text/x-handlebars-template">
+        <h2>Here are all the movie listings:</h2>
+        <ul>
+            {{#each movies}}
+            <li>
+                <img src={{image}}>
+                <h3>{{title}}</h3>
+                <p>{{genre}}</p>
+                <p>{{tomatoMeter}}</p>
+                <p>{{haveIseenIt}}</p>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
   </head>
@@ -22,7 +36,7 @@
         <div class="col-md-8 col-md-offset-2">
           <h1>Movie API</h1>
           <h4><a href="/api">Read My API Documentation</a></h4>
-          <h4><a href="#">Populate with movie listings!</a></h4>    
+          <main></main>    
         </div>
       </div>
     </div>
