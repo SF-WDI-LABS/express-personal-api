@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+    <title>CHICKEN SAMMICH</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 
     <!-- VENDOR SCRIPTS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -22,25 +22,32 @@
 
   <body>
 
-    <div class="container-fluid chicken-top">
-        <div class="navbar-header">
-          <h1 class="header-title">THE CHICKEN SAMMICH SEARCH!</h1>
-          <p>Search for a great chicken sammich</p>
-        </div>
-        <form class="navbar-form navbar-right" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+      <div class="container-fluid chicken-top">
+          <div class="navbar-header">
+            <h1 class="header-title">THE CHICKEN SAMMICH SEARCH!</h1>
+            <p>Search for a great chicken sammich</p>
           </div>
-          <button type="button" class="btn btn-default navbar-btn btnSubmitSearch">SAMMICH ME!</button>
-        </form>
-      </div>
+          <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="button" class="btn btn-default navbar-btn btnSubmitSearch">SAMMICH ME!</button>
+          </form>
+        </div>
 
-    <div class="container-fluid chicken-middle">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-              <div id="map" class="column"></div>
+      <div class="container-fluid chicken-middle">
+        <div class="row">
+
+          <div class="col-md-6">
+                <div id="map"></div>
+          </div>
+          <div class="col-md-6 sammich-list">
+            <h1 class="list-header">The Sammich List</h1>
+                <div class= "sammich" id="sammich-info"></div>
+          </div>
+          </div>
+          </div>
         </div>
       </div>
-    </div>
-  </body>
+    </body>
 </html>
