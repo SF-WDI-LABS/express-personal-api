@@ -16,6 +16,8 @@ $(document).ready(function(){
   // load the default home page content on page load
   showHomePage();
 
+  $body.on("click", ".api-docs", showAPIDocs);
+
   // display the home page when the user clicks on the home page
   $body.on("click", ".btnHome", showHomePage);
 
@@ -65,6 +67,29 @@ function showHomePage() {
 
   // make sure the scrollbar is at the top of the page
   $('html,body').scrollTop(0);
+
+}
+
+
+function showAPIDocs() {
+
+  $.ajax({
+    method: 'GET',
+    url: '/api',
+    success: function(json) {
+
+      // empty the contents of the main container div
+      $(".main-container").empty();
+      
+      // append the html to the main container div
+      $(".main-container").append(JSON.stringify(json));
+
+    },
+    error: function() {
+
+    }
+  });
+
 
 }
 
@@ -228,11 +253,8 @@ function displayAllStairways() {
     },
     error: function() {
 
-
     }
   });
-
-
 
 }
 
@@ -329,6 +351,7 @@ function showFormForUpdate(id) {
 function getHomeHTML() {
 
   var html = `
+    <a href="#" class='api-docs'>API Docs</a>
     <div class='intro'>
       <p class='title'>San Francisco Public Stairways</p>
       <p>Stairways are cool.  Whenever I discover a new one I feel compelled to take it, for reasons that aren’t always clear.  I suppose they offer different things: an easier way to climb a hill, a shortcut, an chance to get your heart racing, a way to get your bearings, a portal to a new street or neighborhood that you haven’t seen before.  Many have spectacular views from the top on a clear day.  Some have beautiful gardens intertwined.  A couple even have slides running parallel that you can chute down - how cool is that? </p>

@@ -8,6 +8,18 @@ body {
   outline: 0;
 }
 
+.api-docs {
+  color: blue;
+  margin-left: 30px;
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+}
+
+.api-docs:hover {
+  color: blue;
+  text-decoration: none;
+}
+
 .intro .title {
   font-size: 18px;
   font-weight: 800;
