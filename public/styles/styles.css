@@ -28,6 +28,10 @@ img {
   padding: 5px;
 }
 
+input {
+  color: black;
+}
+
 .listAndForm {
   background-color: rgba(0,0,0,.5);
   padding: 10px;

@@ -53,7 +53,7 @@ $(document).ready(function(){
 // get duck formatted into HTML elements
 function getDuckHTML(d) {
   let g;
-  `${d.gender}` === "Female" ? g = ["She", "Her"] : g = ["He", "His"];
+  `${d.gender}`.toUpperCase() === "F" ? g = ["She", "Her"] : g = ["He", "His"];
   return
   $('#ducksTarget').append(
     `<div class="row>">
@@ -71,7 +71,7 @@ function getAllDucksHTML(ducks) {
 
   let result = ducks.forEach(function(d){
     let g;
-    d.gender === "Female" ? g = ["She", "Her"] : g = ["He", "His"];
+    `${d.gender}`.toUpperCase() === "F" ? g = ["She", "Her"] : g = ["He", "His"];
     let duckId = d._id;
     console.log(duckId);
     $('#ducksTarget').append(
