@@ -83,3 +83,15 @@ body {
   object-fit: cover;
   overflow: hidden;
 }
+
+.message-add-success {
+  color: green;
+  font-size: 18px;
+  text-align: center;
+}
+
+.message-delete-success {
+  color: green;
+  font-size: 18px;
+  text-align: center;
+}

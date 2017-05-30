@@ -201,13 +201,14 @@ app.delete('/api/things/:id', function destroy(req, res) {
 // STAIRWAYS ENDPOINTS
 // -------------------
 
+// route to get all stairways
 app.get('/api/stairways', function index(req, res) {
   db.Stairway.find({}, function(err, docs) {
     res.json(docs);
   });
 });
 
-
+// route to create one new stairway
 app.post('/api/stairways/', function create(req, res) {
   var newStairway = new db.Stairway ({
     name: req.body.name,
@@ -225,7 +226,34 @@ app.post('/api/stairways/', function create(req, res) {
   })
 });
 
+// route to delete one stairway using the id
+app.delete('/api/stairways/:id', function destroy(req, res) {
+  stairwayID = req.params.id;
+  console.log("destroy stairwayID: ", stairwayID);
+  db.Stairway.findOneAndRemove({ _id: stairwayID }, function(err, deletedStairway) {
+    res.json(deletedStairway);
+  });
+});
 
+// route to update one stairway using the id
+app.put('/api/stairways/:id', function update(req, res) {
+  console.log('put params:', req.params);
+  stairwayID = req.params.id;
+  console.log("update stairwayID: ", stairwayID);
+  var updatedStairway = {
+    name: req.body.name,
+    description: req.body.description,
+    neighborhood: req.body.neighborhood,
+    photoURL: req.body.photoURL,
+    numSteps: req.body.numSteps,
+    rating: req.body.rating,
+    difficulty: req.body.difficulty,
+    favorite: true
+  };
+  db.Stairway.findOneAndUpdate({ _id: stairwayID }, updatedStairway, {}, function(err, updatedStairway) {
+    res.json(updatedStairway);
+  });
+});
 
 
 

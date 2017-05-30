@@ -4,8 +4,9 @@ console.log("Sanity Check: JS is working!");
 var $list;
 var $body, $main;
 var allResults = [];
-var updateID;
-var stairways = [];   // global array to hold all stairway objects
+var updateID;         // used to temporarily hold the id of the stairway that should be updated on save
+var stairways = [];   // array to hold all stairway objects
+var formMode;         // string to temporarily hold action to perform on Save button click - either Add/Post or Update/Put
 
 
 $(document).ready(function(){
@@ -24,15 +25,30 @@ $(document).ready(function(){
   $body.on("click", ".btnDisplayAll", displayAllStairways);
 
   // display the form for adding a new stairway when the navbar Add button is clicked
-  $body.on("click", ".btnAddStairway", showForm);
+  $body.on("click", ".btnAdd", showFormForAdd);
 
-  // hide the form if the user cancels out of adding a new stairway
-  $main.on("click", ".btnAddSave", saveNewStairway);
+  // save new stairway or updated stairway
+  $main.on("click", ".btnSave", saveStairway);
 
-  // hide the form if the user cancels out of adding a new stairway
-  $main.on("click", ".btnAddCancel", hideForm);
+  // hide the form if the user cancels out of the form
+  $main.on("click", ".btnCancel", hideForm);
+
+  // call the function to delete the stairway with the id that was clicked on
+  $main.on("click", ".btnDelete", function() {
+    console.log('clicked delete button for data-id: ', $(this).attr('data-id'));
+    deleteStairway($(this).attr('data-id'));
+  });
+
+  // call the function to update the stairway with the id that was clicked on
+  $main.on("click", ".btnUpdate", function() {
+    console.log('clicked update button for data-id: ', $(this).attr('data-id'));
+    showFormForUpdate($(this).attr('data-id'));
+  });
 
 
+
+  // OLD CODE
+  // -------
 
   $(".display").on("click", function() {
     console.log("display button clicked");
@@ -66,7 +82,7 @@ $(document).ready(function(){
     console.log("clicked on update button for id ",id);
     var index = findIndexByDBId(allResults, id);
     console.log("this is at index ", index);
-    updateStairway(index);
+    //updateStairway(index);
   });
 
   $list.on('click', '.frmBtnUpdateSave', saveUpdateStairway);
@@ -192,21 +208,6 @@ function cancelUpdateStairway() {
 
 
 
-function updateStairway(index) {
-
-  $(".results").empty();
-
-  var html = `
-  <input type='hidden' name='id' value='${allResults[0][index]._id}' class='frmID'>
-  <label>Name</label><input type='text' name='name' value='${allResults[0][index].name}' class='frmTextName'>
-  <label>Description</label><input type='text' name='description' value='${allResults[0][index].description}' class='frmTextDescription'>
-  <input type='button' name='save' value='Save' class='frmBtnUpdateSave'>
-  <input type='button' name='cancel' value='Cancel' class='frmBtnUpdateCancel'>
-  `;
-
-  $(".results").append(html);
-
-}
 
 
 function displayAllResults() {
@@ -269,7 +270,7 @@ function showHomePage() {
 
 
 // display the bootstrap form for add or update
-function showForm() {
+function showFormForAdd() {
 
   // empty the contents of the main container div
   $(".main-container").empty();
@@ -280,8 +281,8 @@ function showForm() {
   // append the html to the main container div
   $(".main-container").append(html);
 
-  // temp test to populate values
-  $("#txtName").val("Lyon Street Steps");
+  // set the form mode variable
+  formMode = "add";
 
 }
 
@@ -289,6 +290,7 @@ function showForm() {
 // hide the form
 function hideForm() {
 
+  // test code to check the control values
   console.log("name:", $("#txtName").val());
   console.log("description:", $("#txtDescription").val());
   console.log("neighborhood:", $("#txtNeighborhood").val());
@@ -304,8 +306,19 @@ function hideForm() {
 }
 
 
-// save a new stairway after the form is filled out and the save button is clicked
-function saveNewStairway() {
+// called when the save button is clicked in the form - either an add or an update
+function saveStairway() {
+
+  if (formMode === "add") {
+    addStairway();
+  } else if (formMode === "update") {
+    updateStairway();
+  }
+
+}
+
+
+function addStairway() {
 
   $.ajax({
     method: 'POST',
@@ -342,6 +355,46 @@ function saveNewStairway() {
 
   });
 
+
+}
+
+
+function updateStairway() {
+
+  $.ajax({
+    method: 'PUT',
+    url: '/api/stairways/'+updateID,
+    data: {
+      name: $("#txtName").val(),
+      description: $("#txtDescription").val(),
+      neighborhood: $("#txtNeighborhood").val(),
+      photoURL: $("#txtPhoto").val(),
+      numSteps: $("#txtNumSteps").val(),
+      rating: 5,
+      difficulty: "Medium",
+      favorite: $("#chkFavorite").val()
+    },
+    success: function(json) {
+      console.log("update success!");
+      console.log(json);
+
+      //var tempArr = [];
+      //tempArr.push(json);
+
+      // display the added stairway
+      //displayStairways(tempArr);
+
+      // display all stairways
+      displayAllStairways();
+
+    },
+    error: function() {
+      console.log("there was an error attempting to udpate the stairway");
+    }
+
+  });
+
+
 }
 
 
@@ -358,15 +411,18 @@ function displayAllStairways() {
         stairways.push(element);
       })
       console.log(stairways);
+      displayStairways(stairways);
+
     },
     error: function() {
       console.log("there was an error attempting to get all the results");
     }
   });
 
-  displayStairways(stairways);
+
 
 }
+
 
 function displayStairways(arr) {
 
@@ -383,6 +439,66 @@ function displayStairways(arr) {
 
   // append the html to the main container div
   $(".main-container").append(html);
+
+}
+
+
+
+function deleteStairway(id) {
+  $.ajax({
+    method: 'DELETE',
+    url: '/api/stairways/'+id,
+    success: function(json) {
+
+      // empty the contents of the main container div
+      $(".main-container").empty();
+
+      // build the html that will be appended
+      var html = `<div class='message-delete-success'>The '${json.name}' has been successfully deleted.</div>`;
+
+      // append the html to the main container div
+      $(".main-container").append(html);
+
+    },
+    error: function() {
+      console.log("there was an error attempting to delete");
+    }
+  });
+
+}
+
+
+function showFormForUpdate(id) {
+
+  // get the specific stairway object from the array based on the id
+  var stairway = stairways.filter(function(element, index) {
+    return element._id === id;
+  })[0];
+
+  // empty the contents of the main container div
+  $(".main-container").empty();
+
+  // get the new html to insert
+  var html = getFormHTML();
+
+  // append the html to the main container div
+  $(".main-container").append(html);
+
+  // set the form mode variable
+  formMode = "update";
+
+  // set the global id variable
+  updateID = id;
+
+  //console.log(stairways);
+  //console.log(stairway);
+
+  // populate the form
+  $("#txtName").val(stairway.name);
+  $("#txtDescription").val(stairway.description);
+  $("#txtNeighborhood").val(stairway.neighborhood);
+  $("#txtPhoto").val(stairway.photoURL);
+  $("#txtNumSteps").val(stairway.numSteps);
 
 }
 
@@ -415,7 +531,7 @@ function getHomeHTML() {
 function getFormHTML() {
 
   var html = `
-    "<div class='col-md-6 col-md-offset-3 input-form'>
+    <div class='col-md-6 col-md-offset-3 input-form'>
       <div class='inner-form-container'>
         <form class='main-form'>
 
@@ -426,7 +542,7 @@ function getFormHTML() {
 
           <div class='form-group'>
             <label for='txtDescription'>Description</label>
-            <textarea class='form-control' id='txtDescription' rows='3' placeholder='Enter description'></textarea>
+            <textarea class='form-control' id='txtDescription' rows='5' placeholder='Enter description'></textarea>
           </div>
 
           <div class='form-group'>
@@ -474,13 +590,13 @@ function getFormHTML() {
           </div>
 
           <div class='save-cancel-buttons'>
-            <button type='button' class='btn btn-primary btnAddSave'>Save</button>
-            <button type='button' class='btn btn-primary btnAddCancel'>Cancel</button>
+            <button type='button' class='btn btn-primary btnSave'>Save</button>
+            <button type='button' class='btn btn-primary btnCancel'>Cancel</button>
           </div>
 
         </form>
       </div>
-    </div>"
+    </div>
   `
 
   return html;
