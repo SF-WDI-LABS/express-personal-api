@@ -93,9 +93,9 @@ app.get("/api/pies", function index(req, res) {
 
 // GET PIE DONATION INFO BY ID
 app.get("/api/pies/:id", function show(req, res){
-  let id = req.params.id;
-  Pie.findOne({_id: id}, function(err, pie){
-    res.json(pie);
+    let id = req.params.id;
+    Pie.findOne({_id: id}, function(err, pie){
+        res.json(pie);
   });
 })
 
@@ -113,12 +113,12 @@ app.post("/api/pies", function create(req, res) {
 
 // RETRACT AND REMOVE PIE DONATION ORDER
 app.delete("/api/pies/:id", function(req, res) {
-  res.sendStatus(204); // confirmation
+    res.sendStatus(204); // confirmation
 })
 
 // UPDATE PIE DONATION ORDER
 app.put("/api/pies/:id", function update(req, res){
-  res.send({})
+    res.send({})
 })
 
 /**********
@@ -127,5 +127,5 @@ app.put("/api/pies/:id", function update(req, res){
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
 app.listen(process.env.PORT || 3000, function () {
-  console.log('Express server is up and running on http://localhost:3000/');
+    console.log('Express server is up and running on http://localhost:3000/');
 });

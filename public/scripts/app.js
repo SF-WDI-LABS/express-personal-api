@@ -21,7 +21,7 @@ $(document).ready(function(){
 
     // GET ALL PIES ON PAGE LOAD
     let template;
-    let $pieList = $('#pie-list');
+    let $pieList = $('.pie-list');
     let allPies = [];
 
     // display on pie donations as HTML
@@ -45,7 +45,7 @@ $(document).ready(function(){
     })
     //serialize form data
     var newPie = $(this).serialize();
-    $('.pie-list').on('submit', function(e) {
+    $pieList.on('submit', function(e) {
         e.preventDefault();
         $.ajax({
             method: "POST",
@@ -82,18 +82,13 @@ $(document).ready(function(){
       type: 'PUT',
       url: '/api/pies' + '/' + pieId,
       data: updatedPie,
-      success: function onUpdateSuccess(data) {
-        // replace pie to update with newly updated version (data)
-        allPies.splice(allPies.indexOf(pieToUpdate), 1, data);
-        // render all pies to view
-        render();
-      }
+      success: handleSuccess,
+      error: handleError
     });
   })
   // POST request to add pie donations
-  $pieList.on('submit', '.pie-list', function(e) {
+  $pieList.on('submit', function(e) {
       e.preventDefault();
-      console.log('new pie donation');
       $.ajax({
           method: 'POST',
           url: '/api/pies' + $(this).attr('data-id'),
@@ -132,7 +127,7 @@ $(document).ready(function(){
 
     };
     function handleSuccess(json) {
-        allBooks = json;
+        allPies = json;
         render();
     }
     function handleError(e) {
