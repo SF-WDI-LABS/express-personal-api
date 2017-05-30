@@ -42,6 +42,11 @@ label {
 
 .main {
   margin-top: 50px;
+  margin-bottom: 80px;
+}
+
+select.form-control {
+  width: 40px;
 }
 
 .restaurant-name{
@@ -69,6 +74,15 @@ p {
   width: 70px;
 }
 
+.deleteBtn {
+  margin-top: 40px;
+  border: none !important;
+}
+
+span {
+  color: #dddbdb;
+}
+
 footer {
-  background-color: #b2aeae;
+  background-color: #dddbdb;
 }

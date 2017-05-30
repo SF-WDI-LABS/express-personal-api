@@ -24,14 +24,22 @@ $(document).ready(function(){
       });
   });
 
-  });
+  $restList.on('click', '.deleteBtn', function() {
+   console.log('clicked delete button to', '/api/restaurant/'+$(this).attr('data-id'));
+   $.ajax({
+     method: 'DELETE',
+     url: '/api/restaurant/'+$(this).attr('data-id'),
+     success: deleteRestSuccess,
+   });
+ });
+
+});
 
 function getRestHtml(restaurants){
-  console.log("This is restaurants: " + restaurants)
       return `
         <hr>
         <div class="container">
-          <div class="row">
+          <div class="row" data-id="${restaurants._id}">
             <div class="col-xs-1">
               <img src="${restaurants.image}" class="images">
             </div>
@@ -45,19 +53,22 @@ function getRestHtml(restaurants){
               <p><strong>Notes:</strong></p>
               <p class="notes">${restaurants.notes}</p>
             </div>
+            <div class"col-xs-2>
+              <button type="button" name="button" class="deleteBtn btn btn-default" data-id="${restaurants._id}">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              </button>
+            </div>
           </div>
         </div>
     `
 }
 
 function getAllRestsHtml(restaurants) {
-  console.log("getAllRests param is " + restaurants)
   return restaurants.map(getRestHtml).join("");
 
 }
 
 function render() {
-  console.log($restList)
   // empty existing posts from view
   $restList.empty();
 
@@ -72,7 +83,6 @@ function render() {
 
 function handleSuccess(json) {
   allRest = json;
-  console.log("json = " + json)
   render();
 }
 
@@ -81,3 +91,29 @@ function newRestSuccess(json) {
   allRest.push(json);
   render();
 }
+
+function deleteRestSuccess(json) {
+  var rest = json;
+  console.log(json);
+  var restId = json._id;
+  console.log('deleted restaurant', restId);
+  // find the book with the correct ID and remove it from our allBooks array
+  for(var index = 0; index < allRest.length; index++) {
+    if(allRest[index]._id === restId) {
+      allRest.splice(index, 1);
+      break;  // we found our book - no reason to keep searching (this is why we didn't use forEach)
+    }
+  }
+  render();
+}
+
+/*
+
+use restaurant name submitted as query param
+get image from yelp API
+return the image url
+find the restaurant by ID
+insert the url in the image spot in database
+save the new array
+
+*/

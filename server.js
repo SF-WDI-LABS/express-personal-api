@@ -31,7 +31,6 @@ app.use(function(req, res, next) {
    //console.log("Route to api/restaurant")
    //console.log(req.body)
    db.Restaurant.find({}, function(err, allRestaurants){
-     console.log("responding with: " + allRestaurants)
      res.json(allRestaurants)
 
    })
@@ -43,15 +42,29 @@ app.use(function(req, res, next) {
  });
 
  app.post('/api/restaurant', function(req, res){
-   console.log(req.body)
    let newRest = new db.Restaurant({
-     name: req.body.name
+     name: req.body.name,
+     number_of_stars: req.body.number_of_stars,
+     type: req.body.type,
+     address: req.body.address,
+     note: req.body.note
    })
 
    newRest.save(function(err, book){
      res.json(newRest)
    })
 })
+
+// delete restaurant
+app.delete('/api/restaurant/:id', function (req, res) {
+  // get rest id from url params (`req.params`)
+  console.log('restaurant delete', req.params);
+  var restId = req.params.id;
+  // find the index of the book we want to remove
+  db.Restaurant.findOneAndRemove({ _id: restId}, function (err, deletedRest) {
+    res.json(deletedRest);
+  });
+});
 
 
 // Serve static files from the `/public` directory:
