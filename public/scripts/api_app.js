@@ -22,26 +22,6 @@ $(document).ready(function() {
     }
   })
 
-  // for delete: click event on any `.delete-todo` button
-  // ... inside the todosList element
-  $('input.delete-entry').on('click', function (event) {
-    event.preventDefault();
-    let delEyeD = $(this).closest('.entry').attr('data-id');
-    let mushDelete = allMushrooms.filter(function (mushroom) {
-      return mushroom._id == delEyeD;
-    })[0];
-
-    $.ajax({
-      type: 'DELETE',
-      url: apiUrl + '/' + delEyeD,
-      success: function onDeleteSuccess(data) {
-        allMushrooms.splice(allMushrooms.indexOf(mushDelete), 1);
-
-      }
-    });
-  });
-
-
   $('mushroom_input').on('submit', function(event) { // listen for form submission
     event.preventDefault();
     let newShroom = $(this).serialize();
@@ -55,6 +35,25 @@ $(document).ready(function() {
         console.log(newShroom);
         console.log(allMushrooms);
         allMushrooms.push(response);
+      }
+    });
+  });
+
+  // for delete: click event on any `.delete-todo` button
+  // ... inside the todosList element
+  $('input.delete-entry').on('click', function(event) {
+    event.preventDefault();
+    let delEyeD = $(this).closest('entry').attr('data-id');
+    let mushDelete = allMushrooms.filter(function (mushroom) {
+      return mushroom._id == delEyeD;
+    })[0];
+
+    $.ajax({
+      type: 'DELETE',
+      url: apiUrl + '/' + delEyeD,
+      success: function onDeleteSuccess(data) {
+        allMushrooms.splice(allMushrooms.indexOf(mushDelete), 1);
+      populate(allMushrooms);
       }
     });
   });
@@ -75,7 +74,7 @@ $(document).ready(function() {
 
     // Returns a filled-in template for each object.
     function template(){
-      return `<div data-id="${eyeD} class="entry">
+      return `<div data-id="${eyeD}" class="entry">
         <div class="col-sm-12 col-md-6 nopadding image-container">
           <img class="mushroom-pic" src="${photosrc}" />
           <div class="edibility-label">
@@ -107,4 +106,6 @@ $(document).ready(function() {
     $('#gallery').append(template());
     }
   };
+
+
 });
