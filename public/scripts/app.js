@@ -44,15 +44,9 @@ $.ajax({
 
   $placesList.on('click', '.updateBtn', function() {
     console.log('clicked update button to', '/api/places/'+$(this).attr('data-id'));
-    // $.ajax({
-    //   method: 'PUT',
-    //   url: '/api/places/'+$(this).attr('data-id'),
-    //   data: $(this).serialize(),
-    //   success: updatePlaceSuccess,
-    //   error: updatePlaceError
-    // });
       $("#updateModal").show();
     $('#updateForm').on('submit', function(e) {
+      
       e.preventDefault();
       $.ajax({
         method: 'PUT',
@@ -61,6 +55,7 @@ $.ajax({
         success: updatePlaceSuccess,
         error: updatePlaceError
       });
+      $("#updateModal").hide();
     });
   });
 

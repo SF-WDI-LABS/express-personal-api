@@ -6,7 +6,7 @@ var express = require('express'),
 // parse incoming urlencoded form data
 // and populate the req.body object
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
@@ -141,6 +141,7 @@ app.put('/api/places/:id', function(req, res) {
             if (err) {
                console.log('update place failed!');
             }
+            console.log(updatedPlaceListings);
             res.send(updatedPlaceListings);
             console.log('place updated!');
         });
