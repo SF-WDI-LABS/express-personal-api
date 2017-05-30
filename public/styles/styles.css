@@ -10,6 +10,12 @@ body {
   text-align: center;
 }
 
+.profile {
+  font-size: 20px;
+  text-align: center;
+  padding: 2px 15px 2px 15px;
+}
+
 .cats {
   align-items: center;
   text-align: center;
