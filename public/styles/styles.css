@@ -1,7 +1,7 @@
 body {
   color: #333;
   background-color: skyblue; /* Sanity Check! */
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Pacifico', cursive;
 }
 
 h1 {
@@ -29,6 +29,15 @@ h1 {
 }
 
 #map {
-  height: 400px;
+  height: 600px;
   margin-top: 0px;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+}
+
+.list-header {
+  background-color: white;
 }
