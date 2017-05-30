@@ -4,6 +4,28 @@ body {
   background-color: white; /* Sanity Check! */
 }
 
+.btn:focus {
+  outline: 0;
+}
+
+.intro .title {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.intro {
+  width: 675px;
+  text-align: justify;
+  font-size: 15px;
+  margin: 0 auto;
+  font-family: 'Lato', sans-serif;
+}
+
+.home-image {
+  margin-top: 20px;
+  text-align: center;
+}
+
 .main-container {
   margin-top: 100px;
 }
@@ -13,13 +35,13 @@ body {
   font-size: 22px;
 }
 
-.input-form {
-  margin-bottom: 100px;
+.header-title:hover {
+  text-decoration: none;
 }
 
-.home-page {
-  text-align: justify;
-  font-size: 14px;
+
+.input-form {
+  margin-bottom: 100px;
 }
 
 .title {
@@ -28,10 +50,6 @@ body {
   font-weight: 500;
 }
 
-.home-image {
-  margin-top: 50px;
-  text-align: center;
-}
 
 .image-container {
   text-align: center;
