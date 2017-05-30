@@ -39,10 +39,8 @@ $(document).ready(function() {
     });
   });
 
-
-
   function populate(entries) {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < allMushrooms.length; i++) {
 
     // Object Values
     let common = entries[i].commonName;
@@ -80,7 +78,7 @@ $(document).ready(function() {
         </div>
       </div>`;
     }
-    $('#gallery').append(template);
+    $('#gallery').append(template());
     }
   };
 });
