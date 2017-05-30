@@ -108,6 +108,7 @@ app.post("/api/pies", function create(req, res) {
     Pie.create(postData, function(err, pie) {
         console.log('Added new pie based on POST data.');
     })
+    res.json(postData);
 });
 
 // RETRACT AND REMOVE PIE DONATION ORDER
