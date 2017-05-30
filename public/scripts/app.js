@@ -63,6 +63,9 @@ function showHomePage() {
   // track page
   breadcrumb = "home page";
 
+  // make sure the scrollbar is at the top of the page
+  $('html,body').scrollTop(0);
+
 }
 
 
@@ -90,6 +93,9 @@ function showFormForAdd() {
   // set the form mode variable
   formMode = "add";
 
+  // make sure the scrollbar is at the top of the page
+  $('html,body').scrollTop(0);
+
 }
 
 
@@ -111,6 +117,9 @@ function hideForm() {
   } else if (breadcrumb === "results page") {
     displayAllStairways();
   }
+
+  // make sure the scrollbar is at the top of the page
+  $('html,body').scrollTop(0);
 
 }
 
@@ -245,6 +254,9 @@ function displayStairways(arr) {
   // track page
   breadcrumb = "results page";
 
+  // make sure the scrollbar is at the top of the page
+  $('html,body').scrollTop(0);
+
 }
 
 
@@ -292,6 +304,9 @@ function showFormForUpdate(id) {
 
   // set the form mode variable
   formMode = "update";
+
+  // make sure the scrollbar is at the top of the page
+  $('html,body').scrollTop(0);
 
   // set the global id variable
   updateID = id;
