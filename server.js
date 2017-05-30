@@ -85,7 +85,8 @@ app.get('/', function homepage(req, res) {
 
 // profile
 
-app.get('/api/profile', function index(req, res) {
+app.get('/api/profile', function (req, res) {
+  console.log(db.Profile)
   db.Profile.find({}, function(err, profile){
     console.log(profile)
     res.json(profile)
@@ -96,14 +97,15 @@ app.get('/api/profile', function index(req, res) {
 app.get('/api', function apiIndex(req, res) {
   res.json({
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express-personal-api/README.md",
+    documentationUrl: "https://github.com/spragala/express-personal-api/README.md",
     baseUrl: "https://nameless-wildwood-79906.herokuapp.com/",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"},
       {method: "GET", path:"/api/restaurants", description: "Data about all favorite restaurants"},
       {method: "POST", path: "/api/", description: "Create new entry for a great restaurant"},
-      {method: "DELETE", path: "/api/the-thing/:id", description: "delete a restaurant"}
+      {method: "DELETE", path: "/api/restaurants/:id", description: "delete a restaurant"},
+      {method: "UPDATE", path: "check back soon!" }
     ]
   })
 });
