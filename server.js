@@ -136,6 +136,31 @@ app.delete("/api/ducks/:id", function destroy(req, res) {
   });
 });
 
+// update - edit one duck by id:
+app.put('/api/ducks/:id', function(req, res) {
+    let duck = db.Duck.findById(req.params.id, function(err, movie) {
+        if (err) {
+           console.log('error, cannot locate this duck.');
+        }
+        let formData = {
+            name: req.body.name || duck.name,
+            bff: req.body.bff  || duck.bff,
+            description: req.body.description || duck.description,
+            favQuote: req.body.favQuote || duck.favQuote,
+            cohort: req.body.cohort || duck.cohort,
+            gender: req.body.gender || duck.gender
+        };
+        db.Duck.update(duck, formData, function(err, updatedFlock) {
+            if (err) {
+               console.log('error: could not add duck to this flock');
+            }
+            res.send(updatedFlock);
+            console.log('welcomed new duck to the flock!');
+        });
+    });
+    
+});
+
 /**********
  * SERVER *
  **********/

@@ -21,13 +21,22 @@ var duckList = [{
   gender: "M"
 },
 {
-  name: "Orren",
+  name: "Gustav",
   bff: "Nathan",
-  description: "Orren's plumage is as dark as the night sky and his eyes are as crystal-blue as the sky but his mysterious and dreamy looks aren't all this dapper drake has going on...his soulful, crooning quack could calm a duckling lost at sea during a category 5 hurricane. Despite his ability to capture any chick's heart with the flick of a feather...Orren doesn't spend much time playing the pond. His focus lies with Nathan...together, they leave no questions unanswered!",
+  description: "Gustav's plumage is as dark as the night sky and his eyes are as crystal-blue as the sky but his mysterious and dreamy looks aren't all this dapper drake has going on...his soulful, crooning quack could calm a duckling lost at sea during a category 5 hurricane. Despite his ability to capture any chick's heart with the flick of a feather...Gustav doesn't spend much time playing the pond. His focus lies with Nathan...together, they leave no questions unanswered!",
   favQuote: "Mmmmmhmmmm, ::wink:: ",
   cohort: "Many",
   gender: "M"
-}];
+},
+{
+  name: "Ori",
+  bff: "Younji",
+  description: "Ori has the courage of 10,000 ducks! Recently, after nearly a year of meticulous planning, she successfully escaped the church of Scientology to fulfill her lifelong dream of becoming a breakdancer. While her newfound career is proving to be less profitable than she had imagined, Ori has another passion to which she is happily dedicated...her friend, Younji! When Younji is feeling a bit lost and is having trouble finding the right moves, Ori is always there to ensure she's never left spinning on her head. Together, they can throw down at any battle!",
+  favQuote: "Who runs the world? GIRLS!",
+  cohort: "WDI38",
+  gender: "F"
+}
+];
 
 
 // remove all records that match {} -- which means remove ALL records

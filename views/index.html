@@ -35,17 +35,19 @@
         <div class="row ducksList">
           <div class="col-xs-12 ducksTarget" id="ducksTarget"></div>
         </div>
-          <div class="row duckFormHeader">
-            <h3>Add a new feathered, full-stack friend!</h3>
-          </div>
+        <div class="row duckFormHeader">
+          <h3>Add a new feathered, full-stack friend!</h3>
+        </div>
         <form method="POST" action="/api/ducks" id="newDuckForm" class="newDuckForm">
-          <div class="col-xs-8">
-            <label for="name">Duck's Name:</label>
-            <input type="text" name="name" value="" class="textField" id="nameField" placeholder="name">
-          </div>
-          <div class="col-xs-6">
-            <label for="bff">Duck's Best Friend:</label>
-            <input type="text" name="bff" value="" class="textField" id="bffField" placeholder="best friend's name">
+          <div class ="row">
+            <div class="col-xs-8">
+              <label for="name">Duck's Name:</label>
+              <input type="text" name="name" value="" class="textField" id="nameField" placeholder="name">
+            </div>
+            <div class="col-xs-6">
+              <label for="bff">Duck's Best Friend:</label>
+              <input type="text" name="bff" value="" class="textField" id="bffField" placeholder="best friend's name">
+            </div>
           </div>
           <div class="row">
             <div class="col-xs-8">
@@ -71,13 +73,59 @@
                 <option value="valueF">Female</option>
               </select>-->
               <input type="text" name="gender" value="" class="genderField" id="genderField" placeholder="type F or M">
-
             </div>
             <div class="col-xs-4">
               <input type="submit" class="btn btn-primary" value="Join the flock!">
             </div>
           </div>
         </form>
+        <hr/>
+        <div class="row editFormHeader">
+          <h3>Use the form below to edit a duck:</h3>
+        </div>
+        <form method="POST" action="/api/ducks" id="editDuckForm" class="editDuckForm">
+          <div class="row">
+            <div class="col-xs-8">
+              <label for="name">Duck's Name:</label>
+              <input type="text" name="name" value="" class="textField editNameField" id="editNameField" placeholder="name">
+            </div>
+            <div class="col-xs-6">
+              <label for="bff">Duck's Best Friend:</label>
+              <input type="text" name="bff" value="" class="textField editBffField" id="editBffField" placeholder="best friend's name">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-8">
+              <label for="description">Duck's Description:</label>
+              <textarea name="description" cols="70" rows="5" class="textField editDescriptionField" id="descriptionField editDescriptionField" ></textarea>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-8">
+            <label for="favQuote">Duck's Favorite Quote:</label>
+            <textarea name="favQuote" cols="70" rows="2" class="textField editFavQuoteField" id="favQuoteField editFavQuoteField" ></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <label for="cohort">Duck's Cohort:</label>
+            <input type="text" name="cohort" value="" class="textField editCohortField" id="editCohortField" placeholder="ex: WDI38">
+          </div>
+          <div class="col-xs-4">
+            <label for="gender">Duck's Gender:</label>
+            <!--<select value="" class="genderField" id="genderField">
+              <option value="valueM">Male</option>
+              <option value="valueF">Female</option>
+            </select>-->
+            <input type="text" name="gender" value="" class="textField editGenderField" id="editGenderField" placeholder="type F or M">
+          </div>
+          <div class="col-xs-4">
+            <button type="button" class="btn btn-edit" aria-label="Left Align">
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true" data-id={{_id}}>Submit Edit</span>
+            </button>
+          </div>
+        </div>
+      </form>
       </div>
     </div>
   </body>

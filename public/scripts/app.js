@@ -144,3 +144,8 @@ function profileSuccess(jsonData) {
   });
 
 }
+
+// update:
+function editDuck() {
+  
+}
