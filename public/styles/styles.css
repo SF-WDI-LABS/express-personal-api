@@ -1,10 +1,11 @@
 body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: salmon; /* Sanity Check! */
+  background: url("http://2.bp.blogspot.com/-WiutMisUm1Q/U6RzsjYbaRI/AAAAAAAAG7Q/a98kbLr7VJs/s1600/DSCF3011.JPG");
+  background-size: 100% 100%;
 }
 
-h1 {
+.mainHeader {
   margin-top: 100px;
   text-align: center;
 }
@@ -13,11 +14,46 @@ li {
   margin: 10px 5px 10px 5px;
 }
 
-.kitty {
-  margin: 10px auto;
+.cats {
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 16px;
 }
 
 img {
-  margin: 20px auto;
+  margin: 10px auto;
   padding: 5px;
+}
+
+.listAndForm {
+  background-color: rgba(0,0,0,.5);
+  padding: 10px;
+  margin-top: 15px;
+}
+
+form {
+  color: white;
+  font-weight: lighter;
+}
+
+label {
+  color: white;
+  font-weight: lighter;
+}
+
+.duckListHeaders {
+  color: white;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.ducksList {
+  color: white;
+  font-weight: lighter;
+}
+
+.duckFormHeader {
+  color: white;
+  font-weight: lighter;
 }

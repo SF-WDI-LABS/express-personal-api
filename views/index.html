@@ -19,21 +19,25 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-xs-8 col-xs-offset-2">
+        <div class="col-xs-8 col-xs-offset-2 mainHeader">
           <h1>Ducks Roam Free in the Protected Brushlands</h1>
           <h4><a href="/api">Read My API Documentation</a></h4>
-          
-          <div class="col-xs-12 profile" id="profileTarget"></div>
-          <div class="col-xs-12 profile" id="catTarget"></div>
         </div>
-      </div>
-      <div class="row">
-        <h4>Meet my friends</h4>
-        <h5>(Warning: They're fowl!)</h5>
-        <div class="col-xs-12" id="ducksTarget"></div>
-      </div>
-      <div class="row">
-        <h4>Add a new feathered, full-stack friend!</h4>
+        </div>
+        <div class="row profile" id="profileTarget"></div>
+        <div class="row cats" id="catTarget"></div>
+
+      <div class="container listAndForm">
+        <div class="row duckListHeaders">
+          <h3>Meet my friends</h3>
+          <h5>(Warning: They're fowl!)</h5>
+        </div>
+        <div class="row ducksList">
+          <div class="col-xs-12" id="ducksTarget"></div>
+        </div>
+          <div class="row duckFormHeader">
+            <h4>Add a new feathered, full-stack friend!</h4>
+          </div>
         <form method="POST" action="/api/ducks" id="newDuckForm">
           <div class="col-xs-8">
             <label for="name">Duck's Name:</label>
@@ -43,19 +47,18 @@
             <label for="bff">Duck's Best Friend:</label>
             <input type="text" name="bff" value="" class="textField" id="bffField" placeholder="best friend's name">
           </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-8">
-            <label for="description">Duck's Description:</label>
-            <textarea name="description" cols="70" rows="5" class="textField" id="descriptionField" ></textarea>
+          <div class="row">
+            <div class="col-xs-8">
+              <label for="description">Duck's Description:</label>
+              <textarea name="description" cols="70" rows="5" class="textField" id="descriptionField" ></textarea>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-8">
-            <label for="favQuote">Duck's Favorite Quote:</label>
-            <textarea name="favQuote" cols="70" rows="2" class="textField" id="favQuoteField" ></textarea>
+          <div class="row">
+            <div class="col-xs-8">
+              <label for="favQuote">Duck's Favorite Quote:</label>
+              <textarea name="favQuote" cols="70" rows="2" class="textField" id="favQuoteField" ></textarea>
+            </div>
           </div>
-      </div>
           <div class="row">
             <div class="col-xs-6">
               <label for="cohort">Duck's Cohort:</label>
@@ -73,7 +76,7 @@
             <input type="submit" class="btn btn-primary" value="Join the flock!">
           </div>
         </form>
-
+      </div>
     </div>
   </body>
 </html>
