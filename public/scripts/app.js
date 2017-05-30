@@ -39,7 +39,7 @@ $(document).ready(function(){
           let marker = new google.maps.Marker({
             position: latLng,
             map: map,
-            // icon: {url:"images/earthquake.png", scaledSize: new google.maps.Size(24, 24)}
+            icon: {url:"http://clipground.com/images/chicken-burger-clipart-6.jpg", scaledSize: new google.maps.Size(28, 28)}
           })
 
 
