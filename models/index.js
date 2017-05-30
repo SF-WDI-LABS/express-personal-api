@@ -1,4 +1,4 @@
-var mongoose = require("mongoose");
+let mongoose = require("mongoose");
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/personal-api");
 
 // use native JS promise library instead of Mongoose's deprecated one

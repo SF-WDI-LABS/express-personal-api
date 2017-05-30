@@ -212,6 +212,11 @@ input {
   margin: 0 5px 0 15px;
 }
 
+input.delete-entry {
+  clear:both;
+  margin-bottom: 60px;
+}
+
 
 /*=================================================
 Image Styling*/
