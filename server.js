@@ -9,10 +9,6 @@ const Hackathon = require('./models/hackathon');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-//error handling middleware
-// app.use(function (err, req, res, next) {
-//   res.status(422).send({error: err.message});
-// });
 
 
 // allow cross origin requests (optional)
@@ -41,7 +37,7 @@ app.use(express.static('public'));
 * HTML Endpoints
 */
 
-app.get('', function homepage(req, res) {
+app.get('/api/homepage', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
