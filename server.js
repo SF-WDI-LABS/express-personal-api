@@ -21,7 +21,7 @@ app.use(function(req, res, next) {
 
  var db = require("./models")
  var Duck = db.Duck;
- var Student = db.Student;
+
 
 /**********
  * ROUTES *
@@ -70,13 +70,22 @@ app.get('/api/profile', function apiProfile(req, res) {
     githubUsername: "https://github.com/alyshae",
     githubProfileImage: "https://avatars1.githubusercontent.com/u/23345886?v=3&u=426d1edbf944c84580e5a03d9cc9cd25ee61cf76&s=400",
     currentCity: "San Francisco, CA",
-    pets: [{
-      name: "Quintzy Polamalu Sunset McTinyPaws",
+    pets: [
+    {
+      name: "Garfield",
       type: "Feline",
-      breed: "Calico"
+      breed: "Orange Tabby",
+      photo: "http://cartoonbros.com/wp-content/uploads/2015/11/Garfield-3.png"
+    },
+    {
+      name: "Felix",
+      type: "Feline",
+      breed: "Domestic Shorthair/Tuxedo",
+      photo: "http://static.arcadespot.com/wp-content/uploads/2017/05/felix-the-cat.jpg"
     }]
   });
 });
+
 
 
 //  index - "get" all ducks:
@@ -120,7 +129,7 @@ app.post("/api/ducks", function create(req, res) {
 //   destroy - "delete" one duck by id:
 app.delete("/api/ducks/:id", function destroy(req, res) {
   var duckId = req.params.id;
-  console.log(`made it to the DELETE route with: params: ${duckId}.`);
+  console.log(`made it to the DELETE route with: params: ${duckId}, `);
 
   db.Duck.findOneAndRemove({ _id: duckId }, function (err, deadDuck) {
     res.json(deadDuck);

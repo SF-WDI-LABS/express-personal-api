@@ -2,6 +2,7 @@ console.log("Sanity Check: JS is working!");
 
 var $duckiesArray;
 var allDucks = [];
+var prof;
 
 $(document).ready(function(){
 
@@ -36,6 +37,13 @@ $(document).ready(function(){
       success: duckDeleteSuccess,
       error: duckDeleteError
     });
+  });
+
+  // get profile data:
+  $.ajax({
+    method: 'GET',
+    url: '/api/profile',
+    success: profileSuccess
   });
 
 });
@@ -116,3 +124,23 @@ function duckDeleteSuccess(duck) {
 function duckDeleteError() {
   console.log("error", '/api/ducks/'+$(this).attr('data-id'));
 };
+
+
+function profileSuccess(jsonData) {
+  $('#profileTarget').append(
+    `<p>I'm ${jsonData.name}. Join me on an API adventure to meet and learn about all the ducks
+      in the Protected Brushlands. But first, feast your eyes on my two fabulous felines:
+    </p>`
+  );
+
+  let cats = jsonData.pets;
+  let result = cats.forEach(function(c, idx) {
+    $('#catTarget').append(
+    `<div class="col-xs-6 catPicAndInfo">
+      <img class="kitty" id="cat"+${idx} src=${c.photo} title="cat" alt="cat photo" width="200">
+      <h5>${c.name}</h5>
+    </div>`
+  );
+  });
+
+}

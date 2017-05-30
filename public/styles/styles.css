@@ -12,3 +12,12 @@ h1 {
 li {
   margin: 10px 5px 10px 5px;
 }
+
+.kitty {
+  margin: 10px auto;
+}
+
+img {
+  margin: 20px auto;
+  padding: 5px;
+}
