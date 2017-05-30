@@ -41,13 +41,26 @@ $.ajax({
     });
   });
 
+
   $placesList.on('click', '.updateBtn', function() {
     console.log('clicked update button to', '/api/places/'+$(this).attr('data-id'));
-    $.ajax({
-      method: 'PUT',
-      url: '/api/places/'+$(this).attr('data-id'),
-      success: updatePlaceSuccess,
-      error: updatePlaceError
+    // $.ajax({
+    //   method: 'PUT',
+    //   url: '/api/places/'+$(this).attr('data-id'),
+    //   data: $(this).serialize(),
+    //   success: updatePlaceSuccess,
+    //   error: updatePlaceError
+    // });
+      $("#updateModal").show();
+    $('#updateForm').on('submit', function(e) {
+      e.preventDefault();
+      $.ajax({
+        method: 'PUT',
+        url: '/api/places/'+$(this).attr('data-id'),
+        data: $(this).serialize(),
+        success: updatePlaceSuccess,
+        error: updatePlaceError
+      });
     });
   });
 
@@ -140,7 +153,7 @@ function handleError(e) {
 function newPlaceSuccess(json) {
   $('#newDestinationForm input').val('');
   allPlaces.push(json);
-  location.reload();
+  //location.reload();
   render();
 }
 
@@ -160,7 +173,7 @@ function deletePlaceSuccess(json) {
       break;
     }
   }
-  location.reload();
+  //location.reload();
   render();
 }
 
@@ -171,7 +184,7 @@ function deletePlaceError() {
 function updatePlaceSuccess(json) {
   var place = json;
   console.log(json);
-  $('#newDestinationForm input').val('');
+  $('#updateForm input').val('');
   var placeId = place._id;
   console.log('update place', placeId);
   // find the place with the correct ID and update it

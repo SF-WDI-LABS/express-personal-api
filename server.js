@@ -6,7 +6,7 @@ var express = require('express'),
 // parse incoming urlencoded form data
 // and populate the req.body object
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
@@ -125,6 +125,7 @@ app.delete('/api/places/:id', function destroy(req, res) {
 
 
 app.put('/api/places/:id', function(req, res) {
+  console.log(req.params.id);
     let place = db.Place.findById(req.params.id, function(err, place) {
         if (err) {
            console.log('error, place not found');
