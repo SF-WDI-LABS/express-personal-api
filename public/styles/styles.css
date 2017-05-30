@@ -39,7 +39,7 @@ input {
 }
 
 .ducksTarget li {
-  padding: 5px 0 5px 0;
+  padding: 10px 0 8px 0;
 }
 
 .newDuckForm {
@@ -54,6 +54,10 @@ form {
 label {
   color: white;
   font-weight: lighter;
+}
+
+textarea {
+  color: black;
 }
 
 .duckListHeaders {
