@@ -6,7 +6,8 @@ const HackathonSchema = new Schema({
   language: String,
   difficulty: String,
   popularity: Number,
-  salary: String
+  salary: String,
+  photo: String
 });
 
 const Hackathon = mongoose.model('hackathon', HackathonSchema);
