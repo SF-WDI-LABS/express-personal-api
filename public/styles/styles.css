@@ -1,6 +1,6 @@
 body {
   color: #333;
-  background-color: skyblue; /* Sanity Check! */
+  /*background-color: skyblue; /* Sanity Check! */*/
   font-family: 'Baloo', cursive;
 }
 
@@ -8,6 +8,10 @@ h1 {
   margin-top: 15px;
   text-align: center;
   font-weight: bold;
+}
+
+.chicken-top {
+  background-color: red;
 }
 
 .navbar-header {
@@ -18,19 +22,17 @@ h1 {
   font-size: 25px
 }
 
-.chicken-top {
-  background-color: red;
+.navbar-form {
+  margin-top: 20px;
 }
 
 .chicken-middle {
   padding-bottom: 50px;
-  padding-left: 0px;
-  padding-right: 0px;
 }
 
 #map {
   height: 600px;
-  margin-top: 0px;
+  margin-top: 15px;
 }
 
 img {

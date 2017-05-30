@@ -1,53 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>CHICKEN SAMMICH</title>
+  <title>CHICKEN SAMMICH</title>
 
-    <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
+  <!-- STYLESHEETS -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
 
-    <!-- VENDOR SCRIPTS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap"></script>
+  <!-- VENDOR SCRIPTS -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap"></script>
 
 
-    <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/app.js"></script>
-  </head>
+  <!-- APPLICATION SCRIPTS -->
+  <script src="/scripts/app.js"></script>
+</head>
 
-  <body>
+<body>
 
-      <div class="container-fluid chicken-top">
-          <div class="navbar-header">
-            <h1 class="header-title">Chicken Sammich DB</h1>
-            <p>Search for a great chicken sammich, while on the way to the greatest chicken sammich!</p>
-          </div>
-          <form class="navbar-form navbar-right" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="button" class="btn btn-default navbar-btn btnSubmitSearch">SAMMICH ME!</button>
-          </form>
-        </div>
-
-      <div class="container-fluid chicken-middle">
-        <div class="row">
-
-          <div class="col-md-6">
-                <div id="map"></div>
-          </div>
-          <div class="col-md-6 sammich-list">
-            <h1 class="list-header">The Sammich List</h1>
-                <div class= "sammich" id="sammich-info"></div>
-          </div>
-          </div>
-          </div>
-        </div>
+  <div class="container-fluid chicken-top">
+    <div class="navbar-header">
+      <h1 class="header-title">Chicken Sammich DB</h1>
+      <p>Search for a great chicken sammich, while on the way to the greatest chicken sammich!</p>
+    </div>
+    <form class="navbar-form navbar-right" id="chicken-search" action="">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
       </div>
-    </body>
+      <div class="form-group">
+        <input type="submit" class="btn btn-block btn-success" name="" value="SAMMICH ME!">
+      </div>
+    </form>
+  </div>
+
+  <div class="container-fluid chicken-middle">
+    <div class="row">
+      <div class="col-md-6">
+        <div id="map"></div>
+      </div>
+      <div class="col-md-6 sammich-list">
+        <h1 class="list-header">The Sammich List</h1>
+        <div class= "sammich" id="sammich-info"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
 </html>
