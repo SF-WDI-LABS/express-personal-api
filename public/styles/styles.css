@@ -10,10 +10,6 @@ body {
   text-align: center;
 }
 
-li {
-  margin: 10px 5px 10px 5px;
-}
-
 .cats {
   align-items: center;
   text-align: center;
@@ -30,6 +26,14 @@ img {
   background-color: rgba(0,0,0,.5);
   padding: 10px;
   margin-top: 15px;
+}
+
+.ducksTarget li {
+  padding: 5px 0 5px 0;
+}
+
+.newDuckForm {
+  padding: 5px auto;
 }
 
 form {
@@ -56,4 +60,13 @@ label {
 .duckFormHeader {
   color: white;
   font-weight: lighter;
+  text-align: center;
+  margin: 5px 0 10px 0;
+}
+
+.btn-primary {
+  font-size: 14px;
+  background-color: rgb(131,3,0);
+  align-items: center;
+  border: solid white 1px;
 }

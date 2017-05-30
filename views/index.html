@@ -33,12 +33,12 @@
           <h5>(Warning: They're fowl!)</h5>
         </div>
         <div class="row ducksList">
-          <div class="col-xs-12" id="ducksTarget"></div>
+          <div class="col-xs-12 ducksTarget" id="ducksTarget"></div>
         </div>
           <div class="row duckFormHeader">
-            <h4>Add a new feathered, full-stack friend!</h4>
+            <h3>Add a new feathered, full-stack friend!</h3>
           </div>
-        <form method="POST" action="/api/ducks" id="newDuckForm">
+        <form method="POST" action="/api/ducks" id="newDuckForm" class="newDuckForm">
           <div class="col-xs-8">
             <label for="name">Duck's Name:</label>
             <input type="text" name="name" value="" class="textField" id="nameField" placeholder="name">
@@ -60,20 +60,20 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-4">
               <label for="cohort">Duck's Cohort:</label>
               <input type="text" name="cohort" value="" class="cohortField" id="cohortField" placeholder="ex: 'WDI38'">
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-4">
               <label for="gender">Duck's Gender:</label>
               <select value="" class="genderField" id="genderField">
                 <option value="valueM">Male</option>
                 <option value="valueF">Female</option>
               </select>
             </div>
-          </div>
-          <div class="row">
-            <input type="submit" class="btn btn-primary" value="Join the flock!">
+            <div class="col-xs-4">
+              <input type="submit" class="btn btn-primary" value="Join the flock!">
+            </div>
           </div>
         </form>
       </div>
