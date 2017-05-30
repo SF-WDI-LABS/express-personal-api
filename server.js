@@ -21,9 +21,14 @@ app.use(function(req, res, next) {
  ************/
 
 var db = require('./models');
+var createSeedData = require('./seed');
 var Pie = db.Pie;
 
-
+// clear Pies for Bear section data after each reload ??
+Pie.deleteMany({}, function(err) {
+    console.log('clear successful!');
+});
+createSeedData();
 
 /**********
  * ROUTES *
@@ -59,7 +64,11 @@ app.get('/api', function apiIndex(req, res) {
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "digital strategist, analyst, and graphic designer, learning to code."}, // brief about me
       // retrieve key values from database
-      {method: "POST", path: "/api/pies", description: "pie is love"} // app description
+      {method: "GET", path: "/api/pies", description: "Index of all pies donated to Bear"},
+      {method: "POST", path: "/api/pies", description: "Create a new pie donation entry"},
+      {method: "PUT", path: "/api/pies/:id", description: "Edit a previous pie donation entry"},
+      {method: "DELETE", path: "/api/pies/:id", description: "Destroy a pie donation :("},
+       // app description
     ]
   })
 });
@@ -80,29 +89,25 @@ app.get("/api/pies", function index(req, res) {
     Pie.find({}, function(err, pies) {
         res.send(pies);
     });
-
 });
 
 // GET PIE DONATION INFO BY ID
 app.get("/api/pies/:id", function show(req, res){
   let id = req.params.id;
   Pie.findOne({_id: id}, function(err, pie){
-    res.send(pie);
+    res.json(pie);
   });
 })
 
 // CREATE NEW PIE DONATION LOG
 app.post("/api/pies", function create(req, res) {
-    console.log("Hit POST /api/pies, with the following: ")
-    console.log("params:", req.params)
-    console.log("query:", req.query)
-    console.log("body:", req.body)
-
-    let newPie = new Pie(req.body);
-    newPie.save(function(err, pie) {
-        if(err) {res.sendStatus(404); }
-        res.send(pie); // one newly created pie donation
-    });
+    // create new pie donation with form data (`req.body`)
+    console.log('POST REQUEST FOR DATA: ', req.body);
+    // The object of the post request containing data for the Pie model
+    const postData = req.body;
+    Pie.create(postData, function(err, pie) {
+        console.log('Added new pie based on POST data.');
+    })
 });
 
 // RETRACT AND REMOVE PIE DONATION ORDER
