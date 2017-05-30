@@ -92,25 +92,25 @@ app.get('/api', function apiIndex(req, res) {
   // It would be seriously overkill to save any of this to your database.
   // But you should change almost every line of this response.
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
+    woopsIForgotToDocumentAllMyEndpoints: false, 
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
+    documentationUrl: "I'll do this once everything is working", // CHANGE ME
+    baseUrl: "https://quiet-springs-87717.herokuapp.com/",
     endpoints: [{
         method: "GET",
-        path: "/api",
-        description: "Describes all available endpoints"
+        path: "/api/mushrooms",
+        description: "Retrieves all mushroom records"
       },
       {
         method: "GET",
-        path: "/api/profile",
-        description: "Data about me"
-      }, // CHANGE ME
+        path: "/api/mushrooms/:id",
+        description: "Retrieves a single mushroom record"
+      },
       {
         method: "POST",
-        path: "/api/campsites",
-        description: "E.g. Create a new campsite"
-      } // CHANGE ME
+        path: "/api/mushrooms",
+        description: "Creates a new mushroom record"
+      }
     ]
   })
 });
