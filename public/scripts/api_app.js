@@ -18,7 +18,7 @@ $(document).ready(function() {
     }
   })
 
-  $('#mushroom_input').on('submit', function(event) { // listen for form submission
+  $('mushroom_input').on('submit', function(event) { // listen for form submission
     event.preventDefault();
     let newShroom = $(this).serialize();
     // Adding a single mushroom
