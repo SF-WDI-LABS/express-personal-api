@@ -1,11 +1,15 @@
-// require express and other modules
+// Requiring things
 let express = require('express'),
   app = express();
+
+let mongoose = require("mongoose");
 
 let bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+let db = require('./models');
 
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
@@ -16,13 +20,8 @@ app.use(function(req, res, next) {
 });
 
 //====================================
-// DATABASE
-
-// var db = require('./models');
-
-//====================================
 // ROUTES
-// let Mushroom = db.Mushroom;
+let Mushroom = db.Mushroom;
 
 // Serve static files from the `/public` directory:
 app.use(express.static('public'));
@@ -30,31 +29,56 @@ app.use(express.static('public'));
 //====================================
 //HTML Endpoints
 
-app.get('/', function homepage(req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+// Homepage
+app.get('/', function homepage(request, response) {
+  response.sendFile(__dirname + '/views/index.html');
 });
-
+// return all mushrooms
 app.get('/api/mushrooms', function index(request, response) {
-  Mushroom.find({}, function(err, mushrooms) {
+  Mushroom.find({}, function(err, allMushrooms) {
     response.send(mushrooms); // Return all mushrooms
-    // response.sendFile('/api/mushrooms/views/index.html');
+    if (err) {
+      response.status(500).json({ error: err.message });
+    } else {
+      response.json({});
+    }
   });
 });
 
-app.get('/api/mushrooms/:id', function index(request, response) {
-  Mushroom.findOne({
-    _id: id
-  }, function(err, mushroom) {
-    let id = request.params.id;
-    response.send(mushroom); // Return new mushroom
+// return a single mushroom
+app.get('/api/mushrooms/:id', function show(request, response) {
+  let id = request.params.id;
+  Mushroom.findOne({_id: id}, function(err, mushroom) {
+    if (err) {
+      if (err.name === "CastError") {
+        response.status(404).json({ error: "Nothing found by this ID." });
+      } else {
+        response.status(500).json({ error: err.message });
+      }
+    } else {
+      response.json(mushroom);
+    }
   })
 });
 
-app.post("/api/mushrooms:id", function create(request, response) {
-  let id = request.params.id;
-  let body = request.params.body;
-  Mushroom.createOne(body);
-  response.send({}); // Return the new mushroom
+app.post("/api/mushrooms", function create(request, response) {
+  let newMushroom = new Mushroom(request.params.body);
+  newMushroom.save(function(err, savedMushroom) {
+      if (err) {
+        response.status(500).json({ error: err.message });
+      } else {
+        response.json(savedMushroom);
+      }
+    });
+});
+
+// create new todo
+app.post('/api/todos', function create(req, res) {
+  // create new todo with form data (`req.body`)
+  var newTodo = new db.Todo(req.body);
+
+  // save new todo in db
+
 });
 
 app.delete("/api/unicorns/:id", function destroy(request, response) {

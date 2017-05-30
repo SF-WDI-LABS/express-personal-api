@@ -1,14 +1,10 @@
 var mongoose = require("mongoose");
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/personal-api");
+// use native JS promise library instead of Mongoose's deprecated one
+mongoose.Promise = global.Promise;
 
-// module.exports.Campsite = require("./campsite.js.example");
+Schema = mongoose.Schema;
 
-let MushroomSchema = new Schema({
-  CommonName: String,
-  Taxonomy: String,
-  DateFound: Date,
-  LocationFound: String,
-  Edibility: String,
-  Certainty: Number,
-  Photo: String
-});
+let Mushroom = require('./mushroom');
+
+exports.Mushroom = Mushroom;
