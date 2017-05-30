@@ -23,31 +23,31 @@ app.use(function(req, res, next) {
 // var db = require('./models');
 var db = require('./models');
 
-var nationalparks = [
-  {
-    _id: 1,
-    park: "Death Valley"
-    location: "California"
-    image: "http://i.imgur.com/aNW2rb6.jpg"
-    year_established: "1994"
-  },
-  {
-    _id: 2,
-    park: "Yosemite"
-    location: "California"
-    image: "http://i.imgur.com/3gIl6Eo.jpg"
-    year_established: "1890"
-  },
-  {
-    _id: 3,
-    park: "Zion"
-    location: "Utah"
-    image: "http://i.imgur.com/5toZrZM.jpg"
-    year_established: "1919"
-  }
-];
-
-var newParkIDUpdated = 4;
+// var nationalparks = [
+//   {
+//     _id: ,
+//     park: "Death Valley"
+//     location: "California"
+//     image: "http://i.imgur.com/aNW2rb6.jpg"
+//     year_established: "1994"
+//   },
+//   {
+//     _id: ,
+//     park: "Yosemite"
+//     location: "California"
+//     image: "http://i.imgur.com/3gIl6Eo.jpg"
+//     year_established: "1890"
+//   },
+//   {
+//     _id: ,
+//     park: "Zion"
+//     location: "Utah"
+//     image: "http://i.imgur.com/5toZrZM.jpg"
+//     year_established: "1919"
+//   }
+// ];
+//
+// var newParkIDUpdated = 4;
 
 /**********
  * ROUTES *
