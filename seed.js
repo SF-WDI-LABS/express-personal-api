@@ -35,6 +35,14 @@ var duckList = [{
   favQuote: "Who runs the world? GIRLS!",
   cohort: "WDI38",
   gender: "F"
+},
+{
+  name: "Po-Po",
+  bff: "Shridar",
+  description: "Don't let Po-Po's squatty, pot-bellied stature fool you...he's got hawk-like speed and the agility of a super hero ninja cat! After 14 years on the feather-force, he is a legendary authority known throughout ponds far and wide. Po-Po has the thickest of skin yet still this tough & dedicated defender of the law has a soft side...or maybe it is best described as a 'warm' side.  Just drop by any local quilting fair and you'll find Po-Po there, admiring the cozy, patterned blankets & even showing-off his own wing-woven work! In fact, he met his very best pal, Shridar at a quilting fair years ago! The two of them are inseparable & whenever Shridar feels like he is falling apart, Po-Po is always there to stitch him back together.",
+  favQuote: "Don't drink & fly!",
+  cohort: "WDI38",
+  gender: "F"
 }
 ];
 
