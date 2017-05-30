@@ -21,6 +21,7 @@ app.use(function(req, res, next) {
  ************/
 
 var db = require('./models');
+var Pie = db.Pie;
 
 
 
@@ -57,6 +58,7 @@ app.get('/api', function apiIndex(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "digital strategist, analyst, and graphic designer, learning to code."}, // brief about me
+      // retrieve key values from database
       {method: "POST", path: "/api/pies", description: "pie is love"} // app description
     ]
   })
@@ -75,16 +77,16 @@ app.get("/api/profile", function profile(req, res){
 
 // SHOW ALL THE PIES
 app.get("/api/pies", function index(req, res) {
-    db.Pie.find({}, function(err, pies) {
+    Pie.find({}, function(err, pies) {
         res.send(pies);
-    })
+    });
 
-})
+});
 
 // GET PIE DONATION INFO BY ID
 app.get("/api/pies/:id", function show(req, res){
-  var id = req.params.id;
-  db.Pie.findOne({_id: id}, function(err, pie){
+  let id = req.params.id;
+  Pie.findOne({_id: id}, function(err, pie){
     res.send(pie);
   });
 })
@@ -96,8 +98,8 @@ app.post("/api/pies", function create(req, res) {
     console.log("query:", req.query)
     console.log("body:", req.body)
 
-    let newPieDonor = new db.Pie(req.body);
-    newPieDonor.save(function(err, pie) {
+    let newPie = new Pie(req.body);
+    newPie.save(function(err, pie) {
         if(err) {res.sendStatus(404); }
         res.send(pie); // one newly created pie donation
     });
@@ -110,7 +112,7 @@ app.delete("/api/pies/:id", function(req, res) {
 
 // UPDATE PIE DONATION ORDER
 app.put("/api/pies/:id", function update(req, res){
-  res.send({});
+  res.send({})
 })
 
 /**********

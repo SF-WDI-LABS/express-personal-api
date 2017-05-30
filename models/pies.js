@@ -5,14 +5,7 @@ Schema = mongoose.Schema;
 var pieSchema = new Schema({
     donor_name: String,
     pie_type: String,
-    pie_quantity: {
-        type: Number,
-        default: 1
-    },
-    create_at: {
-        type: Date,
-        default: Date.now
-    }
+    pie_quantity: Number
 });
 
 var Pie = mongoose.model('Pie', pieSchema);
