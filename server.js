@@ -50,8 +50,8 @@ app.get('/api', function apiIndex(req, res) {
   // But you should change almost every line of this response.
   res.json({
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
+    documentationUrl: "https://github.com/bschuetzle/express-personal-api/README.md", // CHANGE ME
+    baseUrl: "https://gentle-oasis-42930.herokuapp.com", // CHANGE ME
     endpoints: [
       {
         method: "GET",
@@ -61,12 +61,27 @@ app.get('/api', function apiIndex(req, res) {
       {
         method: "GET",
         path: "/api/profile",
-        description: "Data about me"
+        description: "Who I am and where I'm from"
+      },
+      {
+        method: "GET",
+        path: "/api/stairways",
+        description: "Index of all the stairways"
       },
       {
         method: "POST",
-        path: "/api/campsites",
-        description: "E.g. Create a new campsite"
+        path: "/api/stairways",
+        description: "Create a new stairway"
+      },
+      {
+        method: "PUT",
+        path: "/api/stairways",
+        description: "Update a stairway"
+      },
+      {
+        method: "DELETE",
+        path: "/api/stairways",
+        description: "Destroy a stairway"
       }
     ]
   })
@@ -78,17 +93,12 @@ app.get('/api/profile', function apiIndex(req, res) {
     githubUsername: "bschuetzle",
     githubLink: "https://github.com/bschuetzle",
     githubProfileImage: "https://avatars1.githubusercontent.com/u/27898517?v=3&s=400",
-    personalSiteLink: "",
+    personalSiteLink: "https://bschuetzle.github.io/",
     currentCity: "San Francisco",
-    pets: []
+    hobbies: ["hiking","running","travelling","indoor climbing"]
   })
 });
 
-
-
-
-// STAIRWAYS ENDPOINTS
-// -------------------
 
 // route to get all stairways
 app.get('/api/stairways', function index(req, res) {

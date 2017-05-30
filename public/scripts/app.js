@@ -1,15 +1,13 @@
-console.log("Sanity Check: JS is working!");
 
 // declare globals
 var $body, $main;
 var updateID;         // used to temporarily hold the id of the stairway that should be updated on save
 var stairways = [];   // array to hold all stairway objects
 var formMode;         // string to temporarily hold action to perform on Save button click - either Add/Post or Update/Put
+var breadcrumb;       // string to keep track of page that was previously on
 
 
 $(document).ready(function(){
-
-  console.log("Document is ready, JQuery is working!")
 
   // get references to the div elements
   $body = $('body');
@@ -24,6 +22,9 @@ $(document).ready(function(){
   // display all the stairways
   $body.on("click", ".btnDisplayAll", displayAllStairways);
 
+  // search for stairways based on the name
+  $body.on("click", ".btnSubmitSearch", searchStairways);
+
   // display the form for adding a new stairway when the navbar Add button is clicked
   $body.on("click", ".btnAdd", showFormForAdd);
 
@@ -35,17 +36,13 @@ $(document).ready(function(){
 
   // call the function to delete the stairway with the id that was clicked on
   $main.on("click", ".btnDelete", function() {
-    console.log('clicked delete button for data-id: ', $(this).attr('data-id'));
     deleteStairway($(this).attr('data-id'));
   });
 
   // call the function to update the stairway with the id that was clicked on
   $main.on("click", ".btnUpdate", function() {
-    console.log('clicked update button for data-id: ', $(this).attr('data-id'));
     showFormForUpdate($(this).attr('data-id'));
   });
-
-
 
 });
 
@@ -62,6 +59,17 @@ function showHomePage() {
 
   // append the html to the main container div
   $(".main-container").append(html);
+
+  // track page
+  breadcrumb = "home page";
+
+}
+
+
+
+function searchStairways() {
+
+  alert("Sorry, the search feature is not ready yet.");
 
 }
 
@@ -97,9 +105,12 @@ function hideForm() {
   console.log("difficulty:", $("#optDifficulty").val());
   console.log("favorite:", $("#chkFavorite").val());
 
-  // empty the contents of the main container div
-  $(".main-container").empty();
 
+  if (breadcrumb === "home page") {
+    showHomePage();
+  } else if (breadcrumb === "results page") {
+    displayAllStairways();
+  }
 
 }
 
@@ -132,8 +143,6 @@ function addStairway() {
       favorite: $("#chkFavorite").val()
     },
     success: function(json) {
-      console.log("success!");
-      console.log(json);
 
       // add the returned json object (from the database, including _id), to the stairways array
       stairways.push(json);
@@ -143,12 +152,13 @@ function addStairway() {
         return element._id === json._id;
       });
 
-      // display the added stairway
-      displayStairways(stairway);
+      // display all stairways
+      displayAllStairways();
 
     },
     error: function() {
-      console.log("there was an error attempting to save new stairway");
+
+
     }
 
   });
@@ -173,21 +183,13 @@ function updateStairway() {
       favorite: $("#chkFavorite").val()
     },
     success: function(json) {
-      console.log("update success!");
-      console.log(json);
-
-      //var tempArr = [];
-      //tempArr.push(json);
-
-      // display the added stairway
-      //displayStairways(tempArr);
 
       // display all stairways
       displayAllStairways();
 
     },
     error: function() {
-      console.log("there was an error attempting to udpate the stairway");
+
     }
 
   });
@@ -202,18 +204,22 @@ function displayAllStairways() {
     method: 'GET',
     url: '/api/stairways',
     success: function(json) {
-      console.log("success getting all results");
-      //console.log(json);
+
+      // empty the global array
       stairways = [];
+
+      // push each database object into the array
       json.forEach(function(element,index) {
         stairways.push(element);
       })
-      console.log(stairways);
+
+      // display the results
       displayStairways(stairways);
 
     },
     error: function() {
-      console.log("there was an error attempting to get all the results");
+
+
     }
   });
 
@@ -230,13 +236,14 @@ function displayStairways(arr) {
     html = html + getResultHTML(element);
   });
 
-  //console.log(html);
-
   // empty the contents of the main container div
   $(".main-container").empty();
 
   // append the html to the main container div
   $(".main-container").append(html);
+
+  // track page
+  breadcrumb = "results page";
 
 }
 
@@ -259,7 +266,8 @@ function deleteStairway(id) {
 
     },
     error: function() {
-      console.log("there was an error attempting to delete");
+
+
     }
   });
 
@@ -287,9 +295,6 @@ function showFormForUpdate(id) {
 
   // set the global id variable
   updateID = id;
-
-  //console.log(stairways);
-  //console.log(stairway);
 
   // populate the form
   $("#txtName").val(stairway.name);
@@ -335,22 +340,22 @@ function getFormHTML() {
 
           <div class='form-group'>
             <label for='txtName'>Name</label>
-            <input type='text' class='form-control' id='txtName' placeholder='Enter staircase name'>
+            <input type='text' class='form-control' id='txtName' placeholder='Enter staircase name' maxlength='40'>
           </div>
 
           <div class='form-group'>
             <label for='txtDescription'>Description</label>
-            <textarea class='form-control' id='txtDescription' rows='5' placeholder='Enter description'></textarea>
+            <textarea class='form-control' id='txtDescription' rows='5' placeholder='Enter description' maxlength='600'></textarea>
           </div>
 
           <div class='form-group'>
             <label for='txtNeighborhood'>Neighborhood</label>
-            <input type='text' class='form-control' id='txtNeighborhood' placeholder='Enter neighborhood'>
+            <input type='text' class='form-control' id='txtNeighborhood' placeholder='Enter neighborhood' maxlength='80'>
           </div>
 
           <div class='form-group'>
             <label for='txtPhoto'>Link to Photo</label>
-            <input type='text' class='form-control' id='txtPhoto' placeholder='Enter URL'>
+            <input type='text' class='form-control' id='txtPhoto' placeholder='Enter URL' maxlength='120'>
           </div>
 
           <div class='form-group'>
@@ -388,8 +393,8 @@ function getFormHTML() {
           </div>
 
           <div class='save-cancel-buttons'>
-            <button type='button' class='btn btn-primary btnSave'>Save</button>
-            <button type='button' class='btn btn-primary btnCancel'>Cancel</button>
+            <button type='button' class='btn btn-default btnSave'><span class='glyphicon glyphicon-floppy-disk' aria-hidden='true'></span>  Save</button>
+            <button type='button' class='btn btn-default btnCancel'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span>  Cancel</button>
           </div>
 
         </form>
@@ -407,7 +412,6 @@ function getResultHTML(obj) {
 
   var html = `
     <div class='results' id='resultsList'>
-
       <div class='results-item' data-id='${obj._id}'>
         <div class='results-left-container'>
           <img class='results-image' src='${obj.photoURL}' alt='(no photo)'>
@@ -415,16 +419,19 @@ function getResultHTML(obj) {
         <div class='results-right-container'>
           <p class='results-name'>${obj.name}</p>
           <p class='results-description'>${obj.description}</p>
-          <p class='results-neighborhood'>Neighborhood:  ${obj.neighborhood}</p>
-          <p class='results-numsteps'>Number of Steps:  ${obj.numSteps}</p>
-          <p class='results-difficulty'>Difficulty:  ${obj.difficulty}</p>
-          <p class='results-rating'>Rating:  ${obj.rating}</p>
-          <p class='results-favorite'>Favorite:  ${obj.favorite}</p>
+          <br>
+          <table class="results-table">
+            <tr><td>Neighborhood: </td><td>${obj.neighborhood}</td></tr>
+            <tr><td>Number of Steps: </td><td>${obj.numSteps}</td>
+            <tr><td>Difficulty: </td><td>${obj.difficulty}</td>
+            <tr><td>Rating: </td><td>${obj.rating}</td>
+            <tr><td>Favorite: </td><td>${obj.favorite}</td>
+          </table>
+          <br>
           <button type='button' class='btn btn-default btnUpdate' data-id='${obj._id}'>Update</button>
           <button type='button' class='btn btn-default btnDelete' data-id='${obj._id}'>Delete</button>
         </div>
       </div>
-
     </div>
   `
 
