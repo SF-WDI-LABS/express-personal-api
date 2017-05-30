@@ -140,6 +140,7 @@ function handleError(e) {
 function newPlaceSuccess(json) {
   $('#newDestinationForm input').val('');
   allPlaces.push(json);
+  location.reload();
   render();
 }
 
@@ -159,6 +160,7 @@ function deletePlaceSuccess(json) {
       break;
     }
   }
+  location.reload();
   render();
 }
 

@@ -6,7 +6,9 @@ var express = require('express'),
 // parse incoming urlencoded form data
 // and populate the req.body object
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
@@ -64,7 +66,6 @@ app.get('/api/profile', function (req, res) {
   db.Place.find({}, function(err, places){
       if (err) { return console.log("index error: " + err); }
       res.json(places);
-      //res.sendFile(__dirname + '/views/index.html');
     });
 });
 
@@ -80,7 +81,6 @@ app.get('/api/places/:id', function show(req, res) {
       res.sendStatus(500);
     }
     res.json(place);
-  //});
 
   });
 });
@@ -91,11 +91,17 @@ app.post('/api/places', function create(req, res) {
   console.log(req.body);
 
    var newPlace = new db.Place(req.body);
-  newPlace.save(function(err){
+  newPlace.save(function(err,place){
+    if(err){
+      console.log("post error: " + err);
+      res.sendStatus(500);
+    }
   console.log("Success");
+  res.redirect('/');
 });
   //res.json(newPlace);
-  res.sendFile(__dirname + '/views/index.html');
+  //res.sendFile(__dirname + '/views/index.html');
+  //res.redirect('/');
 });
 
 // delete place
@@ -108,36 +114,36 @@ app.delete('/api/places/:id', function destroy(req, res) {
       console.log("index error: " + err);
       res.sendStatus(500);
     }
-    //res.send("Deleted Successfully book with id: " + placeId );
-    console.log("Deleted Successfully book with id: " + placeId);
+    //res.send("Deleted Successfully place with id: " + placeId );
+    console.log("Deleted Successfully place with id: " + placeId);
+    res.redirect('/');
 
   });
-  res.sendFile('views/index.html' , { root : __dirname});
+  //res.sendFile('views/index.html' , { root : __dirname});
+
 });
 
-// update book
-app.put('/api/places/:id', function update(req,res){
-// get book id from url params (`req.params`)
-  console.log('place update', req.params);
-  var placeId = req.params.id;
-  console.log(req.body.name);
-  // find the index of the book we want to remove
-  db.Place.findById(placeId, function(err, place) {
-    if (err) {
-      console.log("index error: " + err);
-      res.sendStatus(500);
-    }
-    var placeToUpdate = place;
-    console.log(placeToUpdate);
-    placeToUpdate.name = req.body.name;
-    placeToUpdate.description = req.body.description;
-    placeToUpdate.image = req.body.image;
-    placeToUpdate.save();
 
-    res.json({placeToUpdate});
-    //res.sendFile('views/index.html' , { root : __dirname}
-  });
-  //console.log('updating book with index', bookToUpdate);
+app.put('/api/places/:id', function(req, res) {
+    let place = db.Place.findById(req.params.id, function(err, place) {
+        if (err) {
+           console.log('error, place not found');
+        }
+        console.log(req.body);
+        let formData = {
+            name: req.body.name || place.name,
+            description: req.body.description || place.description,
+            image: req.body.image || place.image
+        };
+        console.log(formData);
+        db.Place.update(place, formData, function(err, updatedPlaceListings) {
+            if (err) {
+               console.log('update place failed!');
+            }
+            res.send(updatedPlaceListings);
+            console.log('place updated!');
+        });
+    });
 });
 
 app.get('/api', function apiIndex(req, res) {
@@ -147,12 +153,16 @@ app.get('/api', function apiIndex(req, res) {
   res.json({
     // woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/kabitachatterjee/express-personal-api/README.md", // CHANGE ME
+    documentationUrl: "https://github.com/kabitachatterjee/express-personal-api/README.md",
     baseUrl: "https://polar-island-70720.herokuapp.com/", // CHANGE ME
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", path: "/api/profile", description: "Data about me"},
+      {method: "GET", path: "/api/places", description:"A json with data about all places visited till date. The structure of each json object is as follows: {_id:'a unique identifier for each place',name:'name of the place', description: 'A short description of the place',image:'a URL pointing to an image of the place',-v:'which version of the data',created_at:'date timestamp of the time when the data was created and saved in the database'}"} ,
+      {method: "POST", path: "/api/places", description: "Creates a new place/destination by taking input from a form. The inputs must have name, description and image populated."},
+      {method: "PUT", path: "/api/places/:id", description: "Updates the data for a JSON object by its _id. It takes details from a user for the update."},
+      {method: "DELETE", path: "/api/places/:id", description: "Deletes the data for a JSON object by its id"}
+
     ]
   })
 });

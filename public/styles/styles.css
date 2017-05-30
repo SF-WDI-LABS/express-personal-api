@@ -1,6 +1,7 @@
 body {
   color: #fff;
-  font-family: Helvetica, Arial, sans-serif;
+  /*font-family: Helvetica, Arial, sans-serif;*/
+  font-family:"Inconsolata", "Monaco", "Consolas", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
   background-color: black; /* Sanity Check! */
 }
 
@@ -25,9 +26,18 @@ img{
   color: #fff;
   text-shadow: none; /* Prevent inheritence from `body` */
   background-color: #72AB00;
-  border: 1px solid #fff;
+  /*border: 1px solid #fff;*/
 }
 #social img{
     height:40px;
     width:40px;
   }
+.card{
+  font-size: 12px;
+  font-family:"Inconsolata", "Monaco", "Consolas", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+  color: #999;
+  line-height: 18px;
+  margin-top: 20px;
+  max-height: 400px;
+  overflow: auto;
+}
