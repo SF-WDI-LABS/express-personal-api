@@ -80,7 +80,7 @@ function showAPIDocs() {
 
       // empty the contents of the main container div
       $(".main-container").empty();
-      
+
       // append the html to the main container div
       $(".main-container").append(JSON.stringify(json));
 
@@ -127,16 +127,6 @@ function showFormForAdd() {
 // hide the form
 function hideForm() {
 
-  // test code to check the control values
-  console.log("name:", $("#txtName").val());
-  console.log("description:", $("#txtDescription").val());
-  console.log("neighborhood:", $("#txtNeighborhood").val());
-  console.log("photoURL:", $("#txtPhoto").val());
-  console.log("number of steps:", $("#txtNumSteps").val());
-  console.log("difficulty:", $("#optDifficulty").val());
-  console.log("favorite:", $("#chkFavorite").val());
-
-
   if (breadcrumb === "home page") {
     showHomePage();
   } else if (breadcrumb === "results page") {
@@ -172,8 +162,8 @@ function addStairway() {
       neighborhood: $("#txtNeighborhood").val(),
       photoURL: $("#txtPhoto").val(),
       numSteps: $("#txtNumSteps").val(),
-      rating: 5,
-      difficulty: "Medium",
+      rating: $("#inlineFormCustomSelect").val(),
+      difficulty: $("#optDifficulty input:radio:checked").val(),
       favorite: $("#chkFavorite").val()
     },
     success: function(json) {
@@ -212,8 +202,8 @@ function updateStairway() {
       neighborhood: $("#txtNeighborhood").val(),
       photoURL: $("#txtPhoto").val(),
       numSteps: $("#txtNumSteps").val(),
-      rating: 5,
-      difficulty: "Medium",
+      rating: $("#inlineFormCustomSelect").val(),
+      difficulty: $("#optDifficulty input:radio:checked").val(),
       favorite: $("#chkFavorite").val()
     },
     success: function(json) {
@@ -401,23 +391,35 @@ function getFormHTML() {
             <input type='number' class='form-control' id='txtNumSteps' placeholder='Enter number of steps'>
           </div>
 
+          <label class='mr-sm-2' for='inlineFormCustomSelect'>Rating</label>
+          <select class='custom-select mb-2 mr-sm-2 mb-sm-0' id='inlineFormCustomSelect'>
+            <option selected>Select Rating</option>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+          </select>
+
+          <p></p>
+
           <fieldset class='form-group form-check-inline' id='optDifficulty'>
             <label>Difficulty</label>
             <div class='form-check form-check-inline'>
               <label class='form-check-label'>
-                <input type='radio' class='form-check-input' name='optionsRadios' id='optionsRadios1' value='easy' checked>
+                <input type='radio' class='form-check-input' name='optionsRadios' id='optionsRadios1' value='Easy' checked>
                 Easy
               </label>
             </div>
             <div class='form-check form-check-inline'>
               <label class='form-check-label'>
-                <input type='radio' class='form-check-input' name='optionsRadios' id='optionsRadios2' value='medium'>
+                <input type='radio' class='form-check-input' name='optionsRadios' id='optionsRadios2' value='Medium'>
                 Medium
               </label>
             </div>
             <div class='form-check form-check-inline'>
               <label class='form-check-label'>
-                <input type='radio' class='form-check-input' name='optionsRadios' id='optionsRadios3' value='difficult'>
+                <input type='radio' class='form-check-input' name='optionsRadios' id='optionsRadios3' value='Difficult'>
                 Difficult
               </label>
             </div>
