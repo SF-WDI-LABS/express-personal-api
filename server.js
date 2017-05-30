@@ -40,7 +40,7 @@ app.get('/api/mushrooms', function index(request, response) {
     if (err) {
       response.status(500).json({ error: err.message });
     } else {
-      response.json({});
+      response.json(allMushrooms);
     }
   });
 });
