@@ -7,6 +7,7 @@ var express = require('express'),
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
 app.use(function(req, res, next) {
@@ -20,6 +21,29 @@ app.use(function(req, res, next) {
  ************/
 
 // var db = require('./models');
+var db = require('./models');
+
+var nationalparks = [
+  {
+    park: "Death Valley"
+    location: "California"
+    image: "http://i.imgur.com/aNW2rb6.jpg"
+    year_established: "1994"
+  },
+  {
+    park: "Yosemite"
+    location: "California"
+    image: "http://i.imgur.com/3gIl6Eo.jpg"
+    year_established: "1890"
+  },
+  {
+    park: "Zion"
+    location: "Utah"
+    image: "http://i.imgur.com/5toZrZM.jpg"
+    year_established: "1919"
+  }
+];
+
 
 /**********
  * ROUTES *
@@ -55,10 +79,58 @@ app.get('/api', function apiIndex(req, res) {
       {method: "GET", path: "/api/profile", description: "Who I am and where I'm from"},
       {method: "GET", path: "/api/nationalparks", description: "Index of national parks I want to see"},
       {method: "POST", path: "/api/nationalparks", description: "Create a new national park I should see"},
-      {method: "PUT", path: "/api/nationalparks/:id", description: "Edit national park info"}, 
+      {method: "PUT", path: "/api/nationalparks/:id", description: "Edit national park info"},
       {method: "DELETE", path: "/api/nationalparks/:id", description: "Destroy/Remove national park"}
     ]
   })
+});
+
+//show all nationalparks
+app.get('/api/nationalparks', function (req, res) {
+  //send all nationalparks as JSON response
+  console.log('nationalparks index');
+  res.json(nationalparks);
+});
+
+//create new national park
+app.post('/api/nationalparks', function (req, res) {
+  //create new ntlpark with form data ('req.body')
+  console.log('nationalparks create', req.body);
+  var newPark = req.body;
+  //newBook._id = newBookUUID++;
+  nationalparks.push(newPark);
+  res.json(newPark);
+});
+
+//update/edit national park
+app.put('/api/nationalparks/:id', function(req, res) {
+  //get park id from url params ('req.params')
+  console.log('parks update', req.params);
+  var parkId = req.params.id;
+  // find the index of the park to remove
+  var updateParkIndex = nationalparks.findIndex(function(element, index) {
+    //params are strings
+    return (element._id === parseInt(req.params.id));
+  });
+  console.log('updating nationalparks with index', deleteParkIndex);
+  var parkToUpdate = nationalparks[deleteParkIndex];
+  nationalparks.splice(updateParkIndex, 1, req.params);
+  res.json(req.params);
+});
+
+//destroy/remove national park
+app.delete('/api/nationalparks/:id', function (req, res) {
+  // get park id from url params ('req.params')
+  console.log('parks delete', req.params);
+  var parkId = req.params.id;
+  // find the index of the park to remove
+  var deleteParkIndex = nationalparks.findIndex(function(element, index) {
+    return (element._id === parseInt(req.params.id));
+  });
+  console.log('deleting nationalpark with index', deleteParkIndex);
+  var parkToDelete = nationalparks[deleteParkIndex];
+  nationalparks.splice(deleteParkIndex, 1);
+  res.json(parkToDelete);
 });
 
 /**********
@@ -66,7 +138,9 @@ app.get('/api', function apiIndex(req, res) {
  **********/
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 3000, function() {
+  console.log('National Park app listening at http://localhost:3000/');
+});
 
 //  function () {
 //   console.log('Express server is up and running on http://localhost:3000/');
