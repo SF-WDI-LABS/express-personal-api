@@ -37,7 +37,7 @@ app.use(express.static('public'));
 * HTML Endpoints
 */
 
-app.get('/api/homepage', function homepage(req, res) {
+app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
