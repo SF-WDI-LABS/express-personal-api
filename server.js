@@ -28,18 +28,15 @@ app.use(function(req, res, next) {
 
 // GET all the restaurants
  app.get('/api/restaurant', function index(req, res) {
-   //console.log("Route to api/restaurant")
-   //console.log(req.body)
    db.Restaurant.find({}, function(err, allRestaurants){
      res.json(allRestaurants)
-
    })
- })
+ });
 
- app.get('/api/restaurant/:id', function show(req, res){
+ /*app.get('/api/restaurant/:id', function (req, res){
    console.log(req.params)
    console.log("Route to api/restaurants/:id")
- });
+ });*/
 
  app.post('/api/restaurant', function(req, res){
    let newRest = new db.Restaurant({
@@ -47,8 +44,9 @@ app.use(function(req, res, next) {
      number_of_stars: req.body.number_of_stars,
      type: req.body.type,
      address: req.body.address,
-     note: req.body.note
+     notes: req.body.notes
    })
+
 
    newRest.save(function(err, book){
      res.json(newRest)
@@ -90,14 +88,13 @@ app.get('/api', function apiIndex(req, res) {
   // But you should change almost every line of this response.
   res.json({
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
+    documentationUrl: "https://github.com/example-username/express-personal-api/README.md",
     baseUrl: "https://nameless-wildwood-79906.herokuapp.com/",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"},
-      {method: "GET", path:"/api/restaurants", description: "Data about all the best restaurants in Berkeley"},
-      {method: "POST", path: "/api/", description: "Create new entry for a great restaurant"}, // CHANGE ME
-      {method: "PUT", path: "/api/the-thing/:id", decription: "Update information about the restaurant"},
+      {method: "GET", path:"/api/restaurants", description: "Data about all favorite restaurants"},
+      {method: "POST", path: "/api/", description: "Create new entry for a great restaurant"},
       {method: "DELETE", path: "/api/the-thing/:id", description: "delete a restaurant"}
     ]
   })

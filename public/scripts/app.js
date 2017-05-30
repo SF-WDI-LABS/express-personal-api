@@ -94,14 +94,12 @@ function newRestSuccess(json) {
 
 function deleteRestSuccess(json) {
   var rest = json;
-  console.log(json);
   var restId = json._id;
-  console.log('deleted restaurant', restId);
-  // find the book with the correct ID and remove it from our allBooks array
+  // find the restaurant with the correct ID and remove it from our allRest array
   for(var index = 0; index < allRest.length; index++) {
     if(allRest[index]._id === restId) {
       allRest.splice(index, 1);
-      break;  // we found our book - no reason to keep searching (this is why we didn't use forEach)
+      break;
     }
   }
   render();
@@ -110,6 +108,7 @@ function deleteRestSuccess(json) {
 /*
 
 use restaurant name submitted as query param
+restaurants.name
 get image from yelp API
 return the image url
 find the restaurant by ID

@@ -25,7 +25,7 @@ var restaurant_data = [
   type: "California, American",
   number_of_stars: 5,
   address: "6317 College Ave Oakland, CA 94618",
-  image: "",
+  image: "https://resizer.otstatic.com/v2/profiles/legacy/15898.jpg",
   notes: "Favorite Spot"
 }
 ];
