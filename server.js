@@ -63,7 +63,7 @@ app.get('/api/mushrooms/:id', function show(request, response) {
 
 app.post("/api/mushrooms", function create(request, response) {
   let newShroom = new MushDB(request.body);
-  MushDB.save(function(err, savedMushroom) {
+  newShroom.save(function(err, savedMushroom) {
       if (err) {
         response.status(500).json({ error: err.message });
       } else {
@@ -72,15 +72,14 @@ app.post("/api/mushrooms", function create(request, response) {
     });
 });
 
-
 app.delete('/api/mushrooms/:id', function destroy(request, response) {
   let mushId = request.params.id;
   // find mushroom\ by id and remove
   MushDB.findOneAndRemove({ _id: mushId }, function (err, deletedMushroom) {
     if (err) {
-      res.status(500).json({ error: err.message });
+      response.status(500).json({ error: err.message });
     } else {
-      res.json(deletedMushroom);
+      response.json(deletedMushroom);
     }
   });
 });
