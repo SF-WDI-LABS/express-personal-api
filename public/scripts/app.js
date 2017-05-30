@@ -33,7 +33,7 @@ $(document).ready(function(){
             pies.forEach(function (pie) {
               $(".pie-list").append(`
                 <div class="pie" id="pie-${pie._id}">
-                  <p>${pie.donor_name} sent Bear ${pie.pie_quantity} ${pie.pie_type} pie(s)</p><img src="https://bearheartsbat.files.wordpress.com/2016/06/bouncypiebear.gif?w=1142" height="auto" width="100"><br><br>
+                  <p>${pie.donor_name} sent Bear ${pie.pie_quantity} ${pie.pie_type} pie(s)</p><img src="https://bearheartsbat.files.wordpress.com/2016/06/bouncypiebear.gif?w=1142" height="auto" width="200"><br><br>
                 </div>
               `);
             })
@@ -54,7 +54,6 @@ $(document).ready(function(){
             success: function onCreateSuccess(response) {
                 // add new pie donor to allPies
                 allPies.push(response);
-
                 // render all pie donations to views
                 render();
             }
@@ -86,7 +85,6 @@ $(document).ready(function(){
       success: function onUpdateSuccess(data) {
         // replace pie to update with newly updated version (data)
         allPies.splice(allPies.indexOf(pieToUpdate), 1, data);
-
         // render all pies to view
         render();
       }
