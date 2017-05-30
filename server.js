@@ -33,11 +33,6 @@ app.use(function(req, res, next) {
    })
  });
 
- /*app.get('/api/restaurant/:id', function (req, res){
-   console.log(req.params)
-   console.log("Route to api/restaurants/:id")
- });*/
-
  app.post('/api/restaurant', function(req, res){
    let newRest = new db.Restaurant({
      name: req.body.name,
@@ -47,11 +42,28 @@ app.use(function(req, res, next) {
      notes: req.body.notes
    })
 
-
    newRest.save(function(err, book){
      res.json(newRest)
    })
 })
+
+/*app.put('/api/restaurant/:id', function update(req, res) {
+  // get todo id from url params (`req.params`)
+  var restId = parseInt(req.params.id);
+
+  // find todo to update by its id
+  var restToUpdate = todos.filter(function (todo) {
+    return restaurants._id == restId;
+  })[0];
+
+  // update the todo's task
+  restToUpdate.task = req.body.task;
+
+  // update the todo's description
+  restToUpdate.notes = req.body.notes;
+
+  res.json(restToUpdate);
+}); */
 
 // delete restaurant
 app.delete('/api/restaurant/:id', function (req, res) {
@@ -65,27 +77,23 @@ app.delete('/api/restaurant/:id', function (req, res) {
 });
 
 
-// Serve static files from the `/public` directory:
-// i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));
-
-/*
- * HTML Endpoints
- */
 
 app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+// profile
 
-/*
- * JSON API Endpoints
- */
+app.get('/api/profile', function index(req, res) {
+  db.Profile.find({}, function(err, profile){
+    console.log(profile)
+    res.json(profile)
+  })
+});
+
 
 app.get('/api', function apiIndex(req, res) {
-  // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
-  // It would be seriously overkill to save any of this to your database.
-  // But you should change almost every line of this response.
   res.json({
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/example-username/express-personal-api/README.md",

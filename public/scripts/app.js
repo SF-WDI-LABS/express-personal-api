@@ -1,5 +1,3 @@
-console.log("Sanity Check: JS is working!");
-
 let allRest = [],
     $restList;
 
@@ -7,7 +5,6 @@ $(document).ready(function(){
 
   $restList = $('#restaurant_target')
 
-// your code
   $.ajax({
     method: 'GET',
     url: '/api/restaurant',
@@ -24,6 +21,37 @@ $(document).ready(function(){
       });
   });
 
+/*
+  .on('submit', '.update-rest', function (event) {
+      event.preventDefault();
+
+      // find the todo's id (stored in HTML as `data-id`)
+      var restId = $(this).closest('.notes').attr('data-id');
+
+      // find the todo to update by its id
+      var restToUpdate = allRest.filter(function (notes) {
+        return restaurants._id == restId;
+      })[0];
+
+      // serialze form data
+      var updatedRest = $(this).serialize();
+
+      // PUT request to update todo
+      $.ajax({
+        type: 'PUT',
+        url: '/api/restaurant/' + restId,
+        data: updatedRest,
+        success: function(data) {
+          // replace todo to update with newly updated version (data)
+          allRest.splice(allRest.indexOf(restToUpdate), 1, data);
+
+          // render all todos to view
+          render();
+        }
+      });
+    })
+    */
+
   $restList.on('click', '.deleteBtn', function() {
    console.log('clicked delete button to', '/api/restaurant/'+$(this).attr('data-id'));
    $.ajax({
@@ -35,6 +63,7 @@ $(document).ready(function(){
 
 });
 
+// new restaurant template
 function getRestHtml(restaurants){
       return `
         <hr>
@@ -86,6 +115,7 @@ function handleSuccess(json) {
   render();
 }
 
+// add new rest to list
 function newRestSuccess(json) {
   $('#rest-form input').val('');
   allRest.push(json);
@@ -95,7 +125,7 @@ function newRestSuccess(json) {
 function deleteRestSuccess(json) {
   var rest = json;
   var restId = json._id;
-  // find the restaurant with the correct ID and remove it from our allRest array
+  // find the restaurant with the correct ID and remove it from allRest array
   for(var index = 0; index < allRest.length; index++) {
     if(allRest[index]._id === restId) {
       allRest.splice(index, 1);
