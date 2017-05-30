@@ -25,18 +25,21 @@ var db = require('./models');
 
 var nationalparks = [
   {
+    _id: 1,
     park: "Death Valley"
     location: "California"
     image: "http://i.imgur.com/aNW2rb6.jpg"
     year_established: "1994"
   },
   {
+    _id: 2,
     park: "Yosemite"
     location: "California"
     image: "http://i.imgur.com/3gIl6Eo.jpg"
     year_established: "1890"
   },
   {
+    _id: 3,
     park: "Zion"
     location: "Utah"
     image: "http://i.imgur.com/5toZrZM.jpg"
@@ -44,6 +47,7 @@ var nationalparks = [
   }
 ];
 
+var newParkIDUpdated = 4;
 
 /**********
  * ROUTES *
@@ -97,7 +101,7 @@ app.post('/api/nationalparks', function (req, res) {
   //create new ntlpark with form data ('req.body')
   console.log('nationalparks create', req.body);
   var newPark = req.body;
-  //newBook._id = newBookUUID++;
+  newPark._id = newParkIDUpdated++;
   nationalparks.push(newPark);
   res.json(newPark);
 });

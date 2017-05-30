@@ -21,16 +21,16 @@ var nationalparks_list = [
   }
 ];
 
-db.Park.remove({}, function(err, books){
+db.Park.remove({}, function(err, parks){
   if(err) {
     console.log('Error occured in removing park', err);
   } else {
     console.log('removed all parks');
 
 
-    db.Park.create(nationalparks_list, function(err, books){
+    db.Park.create(nationalparks_list, function(err, parks){
       if (err) { return console.log('err', err); }
-      console.log("created", nationalparks.length, "parks");
+      console.log("created new national park", park._id);
       process.exit();
     });
   }
