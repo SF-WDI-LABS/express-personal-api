@@ -18,20 +18,19 @@ $(document).ready(function() {
     }
   })
 
-  $('#mushroom_input').on('submit', function (event) { // listen for form submission
+  $('#mushroom_input').on('submit', function(event) { // listen for form submission
     event.preventDefault();
     let newShroom = $(this).serialize();
-
-
-// Adding a single mushroom
-  $.ajax({
-    method: "POST",
-    url: apiUrl,
-    data: newShroom,
-    success: function onCreateSuccess(response) {
-      console.log(response);
-      allMushrooms.push(response);
-    }
+    // Adding a single mushroom
+    $.ajax({
+      method: "POST",
+      url: apiUrl,
+      data: newShroom,
+      success: function onCreateSuccess(response) {
+        console.log(response);
+        allMushrooms.push(response);
+      }
+    });
   });
 
 
@@ -45,11 +44,11 @@ function addMushrooms(entries){
     let $loc =         entries[i].locationFound;
     let $eat =         entries[i].edibility;
     let $cert =        entries[i].certainty;
-    let $photosrc =    entries[i].photo);
+    let $photosrc =    entries[i].photo;
 
     // HTML Variables
     let $imgCont =    '<div class="col-sm-12 col-md-6 nopadding image-container"></div>'; // Image-container div
-    let $photo =      `<img class="mushroom-pic" src="${$photosrc}"`>; // Image
+    let $photo =      `<img class="mushroom-pic" src="${$photosrc}">`; // Image
 
     // The below variable/value pairing is ugly. It's a bunch of nested divs that
     // take a few variables, and I don't yet know of an easier way to put it all together.
