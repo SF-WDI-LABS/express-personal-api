@@ -16,11 +16,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-/************
- * DATABASE *
- ************/
-
-// var db = require('./models');
 
 /**********
  * ROUTES *
@@ -75,7 +70,6 @@ app.get('/api/profile', function profile(req, res) {
               {name: 'Mondu', type: 'Dog', breed: 'Samoyed'}]
     })
 });
-
 
 // Index: Get all movies.
 app.get('/api/movies', function showMovies(req, res) {
