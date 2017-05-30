@@ -22,28 +22,6 @@ app.use(function(req, res, next) {
 var db = require('./models');
 
 
-var things = [
-  {
-    id: 1,
-    name: "thing1",
-    description: "thing1 description"
-  },
-  {
-    id: 2,
-    name: "thing2",
-    description: "thing2 description"
-  },
-  {
-    id: 3,
-    name: "thing3",
-    description: "thing3 description"
-  },
-  {
-    id: 4,
-    name: "thing4",
-    description: "thing4 description"
-  }
-]
 
 /**********
  * ROUTES *
@@ -105,95 +83,6 @@ app.get('/api/profile', function apiIndex(req, res) {
     pets: []
   })
 });
-
-app.get('/api/things', function index(req, res) {
-
-  // find all the things
-  db.Thing.find({}, function(err, docs) {
-    res.json(docs);
-  });
-
-  //res.json(things);
-});
-
-app.get('/api/things/:id', function show(req, res) {
-  thingID = parseInt(req.params.id);
-  console.log("thingID: ", thingID);
-  things.forEach(function(element, index) {
-    if (element.id === thingID) {
-      res.json(element);
-      return;
-    }
-  })
-});
-
-app.post('/api/things/', function create(req, res) {
-  console.log("req body: ", req.body);
-  console.log("req query: ", req.query);
-  /*
-  // for use with query ? (postman)
-  var newThing = new db.Thing ({
-    name: req.query.name,
-    description: req.query.description
-  });
-  */
-  // for use with data: {} or body parser (elements within form)
-  var newThing = new db.Thing ({
-    name: req.body.name,
-    description: req.body.description
-  });
-  newThing.save();
-  things.push(req.body);
-  res.json(req.body);
-});
-
-app.put('/api/things/:id', function update(req, res) {
-  console.log('put params:', req.params);
-  var id = req.params.id;
-  var updatedThing = {
-    name: req.body.name,
-    description: req.body.description
-  };
-  db.Thing.findOneAndUpdate({ _id: id }, updatedThing, {}, function(err, updatedThing) {
-    res.json(updatedThing);
-  })
-
-  /*
-  thingID = parseInt(req.params.id);
-  console.log("put thingID: ", thingID);
-  console.log("req query: ", req.query);
-  things.forEach(function(element, index) {
-    if (element.id === thingID) {
-      element.name = req.query.name;
-      element.description = req.query.description;
-      res.json(element);
-      return;
-    }
-  })
-  */
-
-});
-
-app.delete('/api/things/:id', function destroy(req, res) {
-  thingID = req.params.id;
-  console.log("destroy thingID: ", thingID);
-  db.Thing.findOneAndRemove({ _id: thingID }, function(err, deletedThing) {
-    res.json(deletedThing);
-  });
-  /*
-  things.forEach(function(element, index) {
-    if (element.id === thingID) {
-      things.splice(index, 1);
-      res.json(element);
-      return;
-    }
-  })
-  */
-});
-
-
-
-
 
 
 
