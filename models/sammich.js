@@ -3,12 +3,12 @@ var Schema = mongoose.Schema;
 // mongoose.Promise = global.Promise;
 
 var sammichSchema = new Schema({
-  resturantName: String,
-  fried: Boolean,
-  description: String,
-  address: String,
-  coordinates: String,
-  created_at: {
+    name: String,
+    description: String,
+    image: String,
+    address: String,
+    coordinates: Array,
+    created_at: {
     type: Date,
     default: Date.now
   }
