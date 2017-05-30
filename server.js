@@ -21,7 +21,7 @@ app.use(function(req, res, next) {
 
 //====================================
 // ROUTES
-let Mushroom = db.Mushroom;
+let MushDB = db.Mushroom;
 
 // Serve static files from the `/public` directory:
 app.use(express.static('public'));
@@ -33,10 +33,10 @@ app.use(express.static('public'));
 app.get('/', function homepage(request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
+
 // return all mushrooms
 app.get('/api/mushrooms', function index(request, response) {
-  Mushroom.find({}, function(err, allMushrooms) {
-    response.send(mushrooms); // Return all mushrooms
+  MushDB.find({}, function(err, allMushrooms) {
     if (err) {
       response.status(500).json({ error: err.message });
     } else {
@@ -48,7 +48,7 @@ app.get('/api/mushrooms', function index(request, response) {
 // return a single mushroom
 app.get('/api/mushrooms/:id', function show(request, response) {
   let id = request.params.id;
-  Mushroom.findOne({_id: id}, function(err, mushroom) {
+  MushDB.findOne({_id: id}, function(err, mushroom) {
     if (err) {
       if (err.name === "CastError") {
         response.status(404).json({ error: "Nothing found by this ID." });
@@ -63,7 +63,7 @@ app.get('/api/mushrooms/:id', function show(request, response) {
 
 app.post("/api/mushrooms", function create(request, response) {
   let newMushroom = new Mushroom(request.params.body);
-  newMushroom.save(function(err, savedMushroom) {
+  MushDB.save(function(err, savedMushroom) {
       if (err) {
         response.status(500).json({ error: err.message });
       } else {
@@ -72,24 +72,18 @@ app.post("/api/mushrooms", function create(request, response) {
     });
 });
 
-// create new todo
-app.post('/api/todos', function create(req, res) {
-  // create new todo with form data (`req.body`)
-  var newTodo = new db.Todo(req.body);
 
-  // save new todo in db
-
+app.delete('/api/mushrooms/:id', function destroy(request, response) {
+  let mushId = req.params.id;
+  // find mushroom\ by id and remove
+  MushDB.findOneAndRemove({ _id: mushId }, function (err, deletedMushroom) {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      res.json(deletedMushroom);
+    }
+  });
 });
-
-app.delete("/api/unicorns/:id", function destroy(request, response) {
-  response.sendStatus(204); // Return delete-succeess message
-});
-
-app.put("/api/unicorns/:id", function update(request, response) {
-  response.send({}) // Return the updated mushroom
-});
-
-
 
 //====================================
 // JSON API Endpoints

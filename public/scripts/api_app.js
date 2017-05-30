@@ -5,6 +5,8 @@ console.log("You're sane.");
 $(document).ready(function() {
 
   let apiUrl = '/api/mushrooms'; //Base URL
+  let allMushrooms = [];
+
 
 // Getting all the mushrooms
   $.ajax({
@@ -12,28 +14,23 @@ $(document).ready(function() {
     url: apiUrl,
     success: function addMushrooms(data) {
       console.log('GET response:', data);
+      allMushrooms = data.mushrooms;
     }
   })
 
-
-  let $addShroom = $('#mushroom_input'); // form to add a new mushroom
-  $addShroom.on('submit', function (event) { // listen for form submission
+  $('#mushroom_input').on('submit', function (event) { // listen for form submission
     event.preventDefault();
-    let shroom = $(this).serialize();
+    let newShroom = $(this).serialize();
+
 
 // Adding a single mushroom
   $.ajax({
     method: "POST",
     url: apiUrl,
-    data: shroom,
+    data: newShroom,
     success: function onCreateSuccess(response) {
       console.log(response);
-
-      // add new todo to `allTodos`
-      allTodos.push(response);
-
-      // render all todos to view
-      render();
+      allMushrooms.push(response);
     }
   });
 
@@ -71,6 +68,6 @@ function addMushrooms(entries){
   }
 };
 
-addMushrooms();
+addMushrooms(allMushrooms);
 
 });
