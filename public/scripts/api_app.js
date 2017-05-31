@@ -86,8 +86,8 @@ $(document).ready(function() {
       $('#gallery').append(template());
     }
 
-    $('.delete-entry').on('click', function(event) {
-      let delEyeD = $('.delete-entry').closest('.entry').attr('data-id');
+    $('.entry').on('click', 'input.delete-entry', function(event) {
+      let delEyeD = $(event.delegateTarget).attr('data-id');
       let mushDelete = allMushrooms.filter(function(mushroom) {
         return mushroom._id == delEyeD;
       })[0];
