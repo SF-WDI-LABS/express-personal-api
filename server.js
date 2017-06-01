@@ -104,11 +104,15 @@ app.post("/api/pies", function create(req, res) {
     // create new pie donation with form data (`req.body`)
     console.log('POST REQUEST FOR DATA: ', req.body);
     // The object of the post request containing data for the Pie model
-    const postData = req.body;
-    Pie.create(postData, function(err, pie) {
-        console.log('Added new pie based on POST data.');
-    })
-    res.json(postData);
+    var newPie = new Pie(req.body);
+
+    newPie.save(function (err, pie) {
+        if(err) {
+            console.log("no new pie(s) made. :( try again.)", err);
+            res.sendStatus(404);
+        }
+        res.json(pie);
+    });
 });
 
 // RETRACT AND REMOVE PIE DONATION ORDER

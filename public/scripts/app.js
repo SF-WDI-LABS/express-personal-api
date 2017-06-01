@@ -10,11 +10,13 @@ $(document).ready(function(){
         let newDate = new Date();
         let diff = Math.round(newDate-startStamp);
         let days = Math.floor(diff/(1000*60*60*24));
-        let hours = Math.floor(diff/(1000*60*60));
-        let minutes = Math.floor(diff/(1000*60));
-        let seconds = Math.floor(diff/1000);
+        let hours = Math.floor(diff/(1000*60*60)%24);
+        let minutes = Math.floor(diff/(1000*60)%60);
+        let seconds = Math.floor((diff/1000)%60);
 
-        document.getElementById("time-elapsed").innerHTML = days +" day(s), "+ hours +" hour(s), "+ minutes +" minute(s), "+ seconds +" second(s) wasting away without pie";
+        // set counter to restart and run once after each pie donation
+
+        $('#new-pie-time-lapse').append(days +" day(s), "+ hours +" hour(s), "+ minutes +" minute(s), "+ seconds +" second(s) wasting away without pie")
     };
 
     setInterval(updateClock, 1000); // clock changes by 1 second
@@ -22,14 +24,13 @@ $(document).ready(function(){
     // GET ALL PIES ON PAGE LOAD
     let template;
     let $pieList = $('.pie-list');
-    let allPies = [];
 
     // display on pie donations as HTML
     $.ajax({
         method: "GET",
         url: "/api/pies",
         success: function(pies) {
-            // SET 'allPies' to pie data from API
+            // SET 'Pies' to pie data from API
             pies.forEach(function (pie) {
               $(".pie-list").append(`
                 <div class="pie" id="pie-${pie._id}">
@@ -41,7 +42,6 @@ $(document).ready(function(){
         error: function() {
           alert("Pie Error! :(");
         }
-
     })
     //serialize form data
     var newPie = $(this).serialize();
@@ -63,7 +63,7 @@ $(document).ready(function(){
 
     // for update: submit event on any .update-pie form
   // ... inside the piesList element
-  $pieList.on('submit', '.update-piedonors', function (event) {
+  $pieList.on('submit', '.pie-list', function (event) {
         event.preventDefault();
 
     // find the pie's id (stored in HTML as `data-id`)
@@ -93,50 +93,27 @@ $(document).ready(function(){
           method: 'POST',
           url: '/api/pies' + $(this).attr('data-id'),
           data: $(this).serializeArray(),
+          success: newPieDonor,
+          error: newPieError
       })
   })
-  // for delete: click event on any `.delete-pie` button
-  // ... inside the pieList element
-  $pieList.on('click', '.delete-pie', function (event) {
-    event.preventDefault();
 
-    // find the pie's id (stored in HTML as `data-id`)
-    var pieId = $(this).closest('.pie').attr('data-id');
-
-    // find the pie to delete by its id
-    var pieToDelete = allPies.filter(function (pie) {
-      return pie._id == pieId;
-    })[0];
-
-    // DELETE request to delete pie
-    $.ajax({
-      type: 'DELETE',
-      url: "/api/pies" + '/' + pieId,
-      success: function onDeleteSuccess(data) {
-        // remove deleted  from all pies
-        allPies.splice(allPies.indexOf(pieToDelete), 1);
-
-        // render all pies to view
-        render();
-      }
-    })
-  });
     function render () {
         // empty existing posts from view
         $pieList.empty();
 
     };
-    function handleSuccess(json) {
-        allPies = json;
+    function handleSuccess(jsonData) {
+        allPies = jsonData;
         render();
     }
     function handleError(e) {
         console.log('oh no!');
         $('.pie-list').text('Failed to pie donations, is the server working?');
     }
-    function newPieDonar(json) {
+    function newPieDonor(jsonData) {
        $('#donate-pie input').val('');
-       allPies.push(json);
+       allPies.push(jsonData);
        render();
     }
     function newPieError() {
