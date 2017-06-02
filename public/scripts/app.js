@@ -49,13 +49,17 @@ $(document).ready(function(){
 
     // pass JSON pie data to HTML
     function getPieHTML(pie) {
-        return `<div class="pie" id="pie-${pie._id}">
-                <img src=https://bearheartsbat.files.wordpress.com/2016/06/bouncypiebear.gif?w=1142 height=auto width=200>
-                <p>${pie.donor_name} sent Bear ${pie.pie_quantity} ${pie.pie_type} pie(s)</p>
-            </div>
-            <div class="col-6-md">
-                <button type="button" class="btn btn-danger">Give More Pies</button><br><br>
-            </div>`;
+        return `<div class="pie container" id="pie-${pie._id}">
+                    <div class="row">
+                        <div class="col col-sm-11">
+                            <img src=https://bearheartsbat.files.wordpress.com/2016/06/bouncypiebear.gif?w=1142 height= 150px width= auto>
+                        </div>
+                        <div class="col col-sm-11">
+                            <p>${pie.donor_name} sent Bear ${pie.pie_quantity} ${pie.pie_type} pie(s)</p>
+                            <button type="button" class="btn btn-danger">Send More <span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button>
+                        </div>
+                    </div>
+                </div><br>`;
     }
 
     function getAllPiesHTML(pies) {
