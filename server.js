@@ -87,7 +87,7 @@ app.get("/api/profile", function profile(req, res){
 // SHOW ALL THE PIES
 app.get("/api/pies", function index(req, res) {
     Pie.find({}, function(err, pies) {
-        res.send(pies);
+        res.json(pies);
     });
 });
 
