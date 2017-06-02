@@ -6,7 +6,7 @@ var express = require('express'),
 // parse incoming urlencoded form data
 // and populate the req.body object
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
@@ -97,7 +97,7 @@ app.post('/api/places', function create(req, res) {
       res.sendStatus(500);
     }
   console.log("Success");
-  res.redirect('/');
+  res.redirect(req.get('referer'));
 });
   //res.json(newPlace);
   //res.sendFile(__dirname + '/views/index.html');
@@ -114,7 +114,6 @@ app.delete('/api/places/:id', function destroy(req, res) {
       console.log("index error: " + err);
       res.sendStatus(500);
     }
-    //res.send("Deleted Successfully place with id: " + placeId );
     console.log("Deleted Successfully place with id: " + placeId);
     res.redirect('/');
 
@@ -141,9 +140,8 @@ app.put('/api/places/:id', function(req, res) {
             if (err) {
                console.log('update place failed!');
             }
-            console.log(updatedPlaceListings);
-            res.send(updatedPlaceListings);
-            console.log('place updated!');
+            //res.send(updatedPlaceListings);
+            res.redirect(req.get('referer'));
         });
     });
 });

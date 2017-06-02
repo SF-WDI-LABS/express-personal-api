@@ -43,14 +43,15 @@ $.ajax({
 
 
   $placesList.on('click', '.updateBtn', function() {
-    console.log('clicked update button to', '/api/places/'+$(this).attr('data-id'));
+    var id = $(this).attr('data-id');
+    console.log('clicked update button to', '/api/places/'+ id);
       $("#updateModal").show();
     $('#updateForm').on('submit', function(e) {
-      
+
       e.preventDefault();
       $.ajax({
         method: 'PUT',
-        url: '/api/places/'+$(this).attr('data-id'),
+        url: '/api/places/'+ id,
         data: $(this).serialize(),
         success: updatePlaceSuccess,
         error: updatePlaceError
@@ -61,7 +62,6 @@ $.ajax({
 
 
   function getProfileHtml(profile) {
-    console.log(profile);
     return `<div class="col-md-4">
       <img id="self" class="img-responsive" src="/images/me.png" alt="profile photo">
     </div>
@@ -116,7 +116,7 @@ $.ajax({
   // empty existing posts from view
   $placesList.empty();
 
-  // pass `allBooks` into the template function
+  // pass `allPlaces` into the template function
   var placesHtml = getAllPlacesHtml(allPlaces);
 
   // append html to the view
