@@ -7,6 +7,8 @@
     <title>Younji's Movie API</title>
 
     <!-- STYLESHEETS -->
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/styles.css">
 
@@ -54,7 +56,7 @@
             {{/each}}
         </ul>
     </script>
-      
+
 <!--This is a separate template just to show one movie.-->
     <script id="one-movie-template" type="text/x-handlebars-template">
         <h2>{{title}}</h2>
@@ -63,7 +65,7 @@
         <p>{{tomatoMeter}}</p>
         <p>{{haveIseenIt}}</p>
         <button class='delete btn btn-danger' data-id={{_id}}>Delete</button>
-        
+
         <button class='home btn btn-success btn-lg btn-block'>Go back home</button>
 
         <form class='editMovieForm'>
@@ -100,7 +102,7 @@
         <div class="col-md-8 col-md-offset-2">
           <h1>Younji's Movie API</h1>
           <h4><a href="/api">Read My API Documentation</a></h4>
-          <main></main>    
+          <main></main>
         </div>
       </div>
     </div>

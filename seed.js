@@ -5,7 +5,7 @@
 
 let movie_listings = [
     {
-        title: 'Logan',
+        title: 'Logan1231231',
         genre: ['Action & Adventure', 'Drama', 'Science & Fiction', 'Fantasy'],
         tomatoMeter: 92,
         haveIseenIt: false, 
