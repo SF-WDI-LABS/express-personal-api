@@ -4,14 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+    <title>Bear Hearts Pie</title>
 
     <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/styles.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Barrio|Poppins" rel="stylesheet">
     <!-- VENDOR SCRIPTS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
@@ -19,9 +21,46 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
+        <div class="col-md-10 col-md-offset-1">
+          <h1>Bear Hearts Pie</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div id="new-pie-time-lapse"></div>
+            <img class="grumpy-bear" src="/images/grumpybear.png">
+            <p>Hello! My name is Bear. I love to eat pies &mdash; sweet and savory &mdash; but I can never seem to get enough. <strong><br>Won't you ease my grumbly tummy and feed me a pie?</strong></p>
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-1">
+          <h3>Send me a pie!</h3>
+          <form method="POST" action="/api/pies" id="donate-pie">
+            <div class="form-group">
+              <label for="pie-donor">Donor</label>
+              <input type="text" name="donor_name" class="form-control" value="" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <label for="pie-type">Pie Type</label>
+              <input type="text" name="pie_type" class="form-control" value="" placeholder="ex: strawberry apple">
+            </div>
+            <div class="form-group">
+              <label for="pie-quantity">Amount of Pies</label>
+              <input class="form-control" name="pie_quantity" type="number" value="" placeholder="ex: 2">
+            </div>
+                <button type="submit" class="btn btn-warning">Feed Bear</button>
+          </form>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h3>Pies for Bear</h3>
+          <div class="pie-list"></div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group" id="update-pie-donation">
         </div>
       </div>
     </div>
