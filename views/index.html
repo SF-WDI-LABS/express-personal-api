@@ -1,29 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/styles.css">
+  <title>Blank</title>
 
-    <!-- VENDOR SCRIPTS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <!-- STYLESHEETS -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/styles.css">
 
-    <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/app.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
-        </div>
+  <!-- VENDOR SCRIPTS -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+  <!-- APPLICATION SCRIPTS -->
+  <script src="/scripts/app.js"></script>
+
+  <!-- GOOGLE FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Anton|Archivo+Narrow" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 header">
+        <h1 class="title">Good Eating</h1>
+        <p class="slug-line">A custom list of your favorite restaurants!</p>
       </div>
     </div>
-  </body>
+  </div>
+  <div class="container">
+    <div class="col-md-10 col-md-offset-1">
+      <h4 class="form-header">New Favorites</h4>
+    <form id="rest-form">
+      <div class="row">
+        <div class="col-sm-4">
+          <label for="restaurant">Restaurant</label>
+          <input type="text" class="form-control" name="name">
+        </div>
+        <div class="col-sm-7">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" name="address">
+        </div>
+      </div>
+      <div class="row">
+      <div class="form-group col-xs-1">
+        <label for="Select1">Rating</label>
+        <select class="form-control" name="number_of_stars">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="col-sm-3">
+        <label for="notes">Type</label>
+        <input type="text" class="form-control" name="type">
+      </div>
+      <div class="col-sm-7">
+        <label for="notes">Notes</label>
+        <input type="text" class="form-control" name="notes">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 main">
+        <div id="restaurant_target"></div>
+      </div>
+    </div>
+  </div>
+  <footer class="bd-footer text-muted">
+    <div class="container">
+      <ul class="bd-footer-links">
+        <li class="footer-link"><a href="/api">API Documentation</a></li>
+        <li class="footer-link"><a href="https://github.com/spragala">Github</a></li>
+    </div>
+  </footer>
+</body>
+
 </html>

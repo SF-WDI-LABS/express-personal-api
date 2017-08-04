@@ -1,10 +1,103 @@
 body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
 }
 
-h1 {
-  margin-top: 100px;
+.title {
+  text-transform: uppercase;
+  font-family: 'Anton', sans-serif;
+  font-size: 53px;
+  letter-spacing: .045em;
+}
+
+.slug-line {
+  font-family: 'Archivo Narrow', sans-serif;
+  letter-spacing: .03em;
+  font-size: 18px;
+}
+
+.form-header {
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  margin-top: 20px;
+}
+
+form {
+  margin: 20px 0 0 60px;
+}
+
+label {
+  font-family: 'Archivo Narrow', sans-serif;
+  letter-spacing: .03em;
+}
+
+.header {
+  margin-top: 50px;
   text-align: center;
+  background: url("../images/eureka!-restauarant-berkeley-02.jpg") no-repeat center center;
+  height: 200px;
+  color: #fff;
+}
+
+.main {
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+
+select.form-control {
+  width: 40px;
+}
+
+.restaurant-name{
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.rating {
+  font-size: 13px;
+}
+
+.address {
+  font-size: 14px;
+}
+
+.images {
+  height: 70px;
+  width: 70px;
+}
+
+.deleteBtn {
+  margin-top: 40px;
+  border: none !important;
+}
+
+span {
+  color: #dddbdb;
+}
+
+footer {
+  background-color: #dddbdb;
+  height: 40px;
+}
+
+.footer-link {
+  list-style: none;
+  display: inline;
+  margin-right: 20px;
+}
+
+.bd-footer-links {
+  margin-top: 10px;
+}
+
+footer a {
+  color: #fff;
 }

@@ -1,6 +1,7 @@
 // require express and other modules
 var express = require('express'),
-    app = express();
+    app     = express(),
+    db      = require('./models');
 
 // parse incoming urlencoded form data
 // and populate the req.body object
@@ -19,42 +20,92 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
 
 /**********
  * ROUTES *
  **********/
 
-// Serve static files from the `/public` directory:
-// i.e. `/images`, `/scripts`, `/styles`
-app.use(express.static('public'));
 
-/*
- * HTML Endpoints
- */
+// GET all the restaurants
+ app.get('/api/restaurant', function index(req, res) {
+   db.Restaurant.find({}, function(err, allRestaurants){
+     res.json(allRestaurants)
+   })
+ });
+
+ app.post('/api/restaurant', function(req, res){
+   let newRest = new db.Restaurant({
+     name: req.body.name,
+     number_of_stars: req.body.number_of_stars,
+     type: req.body.type,
+     address: req.body.address,
+     notes: req.body.notes
+   })
+
+   newRest.save(function(err, book){
+     res.json(newRest)
+   })
+})
+
+/*app.put('/api/restaurant/:id', function update(req, res) {
+  // get todo id from url params (`req.params`)
+  var restId = parseInt(req.params.id);
+
+  // find todo to update by its id
+  var restToUpdate = todos.filter(function (todo) {
+    return restaurants._id == restId;
+  })[0];
+
+  // update the todo's task
+  restToUpdate.task = req.body.task;
+
+  // update the todo's description
+  restToUpdate.notes = req.body.notes;
+
+  res.json(restToUpdate);
+}); */
+
+// delete restaurant
+app.delete('/api/restaurant/:id', function (req, res) {
+  // get rest id from url params (`req.params`)
+  console.log('restaurant delete', req.params);
+  var restId = req.params.id;
+  // find the index of the book we want to remove
+  db.Restaurant.findOneAndRemove({ _id: restId}, function (err, deletedRest) {
+    res.json(deletedRest);
+  });
+});
+
+
+app.use(express.static('public'));
 
 app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+// profile
 
-/*
- * JSON API Endpoints
- */
+app.get('/api/profile', function (req, res) {
+  console.log(db.Profile)
+  db.Profile.find({}, function(err, profile){
+    console.log(profile)
+    res.json(profile)
+  })
+});
+
 
 app.get('/api', function apiIndex(req, res) {
-  // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
-  // It would be seriously overkill to save any of this to your database.
-  // But you should change almost every line of this response.
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
+    documentationUrl: "https://github.com/spragala/express-personal-api/README.md",
+    baseUrl: "https://nameless-wildwood-79906.herokuapp.com/",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", path: "/api/profile", description: "Data about me"},
+      {method: "GET", path:"/api/restaurants", description: "Data about all favorite restaurants"},
+      {method: "POST", path: "/api/", description: "Create new entry for a great restaurant"},
+      {method: "DELETE", path: "/api/restaurants/:id", description: "delete a restaurant"},
+      {method: "UPDATE", path: "check back soon!" }
     ]
   })
 });
