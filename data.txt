@@ -1,0 +1,88 @@
+{
+  "name": "HTML/CSS",
+  "language": "markup",
+  "difficulty": "easy",
+  "popularity": 100,
+  "salary": "$N/A"
+}
+
+{
+  "name": "JavaScript",
+  "language": "scripting",
+  "difficulty": "medium",
+  "popularity": 95,
+  "salary": "$93,410"
+}
+
+{
+  "name": "Python",
+  "language": "programming",
+  "difficulty": "easy",
+  "popularity": 90,
+  "salary": "$104,228"
+}
+
+
+{
+  "name": "Java",
+  "language": "programming",
+  "difficulty": "difficult",
+  "popularity": 85,
+  "salary": "$99,104"
+}
+
+{
+  "name": "C/C++",
+  "language": "programming",
+  "difficulty": "difficult",
+  "popularity": 80,
+  "salary": "$91,449"
+}
+
+{
+  "name": "PHP",
+  "language": "programming",
+  "difficulty": "medium",
+  "popularity": 75,
+  "salary": "$88,550"
+}
+
+{
+  "name": "Objective-C",
+  "language": "programming",
+  "difficulty": "difficult",
+  "popularity": 70,
+  "salary": "$105,700"
+}
+
+{
+  "name": "C#",
+  "language": "programming",
+  "difficulty": "difficult",
+  "popularity": 65,
+  "salary": "$92,787"
+}
+
+{
+  "name": "Swift",
+  "language": "programming",
+  "difficulty": "difficult",
+  "popularity": 60,
+  "salary": "N/A"
+}
+
+{
+  "name": "JSON",
+  "language": "N/A",
+  "difficulty": "medium",
+  "popularity": 55,
+  "salary": "$N/A"
+}
+
+{
+  "name": "Ruby",
+  "language": "programming",
+  "difficulty": "medium",
+  "popularity": 50,
+  "salary": "$107,547"
+}
