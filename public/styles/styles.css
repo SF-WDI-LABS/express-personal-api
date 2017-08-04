@@ -1,10 +1,357 @@
+/*=================================================
+*Structrure*/
+
+html,
 body {
-  color: #333;
-  font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+    height: 100%
 }
 
-h1 {
-  margin-top: 100px;
+body {
+  background-color: #F1F1F1;
+}
+
+.container {
+  width: 100%;
+  /*padding:0;*/
+  margin:0;
+}
+/*header*/
+
+header {
+    background-color: #FAFAFA;
+}
+
+header div {
+    width: 100%
+}
+
+div.banner {
+  height: 24px;
+  background-color: #666;
+}
+
+nav {
+  clear:both;
+  margin-top: 24px;
+}
+
+nav div {
+  position: relative;
+  float: left;
+  display: inline;
+  padding: 20px 30px;
+  border-bottom: 5px solid #666;
+  background-color: #CCC;
+}
+
+/*Main*/
+
+main div.project-content-thought,
+main div.project-content-dev,
+main div.project-content-design
+ {
+    padding-top: 24px;
+}
+
+main {
+  margin-bottom: 130px;
+}
+
+main p {
+  padding: 10px;
+  height: 100%;
+}
+
+div.project-content-dev {
+  background-color: #FFF;
+}
+
+div.entry {
+  clear: both;
+  padding: 15px;
+}
+
+div.image-container {
+  width: 50%;
+  padding: 15px;
+}
+
+div.edibility-label {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0,0,0,.4);
+  color: white;
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+}
+
+div.certainty {
+  display: inline;
+  position: relative;
+  float: left;
+  width: 25%;
+  line-height: 20px;
+}
+
+div.percentage {
+  font-size: 18px;
+  font-weight: 300;
   text-align: center;
 }
+
+div.certain {
+  font-size: 14px;
+  text-align: center;
+}
+
+div.edible-poisonous{
+  display: inline;
+  position: relative;
+  float: left;
+  margin: 0 auto;
+  font-size: 18px;
+  text-align: center;
+  width: 75%;
+  height: 100%;
+  line-height: 40px;
+
+}
+
+/*Footer*/
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #666;
+}
+
+div.footer-dev {
+  padding: 10px 0;
+  background-color: #FFF;
+  color: #666;
+  text-align: center;
+}
+
+div.footer-thought,
+div.footer-design {
+  padding: 10px 0;
+  background-color: #333;
+  text-align: center;
+}
+
+
+
+
+/**=================================================
+Text and Icon Styling*/
+
+h1 {
+  text-align: center;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 200;
+  font-size: 24px;
+  text-decoration: none;
+  margin: 0 auto;
+  color: #333;
+}
+
+h2 {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: italic;
+  text-decoration: none;
+  color: #333;
+  margin-top: 10px;
+  padding: 10px 0 0 10px;
+}
+
+h3 {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+h4 {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  color: #333;
+}
+
+main {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 12px;
+  height: 100%;
+}
+
+footer {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  vertical-align: text-bottom;
+}
+
+div.banner i {
+  float:right;
+  padding: 2px 15px 2px 0;
+  color: #FFF;
+  font-size: 18px;
+}
+
+label{
+  display: block;
+  padding: 5px 0 5px 15px;
+
+}
+
+input {
+  margin: 0 5px 0 15px;
+}
+
+input.delete-entry {
+  clear:both;
+  margin-bottom: 60px;
+}
+
+
+/*=================================================
+Image Styling*/
+
+div.project-content-thought img {
+ float: left;
+ margin: 0 10px 10px 0;
+ width: 100px;
+ height:70px;
+}
+
+div.project-content-dev img {
+ display: block;
+ margin: 10px auto;
+ width: 100px;
+ height:70px;
+}
+
+div.project-content-design img {
+ float: right;
+ margin: 0 0 10px 10px;
+ width: 100px;
+ height:70px;
+}
+
+footer img {
+  margin: 0;
+  padding: 0;
+  height:19px;
+  width:19px;
+  vertical-align: text-top;
+}
+
+img.mushroom-pic{
+  width: 100%;
+}
+
+
+/**=================================================
+Links*/
+
+a {
+  text-decoration: none;
+}
+
+footer a {
+  color: #FFF;
+}
+
+main a {
+  padding-left: 10px;
+}
+
+a.dev {
+  color: #666;
+}
+
+div.footer-thought a,
+div.footer-design a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+/*hoverstates*/
+
+a:hover,
+a:focus {
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  color: inherit;
+}
+
+div.banner i:hover,
+div.banner i:focus {
+text-shadow: -2px 0 #00007F, 0 2px #00007F, 2px 0 #00007F, 0 -2px #00007F;
+}
+
+div.footer-dev:hover,
+div.footer-dev:focus {
+  border: 3px solid #00007F;
+  border-radius: 4px;
+  padding: 7px 0;
+  color: #333;
+}
+
+div.footer-thought:hover,
+div.footer-thought:focus,
+div.footer-design:hover,
+div.footer-design:focus {
+  border: 3px solid #00007F;
+  border-radius: 4px;
+  padding: 7px 0;
+  color: #FFF;
+}
+
+
+
+nav div:hover {
+  cursor: pointer;
+  background-color: #FFF;
+}
+
+h1:hover {
+    color: #00007F;
+}
+
+main img:hover,
+main img:focus {
+  border: 2px solid #00007F;
+  border-radius: 4px;
+}
+
+
+/*=================================================
+Kludges*/
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+/*.clearfix::after {
+   content: " ";
+   display: block;
+   height: 0;
+   clear: both;
+}*/
