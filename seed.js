@@ -4,6 +4,26 @@
 var db = require('./models');
 
 // var new_campsite = {description: "Sharp rocks. Middle of nowhere."}
+let superHero = [
+  {
+    hero: "Spider-Man",
+    powers: "Spider Things",
+    age: 23,
+    sercet_identity: true
+  },
+  {
+    hero: "Batman",
+    powers: "Unbreakable Will",
+    age: 32,
+    secret_identity: true
+  },
+  {
+    hero: "Thor",
+    powers: "Thunder God abilities",
+    age: 1500,
+    secret_identity: false
+  }
+]
 
 // db.Campsite.create(new_campsite, function(err, campsite){
 //   if (err){
