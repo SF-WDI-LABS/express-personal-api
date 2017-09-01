@@ -14,7 +14,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-// var controllers = require("../controllers");
+ let controllers = require("./controllers");
 
 
 /************
@@ -59,7 +59,7 @@ app.get('/api', function apiIndex(req, res) {
     ]
   })
 });
-// app.get('/api/profile', controllers.profile.index)
+app.get('/api/profile', controllers.profile.index)
 
 /**********
  * SERVER *

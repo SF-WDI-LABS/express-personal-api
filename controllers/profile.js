@@ -19,4 +19,6 @@ function profile(req, res) {
   });
 }
 
-module.exports = Profile
+ module.exports = {
+   index: profile
+ }
