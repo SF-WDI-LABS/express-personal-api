@@ -5,11 +5,11 @@
   color: #EEE;
 }
 .jumbotron .container {
-  height: 250px;
+  height: 350px;
 }
 
 .inline-header {
   display: inline-block;
-  vertical-align: baseline;
+  vertical-align: bottom;
   margin-right: 12px;
 }
