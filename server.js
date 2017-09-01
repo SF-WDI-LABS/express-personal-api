@@ -14,7 +14,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
+// var controllers = require("../controllers");
 
 
 /************
@@ -54,11 +54,12 @@ app.get('/api', function apiIndex(req, res) {
     baseUrl: "https://pure-brook-11168.herokuapp.com/",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", path: "/api/profile", description: "Data about Bryan"},
+      {method: "POST", path: "/api/newapi", description: ""}
     ]
   })
 });
+// app.get('/api/profile', controllers.profile.index)
 
 /**********
  * SERVER *
