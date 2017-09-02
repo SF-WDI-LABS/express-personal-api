@@ -31,6 +31,6 @@ db.Personal.create(personalData, function(err, data){
     return console.log("Error:", err);
   }
 
-  console.log("Created new campsite", data._id)
+  console.log("Created new campsite", data)
   process.exit(); // we're all done! Exit the program.
 })
