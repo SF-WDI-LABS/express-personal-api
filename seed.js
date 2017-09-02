@@ -25,6 +25,15 @@ let superHero = [
   }
 ]
 
+superHero.forEach(function(new_hero){
+  db.Hero.create(new_hero, function(err, hero){
+    if(err){
+      return console.log("Error:", err)
+    }
+    console.log("Created new hero ", hero.name)
+  })
+})
+
 // db.Campsite.create(new_campsite, function(err, campsite){
 //   if (err){
 //     return console.log("Error:", err);

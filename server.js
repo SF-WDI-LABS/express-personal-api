@@ -55,11 +55,14 @@ app.get('/api', function apiIndex(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about Bryan"},
-      {method: "POST", path: "/api/newapi", description: ""}
+      {method: "GET", path: "/api/heroes", description: "Index of all heroes"},
+      {method: "POST", path: "/api/heroes", description: "Create a new hero."},
+      {method: "PUT", path: "/api/heroes", description: "Edit a hero and update it."}
     ]
   })
 });
-app.get('/api/profile', controllers.profile.index)
+app.get('/api/profile', controllers.profile.index);
+app.get('/api/heroes', controllers.heroController.index);
 
 /**********
  * SERVER *
