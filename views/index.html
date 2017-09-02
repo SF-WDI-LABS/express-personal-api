@@ -4,26 +4,148 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
-
-    <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <title>Hub and Co</title>
+    <!-- STYLESHEETS FOR MATERIALZIE and CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="/styles/styles.css">
 
-    <!-- VENDOR SCRIPTS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+
+    <!-- JSON Script-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript for materialize-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
+
+
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
+    <br>
+    <div id="search-results"></div>
+    <!-- SRP starts here -->
+
+    <div class="container search">
+      <div class="row valign-wrapper profile-header">
+        <div class="col s4 profile-img">
+          <img class="circle responsive-img user-img" src='/images/userimages/ray.png'>
+        </div>
+        <div class="col s8 user-info">
+          <div>
+            <h1 class='name' name='username' value=''>Ray Choi</h1>
+          </div>
+          <div>
+            <span class='profile-span title search-span' name='title' value=''>Student</span>
+            <span class='profile-span search-span' name='' value=''>at</span>
+            <span class='profile-span place-of-work search-span' name='place-of-work' value=''>GA</span>
+          </div>
+          <div>
+             <span class='profile-span quote search-span' name='quote' value=''>Don't worry about what you can't control</span>
+          </div>
         </div>
       </div>
     </div>
+    <!-- SRP ENDS here -->
+
+    <!-- one engineer profile starts here -->
+    <div id="user-profile"></div>
+
+    <!-- START OF THE PROFILE HEADER DATA  -->
+    <div id="profile-information">
+
+    <div class="container profile header">
+      <div class="row valign-wrapper profile-header">
+        <div class="col s4 profile-img">
+          <img class="circle responsive-img user-img" src='/images/userimages/ray.png'>
+        </div>
+        <div class="col s8 user-info">
+          <div>
+            <div class='right-align'>
+              <img class='edit-icon' src='/images/assets/edit.svg'>
+            </div>
+            <div>
+             <h1 class='name' name='username' value=''>Ray Choi</h1>
+           </div>
+          </div>
+          <div>
+            <span class='profile-span title' name='title' value=''>Student</span>
+            <span class='profile-span' name='' value=''>at</span>
+            <span class='profile-span place-of-work' name='place-of-work' value=''>GA</span>
+          </div>
+          <div>
+             <span class='profile-span quote' name='quote' value=''>Don't worry about what you can't control</span>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- END OF THE PROFILE HEADER DATA  -->
+
+
+       <div id="about-me"></div>
+
+       <!-- START ABOUT ME  -->
+       <div class="container profile about-me">
+         <div class="row about-me">
+           <div class="col s12 about-me-info">
+             <div class='right-align'>
+               <img class='edit-icon' src='/images/assets/edit.svg'>
+             </div>
+             <div>
+               <h2 class='aboutme' name='aboutme' value=''>About Me</h2>
+             </div>
+             <div>
+               <p>I am a former Technology Consultant who built internal products leveraging ERP systems, and for a brief period, was also an acting co-owner of a small business. I graduated with an MBA from the Kellogg School of Management and was most recently the Lead Global Product Manager of the Find-A-ProAdvisor Marketplace at Intuit.</p>
+             </div>
+           </div>
+         </div>
+       </div>
+
+      <!-- END ABOUT ME  -->
+
+      <div id="social-network"></div>
+      <!-- START SOCIAL  -->
+      <div class="container profile social-network">
+        <div class="row social">
+          <div class="col s12 social-info">
+            <div class='right-align'>
+              <img class='edit-icon' src='/images/assets/edit.svg'>
+            </div>
+            <div>
+              <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
+              <a href='https://linkedin.com/raybchoi' target="_blank"><img class="social-img" src='/images/social/linkedin.png'></a>
+              <a href='https://github.com/raybchoi' target="_blank"><img class="social-img" src='/images/social/github.png'></a>
+          </div>
+        </div>
+      </div>
+    </div>
+     <!-- END SOCIAL  -->
+  </div>
+  <!-- ONE USER PROFILE  -->
+
+
+     <!-- START OF FOOTER  -->
+     <div class="container">
+       <div class="row social">
+         <div class="col s6 foot-info">
+           <br>
+           <a href="/api">Read My API Documentation</a>
+         </div>
+         <div class="col s6 foot-info">
+          <ul>
+            <li>Contact Me</li>
+            <li>Contact Me</li>
+          </ul>
+         </div>
+       </div>
+     </div>
+
+    <!-- START OF FOOTER  -->
+
+    <div class="chip">
+     Tag
+     <i class="close material-icons"></i>
+   </div>
+
   </body>
 </html>

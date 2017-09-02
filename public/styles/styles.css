@@ -1,10 +1,72 @@
 body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  background-color: #E1F5FF; /* Sanity Check! */
 }
 
+.search{
+  zoom: 110%;
+}
+/*CSS FOR SEARCH CARD INFO*/
+.search-card-span {
+  font-size: 120%;
+  /*background-color: yellow;*/
+}
+.search-card-h1 {
+  font-size: 275%;
+}
+/*CSS FOR HEADER INFO*/
 h1 {
-  margin-top: 100px;
-  text-align: center;
+  text-align: left;
+  font-size: 300%;
+  margin-bottom: 0%;
+  margin-top: 0;
+  /*padding-bottom: -20%;*/
+}
+.profile-header, .search-card-header{
+  background-color: #FFFFFF;
+}
+.profile-info{
+  /*background-color: lightblue;*/
+}
+.profile-img {
+  /*text-align: center;*/
+  /*background-color: pink;*/
+  max-width: 165px;
+  max-height: 165px;
+  margin: 2%;
+}
+
+.user-info {
+  text-align: left;
+  /*background-color: green;*/
+}
+.profile-span{
+  font-size: 150%;
+  background-color: yellow;
+}
+
+/*CSS FOR ABOUT ME*/
+h2 {
+  font-size: 150%;
+  padding: -10%;
+  margin-bottom: 0%;
+  margin-top: 0%;
+}
+
+.social-img {
+  margin-top: 2%;
+  margin-right: 5%;
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.footer {
+  background-color: pink;
+}
+
+.edit-icon{
+  max-width: 20px;
+  max-height: 20px;
+  text-align: right;
 }
