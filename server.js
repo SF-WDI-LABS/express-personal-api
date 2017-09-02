@@ -37,6 +37,15 @@ app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+app.get('/api/profile', function(req, res) {
+  // return the contents of hardcoded 'profile'
+});
+
+app.get('/api/birds', function(req, res) {}); // get all birds
+app.get('/api/birds/:id', function(req, res) {}); // get one bird
+app.post('/api/birds', function(req, res) {}); // create a new bird
+app.put('/api/birds/:id', function(req, res) {}); // edit a bird
+app.delete('/api/birds/:id', function(req, res) {}); // delete a bird
 
 /*
  * JSON API Endpoints
@@ -49,8 +58,8 @@ app.get('/api', function apiIndex(req, res) {
   res.json({
     woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
+    documentationUrl: "https://github.com/achentha/express-personal-api/blob/master/README.md", // CHANGE ME
+    baseUrl: "https://dry-scrubland-21249.herokuapp.com/", // CHANGE ME
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
