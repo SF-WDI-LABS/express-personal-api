@@ -58,7 +58,6 @@ app.get('/api', function apiIndex(req, res) {
     ]
   })
 });
-
 /**********
  * SERVER *
  **********/
