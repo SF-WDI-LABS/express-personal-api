@@ -17,14 +17,14 @@ function index(req, res) {
       },
       {
         method: "GET"
-        path: "/api/movies"
-        description: "Get a list of movies"
+        path: "/api/directors"
+        description: "Get a list of directors"
       },
       {
         method: "POST",
-        path: "/api/movies",
-        description: "Add a movie to the data base"
-      }, 
+        path: "/api/directors",
+        description: "Add a Director to the data base"
+      },
     ],
   })
 }

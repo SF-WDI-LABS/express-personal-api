@@ -15,38 +15,37 @@
 // })
 var db = require("./models");
 
-var movieList =[];
-movieList.push({
-  directorName: 'RZA',
-  title: 'The Man with the Iron Fists',
-  yearReleased: '2012',
-  genres: [ 'Kung-Fu','Blaxplotation' ]
+var directorList =[];
+directorList.push({
+  name: 'RZA',
+  movieTitles: ['Man with the iron fists'],
+  alive: true,
+  countryOfOrigin: 'USA'
 });
-movieList.push({
-  directorName: 'Rob Zombie',
-  title: 'House of 1000 Corpses',
-  yearReleased: '2003',
-  genres: [ 'Horror' ]
+directorList.push({
+  name: 'Peter Jackson',
+  movieTitles: ['Bad Taste', 'Lord of The Rings', 'King Kong'],
+  alive: true,
+  countryOfOrigin: 'New Zealand'
 });
-movieList.push({
-  directorName: 'Peter Jackson',
-  title: 'Bad Taste',
-  yearReleased: '1987',
-  genres: [ 'Comedy','Horror','Sci-Fi' ]
+directorList.push({
+  name: 'Akira Kurosawa',
+  movieTitles: ['Yojimbo', 'Seven Samurai', 'Rashomon'],
+  alive: false,
+  countryOfOrigin: 'Japan'
 });
-movieList.push({
-  directorName: 'Steven Spielberg',
-  title: 'E.T. the Extra-Terrestrial',
-  yearReleased: '1982',
-  genres: [ 'Sci-Fi','Family' ]
+directorList.push({
+  name: 'Edgar Write',
+  movieTitles: ['Hot Fuzz', 'Shaun of The Dead', 'Baby Driver'],
+  alive: true,
+  countryOfOrigin: 'UK'
 });
+db.Director.remove({}, function(err, albums){
 
-db.Movie.remove({}, function(err, albums){
-
-  db.Movie.create(movieList, function(err, movies){
+  db.Director.create(directorList, function(err, directors){
     if (err) { return console.log('ERROR', err); }
-    console.log("all movies:", movies);
-    console.log("created", movies.length, "movies");
+    console.log("all directors:", directors);
+    console.log("created", directors.length, "directors");
     process.exit();
   });
 
