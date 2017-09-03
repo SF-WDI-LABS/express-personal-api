@@ -58,11 +58,7 @@ app.get('/', function homepage(req, res) {
 /*
  * JSON API Endpoints
  */
-cliff {
-  nearestCity:
-  gpsCoords:
-  height:
-}
+
 
 app.get('/api', function apiIndex(req, res) {
   // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
