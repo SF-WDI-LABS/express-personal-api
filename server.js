@@ -41,6 +41,85 @@ app.get('/', function homepage(req, res) {
 /*
  * JSON API Endpoints
  */
+// Api profile
+app.get('/api/profile', function (req, res) {
+  res.json({
+    profile:{
+      name: "Huan Ming Liao",
+      githubUsername: "hmliao14",
+      githubLink: "https://github.com/hmliao14",
+      githubProfileImage: "https://avatars2.githubusercontent.com/u/19638770?v=4&s=400",
+      personalSiteLink: "https://hmliao14.github.io/",
+      currentCity: "San Francisco",
+      hobbies: [{
+          name: "name1",
+        description: "description1"
+        },{
+          name: "name2",
+          description: "description2"
+        },{
+          name: "name3",
+          description: "description3"
+        },{
+          name: "name4",
+          description: "description4"
+        }],
+    }
+  })
+});
+
+// Api template for images
+app.get('/api/images', function(req, res){
+  res.json({
+    background: [
+        {
+        _id:  1,
+        name: "Beach",
+        image_link: "/images/beach.jpg",
+        },{
+        _id:  2,
+        name: "Snow Mountain",
+        image_link: "/images/snowmountain.jpg",
+
+        },{
+        _id: 3,
+        name: "Under Water",
+        image_link: "/images/underwater.jpg",
+        }, {
+        _id: 4,
+        name: "Mossholder",
+        image_link: "/images/mossholder.jpg",
+        }
+      ]
+  });
+});
+
+// Api template for videos
+app.get('/api/videos', function(req, res){
+  res.json({
+    samples: [
+      {
+        _id: 1,
+        name: "Camping",
+        image_link: "/videos/camping.mp4",
+      },{
+        _id: 2,
+        name: "Dog in Sunset",
+        image_link: "/videos/dog_in_sunset.mp4",
+      },{
+        _id: 3,
+        name: "Sunset",
+        image_link: "/videos/underwater.mp4",
+      },{
+        _id: 4,
+        name: "Underwater",
+        image_link: "/videos/underwater.mp4",
+      }
+    ]
+  });
+});
+
+
 
 app.get('/api', function apiIndex(req, res) {
   // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
