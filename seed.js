@@ -42,6 +42,18 @@ profileList.push({
   markedForDeletion: false,
 })
 profileList.push({
+  name: 'Huan Ming Liao',
+  userName: 'hml',
+  image: '/images/userimages/huan.jpg',
+  title: 'Wed Development Immersive',
+  workPlace: 'General Assembly',
+  quote: `My fingers do all the talking`,
+  aboutMe: `I'm an graduate from UCSC where I studied Technology Management.  I have a passion for Web development and excited for the future`,
+  socialNetwork: ['https://www.linkedin.com/in/huan-ming-liao-1a690897/',''],
+  skills: ['JavaScript', 'CSS', 'GitHub', 'React', 'Node'],
+  markedForDeletion: false,
+})
+profileList.push({
   name: 'Jevell Rollins',
   userName: 'jevell',
   image: '/images/userimages/jevell.jpg',
@@ -63,6 +75,18 @@ profileList.push({
   aboutMe: `Bay area native, UC Berkeley and Cal Band alumnus, I am now working with an amazingly passionate and driven team at NerdWallet.com to bring much-needed transparency into the world of personal finance, and help consumers find the best financial products for their unique needs.`,
   socialNetwork: ['https://www.linkedin.com/in/connormartinelli/', 'https://github.com/conmart'],
   skills: ['CSS', 'Materialize', 'Postman', 'Bootstrap', 'Mongoose'],
+  markedForDeletion: false,
+})
+profileList.push({
+  name: 'Carlynn Espinoza',
+  userName: 'Carlynn',
+  image: '/images/userimages/carlynn.jpg',
+  title: 'WDI Design Student',
+  workPlace: 'General Assembly',
+  quote: `The sun makes everything better`,
+  aboutMe: `Former Civil Engineer who found her true path with coding. As an engineer I always looked for ways to design new and exciting projects. Ultimately, I needed more ways to express my creative nature. The combination of creative and logical problem solving in the technology world was the outlet I had been seeking.`,
+  socialNetwork: ['https://www.linkedin.com/in/carlynn-espinoza/',''],
+  skills: ['JavaScript', 'CSS', 'jQuery', 'In-Design', 'Node'],
   markedForDeletion: false,
 })
 profileList.push({
@@ -102,7 +126,7 @@ profileList.push({
   markedForDeletion: false,
 })
 
-db.Profile.remove({}, function(err, albums){
+db.Profile.remove({}, function(err, allExistingProfiles){
 
   db.Profile.create(profileList, function(err, profiles) {
     if (err) {

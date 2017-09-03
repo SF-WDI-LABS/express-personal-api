@@ -58,7 +58,7 @@ app.get('/api/searchpage/:profileId', controllers.profile.showOneProfile);
 // app.post('/api/searchpage', controllers.profile.createNewProfile);
 //
 // //update and save the profile
-// app.put('/api/searchpage/:profileId', controllers.profile.updateOneProfile);
+app.put('/api/searchpage/:profileId', controllers.profile.updateOneProfile);
 //
 // // able to delete the profile
 // app.delete('/api/searchpage/:profileId', controllers.albums.deleteOneProfile);

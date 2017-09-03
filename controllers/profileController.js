@@ -41,7 +41,19 @@ function createNewProfile(req, res) {
 // PUT able to update the user on the renderProfile page (able to update each spot individually)
 
 function updateOneProfile(req, res) {
-
+  console.log('updateOneProfile Route is getting hit!!!', req.body)
+  db.Profile.findByIdAndUpdate(req.params.profileId, {$set: {
+    name: req.body.name,
+    title: req.body.title,
+    workPlace: req.body.workPlace,
+    quote: req.body.quote,
+  }}, {new: true}, function(err, saveProfile) {
+    if (err) {
+      console.log('THERE WAS AN ERROR DURING updateOneProfile Save', err);
+    }
+    console.log('updateOneProfile SAVED AND JSON IS SENT BACK', saveProfile);
+    res.json(saveProfile)
+  })
 };
 
 // DELETE / PUT able to 'hit the delete flag' and not show up the user anymore vs actually deleting their information

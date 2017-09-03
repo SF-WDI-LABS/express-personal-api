@@ -1,13 +1,31 @@
 body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: #E1F5FF; /* Sanity Check! */
+  background-color: rgb(236, 232, 237); /* Sanity Check! */
+  margin: 0 0 100px; /* bottom = footer height => adding marging to just the bottom of the body so it goes up past the footer*/
+  /*https://stackoverflow.com/questions/3443606/make-footer-stick-to-bottom-of-page-correctly*/
 }
-
+footer{
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  overflow:hidden;
+}
+/*navBar*/
+.nav-wrapper{
+  background-color: rgb(213, 154, 226);
+}
 .search{
   zoom: 110%;
 }
-/*CSS FOR SEARCH CARD INFO*/
+
+.back-to-srp-span{
+  display: none;
+  font-weight: bold;
+  font-size: 150%;
+  margin: 0;
+}
+/****************SEARCH CARD INFO****************/
 .search-card-span {
   font-size: 120%;
   /*background-color: yellow;*/
@@ -15,16 +33,18 @@ body {
 .search-card-h1 {
   font-size: 275%;
 }
-/*CSS FOR HEADER INFO*/
+
+/****************PROFILE HEADER ****************/
 h1 {
   text-align: left;
   font-size: 300%;
-  margin-bottom: 0%;
+  margin-bottom: 3%;
   margin-top: 0;
   /*padding-bottom: -20%;*/
 }
-.profile-header, .search-card-header{
-  background-color: #FFFFFF;
+
+.profile-header, .search-card-header, .social-info, .about-me{
+  background-color: #FEFEFE;
 }
 .profile-info{
   /*background-color: lightblue;*/
@@ -41,12 +61,24 @@ h1 {
   text-align: left;
   /*background-color: green;*/
 }
-.profile-span{
+.profile-header-db-info{
   font-size: 150%;
-  background-color: yellow;
 }
 
-/*CSS FOR ABOUT ME*/
+/**************** PROFILE ON EDIT ****************/
+.input-for-profile-header, label{
+  display: none;
+}
+
+.at-span {
+  display: visible;
+  font-size: 150%;
+}
+.edit-save-header, .edit-save-about-me, .edit-save-social-network {
+  display: none;
+}
+
+/***************** ABOUT ME *****************/
 h2 {
   font-size: 150%;
   padding: -10%;
@@ -61,10 +93,13 @@ h2 {
   max-height: 40px;
 }
 
-.footer {
-  background-color: pink;
+.footer-copyright {
+  background-color: rgb(213, 154, 226);
 }
 
+.footer {
+  margin-bottom: 0;
+}
 .edit-icon{
   max-width: 20px;
   max-height: 20px;
