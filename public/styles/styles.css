@@ -7,7 +7,11 @@ h1 {
   margin-top: 100px;
   text-align: center;
   font-size: 84px;
-  color: black;
+
+}
+h2 {
+  font-size: 50px;
+  margin-left: 115px;
 }
 .jumbotron {
   background-image: url(../images/bkgimg.jpg);
