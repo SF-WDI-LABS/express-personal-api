@@ -26,16 +26,7 @@
     <section id='album-form' class="container">
       <div class="row">
       <div class="col-md-10 col-md-offset-1">
-        <section class="container">
-          <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-              <h2>Cliffs</h2>
-            </div>
-          </div>
-          <!-- albums! -->
-          <div id='albums'>
-          </div>
-        </section>
+
         <form class="form-horizontal" id="singlebutton">
           <fieldset>
 
@@ -65,7 +56,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="releaseDate">GPS Coordinates</label>
               <div class="col-md-4">
-              <input id="releaseDate" name="releaseDate" type="text" placeholder="1992" class="form-control input-md">
+              <input id="releaseDate" name="releaseDate" type="text" placeholder="26° 49 13.991 N 30° 48 8.993 E" class="form-control input-md">
 
               </div>
             </div>
@@ -73,7 +64,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="releaseDate">Height</label>
               <div class="col-md-4">
-              <input id="releaseDate" name="releaseDate" type="text" placeholder="1992" class="form-control input-md">
+              <input id="releaseDate" name="releaseDate" type="text" placeholder="72ft" class="form-control input-md">
 
               </div>
             </div>
@@ -81,7 +72,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="releaseDate">Accessibility</label>
               <div class="col-md-4">
-              <input id="releaseDate" name="releaseDate" type="text" placeholder="1992" class="form-control input-md">
+              <input id="releaseDate" name="releaseDate" type="text" placeholder="Medium" class="form-control input-md">
 
               </div>
             </div>
@@ -90,14 +81,14 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="genres">Description</label>
               <div class="col-md-4">
-                <textarea class="form-control" id="genres" name="genres">rock, pop</textarea>
+                <textarea class="form-control" id="genres" name="genres">Fast drop. Beautiful Waterfall.</textarea>
               </div>
             </div>
 
 
             <!-- Button -->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="singlebutton">Save Album</label>
+              <label class="col-md-4 control-label" for="singlebutton">Save Cliff</label>
               <div class="col-md-4">
                 <button id="submitbutton" name="singlebutton" class="btn btn-primary">Submit</button>
               </div>
@@ -108,12 +99,23 @@
       </div>
     </section>
 
+    <section class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h2>Cliffs</h2>
+        </div>
+      </div>
+      <!-- albums! -->
+      <div id='cliffs'>
+      </div>
+    </section>
+
 
 
 
 
       </div>
-    
+
 
     <!-- begin songModal: this is not visible until you call .modal() on it -->
     <div class="modal fade" tabindex="-1" role="dialog" id="songModal">
