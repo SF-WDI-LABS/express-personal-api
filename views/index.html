@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+    <title>Never Bored of Board Games</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -19,10 +19,76 @@
   <body>
     <div class="container">
       <div class="row">
+
         <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
+          <h1>Board Games</h1>
           <h4><a href="/api">Read My API Documentation</a></h4>
         </div>
+
+        <div class="col-md-4 col-md-offset-4" align="center">
+          <button class="btn btn-success new-game">Add New Board Game</button>
+        </div>
+
+        <div class="col-md-4 col-md-offset-4 hidden-form">
+
+          <form class="newGameForm">
+
+            <div class="form-group row title-input">
+              <label for="example-text-input" class="col-2 col-form-label">Title</label>
+              <div class="col-10">
+                <input class="form-control" type="text" name="title">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Description</label>
+              <textarea class="form-control" rows="3"></textarea>
+            </div>
+
+            <div class="form-group row">
+              <label for="example-text-input" class="col-2 col-form-label">Playtime</label>
+              <div class="col-10">
+                <input class="form-control" type="text" name="playtime">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="example-text-input" class="col-2 col-form-label">Players</label>
+              <div class="col-10">
+                <input class="form-control" type="text" name="players">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="example-text-input" class="col-2 col-form-label">Image</label>
+              <div class="col-10">
+                <input class="form-control" type="text" name="image">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save New Board Game</button>
+              <button id="cancel-btn" class="btn btn-danger">Cancel</button>
+          </form>
+
+        </div>
+
+
+        <div class="col-md-6 col-md-offset-3 display-games">
+          <!-- start of one game item -->
+          <!-- Test display with one game -->
+          <!-- <div class="card" style="width: 45rem;">
+            <img class="card-img-top text-center" src="images/catanpic.png" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">Settlers of Catan</h4>
+              <p class="card-text">The Settlers of Catan from Mayfair Games is an award-winning strategy game where players collect resources and use them to build roads, settlements and cities on their way to victory. The board itself is variable, making each game a little different from the next.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Game Length: 1 Hour</li>
+              <li class="list-group-item">Players: 3+</li>
+            </ul>
+
+          </div> -->
+          <!-- end of one game item -->
       </div>
     </div>
   </body>

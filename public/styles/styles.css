@@ -1,10 +1,46 @@
 body {
-  color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  background-color: white;
 }
 
 h1 {
   margin-top: 100px;
   text-align: center;
+  color: black;
+}
+
+h4 {
+  color: black;
+  font-size: 25px;
+
+}
+
+p {
+  color: black;
+  font-size: 14px;
+}
+
+img {
+  width: inherit;
+  height: auto;
+}
+
+button {
+  margin: 15px;
+}
+
+/*Overriden by something
+a {
+  font-size: 20px
+  color: darkgray;
+}*/
+
+.card {
+  margin: 50px;
+  align-content: center;
+  align-items: center;
+}
+
+.hidden-form {
+  display: none;
 }
