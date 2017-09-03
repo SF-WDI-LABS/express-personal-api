@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+    <title>Directed By!</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -13,17 +13,126 @@
     <!-- VENDOR SCRIPTS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 
+
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
-        </div>
-      </div>
-    </div>
+    <div class="jumbotron">
+     <div class="container">
+       <h1>Directed By!</h1>
+       <p>A list of the wolrd's greatest directors!</p>
+     </div>
+   </div>
+<!-- Add a director form -->
+  <form>
+   <div class="row director">
+
+     <div class="col-md-10 col-md-offset-1">
+       <div class="panel panel-default">
+         <div class="panel-body">
+
+
+         <!-- begin director internal row -->
+
+           <div class='row'>
+             <div class="col-md-9 col-xs-12">
+               <ul class="list-group">
+                 <li class="list-group-item">
+                   <h3 class='inline-header'>Add A Director To The List:</h3>
+                </li>
+                 <li class="list-group-item">
+                   <h4 class='inline-header'>Director's Name:</h4>
+                   <input type:"text" name='name'>
+                 </li>
+
+                 <li class="list-group-item">
+                   <h4 class='inline-header'>Country of Origin:</h4>
+                   <input type:"text" name='country-of-origin'>
+                 </li>
+
+                 <li class="list-group-item">
+                   <h4 class='inline-header'>Alive:</h4>
+                   <input type="radio" name='alive' value="yes" checked> Yes<br>
+                   <input type="radio" name='alive' value="no"> No<br>
+                 </li>
+
+                 <li class="list-group-item">
+                   <h4 class='inline-header'>Movies Directed: (Seperated by commas)</h4>
+                   <textarea name="movies-directed"></textarea>
+                 </li>
+
+               </ul>
+             </div>
+           </div>
+           <!-- end of director internal row -->
+           <div>
+           <input class="btn btn-primary" id="add-dir-btn" type="submit" value="Submit">
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+</form>
+   <section class="container">
+     <div class="row">
+       <div class="col-md-10 col-md-offset-1">
+         <h2>Auteurs</h2>
+       </div>
+     </div>
+
+
+     <!-- directors! -->
+     <div id='directors'>
+
+         <!-- one director -->
+         <div class="row director">
+
+           <div class="col-md-10 col-md-offset-1">
+             <div class="panel panel-default">
+               <div class="panel-body">
+
+
+               <!-- begin director internal row -->
+                 <div class='row'>
+                   <div class="col-md-9 col-xs-12">
+                     <ul class="list-group">
+                       <li class="list-group-item">
+                         <h4 class='inline-header'>Director's Name:</h4>
+                         <span class='name'>Akira Kurosawa</span>
+                       </li>
+
+                       <li class="list-group-item">
+                         <h4 class='inline-header'>Country of Origin:</h4>
+                         <span class='country-of-origin'>Japan</span>
+                       </li>
+
+                       <li class="list-group-item">
+                         <h4 class='inline-header'>Alive:</h4>
+                         <span class='alive'>No</span>
+                       </li>
+
+                       <li class="list-group-item">
+                         <h4 class='inline-header'>Movies Directed:</h4>
+                         <span class='movies-directed'>
+                           Yojimbo<br>
+                           Seven Samurai<br>
+                           Rashomon
+                         </span>
+                       </li>
+
+                     </ul>
+                   </div>
+                 </div>
+                 <!-- end of director internal row -->
+
+               </div>
+             </div>
+           </div>
+         </div>
+         <!-- end one director -->
+     </div>
+   </section>
+
   </body>
 </html>

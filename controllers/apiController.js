@@ -12,18 +12,28 @@ function index(req, res) {
       },
       {
         method: "GET",
-        path: "/api/profile",
+        path: "/profile",
         description: "Get to know me."
       },
       {
-        method: "GET"
-        path: "/api/directors"
-        description: "Get a list of directors"
+        method: "GET",
+        path: "/director",
+        description: "Get a list of directors."
       },
       {
         method: "POST",
-        path: "/api/directors",
-        description: "Add a Director to the data base"
+        path: "/director",
+        description: "Add a Director to the list.",
+      },
+      {
+        method: "PUT",
+        path: "/director",
+        description: "Update a directors information.",
+      },
+      {
+        method: "DELETE",
+        path: "/director",
+        description: "Remove a Director from the list.",
       },
     ],
   })
@@ -31,4 +41,5 @@ function index(req, res) {
 
 module.exports={
   index: index,
+  
 }
