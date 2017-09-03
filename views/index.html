@@ -1,29 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+  <title>Bad and Boujee</title>
 
-    <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/styles.css">
+  <!-- STYLESHEETS -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/styles.css">
 
-    <!-- VENDOR SCRIPTS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <!-- VENDOR SCRIPTS -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 
-    <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/app.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
+  <!-- APPLICATION SCRIPTS -->
+  <script src="/scripts/app.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1" style="border: orange solid 2px">
+        <h1>BAD and BOUJEE</h1>
+        <h3>Venues</h3>
+
+        <!-- BEGIN FORM SAMPLE -->
+
+        <section id='venue-form' class="container">
+          <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+
+            <form class="form-horizontal">
+              <fieldset>
+
+                <!-- Form Name -->
+                <legend>Add a New Venue</legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="name"> Name</label>
+                  <div class="col-md-4">
+                  <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="location"> Location</label>
+                  <div class="col-md-4">
+                  <input id="location" name="location" type="text" placeholder="City Name" class="form-control input-md">
+
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="website">Website</label>
+                  <div class="col-md-4">
+                  <input class="form-control input-md" id="website" name="website" placeholder="http://www.">
+
+                  </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="image">Image</label>
+                  <div class="col-md-4">
+                    <input class="form-control" id="image" name="image">
+                  </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="image">Notes</label>
+                  <div class="col-md-4">
+                    <textarea class="form-control" id="image" name="image"></textarea>
+                  </div>
+                </div>
+
+                <!-- Button -->
+                <div class="form-group">
+                  <div class="col-md-4 control-label"></div>
+                  <div class="col-md-4">
+                    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          </div>
+        </section>
+
+         <!--   END FORM SAMPLE -->
+
+        <h2>Venues</h2>
+        <div class="container">
+        <!--BEG Venues Container Step 1, part 1 of 1-->
+        <div id="venues"></div>
+        <!-- END Venues Container-->
+      </div>
+        <div class="footer">
+          <h3>About the Author</h3>
+          <div class="col-sm-2">
+            <img src="https://avatars1.githubusercontent.com/u/29782639?v=4&s=460" class="img-responsive" style="width: 100px"/>
+          </div>
+          <div class="col-sm-10" style="border: pink solid 2px">
+            <div class="margin-top-20">
+          <div>
+            <span><b>Name: </b></span><span>myName</span>
+          </div>
+          <div>
+            <span><b>Github Link: </b></span><span>TestLocation</span>
+          </div>
+          <div>
+            <span><b>Personal Site Link: </b></span><span>TestLocation</span>
+          </div>
+          <div>
+            <span><b>Current City: </b></span><span>TestLocation</span>
+          </div>
+          <div>
+            <span><b>Hobbies: </b></span><span>TestLocation</span>
+          </div>
+          <div>
+            <span><b>Location: </b></span><span>TestLocation</span>
+          </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
 </html>

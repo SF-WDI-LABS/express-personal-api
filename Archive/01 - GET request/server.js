@@ -42,17 +42,59 @@ app.get('/', function homepage(req, res) {
 /*
 * JSON API Endpoints
 */
-
-// get all venues
-app.get('/api', function (req, res) {
-  // send all venues as JSON response
-  db.Venue.find()
-    .exec(function(err, venues){
-      if (err) { return console.log("index error: " + err); }
-      res.json(venues);
-    });
+app.get('/api/profile', function apiIndex(req,res) {
+  res.json({
+    endpoints: [{
+      name: "Carlynn Espinoza",
+      githubUsername: "Carlynn",
+      githubLink: "https://github.com/Carlynn",
+      githubProfileImage: "https://avatars1.githubusercontent.com/u/29782639?v=4&s=460",
+      personalSiteLink: "https://carlynn.github.io/",
+      currentCity: "San Francisco",
+      hobbies: [
+        {
+        optionOne: "Answer A",
+        optionTwo: "Answer B",
+        },
+        {
+          optionThree: "Answer C",
+          optionFour: "Answer D",
+        },
+      ]
+    }]
+  });
 });
-// router.get("/", require("./controllers/index"));
+
+app.get('/api', function apiIndex(req, res) {
+  res.json({
+    endpoints: [
+      {
+        name: "Oxford Social Club",
+        location: "San Diego",
+        website: "https://theoxfordsd.com/",
+        image: "https://pbs.twimg.com/profile_images/745999186265399296/AgQFU1QA.jpg",
+        notes: "Be Sophisticated or Don't",
+      },
+      {
+        name: "The Bungalow",
+        location: "Santa Monica",
+        website: "http://www.thebungalow.com/",
+        image: "https://s3-media1.fl.yelpcdn.com/bphoto/F-f7YjOFDd9b5jKVmkE84Q/ls.jpg",
+        notes: "Breezy, beachside Baja lifestyle",
+      },
+      {
+        name: "The Battery",
+        location: "San Francisco",
+        website: "https://www.thebatterysf.com/club/",
+        image: "https://qph.ec.quoracdn.net/main-thumb-t-453945-200-wcuvopxyeusrfhqagrthqdwyvviwbgol.jpeg",
+        notes: "Diversity and intelligence with just a touch of the bizarre",
+      },
+    ]
+  })
+});
+
+
+router.get("/", require("./controllers/index"));
 // router.post("/", require("./controllers/create"));
 // router.put("/:id", require("./controllers/update"));
 // router.get("/:id/edit", require("./controllers/edit"));
