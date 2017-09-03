@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 var DirectorSchema = new Schema({
   name: String,
   movieTitles: [ String ],
-  alive: Boolean,
+  alive: String,
   countryOfOrigin: String
 });
 

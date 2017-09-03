@@ -25,18 +25,19 @@
      </div>
    </div>
 <!-- Add a director form -->
-  <form>
+<section id="add-dir-form">
    <div class="row director">
 
      <div class="col-md-10 col-md-offset-1">
        <div class="panel panel-default">
          <div class="panel-body">
+           <form id="addDirForm">
 
-
-         <!-- begin director internal row -->
+         <!-- begin director form internal row -->
 
            <div class='row'>
              <div class="col-md-9 col-xs-12">
+
                <ul class="list-group">
                  <li class="list-group-item">
                    <h3 class='inline-header'>Add A Director To The List:</h3>
@@ -48,18 +49,18 @@
 
                  <li class="list-group-item">
                    <h4 class='inline-header'>Country of Origin:</h4>
-                   <input type:"text" name='country-of-origin'>
+                   <input type:"text" name='countryOfOrigin'>
                  </li>
 
                  <li class="list-group-item">
                    <h4 class='inline-header'>Alive:</h4>
-                   <input type="radio" name='alive' value="yes" checked> Yes<br>
-                   <input type="radio" name='alive' value="no"> No<br>
+                   <input type="radio" name='alive' value="Yes" checked> Yes<br>
+                   <input type="radio" name='alive' value="No"> No<br>
                  </li>
 
                  <li class="list-group-item">
                    <h4 class='inline-header'>Movies Directed: (Seperated by commas)</h4>
-                   <textarea name="movies-directed"></textarea>
+                   <textarea name="movieTitles"></textarea>
                  </li>
 
                </ul>
@@ -69,15 +70,17 @@
            <div>
            <input class="btn btn-primary" id="add-dir-btn" type="submit" value="Submit">
            </div>
+           </form>
          </div>
        </div>
      </div>
    </div>
-</form>
+ </section>
+
    <section class="container">
      <div class="row">
        <div class="col-md-10 col-md-offset-1">
-         <h2>Auteurs</h2>
+         <h2>Directors</h2>
        </div>
      </div>
 
@@ -115,8 +118,8 @@
                        <li class="list-group-item">
                          <h4 class='inline-header'>Movies Directed:</h4>
                          <span class='movies-directed'>
-                           Yojimbo<br>
-                           Seven Samurai<br>
+                           Yojimbo,
+                           Seven Samurai, 
                            Rashomon
                          </span>
                        </li>

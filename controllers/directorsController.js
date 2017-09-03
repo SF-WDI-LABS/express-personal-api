@@ -1,7 +1,7 @@
 var db = require('../models');
 
 
-// GET /api/directors
+// GET /director
 function index(req, res) {
   // send back all directors as JSON
   db.Director.find({},function(err, allDirectors){
@@ -10,7 +10,7 @@ function index(req, res) {
 
 }
 
-// POST /api/directors
+// POST /director
 function create(req, res) {
   // create a director based on request body and send it back as JSON
   console.log('body', req.body);
@@ -27,17 +27,17 @@ function create(req, res) {
   });
 }
 
-// GET /api/directors/:directorId
+// GET /director/:id
 function show(req, res) {
   // find one director by id and send it back as JSON
 }
 
-// DELETE /api/directors/:directorId
+// DELETE /director/:id
 function destroy(req, res) {
   // find one director by id, delete it, and send it back as JSON
 }
 
-// PUT or PATCH /api/directors/:directorId
+// PUT or PATCH /directors/:id
 function update(req, res) {
   // find one director by id, update it based on request body,
   // and send it back as JSON

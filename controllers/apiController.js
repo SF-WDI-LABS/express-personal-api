@@ -21,19 +21,24 @@ function index(req, res) {
         description: "Get a list of directors."
       },
       {
+        method: "GET",
+        path: "/director/:id",
+        description: "Find a single director by their ID number",
+      },
+      {
         method: "POST",
         path: "/director",
-        description: "Add a Director to the list.",
+        description: "Add a director to the list.",
       },
       {
         method: "PUT",
-        path: "/director",
-        description: "Update a directors information.",
+        path: "/director/:id",
+        description: "Update a director's information.",
       },
       {
         method: "DELETE",
-        path: "/director",
-        description: "Remove a Director from the list.",
+        path: "/director/:id",
+        description: "Remove a director from the list.",
       },
     ],
   })
@@ -41,5 +46,5 @@ function index(req, res) {
 
 module.exports={
   index: index,
-  
+
 }
