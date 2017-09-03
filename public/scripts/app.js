@@ -32,6 +32,47 @@ $(document).ready(function(){
 	// .catch(function(err){
 	// 	console.log(err);
 	// });
+	main();
+
+	function main() {
+	// Bind event handlers for the buttons I created
+		var $main_nav = $('#main-nav');
+		$main_nav.on("click", ".add-book", addBookSubmit);
+		$main_nav.on("click", ".delete-book", deleteBookSubmit);
+		$main_nav.on("click", ".update-book", updateBookSubmit);
+
+		var $side_bar = $('.side-bar');
+		var $img_preview = $('.img-preview');
+		
+		$('[name=cancel-book]').on("click", function(){
+			$side_bar.slideToggle();
+			$main_nav.show("slow");
+		});
+		$('[name=clear-book]').on("click", function(){
+			$img_preview.empty();
+		});
+
+		// Preview images after user upload files
+		$('#uploaded-file').change(function(e){
+			for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+
+			    var file = e.originalEvent.srcElement.files[i];
+			    var img = document.createElement("img");
+			    var reader = new FileReader();
+			    reader.onloadend = function(event) {
+			    	img.src = event.target.result;
+			    	// .attr('src', event.target.result)
+			    	// .width(250)
+			    	// .height(165);
+			    };
+			    $(img).css("width", "250px", "height", "165px");
+			    reader.readAsDataURL(file);
+			    $('.img-preview').empty();
+			    $('.img-preview').append(img);
+			   
+			}
+		});
+	};
 
 	function renderIndex(data){
 		var profile = data.profile;
@@ -40,13 +81,23 @@ $(document).ready(function(){
 	
 		//$(".profile-pic").html(profile.githubProfileImage);
 		$('.my-name').html(profile.name);
-
 	}
 
-	// Bind event handlers for the buttons I created
-	$('#main-nav').on("click", ".add-book", addBookSubmit);
-	$('#main-nav').on("click", ".delete-book", deleteBookSubmit);
-	$('#main-nav').on("click", ".update-book", updateBookSubmit);
+	// Render preview after file being uploaded
+	// function readURL(input) {
+	// 	if (input.files && input.files[0]) {
+	// 		var reader = new FileReader();
+
+	// 		reader.onload = function (e) {
+	// 			$('#uploaded-file')
+	// 			.attr('src', e.target.result)
+	// 			.width(250)
+	// 			.height(165);
+	// 		};
+
+	// 		reader.readAsDataURL(input.files[0]);
+	// 	}
+	// }
 
 	function addBookSubmit(event){
 		// Clear out the main content section
@@ -55,8 +106,9 @@ $(document).ready(function(){
 		var $main_content = $('#main-content');
 		// $main_content.empty();
 		// $main_content.html(generateBookForm());
-		var $side_form = $('.side-form');
-		$side_form.show();
+		var $side_bar = $('.side-bar');
+		$('#main-nav').hide();
+		$side_bar.slideToggle("slow");
 	}
 
 	function deleteBookSubmit(event) {

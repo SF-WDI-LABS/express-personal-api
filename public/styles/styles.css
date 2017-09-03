@@ -5,6 +5,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   background-color: rgb(239, 239, 239); /* Sanity Check! */
   margin: 0;
+
 }
 
 /* remove spaces from container and let the
@@ -43,6 +44,9 @@ li.list-item {
 	height: 100%;
 }
 */
+.row{
+	margin: 0;
+}
 
 #header{
 	padding:0;
@@ -54,12 +58,28 @@ li.list-item {
 	height: 100%;
 	
 }
-.side-form{
-	display: none;
-	position: absolute;
+.side-bar{
+	display:none;
+	position: fixed;
+	background-color: white;
+	right:0;
+	top:0;
+	height: 450px;
+	width: auto;
+	/*overflow: scroll;*/
+	margin: 0;
+	padding: 0;
+}
+.side-bar.card{
+	width: 100%;
+}
+
+.card.side-form{
+	position: sticky;
 	right: 0;
 	top: 0;
-	width: auto;
+	width: 100%;
+	height: auto;
 }
 
 .card {
@@ -68,8 +88,17 @@ li.list-item {
 	margin: 10px;
 	display: inline-block;
 }
+#uploaded-file{
+	margin: 10px 20px;
+}
+
 .card-img-top {
 	height: 165px;
+
+}
+input>.card-img-top{
+	padding: 20px;
+
 }
 
 .card-body{
@@ -78,10 +107,6 @@ li.list-item {
 	padding: 10px 20px;
 }
 
-.menu-item{
-	width: 100px;
-	border: solid black 2px;
-}
 
 /* The buttons on the main nav should be as big as parent*/
 #main-nav>button{
@@ -90,7 +115,14 @@ li.list-item {
 }
 
 button{
-	width: 100%;
+	width: auto;	
+}
+
+#main-nav{
+	float: right;
+}
+.btn{
+	font-size: .8em;
 }
 
 /*.card-text, .card-title{

@@ -98,19 +98,25 @@
 
     <!-- Invinsible side bar on the right
         appear when add form is clicked -->
-    <div class="side-form">
-      <form method="POST" action="">
-        <div class="card">
-        <input type="file" class="card-img-top">
-          <div class="card-body">
-            Title or Caption: 
-            <input type="text" class="card-title" name="story-title">
-            Description:
-            <input type="text" class="card-text" name="story-description">
-            <button type="submit" class="btn btn-dark">Confirm</button>
+    <div class="side-bar">
+      
+        <form method="POST" action="">
+          <div class="card">
+          <div class="img-preview"></div>
+          <input id="uploaded-file" type="file" >
+            <div class="card-body">
+              Title or Caption: 
+              <input type="text" class="card-title" name="story-title">
+              Description:
+              <textarea type="text" class="card-text" name="story-description"></textarea>
+              <button name="submit-book" type="submit" class="btn btn-dark">Confirm</button>
+              <button name="cancel-book" type="button" class="btn btn-dark">Cancel</button>
+              <button name="clear-book" type="reset" class="btn btn-dark">Clear</button>
+
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      
     </div>
 
     <footer>
