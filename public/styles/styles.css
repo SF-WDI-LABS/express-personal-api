@@ -1,18 +1,19 @@
 body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
 }
 
 h1 {
   margin-top: 100px;
   text-align: center;
+  font-size: 84px;
 }
 .jumbotron {
   background-image: url(../images/bkgimg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   color: #EEE;
+  background-position: 0px;
 }
 .jumbotron .container {
   height: 350px;
