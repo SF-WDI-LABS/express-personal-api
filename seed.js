@@ -13,3 +13,12 @@
 //   console.log("Created new campsite", campsite._id)
 //   process.exit(); // we're all done! Exit the program.
 // })
+const db = require("./models");
+
+//wipe out everything in the db
+db.Bird.remove({}, function(err, birds) {
+  if(err)
+    console.log(`failed to remove all birds in db: err = ${err}`);
+  else
+    console.log("successfully wipe out everything in the db");
+});

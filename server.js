@@ -29,6 +29,7 @@ app.use(function(req, res, next) {
 // i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));
 
+let controllers = require('./controllers');
 /*
  * HTML Endpoints
  */
@@ -41,11 +42,12 @@ app.get('/api/profile', function(req, res) {
   // return the contents of hardcoded 'profile'
 });
 
-app.get('/api/birds', function(req, res) {}); // get all birds
-app.get('/api/birds/:id', function(req, res) {}); // get one bird
-app.post('/api/birds', function(req, res) {}); // create a new bird
-app.put('/api/birds/:id', function(req, res) {}); // edit a bird
-app.delete('/api/birds/:id', function(req, res) {}); // delete a bird
+app.get('/api/birds', controllers.birds.index); // get all birds
+
+// app.get('/api/birds/:id', function(req, res) {}); // get one bird
+ app.post('/api/birds', controllers.birds.create); // create a new bird
+// app.put('/api/birds/:id', function(req, res) {}); // edit a bird
+// app.delete('/api/birds/:id', function(req, res) {}); // delete a bird
 
 /*
  * JSON API Endpoints

@@ -8,15 +8,89 @@
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../public/styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
 
     <!-- VENDOR SCRIPTS -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
-    <script src="../public/scripts/app.js"></script>
+    <script src="scripts/app.js"></script>
   </head>
   <body>
+
+    <!-- bird form begin -->
+    <section id="bird-form">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <form class="form-horizontal">
+            <fieldset>
+              <legend>Add Bird</legend>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="name">Bird Name</label>
+                  <div class="col-md-4">
+                    <input id="name" class="col-md-4 form-control input-md" type="text" name="name">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="type">Bird Type</label>
+                  <div class="col-md-4">
+                    <input id="type" class="col-md-4 form-control input-md" type="text" name="type">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="comments">Comments</label>
+                  <div class="col-md-4">
+                    <input id="comments" class="col-md-4 form-control input-md" type="text" name="comments">
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="urlName">Url Name</label>
+                  <div class="col-md-4">
+                    <input id="urlName" class="col-md-4 form-control input-md" type="text" name="urlName">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="url">Url Link</label>
+                  <div class="col-md-4">
+                    <input id="url" class="col-md-4 form-control input-md" type="text" name="url">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="photo1">Photo 1</label>
+                  <div class="col-md-4">
+                    <input id="photo1" class="col-md-4 form-control input-md" type="text" name="photo1">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="photo2">Photo 2</label>
+                  <div class="col-md-4">
+                    <input id="photo2" class="col-md-4 form-control input-md" type="text" name="photo2">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="savebutton">Save Bird</label>
+                  <div class="col-md-4">
+                    <button id="savebutton" name="savebutton" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- bird form end -->
+
 
     <div class="container">
       <div class="row">
@@ -26,14 +100,26 @@
         </div>
       </div>
     </div>
+
+    <section class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h2>Birds</h2>
+        </div>
+      </div>
+
+      <!-- birds container! -->
+      <div id='birds'></div>
+
+    </section>
     <!-- one bird begin -->
-    <div class="row bird">
+    <!-- <div class="row bird">
       <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 image-container">
-        <img class="image" src="../public/images/red-tailed-hawk-1827949_960_720.jpg" alt="Red Tail Hawk photo">
+        <img class="image" src="images/red-tailed-hawk-1827949_960_720.jpg" alt="Red Tail Hawk photo">
       </div>
 
       <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 image-container">
-        <img class="image" src="../public/images/Red-Tailed Hawk In Flight.jpg" alt="Red Tail Hawk photo">
+        <img class="image" src="images/Red-Tailed Hawk In Flight.jpg" alt="Red Tail Hawk photo">
       </div>
 
       <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 info-container">
@@ -60,17 +146,17 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
     <!-- one bird end -->
 
     <!-- one bird begin -->
-    <div class="row bird">
+    <!-- <div class="row bird">
       <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 image-container">
-        <img class="image" src="../public/images/cara.jpg" alt="Red Tail Hawk photo">
+        <img class="image" src="images/cara.jpg" alt="Red Tail Hawk photo">
       </div>
 
       <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 image-container">
-        <img class="image" src="../public/images/cara-inflight.jpg" alt="Red Tail Hawk photo">
+        <img class="image" src="images/cara-inflight.jpg" alt="Red Tail Hawk photo">
       </div>
 
       <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 info-container">
@@ -97,7 +183,7 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
     <!-- one bird end -->
 
   </body>
