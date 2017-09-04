@@ -30,6 +30,7 @@ app.use(function(req, res, next) {
 app.post('/story/create', controllers.story.create);
 app.get('/story/index', controllers.story.index);
 app.delete('/story/delete/:story_id', controllers.story.destroy);
+app.put('/story/update/:story_id', controllers.story.update);
 
 
 // Serve static files from the `/public` directory:

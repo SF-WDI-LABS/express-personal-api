@@ -1,17 +1,5 @@
 console.log("Sanity Check: JS is working!");
 $(document).ready(function(){
-// Phrase 0: (Adding initial static elements via ajax)
-// Add all the initial features static html element onto the site
-// EX: buttons, forms, data, pictures,
-// Setup event handlers for those and the possible function that go with each
-// Phrase 1: (Routing Ajax using hardcoded data)
-	// Setup ajax call and url path that those will lead
-	// Setup the routes in server.js of what controller routes it should go 
-	// and data they should get back
-// After we get back the data, write templating function to render them
-// on appropriate location at the page using jquery
-
-// Phrase 0: (Adding initial static elements via ajax)
 	
 	main();
 
@@ -31,43 +19,44 @@ $(document).ready(function(){
 		var $main_content = $('#main-content');
 		$main_nav.on("click", ".add-book", show_side_form);
 		$main_content.on("click", ".delete-book", deleteStoryBtn);
+		$main_content.on("click", ".edit-book", editStoryBtn);
 		$main_content.on("click", ".update-book", updateStoryBtn);
 		var $side_bar = $('.side-bar');
 		var $img_preview = $('.img-preview');
 		
-		$('.cancel-book').on("click", function(){
+		$('.cancel-story').on("click", function(){
 			$side_bar.slideToggle();
 			$main_nav.show();
 		});
-		$('.clear-book').on("click", function(){
-			$img_preview.empty();
-		});
+		$('.clear-story').on("click", function(){ $img_preview.empty(); });
 		// Preview images after user upload files
 		// $('[name=story_link]').change(previewFile);
 		
 		$('.side-form').on("submit", function(e){
 			e.preventDefault();
 			var story = $(this).serialize();
-
+			$('.story_link .card-title .card-text').val("");
 			$.ajax({
 				method: "POST",
 				url: "/story/create",
 				data: story,
 			})
-			.then(function(data){
-				// When data is received, template the book and render
+			.then(function(new_story){
+				// When data is received, template the book and slowly render
 				// it on the page using template and css card
-				$('#main-content').append(templateStory(data));
-
+				// Then clear out the form upon success
+				$('#main-content').prepend(templateStory(new_story, "none"));
+				$(`#${new_story._id}`).fadeIn(1000);
+				$('[name=form_link],[name=form_title],[name=form_description]').val("");
 			}).catch(function(err){
 				console.log(err);
 			});
 		});
 	};
 
-
 	// Preview img when file is uploaded
 	// Will not work for video file atm.
+	// Its not being used atm but will be in future projects
 	function previewFile(e){
 			for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
 			    var file = e.originalEvent.srcElement.files[i];
@@ -88,22 +77,22 @@ $(document).ready(function(){
 	function renderStories(stories){
 		var $main_content = $('#main-content');
 		stories.forEach(function(story){
-			$main_content.append(templateStory(story));
+			var new_story = templateStory(story, "show");
+			$main_content.prepend(new_story);
 		});
 	}
 
+	// Clear out the main content section
+	// Generate a form to add content
+	// on submit, save
 	function show_side_form(event){
-		// Clear out the main content section
-		// Generate a form to add content
-		// on submit, save
 		var $main_content = $('#main-content');
-		// $main_content.empty();
-		// $main_content.html(generateStoryForm());
 		var $side_bar = $('.side-bar');
 		$('#main-nav').hide();
 		$side_bar.slideToggle();
 	}
 
+	// Delete story from db and from front-end rendering
 	function deleteStoryBtn(event) {
 		var id = $(this).closest('.card').attr('id');
 		$.ajax({
@@ -111,53 +100,49 @@ $(document).ready(function(){
 			url: "/story/delete/" + id,
 		}).then(function(data){
 			$(`#${id}`).remove();
-		}).catch(function(err){ console.log(err)})
+		}).catch(function(err){ console.log(err);})
 	};
 
+	// Toggle input form and display update button 
+	// When update is clicked, update db and rerender page
+	function editStoryBtn(event){
+		$(this).parents('.card').find('.toggle').toggle();
+	}
+
 	function updateStoryBtn(event){
-
+	//Take whats in the input story_description and story_name field and send a put request
+		var body = {
+			name: $(this).parents('.card-body').find('[name=story_name]').val(),
+			description: $(this).parents('.card-body').find('[name=story_description]').val(),
+		};
+		var id = $(this).parents('.card').attr('id');
+		$.ajax({
+			method: "put",
+			url: "story/update/" + id,
+			data: body,
+		}).then(function(update_story){
+			// Update the front-end rendering after db stored correctly
+			var card_div = $(`#${id}`);
+			card_div.html(templateStory(update_story, "show"));
+		}).catch(function(err){console.log(err);});
 	}
 
-	function generateStoryForm(){
-		return `
-		<form method="" action="">
-			<div class="card">
-			<input type="file" class="card-img-top">
-				<div class="card-body">
-				Title or Caption: 
-				<input type="text" class="card-title" name="story-title">
-				Description:
-				<input type="text" class="card-text" name="story-description">
-				<button type="submit" class="btn btn-dark">Confirm</button>
-				</div>
-			</div>
-		</form>
-
-		`;
-	}
-
-	// Create book based on data received back from server
-	function createStory(data){
-
-	}
-
-	function templateStory(story){
-		return `
-		<div class="card" id=${story._id}>
-		  <img class="card-img-top" src=${story.link} alt="Card image cap">
-		  <div class="card-body">
-		    <h4 class="card-title">${story.name}</h4>
-		    <p class="card-text">${story.description}</p>
-		    <button type="button" class="edit-book btn btn-dark">Edit</button>
-		    <button type="button" class="delete-book btn btn-dark">Delete</button>
-		  </div>
+	// Create a card template from user input
+	function templateStory(story, display){
+		return `	
+		<div class="card" style="display: ${display}" id=${story._id}>
+			  <img class="card-img-top" src=${story.link} alt="Card image cap">
+			  <div class="card-body">
+			    <h4 class="card-title toggle">${story.name}</h4>
+			    <input type="text" name="story_name" class="card-title toggle" style="display: none" value="${story.name}">
+			    <p class="card-text toggle">${story.description}</p>
+			    <textarea type="text" name="story_description" class="card-text toggle" style="display: none" >${story.description}</textarea>
+			    <button type="button" class="delete-book btn btn-dark">Delete</button>
+			    <button type="button" class="edit-book btn btn-dark toggle">Edit</button>
+			    <button type="button" class="update-book btn btn-dark toggle" style="display: none">Update</button>
+			  </div>	
 		</div>
 		`;
 	}
 
-
 });
-
-
-
-

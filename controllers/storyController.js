@@ -15,9 +15,9 @@ function index(req, res){
 function create(req, res){
 
 	var story = new db.Story({
-		name: req.body.story_title,
-		description: req.body.story_description,
-		link: req.body.story_link,
+		name: req.body.form_title,
+		description: req.body.form_description,
+		link: req.body.form_link,
 	});
 	story.save(function(err,stored_story){
 		res.json(stored_story);
@@ -34,10 +34,17 @@ function destroy(req, res){
 	db.Story.findByIdAndRemove(req.params.story_id, function(err,story){
 		res.status(200).send("Success!");
 	});
-
 }
 
 function update(req, res){
+	db.Story.findById(req.params.story_id, function(err, story){
+		story.name = req.body.name;
+		story.description = req.body.description;
+		story.save(function(err, new_story){
+			console.log('New Story created' + new_story);
+			res.json(new_story);
+		});
+	});
 
 }
 
