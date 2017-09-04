@@ -7,6 +7,8 @@ var express = require('express'),
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var controllers = require('./controllers');
+
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
 app.use(function(req, res, next) {
@@ -25,6 +27,11 @@ app.use(function(req, res, next) {
  * ROUTES *
  **********/
 
+app.post('/story/create', controllers.story.create);
+app.get('/story/index', controllers.story.index);
+app.delete('/story/delete/:story_id', controllers.story.destroy);
+
+
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));
@@ -33,7 +40,13 @@ app.use(express.static('public'));
  * HTML Endpoints
  */
 
-app.get('/', function homepage(req, res) {
+// HTML page for the api documentation
+app.get('/', function(req,res){
+  res.sendFile(__dirname + '/views/api.html');
+});
+
+// My personal dashboard using my api
+app.get('/story', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
@@ -41,6 +54,28 @@ app.get('/', function homepage(req, res) {
 /*
  * JSON API Endpoints
  */
+
+
+// Main guidance of all endpoints
+app.get('/api', function apiIndex(req, res) {
+  // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
+  // It would be seriously overkill to save any of this to your database.
+  // But you should change almost every line of this response.
+  res.json({
+    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
+    message: "Welcome to my personal api! Here's what you need to know!",
+    documentationUrl: "https://github.com/hmliao14/express-personal-api/README.md", // CHANGE ME
+    baseUrl: "https://frozen-lowlands-63435.herokuapp.com",
+    endpoints: [
+      {method: "GET", path: "/api", description: "Describes all available endpoints"},
+      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
+      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+    ]
+  })
+});
+
+
+// Following are specific endpoints (hardcoded)
 // Api profile
 app.get('/api/profile', function (req, res) {
   res.json({
@@ -52,90 +87,102 @@ app.get('/api/profile', function (req, res) {
       personalSiteLink: "https://hmliao14.github.io/",
       currentCity: "San Francisco",
       hobbies: [{
-          name: "name1",
-        description: "description1"
+          name: "Down to Earth",
+        description: "I enjoy hanging out with friends to try new food and going to happy hours."
         },{
-          name: "name2",
-          description: "description2"
+          name: "Movie Fantasy",
+          description: "Comedy, Sci-Fi, Action, and story with mind-blowing twist are my favorite genres."
         },{
-          name: "name3",
-          description: "description3"
+          name: "Matrix Gaming",
+          description: "I occasionally practice my logical thinking and analytical skills through an online card game called Hearthstone"
         },{
-          name: "name4",
-          description: "description4"
+          name: "Outdoor Adventure",
+          description: "Not all the time its about going to specific places with goal in mind. There are times when my friends and I take on unknown hiking trail and explore random cities and suburban"
         }],
     }
   })
 });
 
 // Api template for images
+// sample_background are images I found online thats interesting
+// LA_trip has actual images I took during my trip to Los Angeles
 app.get('/api/images', function(req, res){
   res.json({
-    background: [
+    sameple_background: [
         {
         _id:  1,
         name: "Beach",
-        image_link: "/images/beach.jpg",
+        link: "/images/beach.jpg",
         },{
         _id:  2,
         name: "Snow Mountain",
-        image_link: "/images/snowmountain.jpg",
+        link: "/images/snowmountain.jpg",
 
         },{
         _id: 3,
         name: "Under Water",
-        image_link: "/images/underwater.jpg",
+        link: "/images/underwater.jpg",
         }, {
         _id: 4,
         name: "Mossholder",
-        image_link: "/images/mossholder.jpg",
+        link: "/images/mossholder.jpg",
+        }
+      ],
+    LA_trip: [
+        {
+        _id:  1,
+        name: "Adorable Baseball Dudes",
+        link: "/images/LA_trip/basball_dudes.jpg",
+        description: "These are some adorable toys I saw at one the LA stores"
+        },{
+        _id:  2,
+        name: "Delicious Dessert!",
+        link: "/images/LA_trip/casino_dessert.jpg",
+        description: "Some awesome dessert I had at Morongo Casino Resort"
+
+        },{
+        _id: 3,
+        name: "Chinese Theatre",
+        link: "/images/LA_trip/chinese_theatre.jpg",
+        description: "One of the popular lankmarks at the Hollywood Boulevard, Los Angeles"
+        }, {
+        _id: 4,
+        name: "Macaroon",
+        link: "/images/LA_trip/macaroon.jpg",
+        description: "What can I say? They are some soft little sweet treat!"
+        }, {
+        _id: 4,
+        name: "Oscar EVERYWHERE!",
+        link: "/images/LA_trip/oscar.jpg",
+        description: "Oscars I have achieved in my life haha. (Not)"
         }
       ]
   });
 });
 
-// Api template for videos
+// Api template for videos that i found online and its interesting
 app.get('/api/videos', function(req, res){
   res.json({
     samples: [
       {
         _id: 1,
         name: "Camping",
-        image_link: "/videos/camping.mp4",
+        link: "/videos/camping.mp4",
       },{
         _id: 2,
         name: "Dog in Sunset",
-        image_link: "/videos/dog_in_sunset.mp4",
+        link: "/videos/dog_in_sunset.mp4",
       },{
         _id: 3,
         name: "Sunset",
-        image_link: "/videos/underwater.mp4",
+        link: "/videos/underwater.mp4",
       },{
         _id: 4,
         name: "Underwater",
-        image_link: "/videos/underwater.mp4",
+        link: "/videos/underwater.mp4",
       }
     ]
   });
-});
-
-
-
-app.get('/api', function apiIndex(req, res) {
-  // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
-  // It would be seriously overkill to save any of this to your database.
-  // But you should change almost every line of this response.
-  res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
-    message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
-    endpoints: [
-      {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
-    ]
-  })
 });
 
 /**********

@@ -39,56 +39,13 @@
     <div class="main col">
       <div class="row">
         <div id="main-content" class="col-10">
-          <!-- Card One -->
-          <div class="card">
-            <img class="card-img-top" src="/images/beach.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Beach</h4>
-              <p class="card-text">A story about my trip. Blah Blah BlahBlah Blah Blah</p>
-              <a href="#" class="btn btn-dark">Go somewhere</a>
-            </div>
-          </div>
-          <!-- Card One -->
-
-          <!-- Card Two -->
-          <div class="card">
-            <img class="card-img-top" src="/images/underwater.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Underwater</h4>
-              <p class="card-text">A story about my trip. Blah Blah BlahBlah Blah Blah</p>
-              <a href="#" class="btn btn-dark">Go somewhere</a>
-            </div>
-          </div>
-          <!-- Card Two -->
-
-          <!-- Card Three -->
-          <div class="card">
-            <img class="card-img-top" src="/images/mossholder.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Mossholder</h4>
-              <p class="card-text">A story about my trip. Blah Blah BlahBlah Blah Blah</p>
-              <a href="#" class="btn btn-dark">Go somewhere</a>
-            </div>
-          </div>
-          <!-- Card Three -->
-
-          <!-- Card Four -->
-          <div class="card">
-            <img class="card-img-top" src="/images/snowmountain.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Snowmountain</h4>
-              <p class="card-text">A story about my trip. Blah Blah BlahBlah Blah Blah</p>
-              <a href="#" class="btn btn-dark">Go somewhere</a>
-            </div>
-          </div>
-          <!-- Card Four -->
-
+          <!-- Template data from app.js goes here -->
         </div>
         <!-- End of main-content -->
 
         <div id="main-nav" class="col-2">
-          <button type="button" class="delete-book btn btn-dark">Delete Book</button>
-          <button type="button" class="update-book btn btn-dark">Update Book</button>
+          <!-- <button type="button" class="delete-book btn btn-dark">Delete Book</button> -->
+         <!--  <button type="button" class="edit-book btn btn-dark">Edit Book</button> -->
           <button type="button" class="add-book btn btn-dark">Add Book</button>
         </div>
 
@@ -100,24 +57,33 @@
         appear when add form is clicked -->
     <div class="side-bar">
       
-        <form method="POST" action="">
+        <form class="side-form" method="POST" action="/story/create">
           <div class="card">
-          <div class="img-preview"></div>
-          <input id="uploaded-file" type="file" >
+          <div class="img-preview">
+            
+          </div>
+          <!-- Hard to store image directl, URL best for now -->
+<!--           Image File:
+          <input name="story_link" type="file" > -->
+          
+           
             <div class="card-body">
+              Image Link:
+              <input type="url" name="story_link" required>  
               Title or Caption: 
-              <input type="text" class="card-title" name="story-title">
+              <input type="text" class="card-title" name="story_title" required>
               Description:
-              <textarea type="text" class="card-text" name="story-description"></textarea>
-              <button name="submit-book" type="submit" class="btn btn-dark">Confirm</button>
-              <button name="cancel-book" type="button" class="btn btn-dark">Cancel</button>
-              <button name="clear-book" type="reset" class="btn btn-dark">Clear</button>
+              <textarea type="text" class="card-text" name="story_description"></textarea>
+              <button name="" type="submit" class="submit-book btn btn-dark">Confirm</button>
+              <button name="" type="button" class="cancel-book btn btn-dark">Cancel</button>
+              <button name="" type="reset" class="clear-book btn btn-danger">Clear</button>
 
             </div>
           </div>
         </form>
       
     </div>
+
 
     <footer>
       <div class="col">

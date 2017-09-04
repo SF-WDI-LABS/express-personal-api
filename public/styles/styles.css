@@ -64,11 +64,10 @@ li.list-item {
 	background-color: white;
 	right:0;
 	top:0;
-	height: 450px;
+	height: auto;
 	width: auto;
-	/*overflow: scroll;*/
 	margin: 0;
-	padding: 0;
+	padding: 10px;
 }
 .side-bar.card{
 	width: 100%;
@@ -80,6 +79,7 @@ li.list-item {
 	top: 0;
 	width: 100%;
 	height: auto;
+	/*overflow: scroll;*/
 }
 
 .card {
@@ -87,9 +87,6 @@ li.list-item {
 	height: auto;
 	margin: 10px;
 	display: inline-block;
-}
-#uploaded-file{
-	margin: 10px 20px;
 }
 
 .card-img-top {

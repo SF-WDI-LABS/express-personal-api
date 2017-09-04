@@ -1,9 +1,5 @@
 console.log("Sanity Check: JS is working!");
-
 $(document).ready(function(){
-
-// your code
-
 // Phrase 0: (Adding initial static elements via ajax)
 // Add all the initial features static html element onto the site
 // EX: buttons, forms, data, pictures,
@@ -17,109 +13,112 @@ $(document).ready(function(){
 
 // Phrase 0: (Adding initial static elements via ajax)
 	
-
-	// $.ajax({
-	// 	method: "GET",
-	// 	url: "/api/profile"
-		
-	// })
-	// .then(function(data){
-	// 	console.log("hello");
-	// 	console.log(data);
-	// 	renderIndex(data);
-
-	// })
-	// .catch(function(err){
-	// 	console.log(err);
-	// });
 	main();
 
+	// The main apps being run when the doc is first loaded.
+	// Outside of main are helper functions
 	function main() {
-	// Bind event handlers for the buttons I created
-		var $main_nav = $('#main-nav');
-		$main_nav.on("click", ".add-book", addBookSubmit);
-		$main_nav.on("click", ".delete-book", deleteBookSubmit);
-		$main_nav.on("click", ".update-book", updateBookSubmit);
+		// Render dummpy data from seed.js when the webpage is first loaded
+		$.ajax({
+			method: "GET",
+			url: "/story/index",
+			success: renderStories,
+		});
 
+		// Bind event handlers on Add, Edit, and Delete buttons
+		// &&  on side-forms
+		var $main_nav = $('#main-nav');
+		var $main_content = $('#main-content');
+		$main_nav.on("click", ".add-book", show_side_form);
+		$main_content.on("click", ".delete-book", deleteStoryBtn);
+		$main_content.on("click", ".update-book", updateStoryBtn);
 		var $side_bar = $('.side-bar');
 		var $img_preview = $('.img-preview');
 		
-		$('[name=cancel-book]').on("click", function(){
+		$('.cancel-book').on("click", function(){
 			$side_bar.slideToggle();
-			$main_nav.show("slow");
+			$main_nav.show();
 		});
-		$('[name=clear-book]').on("click", function(){
+		$('.clear-book').on("click", function(){
 			$img_preview.empty();
 		});
-
 		// Preview images after user upload files
-		$('#uploaded-file').change(function(e){
-			for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+		// $('[name=story_link]').change(previewFile);
+		
+		$('.side-form').on("submit", function(e){
+			e.preventDefault();
+			var story = $(this).serialize();
 
+			$.ajax({
+				method: "POST",
+				url: "/story/create",
+				data: story,
+			})
+			.then(function(data){
+				// When data is received, template the book and render
+				// it on the page using template and css card
+				$('#main-content').append(templateStory(data));
+
+			}).catch(function(err){
+				console.log(err);
+			});
+		});
+	};
+
+
+	// Preview img when file is uploaded
+	// Will not work for video file atm.
+	function previewFile(e){
+			for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
 			    var file = e.originalEvent.srcElement.files[i];
 			    var img = document.createElement("img");
 			    var reader = new FileReader();
 			    reader.onloadend = function(event) {
 			    	img.src = event.target.result;
-			    	// .attr('src', event.target.result)
-			    	// .width(250)
-			    	// .height(165);
 			    };
 			    $(img).css("width", "250px", "height", "165px");
 			    reader.readAsDataURL(file);
 			    $('.img-preview').empty();
 			    $('.img-preview').append(img);
-			   
 			}
-		});
 	};
 
-	function renderIndex(data){
-		var profile = data.profile;
-		// append the profile picture
-		//$('.profile-pic').append()
-	
-		//$(".profile-pic").html(profile.githubProfileImage);
-		$('.my-name').html(profile.name);
+	// For all stories received from server,
+	// create a html template for them and append to the page
+	function renderStories(stories){
+		var $main_content = $('#main-content');
+		stories.forEach(function(story){
+			$main_content.append(templateStory(story));
+		});
 	}
 
-	// Render preview after file being uploaded
-	// function readURL(input) {
-	// 	if (input.files && input.files[0]) {
-	// 		var reader = new FileReader();
-
-	// 		reader.onload = function (e) {
-	// 			$('#uploaded-file')
-	// 			.attr('src', e.target.result)
-	// 			.width(250)
-	// 			.height(165);
-	// 		};
-
-	// 		reader.readAsDataURL(input.files[0]);
-	// 	}
-	// }
-
-	function addBookSubmit(event){
+	function show_side_form(event){
 		// Clear out the main content section
 		// Generate a form to add content
 		// on submit, save
 		var $main_content = $('#main-content');
 		// $main_content.empty();
-		// $main_content.html(generateBookForm());
+		// $main_content.html(generateStoryForm());
 		var $side_bar = $('.side-bar');
 		$('#main-nav').hide();
-		$side_bar.slideToggle("slow");
+		$side_bar.slideToggle();
 	}
 
-	function deleteBookSubmit(event) {
+	function deleteStoryBtn(event) {
+		var id = $(this).closest('.card').attr('id');
+		$.ajax({
+			method: "delete",
+			url: "/story/delete/" + id,
+		}).then(function(data){
+			$(`#${id}`).remove();
+		}).catch(function(err){ console.log(err)})
+	};
+
+	function updateStoryBtn(event){
 
 	}
 
-	function updateBookSubmit(event){
-
-	}
-
-	function generateBookForm(){
+	function generateStoryForm(){
 		return `
 		<form method="" action="">
 			<div class="card">
@@ -135,30 +134,25 @@ $(document).ready(function(){
 		</form>
 
 		`;
-
 	}
 
 	// Create book based on data received back from server
-	function createBook(data){
+	function createStory(data){
 
 	}
 
-	function templateBook(data){
-
-		var book = data;
-
+	function templateStory(story){
 		return `
-		<div class="card">
-		  <img class="card-img-top" src=${data.link} alt="Card image cap">
+		<div class="card" id=${story._id}>
+		  <img class="card-img-top" src=${story.link} alt="Card image cap">
 		  <div class="card-body">
-		    <h4 class="card-title">${data.name}</h4>
-		    <p class="card-text">${data.description}</p>
-		    <a href="#" class="btn btn-dark">Go somewhere</a>
+		    <h4 class="card-title">${story.name}</h4>
+		    <p class="card-text">${story.description}</p>
+		    <button type="button" class="edit-book btn btn-dark">Edit</button>
+		    <button type="button" class="delete-book btn btn-dark">Delete</button>
 		  </div>
 		</div>
-
 		`;
-
 	}
 
 
