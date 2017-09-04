@@ -64,6 +64,7 @@ app.get('/api', function apiIndex(req, res) {
 });
 app.get('/api/profile', controllers.profile.index);
 app.get('/api/heroes', controllers.heroController.index);
+app.post('/api/heroes', controllers.heroController.create)
 
 /**********
  * SERVER *

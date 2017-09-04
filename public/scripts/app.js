@@ -76,3 +76,6 @@ let heroesHTML = (`
   console.log("hello?");
   $("#hero-list").append(heroesHTML);
 }
+$("btn-primary").on("click", function(){
+  
+})
