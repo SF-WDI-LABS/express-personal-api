@@ -14,7 +14,7 @@ function profile(req, res) {
       githubLink: "https://github.com/balbini",
       personalSiteLink: "https://balbini.github.io/",
       currentCity: "San Francisco, CA",
-      hobbies:"to be filled in"
+      hobbies:"Video Games, Dungeons & Dragons"
     }
   });
 }

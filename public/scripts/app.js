@@ -19,10 +19,15 @@ function displayHero(heroes){
     renderHero(hero);
   });
 }
+
+$.ajax({
+  method: "POST",
+  url: "/api/heroes",
+  sucess: createHero
+})
   function renderHero(hero){
 let heroesHTML = (`
   <div class="row album" data-album-id="${hero._id}">
-      <div class="not-edit">
       <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
           <div class="panel-body">
@@ -30,30 +35,28 @@ let heroesHTML = (`
 
           <!-- begin album internal row -->
             <div class='row'>
-              <div class="col-md-3 col-xs-12 thumbnail album-art">
-
               </div>
 
               <div class="col-md-9 col-xs-12">
                 <ul class="list-group">
-                  <li class="list-group-item">
-                    <h4 class='inline-header'>Hero Name:</h4>
-                    <span class='hero-name'>${hero.name}</span>
+                  <li>
+                    <h4>Hero Name:</h4>
+                    <span>${hero.name}</span>
                   </li>
 
-                  <li class="list-group-item">
-                    <h4 class='inline-header'>Powers:</h4>
-                    <span class='hero-age'>${hero.powers}</span>
+                  <li>
+                    <h4>Powers:</h4>
+                    <span>${hero.powers}</span>
                   </li>
 
-                  <li class="list-group-item">
-                    <h4 class='inline-header'>Hero Age:</h4>
-                    <span class='hero-age'>${hero.age}</span>
+                  <li>
+                    <h4>Hero Age:</h4>
+                    <span>${hero.age}</span>
                   </li>
 
-                  <li class="list-group-item">
-                    <h4 class='inline-header'>Secret Identity:</h4>
-                    <span class='hero-secret_identity'>${hero.secret_identity}</span>
+                  <li>
+                    <h4>Secret Identity:</h4>
+                    <span>${hero.secret_identity}</span>
                   </li>
                 </ul>
               </div>
@@ -64,7 +67,6 @@ let heroesHTML = (`
             <div class='panel-footer'>
               <div class='panel-footer'>
                 <button class='btn btn-danger delete-album'>Delete Hero</button>
-                <button class='btn btn-info edit-album'>Edit Hero</button>
                 <button class='btn btn-info save-changes'>Save Changes</button>
               </div>
             </div>
@@ -76,6 +78,11 @@ let heroesHTML = (`
   console.log("hello?");
   $("#hero-list").append(heroesHTML);
 }
-$("btn-primary").on("click", function(){
-  
+function createHero(e){
+  e.preventDefault();
+  $(".hero_add").on("submit", function(hero){
+    let newHero = $(this).serialize();
+    renderHero(newHero);
+    console.log(newHero);
 })
+}
