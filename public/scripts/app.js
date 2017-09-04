@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+// ajax get request to get data from database and render to client side
 $.ajax({
 	method:"GET",
 	url: '/api/bjj',
@@ -16,6 +17,7 @@ $.ajax({
     window.location = window.location; 
   }
 
+// form submission event handler
 $('.form-horizontal').on('submit', formData)
   
 
@@ -24,7 +26,7 @@ $('.form-horizontal').on('submit', formData)
 
 
 
-
+// loop through data and render to html
 function renderMultipleReviews(reviews) {
 
   reviews.forEach(function(review) {
@@ -34,7 +36,7 @@ function renderMultipleReviews(reviews) {
 
 }
 
-
+// data render to html function
 function renderBjj(bjj) {
 
 
@@ -43,15 +45,15 @@ function renderBjj(bjj) {
 <div class="container forms">
 <div class="row">
 <div class="col-sm-12">
-<div class="card" style="width: 100%;">
+<div class="card" style="width: 75%;">
   <img class="card-img-top" src='${bjj.image}' alt="Card image cap">
   <div class="card-body">
-    <h4 class="card-title">Gym: ${bjj.gymName}</h4>
+    <h4 class="card-title">Jiu-Jitsu Academy Name:<br> ${bjj.gymName}</h4>
     <p class="card-text"></p>
   </div>
   <ul class="list-group list-group-flush">
-   <li class="list-group-item">Location: ${bjj.gymLocation}</li>
-    <li class="list-group-item">Review: ${bjj.reviews}</li>
+   <li class="list-group-item"><span class="desc">Location</span>: ${bjj.gymLocation}</li>
+    <li class="list-group-item"><span class="desc">Review:</span> ${bjj.reviews}</li>
    
   </ul>
   </div>
@@ -64,7 +66,7 @@ function renderBjj(bjj) {
 
   `);
 
-
+// append to div
   $('#gymDisplay').prepend(bjjHtml);
 }
 

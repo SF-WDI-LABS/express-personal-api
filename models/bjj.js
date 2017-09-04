@@ -1,3 +1,4 @@
+// mongodb scheme for database
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 

@@ -21,7 +21,7 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+
 
 /**********
  * ROUTES *
@@ -35,6 +35,7 @@ app.use(express.static('public'));
  * HTML Endpoints
  */
 
+// routers 
 app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });

@@ -2,14 +2,14 @@
 var db = require('../models');
 
 function index(req, res) {
-  // send back all albums as JSON
+ 
   db.Bjj.find({}, function(err, allAlbums) {
     res.json(allAlbums);
   });
 }
 
 
-
+// create function to create data in database
 function create(req, res) {
   console.log('body', req.body);
 
@@ -23,9 +23,9 @@ function create(req, res) {
 }
 
 
-// GET /api/albums/:albumId
+// get data input by id
 function show(req, res) {
-  // find one album by id and send it back as JSON
+  // find one gym by id and send it back as JSON
   console.log(req.params.bjjId);
   db.Bjj.findById(req.params.bjjId, function(err, foundAlbum) {
   	
@@ -36,7 +36,7 @@ function show(req, res) {
 }
 
 
-db.Bjj.remove( { gymName: "bryan" } );
+
 
 
 

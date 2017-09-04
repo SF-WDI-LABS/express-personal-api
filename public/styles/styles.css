@@ -16,3 +16,17 @@ body {
 	width:200px;
 }
 
+.card{
+	opacity:0.85;
+	background-color:black;
+	color:white;
+}
+.list-group-flush {
+	color:black;
+	font-weight:bold;
+
+}
+
+.desc {
+	font-size:24px;
+}
