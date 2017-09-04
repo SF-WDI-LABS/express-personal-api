@@ -39,15 +39,15 @@ app.get('/', function homepage(req, res) {
 });
 
 app.get('/api/profile', function(req, res) {
-  // return the contents of hardcoded 'profile'
+  // res.sendFile(__dirname + '/views/profile.html');
 });
 
 app.get('/api/birds', controllers.birds.index); // get all birds
 
-// app.get('/api/birds/:id', function(req, res) {}); // get one bird
- app.post('/api/birds', controllers.birds.create); // create a new bird
- app.put('/api/birds/:birdId', controllers.birds.update); // edit a bird
- app.delete('/api/birds/:birdId', controllers.birds.destroy); // delete a bird
+app.get('/api/birds/:birdId', controllers.birds.show); // get one bird
+app.post('/api/birds', controllers.birds.create); // create a new bird
+app.put('/api/birds/:birdId', controllers.birds.update); // edit a bird
+app.delete('/api/birds/:birdId', controllers.birds.destroy); // delete a bird
 
 /*
  * JSON API Endpoints

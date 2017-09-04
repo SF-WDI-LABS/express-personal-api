@@ -20,18 +20,27 @@ h1 {
 }
 
 .bird {
+  margin: 3% 3%;
+  background-color: #ffd1b3;
+  border-width: thick;
+  border-style: ridge;
+  border-radius: 15px;
+}
 
-  margin: 1% 1%;
+.panel-footer {
+  background-color: #ffe0cc;
 }
 .image-container {
-  /*background-color: yellow;*/
-  border-style: none;
+  /*border-style: none;*/
   box-sizing: border-box;
   padding: 1%;
 }
 
 .image {
   box-sizing: border-box;
+  border-width: medium;
+  border-style: ridge;
+  border-radius: 10px;
   width: 100%;
   height: 100%;
 }
@@ -48,13 +57,14 @@ h1 {
 }
 
 .list-group {
-  /*background-image: url("../images/background13.jpeg");
-  background-size: auto;*/
+  border-width: medium;
+  border-style: ridge;
+  border-radius: 10px;
 }
 
 .list-group-item {
-  /*background-color: #ccf5ff;*/
-  opacity: 0.6;
+  background-color: #ffe0cc;
+  /*opacity: 0.6;*/
 
 }
 

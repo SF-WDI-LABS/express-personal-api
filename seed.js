@@ -22,8 +22,10 @@ let birdSeed = [
   comments: "Very common. Often spotted circling search for prey.",
   urlName: "The Cornell Lab of Ornithology",
   url: "https://www.allaboutbirds.org/guide/Red-tailed_Hawk/id",
-  photo1: "images/red-tailed-hawk-1827949_960_720.jpg",
-  photo2: "images/Red-Tailed Hawk In Flight.jpg",
+  // photo1: "images/red-tailed-hawk-1827949_960_720.jpg",
+  // photo2: "images/Red-Tailed Hawk In Flight.jpg",
+  photo1: "images/redtail-2.jpg",
+  photo2: "images/redtail-inflight-2.jpg"
   },
 
   {
@@ -42,9 +44,30 @@ let birdSeed = [
   comments: "Very colorful. In the same family as Coots and Moorhen. An excellent wader.",
   urlName: "Audubon",
   url: "http://www.audubon.org/field-guide/bird/purple-gallinule",
-  photo1: "images/gallinule2.jpg",
-  photo2: "images/gallinule.jpg",
+  photo1: "images/gallinule3.jpg",
+  photo2: "images/gallinule4.jpg",
 },
+
+  {
+  name: "Snail Kite",
+  type: "bird of prey",
+  comments: "Snail is their only food source. Notice the curving beak for pulling out the snail from its shell. Resident of Florida only.",
+  urlName: "Audubon",
+  url: "http://fl.audubon.org/birds/everglade-snail-kite",
+  photo1: "images/snail-kite.jpg",
+  photo2: "images/snail-kite-2.jpg",
+  },
+
+  {
+  name: "Anhinga",
+  type: "water bird",
+  comments: "Tropical bird found in the southern swamps. They hunt by spear fishing.",
+  urlName: "Animal Diversity Web",
+  url: "http://animaldiversity.org/accounts/Anhinga_anhinga/",
+  photo1: "images/anhinga.jpeg",
+  photo2: "images/anhinga2.jpg",
+  },
+
 ];
 
 //wipe out everything in the db

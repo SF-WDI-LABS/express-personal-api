@@ -58,6 +58,16 @@ function destroy(req, res) {
   });
 }
 
+function show(req, res) {
+  db.Bird.findById(req.params.birdId, function(err, bird) {
+    if (err) {
+      console.log(`Cannot find bird id ${req.params.birdId} in db`);
+      return;
+    }
+
+    res.json(bird);
+  });
+}
 
 //public methods
 module.exports = {
@@ -65,4 +75,5 @@ module.exports = {
   create: create,
   update: update,
   destroy: destroy,
+  show: show,
 }
