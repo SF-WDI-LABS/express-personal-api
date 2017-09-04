@@ -7,4 +7,9 @@ $.ajax({
   method: "GET",
   url:"/api/profile"
 })
+
+$.ajax({
+  method: "GET",
+  url: "/api/heroes"
+})
 });

@@ -14,7 +14,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
- let controllers = require("./controllers");
+let controllers = require("./controllers");
 
 
 /************
@@ -57,7 +57,8 @@ app.get('/api', function apiIndex(req, res) {
       {method: "GET", path: "/api/profile", description: "Data about Bryan"},
       {method: "GET", path: "/api/heroes", description: "Index of all heroes"},
       {method: "POST", path: "/api/heroes", description: "Create a new hero."},
-      {method: "PUT", path: "/api/heroes", description: "Edit a hero and update it."}
+      {method: "PUT", path: "/api/heroes", description: "Edit a hero and update it."},
+      {method: "DELETE", path: "/api/heroes", description:"Remove a hero from the database."}
     ]
   })
 });
