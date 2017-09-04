@@ -4,4 +4,4 @@ mongoose.Promise = global.Promise;  // use native Promise
 
 module.exports.Personal = require("./personal_data");
 module.exports.Hobby = require("./hobbies");
-
+module.exports.Movie = require("./movies");

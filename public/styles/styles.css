@@ -8,3 +8,18 @@ h1 {
   margin-top: 100px;
   text-align: center;
 }
+
+.nav-styles {
+  padding: 10px 0;
+  background-color: green;
+}
+
+.nav-list-styles {
+  font-size: 35px;
+  margin: 0 50px;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+}
