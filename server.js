@@ -23,6 +23,7 @@ var controllers = require('./controllers');
 
 var db = require('./models');
 
+
 /**********
  * ROUTES *
  **********/
@@ -40,6 +41,7 @@ app.get('/', function homepage(req, res) {
 });
 
 
+
 /*
  * JSON API Endpoints
  */
@@ -54,7 +56,7 @@ app.get('/api', function apiIndex(req, res) {
     baseUrl: "http://still-earth-44555.herokuapp.com",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
+      {method: "GET", path: "/api/profile", description: "A little information about me"},
       {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
     ]
   })
@@ -88,6 +90,8 @@ app.get('/api/profile', function apiIndex(req, res) {
 
 
 app.get('/api/boardgames', controllers.boardgames.index);
+app.post('/api/newBoardgame', controllers.boardgames.create);
+app.get('/api/boardgames/:id/edit/', controllers.boardgames.edit)
 
 
 

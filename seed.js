@@ -22,23 +22,23 @@ var gamelist =[];
 gamelist.push({
               title: 'Settlers of Catan',
               description: 'The Settlers of Catan from Mayfair Games is an award-winning strategy game where players collect resources and use them to build roads, settlements and cities on their way to victory. The board itself is variable, making each game a little different from the next.',
-              playtime: '1 hour',
+              playtime: '1 Hour',
               players: '3+',
               image: 'images/catanpic.png'
             });
 gamelist.push({
-              title: 'Monopoly',
-              description: 'placeholder',
-              playtime: 'too long',
-              players: '2-4',
-              image: 'images/generic-game-image.jpg',
+              title: 'Carcassonne',
+              description: 'A turn based strategy game in which you draw tiles to build a map and claim feature of the landscape for points.',
+              playtime: '1 Hour',
+              players: '2+',
+              image: 'images/Carcassonne.jpg',
             });
 gamelist.push({
-              title: 'Sorry',
-              description: 'placeholder',
-              playtime: '30 minutes',
-              players: '2-4',
-              image: 'images/generic-game-image.jpg',
+              title: 'Betrayal at House on the Hill',
+              description: 'Players all begin as allies exploring a haunted house filled with dangers, traps, items and omens. As players explore the mansion, new room tiles are chosen at random; accordingly, the game board is different each session. Eventually the "haunt" begins, with the nature and plot of the current ghost story revealed; one player usually "betrays" the others and takes the side of the ghosts, monsters, or other enemies, while the remaining players collaborate to defeat them. ',
+              playtime: '45 - 90 Minutes',
+              players: '3-6',
+              image: 'images/Betrayal.jpg',
             });
 
 
