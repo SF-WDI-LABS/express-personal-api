@@ -3,7 +3,7 @@ var db = require("./models");
 var directorList =[];
 directorList.push({
   name: 'RZA',
-  movieTitles: ['Man with the iron fists'],
+  movieTitles: ['Man with The Iron Fists'],
   alive: true,
   countryOfOrigin: 'USA'
 });

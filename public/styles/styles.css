@@ -25,7 +25,7 @@ p{
   color: #e5e51a;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
-#add-dir-btn{
+.add-dir-btn{
   margin-bottom: 20px;
   background-color: #e5e51a;
   color: black;

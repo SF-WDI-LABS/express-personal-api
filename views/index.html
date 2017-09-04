@@ -25,7 +25,12 @@
      </div>
    </div>
 <!-- Add a director form -->
-<section id="add-dir-form">
+<section id="add-dir-form" class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h2>Add A Director To The List:</h2>
+    </div>
+  </div>
    <div class="row director">
 
      <div class="col-md-10 col-md-offset-1">
@@ -39,9 +44,6 @@
              <div class="col-md-9 col-xs-12">
 
                <ul class="list-group">
-                 <li class="list-group-item">
-                   <h3 class='inline-header'>Add A Director To The List:</h3>
-                </li>
                  <li class="list-group-item">
                    <h4 class='inline-header'>Director's Name:</h4>
                    <input type:"text" name='name'>
@@ -68,7 +70,7 @@
            </div>
            <!-- end of director internal row -->
            <div>
-           <input class="btn btn-primary" id="add-dir-btn" type="submit" value="Submit">
+           <input class="btn btn-primary  add-dir-btn" type="submit" value="Submit">
            </div>
            </form>
          </div>
@@ -119,13 +121,17 @@
                          <h4 class='inline-header'>Movies Directed:</h4>
                          <span class='movies-directed'>
                            Yojimbo,
-                           Seven Samurai, 
+                           Seven Samurai,
                            Rashomon
                          </span>
                        </li>
 
                      </ul>
+                     <button class="btn btn-primary add-dir-btn" type="submit" >Edit</button>
+                     <button class="btn btn-primary  add-dir-btn" type="submit">Delete</button>
                    </div>
+
+
                  </div>
                  <!-- end of director internal row -->
 

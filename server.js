@@ -45,7 +45,11 @@ app.get('/', function homepage(req, res) {
 app.get('/api', controllers.api.index);
 app.get('/personal', controllers.personal.index)
 app.get('/director', controllers.director.index)
-//app.get('/api/directors', function )
+app.post('/director', controllers.director.create)
+app.get('/director/:_id', controllers.director.show)
+app.put('/director/:_id', controllers.director.update)
+app.delete('/director/:_id', controllers.director.destroy)
+
 /**********
  * SERVER *
  **********/

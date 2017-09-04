@@ -7,11 +7,11 @@ $('#add-dir-form form').on('submit', function(e) {
     e.preventDefault();
     var formData = $(this).serialize();
     console.log('formData', formData);
-    // $.post('/director', formData, function(director) {
-    //   console.log('director after POST', director);
-    //     //render the server's response
-    // });
-    // $(this).trigger("reset");
+     $.post('/director', formData, function(director) {
+       console.log('director after POST', director);
+         //render the server's response
+    });
+    $(this).trigger("reset");
   });
 });
 
