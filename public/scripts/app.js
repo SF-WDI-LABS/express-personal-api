@@ -55,9 +55,39 @@ let createNewUser = function() {
   // go and get each of the value from the input field. The initial value of each field was populated automatically by using the 'value=' in the input tag of the html
   let newProfileHeaderName = $('.modal-input-for-profile-name').val();
   let newProfileHeaderTitle = $('.modal-input-for-profile-title').val();
-  let newProfileHeaderWorkpalce = $('.modal-for-profile-workPlace').val();
-  let newProfileHeaderQuote = $('.modal-for-profile-quote').val();
-}
+  let newProfileHeaderWorkpalce = $('.modal-input-for-profile-workPlace').val();
+  let newProfileHeaderQuote = $('.modal-input-for-profile-quote').val();
+  let newProfileHeaderImg ='/images/userimages/' +  $('.modal-input-for-file').val().split('\\').pop();
+  // removes the fakepath $('.modal-input-for-file').val().split('\\').pop()
+  let profileImg = ($('.modal-input-for-file').val().split('\\').pop());
+
+  let newProfileHeaderData = {
+    name: newProfileHeaderName,
+    image: newProfileHeaderImg,
+    title: newProfileHeaderTitle,
+    workPlace: newProfileHeaderWorkpalce,
+    quote: newProfileHeaderQuote,
+    markedForDeletion: false,
+    socialNetwork: ['',''],
+  };
+  console.log('THIS IS NEW PROFILE HEADER', newProfileHeaderData);
+
+
+  $.ajax({
+    method: 'POST',
+    url: `/api/searchpage`,
+    data: newProfileHeaderData,
+  })
+  .then(function(newlyCreatedProfileData) {
+    console.log('DATA returned from createNewUser', newlyCreatedProfileData);
+    // send back the updated data do can pass it through a similar render function again. This time will have another function b/c one is coming from the SRP and the other is coming from the profile page
+    renderProfileAfterEdit(newlyCreatedProfileData);
+
+  })
+  .catch(function(err) {
+    console.log('ERROR during the createNewUser returned data', err);
+  });
+};
 
 let renderProfileFromSrp = function() {
   let currentProfileId
@@ -296,8 +326,7 @@ let editProfileHeader = function (e) {
   // hides the edit-header pencil that is currently showing and gets rid of that while showing the new one
   $('.edit-input-header').toggle();
   $('.edit-save-header').toggle();
-
-}
+};
 
 // ability to edit the field and save the fields
 let saveProfileHeader = function(e) {
@@ -321,6 +350,7 @@ let saveProfileHeader = function(e) {
     title: editedProfileHeaderTitle,
     workPlace: editedProfileHeaderWorkpalce,
     quote: editedProfileHeaderQuote,
+
   };
   console.log('THIS IS THE DATA TO BE SENT BACK AFTER EDIT', editedProfileHeaderData);
 
@@ -520,16 +550,13 @@ let renderProfileAfterEdit = function(updatedEditedData) {
           </div>
           <!-- ONE USER PROFILE  -->
         `
-      }
+      } ;
       // load one at a time
       $('#user-profile').append(headerAndAboutMeHtml);
       $('#social-network').append(socialHtml);
     });
     // let backButton = $(this).closest('#back-to-srp');
     // backButton.find('.back-to-srp-span').toggle();
-
-
-
 };
 
 // set up click event listener for the icon that is attached to the parent class for the edit inter-communication

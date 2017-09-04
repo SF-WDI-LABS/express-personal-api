@@ -55,7 +55,7 @@ app.get('/api/searchpage', controllers.profile.searchResultsPage);
 app.get('/api/searchpage/:profileId', controllers.profile.showOneProfile);
 //
 // // creates and saves one user profile fron the SRP page
-// app.post('/api/searchpage', controllers.profile.createNewProfile);
+app.post('/api/searchpage', controllers.profile.createNewProfile);
 //
 // //update and save the profile
 app.put('/api/searchpage/:profileId', controllers.profile.updateOneProfile);

@@ -53,7 +53,14 @@ function showOneProfile(req, res) {
 
 // POST createNewUser => able to create a new user on the SRP and then render that new person
 function createNewProfile(req, res) {
-
+  console.log('CREATE NEW PROFILE', req.body)
+  db.Profile.create(req.body, function(err, newProfile) {
+    if (err) {
+      console.log('ERROR ON CREATE', err)
+    }
+    res.json(newProfile);
+    console.log('NEW PROFILE INFO SENT BACK', newProfile)
+  })
 };
 
 
