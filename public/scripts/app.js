@@ -113,35 +113,17 @@ $(document).ready(function(){
 
   // Step 4, 2 of x: Delete
   // when a delete button for an venue is clicked
-  // function handleDeleteVenueClick(event) {
-  //   var venueId = $(this).parents('.venue').data('venue-id');
-  //   console.log('someone wants to delete venue id=' + venueId );
-  //   $.ajax({
-  //     url: '/api/venues/' + venueId,
-  //     method: 'DELETE',
-  //     success: handleDeleteVenueSuccess
-  //   });
-  //   console.log("passed the AJAX")
-  // }
+  function handleDeleteVenueClick(event) {
+  var venueId = $(this).parents('.venue').data('venue-id');
+  console.log('someone wants to delete venue id=' + venueId );
+    $.ajax({
+        method: "delete",
+        url: "/api/venues/" + venueId,
+    }).then(function(data){
+        $(`[data-venue-id=${venueId}]`).remove();
+    });
+};
 
-  // Delete story from db and from front-end rendering
-    function handleDeleteVenueClick(event) {
-      var venueId = $(this).parents('.venue').data('venue-id');
-      console.log('someone wants to delete venue id=' + venueId );
-        $.ajax({
-            method: "delete",
-            url: "/api/venues/" + venueId,
-        }).then(function(data){
-            venueId.remove();
-        });
-    };
-  //Step 4, 3 of x: Delete
-  // callback after DELETE /api/venue/:id
-//   function handleDeleteVenueSuccess(data) {
-//     var deletedVenueId = data._id;
-//     $('div[data-venue-id=' + deletedVenueId + ']').remove();
-//   }
-// console.log(deletedVenueId);
   //Step 1a, part 3 of 3:
   function renderVenue(venue) {
     var venueHtml = (`

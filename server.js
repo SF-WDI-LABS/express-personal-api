@@ -111,25 +111,13 @@ db.Venue.findByIdAndUpdate(req.params.id, req.params.body, function (err, venues
   });
 
   // Step 4, 1 of 1: Delete
-  app.delete('/api/venues/:id', function (req, res) {
-    // get venue id from url params (`req.params`)
-    console.log('venues delete', req.params);
-    var venueId = req.params.id;
-    // find the index of the venue we want to remove
-    var deleteVenueIndex = venues.findIndex(function(element, index) {
-      return (element._id === parseInt(req.params.id)); //params are strings
-    });
-    console.log('deleting venue with index', deleteVenueIndex);
-    var venueToDelete = venues[deleteVenueIndex];
-    venues.splice(deleteVenueIndex, 1);
-    res.json(venueToDelete);
-  });
-
-  function destroy(req, res){
-    db.Venue.findByIdAndRemove(req.params.venueId, function(err,venue){
-        res.status(200).send("Success!");
-    });
-}
+app.delete('/api/venues/:id', function (req, res) {
+   db.Venue.findByIdAndRemove(req.params.id,   function(err, id_index){
+     console.log(id_index);
+     console.log("Done deleting");
+     res.status(200).send("Success!");
+   });
+ });
 
 
 
