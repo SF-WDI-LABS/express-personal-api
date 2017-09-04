@@ -21,6 +21,7 @@ app.use(function(req, res, next) {
 ************/
 
 var db = require('./models');
+var venues = db.Venue;
 
 /**********
 * ROUTES *
@@ -124,6 +125,11 @@ db.Venue.findByIdAndUpdate(req.params.id, req.params.body, function (err, venues
     res.json(venueToDelete);
   });
 
+  function destroy(req, res){
+    db.Venue.findByIdAndRemove(req.params.venueId, function(err,venue){
+        res.status(200).send("Success!");
+    });
+}
 
 
 
