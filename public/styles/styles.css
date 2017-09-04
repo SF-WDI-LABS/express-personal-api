@@ -2,7 +2,7 @@ body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
   background-color: rgb(236, 232, 237); /* Sanity Check! */
-  margin: 0 0 100px; /* bottom = footer height => adding marging to just the bottom of the body so it goes up past the footer*/
+  margin: 0 0 100px; /* bottom = footer height => adding marging to just the bottom of the body so it goes up past the footer */
   /*https://stackoverflow.com/questions/3443606/make-footer-stick-to-bottom-of-page-correctly*/
 }
 footer{

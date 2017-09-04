@@ -17,10 +17,18 @@ $(document).ready(function(){
   // click on the back to srp span to go back to the srp
   $('.back-to-srp-span').on('click', reRenderSrp);
 
-  //edit button parent/child association - on the #user-profile, when you click on the it, the .edit-header is selected (which is the pencil) and the editProfileHeader function is called
+  // edit button parent/child association - on the #user-profile, when you click on the it, the .edit-header is selected (which is the pencil) and the editProfileHeader function is called
   $('#user-profile').on('click', '.edit-input-header', editProfileHeader);
-  //edit button parent/child asspoications
+  // on save (when the save pencil icon is clicked) the user-profile is saved
   $('#user-profile').on('click', '.edit-save-header', saveProfileHeader);
+
+  $('.add-new-user-button').on('click', function() {
+    console.log('modal clicked')
+     $('#add-user').modal();
+  });
+
+  $('.save-new-user').on('click', createNewUser);
+
   //edit button parent/child asspoications
 
   // $('#user-profile').on('click', '.edit-about-me', editProfile);
@@ -37,6 +45,19 @@ $(document).ready(function(){
 // aboutMe: String,
 // socialNetwork: [String],
 // markedForDeletion: Boolean,
+
+let createNewUser = function() {
+  console.log('hi')
+
+  // get the profileHeader label and once after you get that
+  // let createNewUserProfileHeader = $(this).closest('#profile-information');
+
+  // go and get each of the value from the input field. The initial value of each field was populated automatically by using the 'value=' in the input tag of the html
+  let newProfileHeaderName = $('.modal-input-for-profile-name').val();
+  let newProfileHeaderTitle = $('.modal-input-for-profile-title').val();
+  let newProfileHeaderWorkpalce = $('.modal-for-profile-workPlace').val();
+  let newProfileHeaderQuote = $('.modal-for-profile-quote').val();
+}
 
 let renderProfileFromSrp = function() {
   let currentProfileId
@@ -56,8 +77,8 @@ let renderProfileFromSrp = function() {
     });
     $('.back-to-srp-span').toggle()
 
-    let headerAndAboutMeHtml
-    headerAndAboutMeHtml = `
+
+    let headerAndAboutMeHtml = `
     <!-- START OF THE PROFILE HEADER DATA  -->
     <div id="profile-information" data-profile-id='${currentProfileData._id}'>
 
@@ -75,7 +96,7 @@ let renderProfileFromSrp = function() {
             <div>
              <h1 class='h1-name' name='username'>${currentProfileData.name}</h1>
                <input class='input-for-profile-header input-for-profile-name' id='input-name' value='${currentProfileData.name}'></input>
-               <label for="name" class='label-profile-header'>Name</label>
+               <label for="input-name" class='label-profile-header'>Name</label>
            </div>
           </div>
           <div>
@@ -256,7 +277,7 @@ let reRenderSrp = function(){
   $('.back-to-srp-span').toggle()
 };
 
-// when you click on the pencil icon it opens up the edit fields while removes other
+// ability to click on the pencil and open up the fields for edit
 let editProfileHeader = function (e) {
   console.log('EDIT HEADER-ICON was clicked!');
   let currentProfileId = $(this).closest('#profile-information').attr('data-profile-id');
@@ -278,6 +299,7 @@ let editProfileHeader = function (e) {
 
 }
 
+// ability to edit the field and save the fields
 let saveProfileHeader = function(e) {
   console.log('SAVE HEADER ICON WAS CLICKED')
   let currentProfileId = $(this).closest('#profile-information').attr('data-profile-id');
@@ -318,7 +340,6 @@ let saveProfileHeader = function(e) {
   // closes the save icon
   $('.edit-save-header').toggle();
 
-
   // closes the four header icons
   $('.input-for-profile-header').toggle();
 
@@ -337,11 +358,14 @@ let saveProfileHeader = function(e) {
   // opens the edit icon
   $('.edit-input-header').toggle();
 
+  // bring back the 'back' span
+  $('.back-to-srp-span').toggle();
+
 
 
 }
 
-
+// ability to rerender the profril AFTER edit
 let renderProfileAfterEdit = function(updatedEditedData) {
   let currentProfileId = updatedEditedData._id
   console.log(updatedEditedData._id)
@@ -358,8 +382,7 @@ let renderProfileAfterEdit = function(updatedEditedData) {
     });
     $('.back-to-srp-span').toggle()
 
-    let headerAndAboutMeHtml
-    headerAndAboutMeHtml = `
+    let headerAndAboutMeHtml = `
     <!-- START OF THE PROFILE HEADER DATA  -->
     <div id="profile-information" data-profile-id='${currentProfileData._id}'>
 

@@ -8,12 +8,32 @@ const db = require('../models');
 // GET renderSearchResults => on load of the page what to be able to render the search results page which loads the 10 people in the database
   // append profileSRP from the SRP section
   // fill in the correct user information
+
+// Function to send back everything
+  // function searchResultsPage(req, res) {
+  //   console.log('SRP is getting data')
+  //   db.Profile.find({}, function(err, allProfiles) {
+  //     res.json(allProfiles)
+  //   })
+  //   res.status(200)
+  // };
+
+// function that ONLY sends back ones that are NOT marked for delation
 function searchResultsPage(req, res) {
   console.log('SRP is getting data')
   db.Profile.find({}, function(err, allProfiles) {
-    res.json(allProfiles)
+    let arrayOfProfilesToBeShown = [];
+    let arrayOfProfilesMarkedForDeletion = [];
+    allProfiles.forEach(function(profile) {
+      if ( profile.markedForDeletion === false) {
+        arrayOfProfilesToBeShown.push(profile);
+      } else {
+      arrayOfProfilesMarkedForDeletion.push(profile);
+    }
+    });
+    res.json(arrayOfProfilesToBeShown)
+    console.log('DONT SEND BACK', arrayOfProfilesMarkedForDeletion)
   })
-  res.status(200)
 };
 
 // GET (SEND user ID) and renderProfile need to be able to click on a person, take that id and route them to a profile page
