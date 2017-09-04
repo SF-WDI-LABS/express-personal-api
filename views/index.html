@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/styles/styles.css">
 
     <!-- VENDOR SCRIPTS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
@@ -29,19 +29,20 @@
       <form class="hero_add">
         <div>
           <h2>Add New Hero</h2>
-          <label>Hero Name</label>
+          <label for="name">Hero Name</label>
           <input name="name" type="text" placeholder="Name Your Hero">
-          <label>Powers</label>
-          <input name="power" type="text" placeholder="Powers">
-          <label>Age</label>
+          <label for="powers">Powers</label>
+          <input name="powers" type="text" placeholder="Powers">
+          <label for="age">Age</label>
           <input name="age" type="number" placeholder="Age">
-          <label>Secret Identity</label>
-          <input name="secret" type="boolean" placeholder="Secret Identity?">
-          <button type="button" class="btn btn-primary">Save New Hero</button>
+          <label for="secret_identity">Secret Identity</label>
+          <input name="secret_identity" type="boolean" placeholder="Secret Identity?">
+          <button type="submit" type="button" class="btn btn-primary">Save New Hero</button>
           <button type="button" class="btn btn-danger">Cancel</button>
         </div>
       </form>
     </div>
+    <div class="spacer"></div>
     <!-- hero containers -->
     <div id="hero-list" class="hero-list"></div>
   </body>

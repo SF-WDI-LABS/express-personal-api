@@ -5,7 +5,7 @@ var HeroSchema = new Schema({
   name: String,
   powers: String,
   age: Number,
-  secret_identity: Boolean
+  secret_identity: String
 });
 
 var Hero = mongoose.model('Hero', HeroSchema);

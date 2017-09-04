@@ -13,18 +13,24 @@ $.ajax({
   url: "/api/heroes",
   success: displayHero
 })
-});
+
 function displayHero(heroes){
   heroes.forEach(function(hero){
     renderHero(hero);
   });
 }
 
-$.ajax({
-  method: "POST",
-  url: "/api/heroes",
-  sucess: createHero
-})
+  $("form").on("submit", function(e){
+    e.preventDefault();
+      let userHero = $(this).serialize();
+      console.log(userHero);
+      $.post("/api/heroes", userHero, function(data){
+        renderHero(data);
+      });
+      $(this).trigger("reset");
+});
+});
+
   function renderHero(hero){
 let heroesHTML = (`
   <div class="row album" data-album-id="${hero._id}">
@@ -67,7 +73,6 @@ let heroesHTML = (`
             <div class='panel-footer'>
               <div class='panel-footer'>
                 <button class='btn btn-danger delete-album'>Delete Hero</button>
-                <button class='btn btn-info save-changes'>Save Changes</button>
               </div>
             </div>
           </div>
@@ -77,12 +82,4 @@ let heroesHTML = (`
   `)
   console.log("hello?");
   $("#hero-list").append(heroesHTML);
-}
-function createHero(e){
-  e.preventDefault();
-  $(".hero_add").on("submit", function(hero){
-    let newHero = $(this).serialize();
-    renderHero(newHero);
-    console.log(newHero);
-})
 }
