@@ -25,29 +25,17 @@ $(document).ready(function(){
   // on save (when the save pencil icon is clicked) the user-profile is saved
   $('#user-profile').on('click', '.edit-save-header', saveProfileHeader);
 
+  // this to for the modal to have a listenser to be opened
   $('.add-new-user-button').on('click', function() {
     console.log('modal clicked')
      $('#add-user').modal();
   });
 
+  // this runs the functionality for 'creating a new user' - the button is only shown on the SRP
   $('.save-new-user').on('click', createNewUser);
 
-  //edit button parent/child asspoications
-
-  // $('#user-profile').on('click', '.edit-about-me', editProfile);
-  //
-  // $('#user-profile').on('click', '.edit-social-network', editProfile);
+  $('#user-profile').on('click', '.delete-profile', removeProfile);
 });
-
-// name: String,
-// userName: String,
-// image: String,
-// title: String,
-// workPlace: String,
-// quote: String,
-// aboutMe: String,
-// socialNetwork: [String],
-// markedForDeletion: Boolean,
 
 let createNewUser = function() {
   console.log('hi')
@@ -92,7 +80,12 @@ let createNewUser = function() {
   });
 };
 
+// shows the profile that was clicked from the SRP
 let renderProfileFromSrp = function() {
+
+  $('#add-new-user').toggle();
+
+  // get the currentProfileId of the profile that was clicked from the SRP so we can bring that data back to render
   let currentProfileId
   currentProfileId = $(this).closest('.search-card-header').attr('data-profile-id');
   console.log('Profile ID CLICKED FROM SRP', currentProfileId)
@@ -201,6 +194,8 @@ let renderProfileFromSrp = function() {
           <!-- END SOCIAL  -->
           </div>
           <!-- ONE USER PROFILE  -->
+
+          <div id="delete-user-profile" class='profile'></div>
         `
         // if they only have linkedIn
       } else if ( currentProfileData.socialNetwork[0] !== '' && currentProfileData.socialNetwork[1] === '')  {
@@ -225,6 +220,8 @@ let renderProfileFromSrp = function() {
           <!-- END SOCIAL  -->
           </div>
           <!-- ONE USER PROFILE  -->
+
+          <div id="delete-user-profile" class='profile'></div>
           `
           // if they only have gitHub
       } else if ( currentProfileData.socialNetwork[0] === '' && currentProfileData.socialNetwork[1] !== '' ) {
@@ -248,14 +245,48 @@ let renderProfileFromSrp = function() {
           <!-- END SOCIAL  -->
           </div>
           <!-- ONE USER PROFILE  -->
+
+          <div id="delete-user-profile" class='profile'></div>
         `
-      }
+      } else {
+        socialHtml = `
+         <!-- START SOCIAL  -->
+         <div class="container profile social-network">
+           <div class="row social">
+             <div class="col s12 social-info">
+               <div class='right-align'>
+                 <img class='edit-icon edit-input-header' src='/images/assets/edit.svg'>
+                 <img class='edit-icon edit-save-header' src='/images/assets/edit.svg'>
+               </div>
+               <div>
+                 <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
+             </div>
+           </div>
+         </div>
+         </div>
+         <!-- END SOCIAL  -->
+         </div>
+         <!-- ONE USER PROFILE  -->
+
+         <div id="delete-user-profile" class='profile'></div>
+       `
+      };
+
+      let deleteHtml = `
+        <!-- DELETE BUTTON  -->
+          <div class="container profile delete-profile">
+            <div class="row delete">
+              <div class="col s12 delete-user">
+                <a class="waves-effect waves-light btn red">Delete User</a>
+              </div>
+            </div>
+          </div>
+      `
       // load one at a time
       $('#user-profile').append(headerAndAboutMeHtml);
       $('#social-network').append(socialHtml);
+      $('#delete-user-profile').append(deleteHtml);
     });
-    // let backButton = $(this).closest('#back-to-srp');
-    // backButton.find('.back-to-srp-span').toggle();
 
 
 
@@ -308,6 +339,9 @@ let reRenderSrp = function(){
     $('.profile').remove();
   });
   $('.back-to-srp-span').toggle()
+
+  // once the user gets back to the SRP then the add-new-user button show will show up
+  $('#add-new-user').toggle();
 };
 
 // ability to click on the pencil and open up the fields for edit
@@ -329,9 +363,11 @@ let editProfileHeader = function (e) {
   // hides the edit-header pencil that is currently showing and gets rid of that while showing the new one
   $('.edit-input-header').toggle();
   $('.edit-save-header').toggle();
+
+
 };
 
-// ability to edit the field and save the fields
+// ability to edit field in the profile header and save the fields
 let saveProfileHeader = function(e) {
   console.log('SAVE HEADER ICON WAS CLICKED')
   let currentProfileId = $(this).closest('#profile-information').attr('data-profile-id');
@@ -413,6 +449,8 @@ let renderProfileAfterEdit = function(updatedEditedData) {
     $('.search').fadeOut(300, function() {
       $(this).remove();
     });
+
+    // show the back to SRP page
     $('.back-to-srp-span').toggle()
 
     let headerAndAboutMeHtml = `
@@ -505,6 +543,8 @@ let renderProfileAfterEdit = function(updatedEditedData) {
           <!-- END SOCIAL  -->
           </div>
           <!-- ONE USER PROFILE  -->
+
+          <div id="delete-user-profile" class='profile'></div>
         `
         // if they only have linkedIn
       } else if ( currentProfileData.socialNetwork[0] !== '' && currentProfileData.socialNetwork[1] === '')  {
@@ -529,6 +569,8 @@ let renderProfileAfterEdit = function(updatedEditedData) {
           <!-- END SOCIAL  -->
           </div>
           <!-- ONE USER PROFILE  -->
+
+          <div id="delete-user-profile" class='profile'></div>
           `
           // if they only have gitHub
       } else if ( currentProfileData.socialNetwork[0] === '' && currentProfileData.socialNetwork[1] !== '' ) {
@@ -552,14 +594,75 @@ let renderProfileAfterEdit = function(updatedEditedData) {
           <!-- END SOCIAL  -->
           </div>
           <!-- ONE USER PROFILE  -->
+
+          <div id="delete-user-profile" class='profile'></div>
         `
-      } ;
+      } else {
+        socialHtml = `
+         <!-- START SOCIAL  -->
+         <div class="container profile social-network">
+           <div class="row social">
+             <div class="col s12 social-info">
+               <div class='right-align'>
+                 <img class='edit-icon edit-input-header' src='/images/assets/edit.svg'>
+                 <img class='edit-icon edit-save-header' src='/images/assets/edit.svg'>
+               </div>
+               <div>
+                 <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
+             </div>
+           </div>
+         </div>
+         </div>
+         <!-- END SOCIAL  -->
+         </div>
+         <!-- ONE USER PROFILE  -->
+
+         <div id="delete-user-profile" class='profile'></div>
+       `
+      };
+
+      let deleteHtml = `
+        <!-- DELETE BUTTON  -->
+          <div class="container profile delete-profile">
+            <div class="row delete">
+              <div class="col s12 delete-user">
+                <a class="waves-effect waves-light btn red">Delete User </a>
+              </div>
+            </div>
+          </div>
+      `
       // load one at a time
       $('#user-profile').append(headerAndAboutMeHtml);
       $('#social-network').append(socialHtml);
+      $('#delete-user-profile').append(deleteHtml);
     });
-    // let backButton = $(this).closest('#back-to-srp');
-    // backButton.find('.back-to-srp-span').toggle();
+};
+
+
+let removeProfile = function() {
+  // get the current user ID
+  let currentProfileId = $(this).closest('#profile-information').attr('data-profile-id');
+  console.log('DELETE BUTTONS CLICKED AND THIS IS THE PROFILE ID', currentProfileId)
+
+  let removeProfileHeaderData = {
+    markedForDeletion: true,
+  };
+
+  if (confirm('We are sad to see you go... are you sure?')) {
+    $.ajax({
+      method: 'DELETE',
+      url: `/api/searchpage/${currentProfileId}`,
+      data: removeProfileHeaderData,
+    })
+    .then(function(removeProfile){
+      console.log('THIS WAS THE PROFILE REMOVED', removeProfile);
+      alert (`Thank you for using Hub and Co! Hope to see you back!`);
+
+      // redirect them back to the main homepage
+      document.location.href="/";
+    })
+  }
+  else alert('Hope you make more friends!');
 };
 
 // set up click event listener for the icon that is attached to the parent class for the edit inter-communication

@@ -31,22 +31,22 @@ function searchResultsPage(req, res) {
       arrayOfProfilesMarkedForDeletion.push(profile);
     }
     });
-    res.json(arrayOfProfilesToBeShown)
-    console.log('DONT SEND BACK', arrayOfProfilesMarkedForDeletion)
-  })
+    res.json(arrayOfProfilesToBeShown);
+    console.log('DONT SEND BACK', arrayOfProfilesMarkedForDeletion);
+  });
 };
 
 // GET (SEND user ID) and renderProfile need to be able to click on a person, take that id and route them to a profile page
 
 function showOneProfile(req, res) {
-  console.log('showOneProfile Route is getting hit', req.params.profileId)
+  console.log('showOneProfile Route is getting hit', req.params.profileId);
   db.Profile.findById(req.params.profileId, function(err, foundProfile) {
     if (err) {
       console.log('showOneProfile in controller had an error', err);
     }
     // send back the Profile info the DB via json file
-      res.json(foundProfile)
-  })
+      res.json(foundProfile);
+  });
 
 };
 
@@ -84,7 +84,16 @@ function updateOneProfile(req, res) {
 
 // DELETE / PUT able to 'hit the delete flag' and not show up the user anymore vs actually deleting their information
 
-function deleteOneProfile(req, res) {
+function removeOneProfile(req, res) {
+  console.log('removeOneProfile IS GETTING HITTT!!!!!', req.body)
+  db.Profile.findByIdAndUpdate(req.params.profileId, {$set: {
+    markedForDeletion: req.body.markedForDeletion}}, {new: true}, function(err, removedProfile) {
+      if (err) {
+        console.log ('THERE WAS AN ERROR DURING removeOneProfile', err);
+      }
+      console.log('removeOneProfile SAVED and removed profile JSON sent back', removedProfile);
+      res.json(removedProfile);
+    });
 
 };
 
@@ -93,5 +102,5 @@ module.exports = {
   createNewProfile: createNewProfile,
   showOneProfile: showOneProfile,
   updateOneProfile: updateOneProfile,
-  deleteOneProfile: deleteOneProfile
+  removeOneProfile: removeOneProfile
 };

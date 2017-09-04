@@ -14,7 +14,7 @@ profileList.push({
   aboutMe: `I am a former Technology Consultant who built internal products leveraging ERP systems, and for a brief period, was also an acting co-owner of a small business. I graduated with an MBA from the Kellogg School of Management and was most recently the Lead Global Product Manager of the Find-A-ProAdvisor Marketplace at Intuit.`,
   socialNetwork: ['https://www.linkedin.com/in/raybchoi/', 'https://github.com/raybchoi'],
   skills: ['JavaScript', 'CSS', 'HTML', 'Mongo', 'Mongoose'],
-  markedForDeletion: true,
+  markedForDeletion: false,
 })
 profileList.push({
   name: 'Eric Choi',
@@ -28,6 +28,18 @@ profileList.push({
   Prior to JPMorgan Chase, I was a Web Development Teaching Assistant for Coding Dojo. Having gone through the curriculum myself, I was able to relate to the challenges the students faced and being able to help students gain knowledge and confidence in this field has been a very rewarding experience. Progressing my skills as a developer and sharing my knowledge with others is something I look forward to every day.`,
   socialNetwork: ['https://www.linkedin.com/in/ericchoi35/',''],
   skills: ['JavaScript', 'CSS', 'HTML', 'Mongo', 'Mongoose', 'Mocha', 'Java'],
+  markedForDeletion: false,
+})
+profileList.push({
+  name: 'Krishna Kolli',
+  userName: 'kirshna',
+  image: '/images/userimages/krishna.jpg',
+  title: 'Software Engineer 2',
+  workPlace: 'Intuit',
+  quote: `I'm here to solve the big problems`,
+  aboutMe: `Full-Stack Engineer. Frontend in React, Redux, Relay. Backend in Java with Spring.`,
+  socialNetwork: ['https://www.linkedin.com/in/kollikrishna/',''],
+  skills: ['JavaScript', 'Redux', 'Rails', 'Node', 'HTML'],
   markedForDeletion: false,
 })
 profileList.push({
@@ -86,7 +98,7 @@ profileList.push({
   workPlace: 'Freelancer',
   quote: `Coding is life`,
   aboutMe: `Self-motivated web developer with a strong understanding of web development, great communication skills, and the ability to thrive in a fast-paced environment, looking to work with a fun and creative team to transform good ideas into great products.`,
-  socialNetwork: ['', 'https://github.com/tommythai'],
+  socialNetwork: ['', ''],
   skills: ['Ruby', 'SQL', 'Angular', 'Bootstrap', 'Mongoose'],
   markedForDeletion: false,
 })
@@ -114,6 +126,7 @@ profileList.push({
   skills: ['JavaScript', 'Ruby', 'Rails', 'Node', 'React'],
   markedForDeletion: false,
 })
+
 
 db.Profile.remove({}, function(err, allExistingProfiles){
 

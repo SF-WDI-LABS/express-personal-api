@@ -50,7 +50,7 @@ app.get('/api', controllers.api.index);
 
 // renders the SEARCHRESULTPAGES
 app.get('/api/searchpage', controllers.profile.searchResultsPage);
-//
+
 // renders one user profile
 app.get('/api/searchpage/:profileId', controllers.profile.showOneProfile);
 //
@@ -61,7 +61,7 @@ app.post('/api/searchpage', controllers.profile.createNewProfile);
 app.put('/api/searchpage/:profileId', controllers.profile.updateOneProfile);
 //
 // // able to delete the profile
-// app.delete('/api/searchpage/:profileId', controllers.albums.deleteOneProfile);
+app.delete('/api/searchpage/:profileId', controllers.profile.removeOneProfile);
 
 /**********
  * SERVER *
