@@ -6,15 +6,16 @@ body {
 	opacity: 0.95;
 }
 
-/*.gymDisplay {
+.gymDisplay {
 	width:100%;
 	height:300px;
 	border:2px black solid;
 	background-color: white;
-	margin:20px;
+	margin:0px;
+	text-align: center;
 }
 
 .gymImg {
 	width:150px;
 	border:2px black solid;
-}*/
+}
