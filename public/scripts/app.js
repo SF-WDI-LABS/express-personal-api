@@ -13,7 +13,7 @@ $.ajax({
     var formData = $(this).serialize();
     console.log('formData', formData);
    $.post('/api/bjj', formData).done(renderMultipleReviews);
-     $(this).trigger('reset');
+    window.location = window.location; 
   }
 
 $('.form-horizontal').on('submit', formData)
@@ -43,7 +43,7 @@ function renderBjj(bjj) {
 <div class="container forms">
 <div class="row">
 <div class="col-sm-12">
-<div class="card" style="width: 20rem;">
+<div class="card" style="width: 100%;">
   <img class="card-img-top" src='${bjj.image}' alt="Card image cap">
   <div class="card-body">
     <h4 class="card-title">Gym: ${bjj.gymName}</h4>

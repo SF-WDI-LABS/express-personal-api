@@ -6,16 +6,13 @@ body {
 	opacity: 0.95;
 }
 
-.gymDisplay {
-	width:100%;
-	height:300px;
-	border:2px black solid;
-	background-color: white;
-	margin:0px;
-	text-align: center;
+.forms{
+	margin:75px;
+
+	
 }
 
-.gymImg {
-	width:150px;
-	border:2px black solid;
+.card-img-top {
+	width:200px;
 }
+
