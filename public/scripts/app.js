@@ -2,7 +2,7 @@ console.log("Sanity Check: JS is working!");
 
 $(document).ready(function(){
 
-  // initial ajax call to bring back all profiles to create the SRP // might need to wrap this up into an on click event
+  // initial ajax call to bring back all profiles to create the SRP // might need to wrap this up into an on click event later down the road
   $.ajax({
     method: 'GET',
     url: '/api/searchpage',
@@ -38,10 +38,6 @@ $(document).ready(function(){
 });
 
 let createNewUser = function() {
-  console.log('hi')
-
-  // get the profileHeader label and once after you get that
-  // let createNewUserProfileHeader = $(this).closest('#profile-information');
 
   // go and get each of the value from the input field. The initial value of each field was populated automatically by using the 'value=' in the input tag of the html
   let newProfileHeaderName = $('.modal-input-for-profile-name').val();
@@ -61,8 +57,7 @@ let createNewUser = function() {
     markedForDeletion: false,
     socialNetwork: ['',''],
   };
-  console.log('THIS IS NEW PROFILE HEADER', newProfileHeaderData);
-
+  console.log('THIS IS NEW PROFILE HEADER DATA', newProfileHeaderData);
 
   $.ajax({
     method: 'POST',
@@ -71,13 +66,13 @@ let createNewUser = function() {
   })
   .then(function(newlyCreatedProfileData) {
     console.log('DATA returned from createNewUser', newlyCreatedProfileData);
-    // send back the updated data do can pass it through a similar render function again. This time will have another function b/c one is coming from the SRP and the other is coming from the profile page
+    // send back the updated data and pass it through a similar render function again. This time will need to use a different function since this time the data is being passed in from the backend vs the front-end SRP page
     renderProfileAfterEdit(newlyCreatedProfileData);
-
   })
   .catch(function(err) {
     console.log('ERROR during the createNewUser returned data', err);
   });
+
 };
 
 // shows the profile that was clicked from the SRP
@@ -97,7 +92,7 @@ let renderProfileFromSrp = function() {
   })
   .then(function(currentProfileData) {
     console.log('THIS IS THE RENDER PROFILE WORKING', currentProfileData.socialNetwork)
-    // remove the search stuff first with a fadeOut
+    // fadeOut the SRP page first, bring the back button and then render all the HTML
     $('.search').fadeOut(300, function() {
       $(this).remove();
     });
@@ -152,8 +147,8 @@ let renderProfileFromSrp = function() {
          <div class="row about-me">
            <div class="col s12 about-me-info">
              <div class='right-align'>
-               <img class='edit-icon edit-input-header' src='/images/assets/edit.svg'>
-               <img class='edit-icon edit-save-header' src='/images/assets/edit.svg'>
+               <img class='edit-icon edit-input-about-me' src='/images/assets/edit.svg'>
+               <img class='edit-icon edit-save-about-me' src='/images/assets/edit.svg'>
              </div>
              <div>
                <h2 class='aboutme' name='aboutme' value=''>About Me</h2>
@@ -169,7 +164,7 @@ let renderProfileFromSrp = function() {
       <div id="social-network" class='profile'></div>
       `
 
-      // if they have both
+      // appending the social HTML - this is done via a if statement to figure out which socialNetworks the user currently has
       let socialHtml
         // console.log(currentProfileData.socialNetwork[0] !== '');
       if (currentProfileData.socialNetwork[0] !== '' && currentProfileData.socialNetwork[1] !== '') {
@@ -180,8 +175,8 @@ let renderProfileFromSrp = function() {
           <div class="row social">
             <div class="col s12 social-info">
               <div class='right-align'>
-                <img class='edit-icon edit-input-header' src='/images/assets/edit.svg'>
-                <img class='edit-icon edit-save-header' src='/images/assets/edit.svg'>
+                <img class='edit-icon edit-input-social-network' src='/images/assets/edit.svg'>
+                <img class='edit-icon edit-save-social-network' src='/images/assets/edit.svg'>
               </div>
               <div>
                 <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
@@ -207,8 +202,8 @@ let renderProfileFromSrp = function() {
             <div class="row social">
               <div class="col s12 social-info">
                 <div class='right-align'>
-                  <img class='edit-icon edit-input-header' src='/images/assets/edit.svg'>
-                  <img class='edit-icon edit-save-header' src='/images/assets/edit.svg'>
+                <img class='edit-icon edit-input-social-network' src='/images/assets/edit.svg'>
+                <img class='edit-icon edit-save-social-network' src='/images/assets/edit.svg'>
                 </div>
                 <div>
                   <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
@@ -225,15 +220,14 @@ let renderProfileFromSrp = function() {
           `
           // if they only have gitHub
       } else if ( currentProfileData.socialNetwork[0] === '' && currentProfileData.socialNetwork[1] !== '' ) {
-        //  let socialWithJustGitHubHtml
          socialHtml = `
           <!-- START SOCIAL  -->
           <div class="container profile social-network">
             <div class="row social">
               <div class="col s12 social-info">
                 <div class='right-align'>
-                  <img class='edit-icon edit-input-header' src='/images/assets/edit.svg'>
-                  <img class='edit-icon edit-save-header' src='/images/assets/edit.svg'>
+                  <img class='edit-icon edit-input-social-network' src='/images/assets/edit.svg'>
+                  <img class='edit-icon edit-save-social-network' src='/images/assets/edit.svg'>
                 </div>
                 <div>
                   <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
@@ -248,6 +242,7 @@ let renderProfileFromSrp = function() {
 
           <div id="delete-user-profile" class='profile'></div>
         `
+        // if they have none
       } else {
         socialHtml = `
          <!-- START SOCIAL  -->
@@ -255,11 +250,12 @@ let renderProfileFromSrp = function() {
            <div class="row social">
              <div class="col s12 social-info">
                <div class='right-align'>
-                 <img class='edit-icon edit-input-header' src='/images/assets/edit.svg'>
-                 <img class='edit-icon edit-save-header' src='/images/assets/edit.svg'>
+                 <img class='edit-icon edit-input-social-network' src='/images/assets/edit.svg'>
+                 <img class='edit-icon edit-save-social-network' src='/images/assets/edit.svg'>
                </div>
                <div>
                  <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
+                 <p></p>
              </div>
            </div>
          </div>
@@ -272,6 +268,7 @@ let renderProfileFromSrp = function() {
        `
       };
 
+      // adding the deleteHTML button
       let deleteHtml = `
         <!-- DELETE BUTTON  -->
           <div class="container profile delete-profile">
@@ -282,7 +279,8 @@ let renderProfileFromSrp = function() {
             </div>
           </div>
       `
-      // load one at a time
+
+      // appending each of the html pieces
       $('#user-profile').append(headerAndAboutMeHtml);
       $('#social-network').append(socialHtml);
       $('#delete-user-profile').append(deleteHtml);
@@ -325,10 +323,11 @@ let renderOneSearchResultCard = function (searchResult) {
     </div>
   </div>
   `
+  // append it with a fadeIn
   $('#search-results').append(srpCardHtml).hide().fadeIn(100);
 };
 
-// re-render when going from the profile page back to the SRP page
+// re-render the Search Results page when going from the profile page back to the SRP
 let reRenderSrp = function(){
   $.ajax({
     method: 'GET',
@@ -344,7 +343,7 @@ let reRenderSrp = function(){
   $('#add-new-user').toggle();
 };
 
-// ability to click on the pencil and open up the fields for edit
+// ability to click on the pencil and open up the fields for edit in the header - this ONLY opens them up and shows the hidden fields. does not save yet
 let editProfileHeader = function (e) {
   console.log('EDIT HEADER-ICON was clicked!');
   let currentProfileId = $(this).closest('#profile-information').attr('data-profile-id');
@@ -367,7 +366,7 @@ let editProfileHeader = function (e) {
 
 };
 
-// ability to edit field in the profile header and save the fields
+// ability save all the edits made to the profile header section and rerender that profile on the SRP
 let saveProfileHeader = function(e) {
   console.log('SAVE HEADER ICON WAS CLICKED')
   let currentProfileId = $(this).closest('#profile-information').attr('data-profile-id');
@@ -434,7 +433,7 @@ let saveProfileHeader = function(e) {
 
 }
 
-// ability to rerender the profril AFTER edit
+// ability to rerender the profile AFTER edit - this is different because we are passing back the data from edit vs going from the SRP
 let renderProfileAfterEdit = function(updatedEditedData) {
   let currentProfileId = updatedEditedData._id
   console.log(updatedEditedData._id)
@@ -453,197 +452,203 @@ let renderProfileAfterEdit = function(updatedEditedData) {
     // show the back to SRP page
     $('.back-to-srp-span').toggle()
 
-    let headerAndAboutMeHtml = `
-    <!-- START OF THE PROFILE HEADER DATA  -->
-    <div id="profile-information" data-profile-id='${currentProfileData._id}'>
 
-    <div class="container profile header">
-      <div class="row valign-wrapper profile-header">
-        <div class="col s4 profile-img">
-          <img class="circle responsive-img user-img" src='${currentProfileData.image}'>
-        </div>
-        <div class="col s8 user-info">
-          <div>
-            <div class='right-align'>
-              <img class='edit-icon edit-input-header' src='/images/assets/edit.svg'>
-              <img class='edit-icon edit-save-header' src='/images/assets/edit.svg'>
+
+        let headerAndAboutMeHtml = `
+        <!-- START OF THE PROFILE HEADER DATA  -->
+        <div id="profile-information" data-profile-id='${currentProfileData._id}'>
+
+        <div class="container profile header">
+          <div class="row valign-wrapper profile-header">
+            <div class="col s4 profile-img">
+              <img class="circle responsive-img user-img" src='${currentProfileData.image}'>
             </div>
-            <div>
-             <h1 class='h1-name' name='username'>${currentProfileData.name}</h1>
-               <input class='input-for-profile-header input-for-profile-name' id='input-name' value='${currentProfileData.name}'></input>
-               <label for="name" class='label-profile-header'>Name</label>
-           </div>
-          </div>
-          <div>
-            <span class='title profile-header-db-info' name='title' value=''>${currentProfileData.title}</span>
-              <input class='input-for-profile-header input-for-profile-title' id='input-title' value='${currentProfileData.title}'></input>
-              <label for="input-title" class='label-profile-header'>Title</label>
-            <span class='profile-span at-span' name='' value=''>at</span>
-            <span class='profile-header-db-info place-of-work' name='place-of-work' value=''>${currentProfileData.workPlace}</span>
-              <input class='input-for-profile-header input-for-profile-workPlace' id='input-place-of-work' value='${currentProfileData.workPlace}'></input>
-              <label for="input-place-of-work" class='label-profile-header'>Place of Work</label>
-          </div>
-          <div>
-             <span class='profile-header-db-info quote' name='quote' value=''>${currentProfileData.quote}</span>
-             <textarea class='materialize-textarea input-for-profile-header textarea-for-profile-quote' id='textarea-quote' value=''>${currentProfileData.quote}</textarea>
-             <label for="textarea-quote" class='label-profile-header'>Quote</label>
-
-          </div>
-        </div>
-      </div>
-    </div>
-      <!-- END OF THE PROFILE HEADER DATA  -->
-
-       <div id="about-me"></div>
-
-       <!-- START ABOUT ME  -->
-       <div class="container profile about-me">
-         <div class="row about-me">
-           <div class="col s12 about-me-info">
-             <div class='right-align'>
-               <img class='edit-icon edit-input-header' src='/images/assets/edit.svg'>
-               <img class='edit-icon edit-save-header' src='/images/assets/edit.svg'>
-             </div>
-             <div>
-               <h2 class='aboutme' name='aboutme' value=''>About Me</h2>
-             </div>
-             <div>
-               <p>${currentProfileData.aboutMe}</p>
-             </div>
-           </div>
-         </div>
-       </div>
-
-      <!-- END ABOUT ME  -->
-      <div id="social-network" class='profile'></div>
-      `
-
-      // if they have both
-      let socialHtml
-        // console.log(currentProfileData.socialNetwork[0] !== '');
-      if (currentProfileData.socialNetwork[0] !== '' && currentProfileData.socialNetwork[1] !== '') {
-        // let socialWithBothHtml
-        socialHtml = `
-          <!-- START SOCIAL  -->
-          <div class="container profile social-network">
-          <div class="row social">
-            <div class="col s12 social-info">
-              <div class='right-align'>
-                <img class='edit-icon edit-input-header' src='/images/assets/edit.svg'>
-                <img class='edit-icon edit-save-header' src='/images/assets/edit.svg'>
+            <div class="col s8 user-info">
+              <div>
+                <div class='right-align'>
+                  <img class='edit-icon edit-input-header' src='/images/assets/edit.svg'>
+                  <img class='edit-icon edit-save-header' src='/images/assets/edit.svg'>
+                </div>
+                <div>
+                 <h1 class='h1-name' name='username'>${currentProfileData.name}</h1>
+                   <input class='input-for-profile-header input-for-profile-name' id='input-name' value='${currentProfileData.name}'></input>
+                   <label for="input-name" class='label-profile-header'>Name</label>
+               </div>
               </div>
               <div>
-                <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
-                <a href='${currentProfileData.socialNetwork[0]}' target="_blank"><img class="social-img" src='/images/social/linkedin.png'></a>
-                <a href='${currentProfileData.socialNetwork[1]}' target="_blank"><img class="social-img" src='/images/social/github.png'></a>
-            </div>
-          </div>
-          </div>
-          </div>
-          <!-- END SOCIAL  -->
-          </div>
-          <!-- ONE USER PROFILE  -->
+                <span class='title profile-header-db-info' name='title' value=''>${currentProfileData.title}</span>
+                  <input class='input-for-profile-header input-for-profile-title' id='input-title' value='${currentProfileData.title}'></input>
+                  <label for="input-title" class='label-profile-header'>Title</label>
+                <span class='profile-span at-span' name='' value=''>at</span>
+                <span class='profile-header-db-info place-of-work' name='place-of-work' value=''>${currentProfileData.workPlace}</span>
+                  <input class='input-for-profile-header input-for-profile-workPlace' id='input-place-of-work' value='${currentProfileData.workPlace}'></input>
+                  <label for="input-place-of-work" class='label-profile-header'>Place of Work</label>
+              </div>
+              <div>
+                 <span class='profile-header-db-info quote' name='quote' value=''>${currentProfileData.quote}</span>
+                 <textarea class='materialize-textarea input-for-profile-header textarea-for-profile-quote' id='textarea-quote' value=''>${currentProfileData.quote}</textarea>
+                 <label for="textarea-quote" class='label-profile-header'>Quote</label>
 
-          <div id="delete-user-profile" class='profile'></div>
-        `
-        // if they only have linkedIn
-      } else if ( currentProfileData.socialNetwork[0] !== '' && currentProfileData.socialNetwork[1] === '')  {
-
-          // let socialWithJustLinkedInHtml
-          socialHtml = `
-          <!-- START SOCIAL  -->
-          <div class="container profile social-network">
-            <div class="row social">
-              <div class="col s12 social-info">
-                <div class='right-align'>
-                  <img class='edit-icon edit-input-header' src='/images/assets/edit.svg'>
-                  <img class='edit-icon edit-save-header' src='/images/assets/edit.svg'>
-                </div>
-                <div>
-                  <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
-                  <a href='${currentProfileData.socialNetwork[0]}' target="_blank"><img class="social-img" src='/images/social/linkedin.png'></a>
-                </div>
               </div>
             </div>
           </div>
-          <!-- END SOCIAL  -->
-          </div>
-          <!-- ONE USER PROFILE  -->
+        </div>
+          <!-- END OF THE PROFILE HEADER DATA  -->
 
-          <div id="delete-user-profile" class='profile'></div>
-          `
-          // if they only have gitHub
-      } else if ( currentProfileData.socialNetwork[0] === '' && currentProfileData.socialNetwork[1] !== '' ) {
-        //  let socialWithJustGitHubHtml
-         socialHtml = `
-          <!-- START SOCIAL  -->
-          <div class="container profile social-network">
-            <div class="row social">
-              <div class="col s12 social-info">
-                <div class='right-align'>
-                  <img class='edit-icon edit-input-header' src='/images/assets/edit.svg'>
-                  <img class='edit-icon edit-save-header' src='/images/assets/edit.svg'>
-                </div>
-                <div>
-                  <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
-                  <a href='${currentProfileData.socialNetwork[1]}' target="_blank"><img class="social-img" src='/images/social/github.png'></a>
-              </div>
-            </div>
-          </div>
-          </div>
-          <!-- END SOCIAL  -->
-          </div>
-          <!-- ONE USER PROFILE  -->
+           <div id="about-me"></div>
 
-          <div id="delete-user-profile" class='profile'></div>
-        `
-      } else {
-        socialHtml = `
-         <!-- START SOCIAL  -->
-         <div class="container profile social-network">
-           <div class="row social">
-             <div class="col s12 social-info">
-               <div class='right-align'>
-                 <img class='edit-icon edit-input-header' src='/images/assets/edit.svg'>
-                 <img class='edit-icon edit-save-header' src='/images/assets/edit.svg'>
+           <!-- START ABOUT ME  -->
+           <div class="container profile about-me">
+             <div class="row about-me">
+               <div class="col s12 about-me-info">
+                 <div class='right-align'>
+                   <img class='edit-icon edit-input-about-me' src='/images/assets/edit.svg'>
+                   <img class='edit-icon edit-save-about-me' src='/images/assets/edit.svg'>
+                 </div>
+                 <div>
+                   <h2 class='aboutme' name='aboutme' value=''>About Me</h2>
+                 </div>
+                 <div>
+                   <p>${currentProfileData.aboutMe}</p>
+                 </div>
                </div>
-               <div>
-                 <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
              </div>
            </div>
-         </div>
-         </div>
-         <!-- END SOCIAL  -->
-         </div>
-         <!-- ONE USER PROFILE  -->
 
-         <div id="delete-user-profile" class='profile'></div>
-       `
-      };
+          <!-- END ABOUT ME  -->
+          <div id="social-network" class='profile'></div>
+          `
 
-      let deleteHtml = `
-        <!-- DELETE BUTTON  -->
-          <div class="container profile delete-profile">
-            <div class="row delete">
-              <div class="col s12 delete-user">
-                <a class="waves-effect waves-light btn red">Delete User </a>
+          // appending the social HTML - this is done via a if statement to figure out which socialNetworks the user currently has
+          let socialHtml
+            // console.log(currentProfileData.socialNetwork[0] !== '');
+          if (currentProfileData.socialNetwork[0] !== '' && currentProfileData.socialNetwork[1] !== '') {
+            // let socialWithBothHtml
+            socialHtml = `
+              <!-- START SOCIAL  -->
+              <div class="container profile social-network">
+              <div class="row social">
+                <div class="col s12 social-info">
+                  <div class='right-align'>
+                    <img class='edit-icon edit-input-social-network' src='/images/assets/edit.svg'>
+                    <img class='edit-icon edit-save-social-network' src='/images/assets/edit.svg'>
+                  </div>
+                  <div>
+                    <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
+                    <a href='${currentProfileData.socialNetwork[0]}' target="_blank"><img class="social-img" src='/images/social/linkedin.png'></a>
+                    <a href='${currentProfileData.socialNetwork[1]}' target="_blank"><img class="social-img" src='/images/social/github.png'></a>
+                </div>
               </div>
-            </div>
-          </div>
-      `
-      // load one at a time
+              </div>
+              </div>
+              <!-- END SOCIAL  -->
+              </div>
+              <!-- ONE USER PROFILE  -->
+
+              <div id="delete-user-profile" class='profile'></div>
+            `
+            // if they only have linkedIn
+          } else if ( currentProfileData.socialNetwork[0] !== '' && currentProfileData.socialNetwork[1] === '')  {
+
+              // let socialWithJustLinkedInHtml
+              socialHtml = `
+              <!-- START SOCIAL  -->
+              <div class="container profile social-network">
+                <div class="row social">
+                  <div class="col s12 social-info">
+                    <div class='right-align'>
+                    <img class='edit-icon edit-input-social-network' src='/images/assets/edit.svg'>
+                    <img class='edit-icon edit-save-social-network' src='/images/assets/edit.svg'>
+                    </div>
+                    <div>
+                      <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
+                      <a href='${currentProfileData.socialNetwork[0]}' target="_blank"><img class="social-img" src='/images/social/linkedin.png'></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- END SOCIAL  -->
+              </div>
+              <!-- ONE USER PROFILE  -->
+
+              <div id="delete-user-profile" class='profile'></div>
+              `
+              // if they only have gitHub
+          } else if ( currentProfileData.socialNetwork[0] === '' && currentProfileData.socialNetwork[1] !== '' ) {
+             socialHtml = `
+              <!-- START SOCIAL  -->
+              <div class="container profile social-network">
+                <div class="row social">
+                  <div class="col s12 social-info">
+                    <div class='right-align'>
+                      <img class='edit-icon edit-input-social-network' src='/images/assets/edit.svg'>
+                      <img class='edit-icon edit-save-social-network' src='/images/assets/edit.svg'>
+                    </div>
+                    <div>
+                      <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
+                      <a href='${currentProfileData.socialNetwork[1]}' target="_blank"><img class="social-img" src='/images/social/github.png'></a>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <!-- END SOCIAL  -->
+              </div>
+              <!-- ONE USER PROFILE  -->
+
+              <div id="delete-user-profile" class='profile'></div>
+            `
+            // if they have none
+          } else {
+            socialHtml = `
+             <!-- START SOCIAL  -->
+             <div class="container profile social-network">
+               <div class="row social">
+                 <div class="col s12 social-info">
+                   <div class='right-align'>
+                     <img class='edit-icon edit-input-social-network' src='/images/assets/edit.svg'>
+                     <img class='edit-icon edit-save-social-network' src='/images/assets/edit.svg'>
+                   </div>
+                   <div>
+                     <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
+                     <p></p>
+                 </div>
+               </div>
+             </div>
+             </div>
+             <!-- END SOCIAL  -->
+             </div>
+             <!-- ONE USER PROFILE  -->
+
+             <div id="delete-user-profile" class='profile'></div>
+           `
+          };
+
+          // adding the deleteHTML button
+          let deleteHtml = `
+            <!-- DELETE BUTTON  -->
+              <div class="container profile delete-profile">
+                <div class="row delete">
+                  <div class="col s12 delete-user">
+                    <a class="waves-effect waves-light btn red">Delete User</a>
+                  </div>
+                </div>
+              </div>
+          `
+
+      // appending each of the html pieces
       $('#user-profile').append(headerAndAboutMeHtml);
       $('#social-network').append(socialHtml);
       $('#delete-user-profile').append(deleteHtml);
     });
 };
 
-
+// allows the user to remove their profile
 let removeProfile = function() {
   // get the current user ID
   let currentProfileId = $(this).closest('#profile-information').attr('data-profile-id');
-  console.log('DELETE BUTTONS CLICKED AND THIS IS THE PROFILE ID', currentProfileId)
+  console.log('DELETE BUTTONS CLICKED AND THIS IS THE PROFILE ID', currentProfileId);
 
+  // send back data that shows they are marked for deletion
   let removeProfileHeaderData = {
     markedForDeletion: true,
   };
@@ -664,42 +669,3 @@ let removeProfile = function() {
   }
   else alert('Hope you make more friends!');
 };
-
-// set up click event listener for the icon that is attached to the parent class for the edit inter-communication
-
-// on click make the inputted fields visible and the labels visible
-// hide the word AT
-// take the values fromt he spans and put them into the correct box
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let renderProfile = function (profile) {
-//   console.log('renderProfile', profile);
-// };
-
-// create database
-
-// create seedfile
-
-// GET-1 - renderSearchResults => on load of the page what to be able to render the search results page which loads the 10 people in the database
-  // append profileSRP from the SRP section
-  // fill in the SRP
-
-
-// POST createNewUser => able to create a new user on the SRP and then render that new person
-
-// GET (SEND user ID) and renderProfile need to be able to click on a person, take that id and route them to a profile page
-
-// PUT able to update the user on the renderProfile page (able to update each spot individually)
-
-// DELETE able to 'hit the delete flag' and not show up the user anymore vs actually deleting their information
