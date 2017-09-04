@@ -18,7 +18,7 @@ const db = require('../models');
   //   res.status(200)
   // };
 
-// function that ONLY sends back ones that are NOT marked for delation
+// function that ONLY sends back ones that are NOT marked for delation => used for initial SRP
 function searchResultsPage(req, res) {
   console.log('SRP is getting data')
   db.Profile.find({}, function(err, allProfiles) {
@@ -38,7 +38,6 @@ function searchResultsPage(req, res) {
 
 // GET (SEND user ID) and renderProfile need to be able to click on a person, take that id and route them to a profile page
 
-// app.get('/api/searchpage/:profileId', controllers.profile.showOneProfile);
 function showOneProfile(req, res) {
   console.log('showOneProfile Route is getting hit', req.params.profileId)
   db.Profile.findById(req.params.profileId, function(err, foundProfile) {

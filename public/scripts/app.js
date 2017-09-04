@@ -9,6 +9,9 @@ $(document).ready(function(){
   })
   .then(function(allProfileData){
     renderSearchResults(allProfileData)
+  })
+  .catch(function(err){
+    console.log('ERROR ON INITIAL LOAD', err)
   });
 
   // clicking on a search results card to render the profile
