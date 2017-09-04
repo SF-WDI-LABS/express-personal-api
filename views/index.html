@@ -19,19 +19,26 @@
 <body>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-10 col-sm-offset-1" style="border: orange solid 2px">
-        <h1>BAD and BOUJEE</h1>
-        <h3>Venues</h3>
+      <div class="jumbotron" style="background-image: url('https://dothedaniel.com/wp-content/uploads/2014/05/Veuve-Clicquot-785x510.jpg')">
+        <h1>Welcome to Bad and Boujee Venues</h1>
+        <p>Come explore an explicit list of swanky botique venues within California.</p>
+      </div>
+    </div>
+    <!--Step 1, 1 of 1: Show data on page-->
+    <div class="container-fluid">
+      <div id="venues"></div>
+    </div>
+    <!-- END Venues Container-->
 
-        <!-- BEGIN FORM SAMPLE -->
-
-        <section id='venue-form' class="container">
-          <div class="row">
+    <!--Step 2, 1 of 1: Show add venue. Create-->
+    <!-- BEGIN FORM SAMPLE -->
+    <div class="container-fluid">
+      <section id='venue-form' class="container col-sm-10 col-sm-offset-1" style="border: white solid 2px">
+        <div class="row">
           <div class="col-md-10 col-md-offset-1">
 
             <form class="form-horizontal">
               <fieldset>
-
                 <!-- Form Name -->
                 <legend>Add a New Venue</legend>
 
@@ -39,94 +46,60 @@
                 <div class="form-group">
                   <label class="col-md-4 control-label" for="name"> Name</label>
                   <div class="col-md-4">
-                  <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
-
+                    <input type="text" name="name"  placeholder="" class="form-control input-md" required="">
                   </div>
                 </div>
-
                 <!-- Text input-->
                 <div class="form-group">
                   <label class="col-md-4 control-label" for="location"> Location</label>
                   <div class="col-md-4">
-                  <input id="location" name="location" type="text" placeholder="City Name" class="form-control input-md">
-
+                    <input name="location" type="text" placeholder="City Name" class="form-control input-md">
                   </div>
                 </div>
-
                 <!-- Text input-->
                 <div class="form-group">
                   <label class="col-md-4 control-label" for="website">Website</label>
                   <div class="col-md-4">
-                  <input class="form-control input-md" id="website" name="website" placeholder="http://www.">
-
+                    <input class="form-control input-md" name="website" placeholder="http://www.website_example.com">
                   </div>
                 </div>
-
                 <!-- Textarea -->
                 <div class="form-group">
                   <label class="col-md-4 control-label" for="image">Image</label>
                   <div class="col-md-4">
-                    <input class="form-control" id="image" name="image">
+                    <input class="form-control" name="image" placeholder="http://www.image_example.com">
                   </div>
                 </div>
-
                 <!-- Textarea -->
                 <div class="form-group">
-                  <label class="col-md-4 control-label" for="image">Notes</label>
+                  <label class="col-md-4 control-label" for="imageBackground">Background Image</label>
                   <div class="col-md-4">
-                    <textarea class="form-control" id="image" name="image"></textarea>
+                    <input class="form-control" name="imageBackground" placeholder="http://www.image_example.com">
                   </div>
                 </div>
-
+                <!-- Textarea -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="notes">Notes</label>
+                  <div class="col-md-4">
+                    <textarea class="form-control" name="notes"></textarea>
+                  </div>
+                </div>
                 <!-- Button -->
                 <div class="form-group">
                   <div class="col-md-4 control-label"></div>
                   <div class="col-md-4">
-                    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
                   </div>
                 </div>
               </fieldset>
             </form>
-          </div>
-          </div>
-        </section>
-
-         <!--   END FORM SAMPLE -->
-
-        <h2>Venues</h2>
-        <div class="container">
-        <!--BEG Venues Container Step 1, part 1 of 1-->
-        <div id="venues"></div>
-        <!-- END Venues Container-->
-      </div>
-        <div class="footer">
-          <h3>About the Author</h3>
-          <div class="col-sm-2">
-            <img src="https://avatars1.githubusercontent.com/u/29782639?v=4&s=460" class="img-responsive" style="width: 100px"/>
-          </div>
-          <div class="col-sm-10" style="border: pink solid 2px">
-            <div class="margin-top-20">
-          <div>
-            <span><b>Name: </b></span><span>myName</span>
-          </div>
-          <div>
-            <span><b>Github Link: </b></span><span>TestLocation</span>
-          </div>
-          <div>
-            <span><b>Personal Site Link: </b></span><span>TestLocation</span>
-          </div>
-          <div>
-            <span><b>Current City: </b></span><span>TestLocation</span>
-          </div>
-          <div>
-            <span><b>Hobbies: </b></span><span>TestLocation</span>
-          </div>
-          <div>
-            <span><b>Location: </b></span><span>TestLocation</span>
-          </div>
+          </section>
         </div>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+        <!--   END FORM SAMPLE -->
+
+        <div class="container-fluid">
+            <div id="profiles"></div>
+        </div>
+    </body>
+    </html>

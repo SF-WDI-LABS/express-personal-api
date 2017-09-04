@@ -43,8 +43,9 @@ app.get('/', function homepage(req, res) {
 * JSON API Endpoints
 */
 
-// get all venues
-app.get('/api', function (req, res) {
+// Step 1a, 1 of 1
+  //Show venues API data
+app.get('/api/venues', function (req, res) {
   // send all venues as JSON response
   db.Venue.find()
     .exec(function(err, venues){
@@ -52,28 +53,79 @@ app.get('/api', function (req, res) {
       res.json(venues);
     });
 });
-// router.get("/", require("./controllers/index"));
-// router.post("/", require("./controllers/create"));
-// router.put("/:id", require("./controllers/update"));
-// router.get("/:id/edit", require("./controllers/edit"));
-// app.delete("/:id", require("./controllers/destroy"));
 
-// app.get('/api', function apiIndex(req, res) {
-//   // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
-//   // It would be seriously overkill to save any of this to your database.
-//   // But you should change almost every line of this response.
-//   res.json({
-//     woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
-//     message: "Welcome to my personal api! Here's what you need to know!",
-//     documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
-//     baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
-//     endpoints: [
-//       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-//       {method: "GET", path: "/api/profile", description: "pizza"}, // CHANGE ME
-//       {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
-//     ]
-//   })
-// });
+// Step 1b, 1 of 1
+  //Show profile API data
+app.get('/api/profile', function (req, res) {
+  db.Profile.find()
+    .exec(function(err, profiles){
+      if (err) { return console.log("index error: " + err); }
+      res.json(profiles);
+    });
+});
+
+
+//Step 2, 1 of 2: Create
+app.post('/api/venues', function (req, res) {
+  // create new venue with form data (`req.body`)
+  var newVenue = new db.Venue({
+    name: req.body.name,
+    location: req.body.location,
+    website: req.body.website,
+    image: req.body.image,
+    notes: req.body.notes,
+    imageBackground: req.body.imageBackground,
+  });
+  // save new venue in db
+  newVenue.save(function(err, savedVenue) {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      res.json(savedVenue);
+    }
+  });
+});
+
+//Step 2, 2 of 2: Updates the page
+app.get('/api/venues/:id', function (req, res) {
+db.Venue.findByIdAndUpdate(req.params.id, req.params.body, function (err, venues) {
+  console.log('finding by ID');
+    res.json(venues);
+  });
+});
+
+  //Step 3, 1 of 1: Update notes
+  app.put('/api/venue/:id', function(req,res){
+  // get venue id from url params (`req.params`)
+    console.log('venues notes updated', req.params);
+    var venueId = req.params.id;
+    // find the index of the venue we want to remove
+    var updateVenueIndex = venues.findIndex(function(element, index) {
+      return (element._id === parseInt(req.params.id)); //params are strings
+    });
+    console.log('updating venue with index', deleteVenueIndex);
+    var venueToUpdate = venues[deleteVenueIndex];
+    venues.splice(updateVenueIndex, 1, req.params);
+    res.json(req.params);
+  });
+
+  // Step 4, 1 of 1: Delete
+  app.delete('/api/venues/:id', function (req, res) {
+    // get venue id from url params (`req.params`)
+    console.log('venues delete', req.params);
+    var venueId = req.params.id;
+    // find the index of the venue we want to remove
+    var deleteVenueIndex = venues.findIndex(function(element, index) {
+      return (element._id === parseInt(req.params.id)); //params are strings
+    });
+    console.log('deleting venue with index', deleteVenueIndex);
+    var venueToDelete = venues[deleteVenueIndex];
+    venues.splice(deleteVenueIndex, 1);
+    res.json(venueToDelete);
+  });
+
+
+
 
 /**********
 * SERVER *
