@@ -67,9 +67,7 @@ li.list-item {
 	z-index: 1;
 	padding:0;
 }
-#main-content{
-	margin-top: 40px
-}
+
 .carousel{
 	width: 100%;
 	height: 100%;
@@ -80,11 +78,10 @@ li.list-item {
 	position: fixed;
 	background-color: white;
 	right:0;
-	top:36px;
+	top:0;
 	height: auto;
-	width: auto;
 	margin: 0;
-	padding: 10px;
+	overflow: auto;
 }
 .side-bar.card{
 	width: 100%;
@@ -124,8 +121,9 @@ input>.card-img-top{
 
 /* The buttons on the main nav should be as big as parent*/
 #main-nav>button{
-	width: 100%;
+	width: auto;
 	margin: 2px 0;
+	display: block;
 }
 
 button{

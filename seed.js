@@ -24,7 +24,7 @@ var LA_trip = [
     }, {
     name: "Oscar EVERYWHERE!",
     link: "/images/LA_trip/oscar.jpg",
-    description: "Oscars I have achieved in my life haha. (Not)"
+    description: "Oscars I have earned in my life haha. (Not)"
     }
   ];
 

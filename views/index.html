@@ -26,8 +26,7 @@
 
   <div id="header">
     <div id="main-nav" class="">
-      <!-- <button type="button" class="delete-book btn btn-dark">Delete Book</button> -->
-      <!--  <button type="button" class="edit-book btn btn-dark">Edit Book</button> -->
+      <button type="button" class="add-seed btn btn-primary">Add Seed</button>
       <button type="button" class="add-book btn btn-primary">Add Book</button>
     </div>
   </div>
@@ -59,40 +58,40 @@
       <form class="side-form" method="POST" action="/story/create">
         <div class="card">
           <div class="img-preview">
-            
+
           </div>
           <!-- Hard to store image directl, URL best for now -->
 <!--           Image File:
-          <input name="story_link" type="file" > -->
-          
-           
-            <div class="card-body">
-              Image Link:
-              <input type="url" name="form_link" required>  
-              Title or Caption: 
-              <input type="text" class="card-title" name="form_title" required>
-              Description:
-              <textarea type="text" class="card-text" name="form_description"></textarea>
-              <button name="" type="submit" class="submit-story btn btn-dark">Confirm</button>
-              <button name="" type="button" class="cancel-story btn btn-dark">Cancel</button>
-              <button name="" type="reset" class="clear-story btn btn-danger">Clear</button>
-
-            </div>
-          </div>
-        </form>
-      
-    </div>
+  <input name="story_link" type="file" > -->
 
 
-    <footer>
-      <div class="col">
-        <a href="/api">Read My API Documentation</a>
-      </div>
-    </footer>
+  <div class="card-body">
+    Image Link:
+    <input type="url" name="form_link" required>  
+    Caption: 
+    <input type="text" class="card-title" name="form_title" required>
+    Description:
+    <textarea type="text" class="card-text" name="form_description"></textarea>
+    <button name="" type="submit" class="submit-story btn btn-dark">Confirm</button>
+    <button name="" type="button" class="cancel-story btn btn-dark">Cancel</button>
+    <button name="" type="reset" class="clear-story btn btn-danger">Clear</button>
+
+  </div>
+</div>
+</form>
+
+</div>
 
 
-  </div> 
-  <!-- End of wrapper -->
+<footer>
+  <div class="col">
+    <a href="/api">Read My API Documentation</a>
+  </div>
+</footer>
+
+
+</div> 
+<!-- End of wrapper -->
 </div>
 <!-- End of container -->
 </body>

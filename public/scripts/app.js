@@ -6,12 +6,50 @@ $(document).ready(function(){
 	// The main apps being run when the doc is first loaded.
 	// Outside of main are helper functions
 	function main() {
-		// Render dummpy data from seed.js when the webpage is first loaded
-		$.ajax({
-			method: "GET",
-			url: "/story/index",
-			success: renderStories,
-		});
+		// Render all database record to page. Its currently until you seed it or
+		// click the addSeedButton
+		renderDBstoPage();
+
+		// Create a new copy set of stories on the page based on data i received from
+		// api/images, with a click of a button.
+		$('.add-seed').on("click", addSeedData);
+		function addSeedData(){
+			$.ajax({
+				method: "GET",
+				url: "/api/images",
+			}).then(function(data){
+				console.log(data);
+				data.LA_trip.forEach(function(new_story){
+					// for data I get back, create a entry in the database by
+					// passing in as in the format from the submit form, hence the 
+					// form_title, form_description, form_link, instead of just title, etc...
+					// After all data are created from endpoint. call /story/index page
+					// to render seed to the page
+					var story = {
+						form_title : new_story.name,
+						form_link: new_story.link,
+						form_description: new_story.description,
+					};
+					$.ajax({
+						method: "POST",
+						url: "/story/create",
+						data: story,
+					}).then(function(created_story){
+					}).catch(function(err){console.log(err);});
+				});
+				// Use index to render all data from server to the page
+				renderDBstoPage();
+			}).catch(function(err){console.log(err);});
+		};
+
+		// make call to index page and render all database record to html page
+		function renderDBstoPage(){
+			$.ajax({
+				method: "GET",
+				url: "/story/index",
+				success: renderStories,
+			});
+		};
 
 		// Bind event handlers on Add, Edit, and Delete buttons
 		// &&  on side-forms
@@ -36,6 +74,7 @@ $(document).ready(function(){
 			e.preventDefault();
 			var story = $(this).serialize();
 			$('.story_link .card-title .card-text').val("");
+			console.log(story);
 			$.ajax({
 				method: "POST",
 				url: "/story/create",
@@ -46,7 +85,7 @@ $(document).ready(function(){
 				// it on the page using template and css card
 				// Then clear out the form upon success
 				$('#main-content').prepend(templateStory(new_story, "none"));
-				$(`#${new_story._id}`).fadeIn(1000);
+				$(`[data-id=${new_story._id}]`).fadeIn(1200);
 				$('[name=form_link],[name=form_title],[name=form_description]').val("");
 			}).catch(function(err){
 				console.log(err);
@@ -75,11 +114,13 @@ $(document).ready(function(){
 	// For all stories received from server,
 	// create a html template for them and append to the page
 	function renderStories(stories){
+		console.log(stories.length);
+		if(stories.length === 0) return;
 		var $main_content = $('#main-content');
-		stories.forEach(function(story){
-			var new_story = templateStory(story, "show");
-			$main_content.prepend(new_story);
-		});
+			stories.forEach(function(story){
+				var new_story = templateStory(story, "show");
+				$main_content.prepend(new_story);
+			});
 	}
 
 	// Clear out the main content section
@@ -94,12 +135,12 @@ $(document).ready(function(){
 
 	// Delete story from db and from front-end rendering
 	function deleteStoryBtn(event) {
-		var id = $(this).closest('.card').attr('id');
+		var id = $(this).closest('.card').data('id');
 		$.ajax({
 			method: "delete",
 			url: "/story/delete/" + id,
 		}).then(function(data){
-			$(`#${id}`).remove();
+			$(`[data-id=${id}]`).remove();
 		}).catch(function(err){ console.log(err);})
 	};
 
@@ -115,22 +156,29 @@ $(document).ready(function(){
 			name: $(this).parents('.card-body').find('[name=story_name]').val(),
 			description: $(this).parents('.card-body').find('[name=story_description]').val(),
 		};
-		var id = $(this).parents('.card').attr('id');
+		var id = $(this).parents('.card').data('id');
 		$.ajax({
 			method: "put",
 			url: "story/update/" + id,
 			data: body,
 		}).then(function(update_story){
 			// Update the front-end rendering after db stored correctly
-			var card_div = $(`#${id}`);
-			card_div.html(templateStory(update_story, "show"));
+			var story_div = $(`div[data-id=${id}]`);
+			story_div.html(templateStory(update_story, "show"));
+			// Theres a hidden card element behind the 1 that we just updated
+			// need to insert updated_story before the parent before we can remove parent 
+			var nodes = $(`div[data-id=${id}]`);
+			nodes.eq(1).insertBefore(nodes.eq(0));
+			nodes.eq(0).remove();
+
 		}).catch(function(err){console.log(err);});
 	}
 
 	// Create a card template from user input
+	// With a hidden input field to toggle when user click 'edit'
 	function templateStory(story, display){
 		return `	
-		<div class="card" style="display: ${display}" id=${story._id}>
+		<div class="card" style="display: ${display}" data-id=${story._id}>
 			  <img class="card-img-top" src=${story.link} alt="Card image cap">
 			  <div class="card-body">
 			    <h4 class="card-title toggle">${story.name}</h4>

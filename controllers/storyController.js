@@ -12,8 +12,8 @@ function index(req, res){
 	});
 }
 
+// Create new story based on form input
 function create(req, res){
-
 	var story = new db.Story({
 		name: req.body.form_title,
 		description: req.body.form_description,
@@ -21,33 +21,31 @@ function create(req, res){
 	});
 	story.save(function(err,stored_story){
 		res.json(stored_story);
-		console.log(stored_story);
 	});
-	
 }
 
 function show(req, res){
 
 }
 
+// Destroy db record based on ID
 function destroy(req, res){
 	db.Story.findByIdAndRemove(req.params.story_id, function(err,story){
 		res.status(200).send("Success!");
 	});
 }
 
+// Update existing record based on ID and
+// using input fields
 function update(req, res){
 	db.Story.findById(req.params.story_id, function(err, story){
 		story.name = req.body.name;
 		story.description = req.body.description;
 		story.save(function(err, new_story){
-			console.log('New Story created' + new_story);
 			res.json(new_story);
 		});
 	});
-
 }
-
 
 module.exports = {
   index: index,

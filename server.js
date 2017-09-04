@@ -27,11 +27,11 @@ app.use(function(req, res, next) {
  * ROUTES *
  **********/
 
+//CRUD
 app.post('/story/create', controllers.story.create);
 app.get('/story/index', controllers.story.index);
-app.delete('/story/delete/:story_id', controllers.story.destroy);
 app.put('/story/update/:story_id', controllers.story.update);
-
+app.delete('/story/delete/:story_id', controllers.story.destroy);
 
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
@@ -70,7 +70,8 @@ app.get('/api', function apiIndex(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", path: "/api/images", description: "Images I took from my LA trip"},
+      {method: "GET", path: "/api/videos", description: "Open source videos that I found interesting"},
     ]
   })
 });
@@ -89,7 +90,7 @@ app.get('/api/profile', function (req, res) {
       currentCity: "San Francisco",
       hobbies: [{
           name: "Down to Earth",
-        description: "I enjoy hanging out with friends to try new food and going to happy hours."
+        description: "I enjoy hanging out with friends to try new food and do crazy stuff."
         },{
           name: "Movie Fantasy",
           description: "Comedy, Sci-Fi, Action, and story with mind-blowing twist are my favorite genres."
@@ -109,50 +110,25 @@ app.get('/api/profile', function (req, res) {
 // LA_trip has actual images I took during my trip to Los Angeles
 app.get('/api/images', function(req, res){
   res.json({
-    sameple_background: [
-        {
-        _id:  1,
-        name: "Beach",
-        link: "/images/beach.jpg",
-        },{
-        _id:  2,
-        name: "Snow Mountain",
-        link: "/images/snowmountain.jpg",
-
-        },{
-        _id: 3,
-        name: "Under Water",
-        link: "/images/underwater.jpg",
-        }, {
-        _id: 4,
-        name: "Mossholder",
-        link: "/images/mossholder.jpg",
-        }
-      ],
     LA_trip: [
         {
-        _id:  1,
         name: "Adorable Baseball Dudes",
-        link: "/images/LA_trip/basball_dudes.jpg",
+        link: "/images/LA_trip/baseball_dudes.jpg",
         description: "These are some adorable toys I saw at one the LA stores"
         },{
-        _id:  2,
         name: "Delicious Dessert!",
         link: "/images/LA_trip/casino_dessert.jpg",
         description: "Some awesome dessert I had at Morongo Casino Resort"
 
         },{
-        _id: 3,
         name: "Chinese Theatre",
         link: "/images/LA_trip/chinese_theatre.jpg",
         description: "One of the popular lankmarks at the Hollywood Boulevard, Los Angeles"
         }, {
-        _id: 4,
         name: "Macaroon",
         link: "/images/LA_trip/macaroon.jpg",
         description: "What can I say? They are some soft little sweet treat!"
         }, {
-        _id: 4,
         name: "Oscar EVERYWHERE!",
         link: "/images/LA_trip/oscar.jpg",
         description: "Oscars I have achieved in my life haha. (Not)"
