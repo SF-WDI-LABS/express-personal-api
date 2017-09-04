@@ -46,8 +46,8 @@ app.get('/api/birds', controllers.birds.index); // get all birds
 
 // app.get('/api/birds/:id', function(req, res) {}); // get one bird
  app.post('/api/birds', controllers.birds.create); // create a new bird
-// app.put('/api/birds/:id', function(req, res) {}); // edit a bird
-// app.delete('/api/birds/:id', function(req, res) {}); // delete a bird
+ app.put('/api/birds/:birdId', controllers.birds.update); // edit a bird
+ app.delete('/api/birds/:birdId', controllers.birds.destroy); // delete a bird
 
 /*
  * JSON API Endpoints

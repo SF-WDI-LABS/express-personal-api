@@ -3,10 +3,15 @@
 }*/
 
 body {
-  background-color: red;
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  background-image: url("../images/background12.jpeg");
+  /*background-repeat: no-repeat;*/
+  background-size: contain;
+}
+
+#bird-form {
+
 }
 
 h1 {
@@ -15,11 +20,12 @@ h1 {
 }
 
 .bird {
-  background-color: #ccf5ff;
+
   margin: 1% 1%;
 }
 .image-container {
-  background-color: yellow;
+  /*background-color: yellow;*/
+  border-style: none;
   box-sizing: border-box;
   padding: 1%;
 }
@@ -41,10 +47,21 @@ h1 {
 
 }
 
+.list-group {
+  /*background-image: url("../images/background13.jpeg");
+  background-size: auto;*/
+}
+
 .list-group-item {
-  background-color: #ccf5ff;
+  /*background-color: #ccf5ff;*/
+  opacity: 0.6;
+
 }
 
 .list-group-item a {
   margin: 0px 10px;
+}
+
+.hidden {
+  display: none;
 }

@@ -25,13 +25,44 @@ function create(req, res) {
   });
 }
 
+function update(req, res) {
+  db.Bird.findById(req.params.birdId, function(err, bird){
+    if (err) {
+      console.log(`Did not find bird id: ${req.params.birdId} in db`);
+      return;
+    }
 
+    bird.name = req.body.name;
+    bird.type = req.body.type;
+    bird.comments = req.body.comments;
 
+    bird.save(function(err, bird) {
+      if (err) {
+        console.log(`Failed to update bird id: ${bird._id} in db`);
+        return;
+      }
 
+      res.json(bird);
+    });
+  });
+}
+
+function destroy(req, res) {
+  db.Bird.findByIdAndRemove(req.params.birdId, function(err, bird) {
+    if (err) {
+      console.log(`Failed to delete bird id ${req.params.birdId}`);
+      return;
+    }
+
+    res.json(bird);
+  });
+}
 
 
 //public methods
 module.exports = {
   index: index,
   create: create,
+  update: update,
+  destroy: destroy,
 }
