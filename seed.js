@@ -85,7 +85,7 @@ let birdSeed = [
   urlName: "Nature Works",
   url: "https://abcbirds.org/bird/swallow-tailed-kite/",
   photo1: "images/swallow-tailed-kite.jpg",
-  photo2: "images/swallow-tailed-3.jpg",
+  photo2: "images/swallow-tailed.jpg",
   },
 
 ];
