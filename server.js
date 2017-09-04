@@ -45,24 +45,24 @@ app.get('/', function homepage(req, res) {
 */
 
 // Step 1a, 1 of 1
-  //Show venues API data
+//Show venues API data
 app.get('/api/venues', function (req, res) {
   // send all venues as JSON response
   db.Venue.find()
-    .exec(function(err, venues){
-      if (err) { return console.log("index error: " + err); }
-      res.json(venues);
-    });
+  .exec(function(err, venues){
+    if (err) { return console.log("index error: " + err); }
+    res.json(venues);
+  });
 });
 
 // Step 1b, 1 of 1
-  //Show profile API data
+//Show profile API data
 app.get('/api/profile', function (req, res) {
   db.Profile.find()
-    .exec(function(err, profiles){
-      if (err) { return console.log("index error: " + err); }
-      res.json(profiles);
-    });
+  .exec(function(err, profiles){
+    if (err) { return console.log("index error: " + err); }
+    res.json(profiles);
+  });
 });
 
 
@@ -77,47 +77,53 @@ app.post('/api/venues', function (req, res) {
     notes: req.body.notes,
     imageBackground: req.body.imageBackground,
   });
-  // save new venue in db
-  newVenue.save(function(err, savedVenue) {
-    if (err) {
-      res.status(500).json({ error: err.message });
-    } else {
-      res.json(savedVenue);
-    }
+  db.Venue.create(req.body, function(err, venue) {
+    if (err) { console.log('error', err); }
+    console.log(venue);
+    res.json(venue);
   });
 });
 
 //Step 2, 2 of 2: Updates the page
 app.get('/api/venues/:id', function (req, res) {
-db.Venue.findByIdAndUpdate(req.params.id, req.params.body, function (err, venues) {
-  console.log('finding by ID');
+  db.Venue.findByIdAndUpdate(req.params.id, req.params.body, function (err, venues) {
+    console.log('finding by ID');
     res.json(venues);
   });
 });
 
-  //Step 3, 1 of 1: Update notes
-  app.put('/api/venue/:id', function(req,res){
+//Step 3, 1 of 1: Update notes
+app.put('/api/venues/:id', function update(req,res){
   // get venue id from url params (`req.params`)
-    console.log('venues notes updated', req.params);
-    var venueId = req.params.id;
-    // find the index of the venue we want to remove
-    var updateVenueIndex = venues.findIndex(function(element, index) {
-      return (element._id === parseInt(req.params.id)); //params are strings
-    });
-    console.log('updating venue with index', deleteVenueIndex);
-    var venueToUpdate = venues[deleteVenueIndex];
-    venues.splice(updateVenueIndex, 1, req.params);
-    res.json(req.params);
+  console.log('venues notes updated', req.params);
+  var venueId = req.params.id;
+  // find venue in db by id
+  db.Venue.findOne({ _id: venueId }, function(err, foundVenue) {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      // update the venues's attributes
+      foundVenue.notes = req.body.notes;
+      // save updated venue in db
+      foundVenue.save(function(err, savedVenue) {
+        if (err) {
+          res.status(500).json({ error: err.message });
+        } else {
+          res.json(savedVenue);
+        }
+      });
+    }
   });
+});
 
-  // Step 4, 1 of 1: Delete
+// Step 4, 1 of 1: Delete
 app.delete('/api/venues/:id', function (req, res) {
-   db.Venue.findByIdAndRemove(req.params.id,   function(err, id_index){
-     console.log(id_index);
-     console.log("Done deleting");
-     res.status(200).send("Success!");
-   });
- });
+  db.Venue.findByIdAndRemove(req.params.id,   function(err, id_index){
+    console.log(id_index);
+    console.log("Done deleting");
+    res.status(200).send("Success!");
+  });
+});
 
 
 

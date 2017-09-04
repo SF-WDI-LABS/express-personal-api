@@ -19,83 +19,69 @@ $(document).ready(function(){
     success: renderMyProfile,
   });
 
-  //Step 2, 1 of 1: Create
-  //Update the index.html
-  // $('#album-form form').on('submit', function(event) {
-  //   event.preventDefault();
-  //   var formData = $(this).serialize();
-  //   console.log('formData', formData);
-  //   $.post('/api/venues', formData, function(venue) {
-  //     console.log('venue after POST', venue);
-  //     renderVenue(venue);  //render the server's response
-  //   });
-  //   $(this).trigger("reset");
-  // });
+  // Step 2, 1 of 1: Create
+  // Update the index.html
+  $('#venue-form form').on('submit', function(event) {
+    event.preventDefault();
+    console.log("Prevents submit");
+    var formData = $(this).serialize();
+    console.log('formData', formData);
+    $.post('/api/venues', formData, function(venue) {
+      console.log('venue after POST', venue);
+      renderVenue(venue);  //render the server's response
+    });
+    $(this).trigger("reset");
+  });
+
+
 
   //Step 3a, 1 of 2: Edit
-  // $('#venues').on('click', '.edit-venue', handleEditVenueClick);
-  // //Step 3b, 1 of x: Save the Edits
-  // $('#venues').on('click', '.save-venue', handleSaveChangesClick);
+  $('#venues').on('click', '.edit-venue', handleEditVenueClick);
+  //Step 3b, 1 of x: Save the Edits
+  $('#venues').on('click', '.save-venue', handleSaveChangesClick);
   //Step 4, 1 of x: Delete
   $('#venues').on('click', '.delete-venue', handleDeleteVenueClick);
 
-  //   $.when.apply(null, deferred).always(function() {
-  //     console.log('all updates sent and received, time to refresh!');
-  //     console.log(arguments);
-  //     fetchAndReRenderVenueWithId(venueId);
-  //   });
-  //
-  // function fetchAndReRenderVenueWithId(venueId) {
-  //   $.get('/api/venues/' + venueId, function(data) {
-  //     // remove the current instance of the venue from the page
-  //     $('div[data-venue-id=' + venueId + ']').remove();
-  //     // re-render it with the new venue data (including songs)
-  //     renderVenue(data);
-  //   });
-  // }
-
   //Step 3a, 2 of 2: Edit
-  // function handleEditVenueClick(event) {
-  //   var $venueRow = $(this).closest('.venue');
-  //   var venueId = $venueRow.data("venue-id");
-  //   console.log('edit venue', venueId);
-  //   // show the save changes button
-  //   $venueRow.find('.save-venue').toggleClass('hidden');
-  //   // hide the edit button
-  //   $venueRow.find('.edit-venue').toggleClass('hidden');
-  //   var venueNotes =
-  //   $venueRow.find('span.venue-notes').text();
-  //   $venueRow.find('span.venue-notes').html('<input class="edit-venue-notes" value="' + venueNotes + '"></input>');
-  // };
+  function handleEditVenueClick(event) {
+    var $venueRow = $(this).closest('.venue');
+    var venueId = $venueRow.data("venue-id");
+    console.log('edit venue', venueId);
+    // show the save changes button
+    $venueRow.find('.save-venue').toggleClass('hidden');
+    // hide the edit button
+    $venueRow.find('.edit-venue').toggleClass('hidden');
+    var venueNotes =
+    $venueRow.find('span.venue-notes').text();
+    $venueRow.find('span.venue-notes').html('<input class="edit-venue-notes" value="' + venueNotes + '"></input>');
+  };
 
-  //Step 3b, 2 of x: Save the edits
+  //Step 3b, 2 of 3: Save the edits
   //Saving changes from edits made
-  // function handleSaveChangesClick(event) {
-  //   var venueId = $(this).parents('.venue').data('venue-id'); // $(this).closest would have worked fine too
-  //   var $venueRow = $('[data-venue-id=' + venueId + ']');
-  //   var data = {
-  //     venueNotes: $venueRow.find('.edit-venue-notes').val()
-  //   };
-  //   console.log('PUTing data for venue', venueId, 'with data', data);
-  //   $.ajax({
-  //     method: 'PUT',
-  //     url: '/api/venues/' + venueId,
-  //     data: data,
-  //     success: handleVenueUpdatedResponse
-  //   });
-  // }
+  function handleSaveChangesClick(event) {
+    var venueId = $(this).parents('.venue').data('venue-id'); // $(this).closest would have worked fine too
+    var $venueRow = $('[data-venue-id=' + venueId + ']');
+    var data = {
+      venueNotes: $venueRow.find('.edit-venue-notes').val()
+    };
+    console.log('PUTing data for venue', venueId, 'with data', data);
+    $.ajax({
+      method: 'PUT',
+      url: '/api/venues/' + venueId,
+      data: data,
+      success: handleVenueUpdatedResponse
+    });
+  }
 
-  //Step 3b, 3 of x: Save the edits
-  // function handleVenueUpdatedResponse(data) {
-  //   console.log('response to update', data);
-  //
-  //   var venueId = data._id;
-  //   // scratch this venue from the page
-  //   $('[data-venue-id=' + venueId + ']').remove();
-  //   renderVenue(data);
-  //
-  //   $('[data-venue-id=' + venueId + ']')[0].scrollIntoView();
-  // }
+  //Step 3b, 3 of 3: Save the edits
+  function handleVenueUpdatedResponse(data) {
+    console.log('response to update', data);
+    var venueId = data._id;
+    // scratch this venue from the page
+    $('[data-venue-id=' + venueId + ']').remove();
+    renderVenue(data);
+    // $('[data-venue-id=' + venueId + ']')[0].scrollIntoView();
+  }
 
   //Step 1a, 2 of 3:
   //This runs through the forEach loop. Each item in the api will be shown and the renderVenue will display this per the function below
@@ -158,7 +144,7 @@ $(document).ready(function(){
       </div>
       </div>
       <!-- end of venue internal row -->
-      <div class='panel-footer'>
+      <div class='panel-footer col-sm-9 col-xs-12' style="float: right; border-radius: 4px">
       <button class='btn btn-info edit-venue tgl-btn' style="width: 150px">Edit Notes</button>
       <button class='btn btn-success save-venue hidden' style="width: 150px">Save Changes</button>
       <button class='btn btn-danger delete-venue' style="width: 150px">Delete</button>
