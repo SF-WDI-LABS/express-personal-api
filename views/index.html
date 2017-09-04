@@ -1,29 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+  <title>Blank</title>
 
-    <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/styles.css">
 
-    <!-- VENDOR SCRIPTS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <!-- STYLESHEETS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
-    <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/app.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
+
+ 
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/styles/styles.css">
+
+
+
+
+
+  <script src="/scripts/app.js"></script>
+
+  
+</head>
+<body>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add new gym</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+
+
+
+
+          <form class="form-horizontal">
+            <fieldset>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="name">Gym Name</label>
+                <div class="col-md-4">
+                  <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="artistName">Location</label>
+                <div class="col-md-4">
+                  <input id="textinput" name="artistName" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="releaseDate">Image url</label>
+                <div class="col-md-4">
+                  <input id="releaseDate" name="releaseDate" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+              </div>
+
+              <!-- Textarea -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="reviews">Review:</label>
+                <div class="col-md-4">
+                  <textarea class="form-control" id="reviewTxt" name="review">This place sucked</textarea>
+                </div>
+              </div>
+
+
+
+            </fieldset>
+         
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary saving">Save</button>
+        </div>
+         </form>
       </div>
     </div>
-  </body>
+  </div>
+
+
+
+
+
+
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-3">Add a gym</h1>
+      <p class="lead">It is simple, just click the button below, fill out the form and click submit.</p>
+      <hr class="my-4">
+      <p>  Please keep reviews clean!</p>
+      <p class="lead">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+         Add gym
+       </button>
+       <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Add gym</a> -->
+     </p>
+   </div>
+ </div>
+
+
+
+ <!-- new gym display field -->
+
+<!--    <div class="gymDisplay">
+   
+ <div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+    <h1>Paragon Jiu-Jitsu</h1>
+ <img src="http://via.placeholder.com/300" width="175px">
+    </div>
+     <div class="col-sm-4">
+     <h3>Location</h3>
+     <p>225 coggins dr. Pleasant Hill Ca</p>
+    </div>
+     <div class="col-sm-4">
+     <h3>Reviews</h3>
+     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+   <div class="gymDisplay">
+   
+ <div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+    <h1>Paragon Jiu-Jitsu</h1>
+ <img src="http://via.placeholder.com/300" width="175px">
+    </div>
+     <div class="col-sm-4">
+     <h3>Location</h3>
+     <p>225 coggins dr. Pleasant Hill Ca</p>
+    </div>
+     <div class="col-sm-4">
+     <h3>Reviews</h3>
+     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+    </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div id="gymDisplay"></div>
+<div class="container">
+<div class="row">
+<div class="col-sm-4">
+<div class="card" style="width: 20rem;">
+  <img class="card-img-top" src="http://via.placeholder.com/300" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  </div>
+</div>
+<div class="col-sm-4">
+  <div class="card" style="width: 20rem;">
+  <img class="card-img-top" src="http://via.placeholder.com/300" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  </div>
+  </div>
+  <div class="col-sm-4">
+  <div class="card" style="width: 20rem;">
+  <img class="card-img-top" src="http://via.placeholder.com/300" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+</body>
 </html>
