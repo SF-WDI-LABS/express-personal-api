@@ -13,38 +13,13 @@ $.ajax({
 });
 
 //adding a bird
-handleAddBird
-
 $("#bird-form form").on("submit", handleAddBird);
-
-
-// $("#bird-form form").on("submit", function(e) {
-//   e.preventDefault();
-//   console.log("app.js received submit button event");
-//   let birdData = $(this).serialize();
-//   console.log(`birdData: ${birdData}`);
-//
-//   $.post("/api/birds", birdData, function(addedBird) {
-//     console.log(`addedBird: ${addedBird}`);
-//     renderBird(addedBird);
-//   });
-//   $(this).trigger("reset");
-// }); //$("#bird-form form").on("submit", function(e) {
-
-
-
 //handling edit button click for editing a bird
 $("#birds").on("click", ".edit-bird", handelEditBird);
-
 //handling save button click for editing a bird
 $("#birds").on("click", ".save-bird", handleSaveBird);
-
 //handling delete button of a bird
 $("#birds").on("click", ".delete-bird", handleDeleteBird);
-
-
-
-
 
 function renderAllBirds(birds) {
   birds.forEach(renderBird);
@@ -175,7 +150,6 @@ function handleBirdUpdate(updatedBird) {
   renderBird(updatedBird);
 
   $("[data-bird-id=" + birdId + "]")[0].scrollIntoView();
-
 }
 
 function handleDeleteBird(e) {

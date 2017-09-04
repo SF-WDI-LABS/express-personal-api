@@ -39,11 +39,21 @@ app.get('/', function homepage(req, res) {
 });
 
 app.get('/api/profile', function(req, res) {
-  // res.sendFile(__dirname + '/views/profile.html');
+  res.json({
+    name: "Apichai Chenthanakij(Chen)",
+    githubUserName: "achentha",
+    githubLink: "https://github.com/achentha",
+    githubProfileImage: "https://avatars2.githubusercontent.com/u/30161498?v=4&u=9f3d9d4479e61b9a8ed9ff4b8ca7440ec432ad54&s=400",
+    personalSiteLink: "https://dry-scrubland-21249.herokuapp.com/",
+    currentCity: "Fremont",
+    pets: [
+      {name: "Angel Face", type: "Cat", breed: "Tabby"},
+      {name: "Clutch", type: "Cat", breed: "Tabby"},
+      ]
+    });
 });
 
 app.get('/api/birds', controllers.birds.index); // get all birds
-
 app.get('/api/birds/:birdId', controllers.birds.show); // get one bird
 app.post('/api/birds', controllers.birds.create); // create a new bird
 app.put('/api/birds/:birdId', controllers.birds.update); // edit a bird
@@ -54,18 +64,17 @@ app.delete('/api/birds/:birdId', controllers.birds.destroy); // delete a bird
  */
 
 app.get('/api', function apiIndex(req, res) {
-  // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
-  // It would be seriously overkill to save any of this to your database.
-  // But you should change almost every line of this response.
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
-    message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/achentha/express-personal-api/blob/master/README.md", // CHANGE ME
-    baseUrl: "https://dry-scrubland-21249.herokuapp.com/", // CHANGE ME
+    message: "Welcome to my personal favorite birds api! Here's what you need to know!",
+    documentationUrl: "https://github.com/achentha/express-personal-api/blob/master/README.md",
+    baseUrl: "https://dry-scrubland-21249.herokuapp.com/",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", path: "/api/profile", description: "About me"},
+      {method: "GET", path: "/api/birds", description: "Show all my favorite birds"},
+      {method: "POST", path: "/api/birds", description: "Add a new favorite bird"},
+      {method: "PUT", path: "/api/birds", description: "Modify a favorite bird"},
+      {method: "DELETE", path: "/api/birds", description: "Delete a favorite bird"},
     ]
   })
 });

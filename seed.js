@@ -19,7 +19,7 @@ let birdSeed = [
   {
   name: "Red Tail Hawk",
   type: "bird of prey",
-  comments: "Very common. Often spotted circling search for prey.",
+  comments: "Very common. Often spotted circling search for prey. The field marks are the dark red color of the tail features, that's what all the books say. But for me, the dead give away is the dark band between shoulder and wrist seen in flight (as shown in the photo).",
   urlName: "The Cornell Lab of Ornithology",
   url: "https://www.allaboutbirds.org/guide/Red-tailed_Hawk/id",
   // photo1: "images/red-tailed-hawk-1827949_960_720.jpg",
@@ -31,7 +31,7 @@ let birdSeed = [
   {
   name: "Crested Caracara",
   type: "bird of prey",
-  comments: "Hard to find one. I saw this only once in South Florida.",
+  comments: "Hard to find this majestic looking bird. I saw this only once in South Florida while driving in a back road.",
   urlName: "whatbird.com",
   url: "https://identify.whatbird.com/obj/56/overview/Crested_Caracara.aspx",
   photo1: "images/cara.jpg",
@@ -40,7 +40,7 @@ let birdSeed = [
 
   {
   name: "Purple Gallinule",
-  type: "",
+  type: "warm water marsh bird",
   comments: "Very colorful. In the same family as Coots and Moorhen. An excellent wader.",
   urlName: "Audubon",
   url: "http://www.audubon.org/field-guide/bird/purple-gallinule",
@@ -61,11 +61,31 @@ let birdSeed = [
   {
   name: "Anhinga",
   type: "water bird",
-  comments: "Tropical bird found in the southern swamps. They hunt by spear fishing.",
+  comments: "Tropical bird found in the southern swamps. They hunt by spear fishing. They have no fatty glands to repeal water from their features so are often seen spreading their wings to dry out the features.",
   urlName: "Animal Diversity Web",
   url: "http://animaldiversity.org/accounts/Anhinga_anhinga/",
   photo1: "images/anhinga.jpeg",
   photo2: "images/anhinga2.jpg",
+  },
+
+  {
+  name: "Roseate Spoonbill",
+  type: "water bird",
+  comments: "These pretty birds feed in flocks around Gulf of Mexico and the Southwest. They swing their spoon-shaped bill back and forth in the water to catch small fish, crustaceans, and invertebrates.",
+  urlName: "Nature Works",
+  url: "http://www.nhptv.org/natureworks/roseatespoonbill.htm",
+  photo1: "images/spoonbill4.jpg",
+  photo2: "images/spoonbill3.jpg",
+  },
+
+  {
+  name: "Swallow-Tailed Kite",
+  type: "bird of prey",
+  comments: "Deeplyforked tail limited to Florida and surrounging area. I once saw a group of three flying over my head in the West Coast of Florida forrest. They rarely flapped their wings and flew by so gracefully.",
+  urlName: "Nature Works",
+  url: "https://abcbirds.org/bird/swallow-tailed-kite/",
+  photo1: "images/swallow-tailed-kite.jpg",
+  photo2: "images/swallow-tailed-kite-pair.jpg",
   },
 
 ];
