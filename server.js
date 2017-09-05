@@ -48,7 +48,7 @@ app.get('/api', function apiIndex(req, res) {
   // But you should change almost every line of this response.
   res.json({
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/jcheng305/express-personal-api/README.md", // CHANGE ME
+    documentationUrl: "https://github.com/jcheng305/express-personal-api/blob/master/README.md", // CHANGE ME
     baseUrl: "https://stark-coast-86694.herokuapp.com/", // CHANGE ME
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
@@ -56,7 +56,7 @@ app.get('/api', function apiIndex(req, res) {
     ]
   })
 });
-app.get('/api/profiles', function apiIndex(req, res) {
+app.get('/api/profile', function apiIndex(req, res) {
   res.json({
     "About Me": [{
       // method: "GET",
