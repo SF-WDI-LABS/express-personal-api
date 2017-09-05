@@ -70,7 +70,7 @@ app.get('/api/profiles', function apiIndex(req, res) {
       hobbies: "Adrenaline junky, hanging out with friends, trying new food places."
       }]
   })
-})
+});
 
 /**********
  * SERVER *
