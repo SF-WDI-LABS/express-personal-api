@@ -34,30 +34,51 @@
       and starts the div one over from the left, since there are 10
       it centers it, leaving one column empty on both sides   -->
       <div class="col-lg-10 col-lg-offset-1">
-
         <form class="info-form"> <!--allows you to capture info from a form-->
           <!-- Form Name -->
-          <legend>Add A Skatepark</legend> <!--legend gives semantic meaning-->
+          <legend>Add A Skatespot</legend> <!--legend gives semantic meaning-->
           <!-- Text input-->
-          <div class="form-group">
-            <label class="col-lg-4 control-label" for="spotName">Skate Spot! Go ahead and enter whatever
-            name you've come up with, or whatever name the locals have dubbed it.</label>
+          <div class="form-group"><!--entering col-lg-6 makes it offcenter -->
+            <label class="col-lg-4 control-label" for="spotName">Enter the
+            name for the spot:</label>
             <div class="col-lg-4">
-            <input id="name" name="name" type="text" placeholder="" class="form-control input-lg" required="">
-
+            <input id="spotName" name="spotName" type="text" placeholder="" class="form-control input-lg" required="">
             </div>
           </div>
-
-
-
-
-
-
-
+         <!-- Text input-->
+          <div class="form-group">
+            <label class="col-lg-4 control-label" for="address">Address:</label>
+            <div class="col-lg-4">
+            <input id="address" name="address" type="text" placeholder="" class="form-control input-lg">
+            </div>
+          </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-lg-4 control-label" for="generalDirections">General Directions from the address
+            if needed (totally optional):</label>
+            <div class="col-lg-4">
+            <input id="generalDirections" name="generalDirections" type="text" placeholder="" class="form-control input-lg">
+            </div>
+          </div>
+          <!-- Textarea -->
+          <div class="form-group">
+            <label class="col-lg-4 control-label" for="attributes">What does this spot have?</label>
+            <div class="col-lg-4">
+              <textarea class="form-control" id="attributes" name="attributes">Ledges, Rails, Vert</textarea>
+            </div>
+          </div>
+          <!-- Button -->
+          <div class="form-group">
+            <label class="col-lg-4 control-label" for="singlebutton">Save This Spot!</label>
+            <div class="col-lg-4">
+              <button id="saveButton" name="saveButton" class="btn btn-primary">Save it, bruh!</button>
+            </div>
+          </div>
+        </fieldset>
         </form>
       </div>
       </div>
     </section>
-
   </body>
 </html>
+<!-- 1.Skate spot name. 2.Address. 3.General Directions from address. 4.What the spot has to offer. 5.Images. -->
