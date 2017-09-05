@@ -65,7 +65,7 @@ app.get('/api', function apiIndex(req, res) {
   // But you should change almost every line of this response.
   res.json({
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/hmliao14/express-personal-api/README.md", // CHANGE ME
+    documentationUrl: "https://github.com/hmliao14/express-personal-api/blob/master/README.md",
     baseUrl: "https://frozen-lowlands-63435.herokuapp.com",
     data_endpoints: [
       {method: "GET", path: "/", description: "A HTML page that describes all available endpoints"},
