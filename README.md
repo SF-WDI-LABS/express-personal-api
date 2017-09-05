@@ -4,14 +4,14 @@ Hello,
 
 My name is Huan Ming Liao. This is a mini API I created for one of the General Assembly's projects. It incoporates REST-ful Routes (GET, POST, UPDATE, DELETE), one CRUD-able resource (Create, Read, Update, Destroy), and some basic detail about me at the endpoint /api/profile.
 
-My based URL for the api website is https://tranquil-springs-25959.herokuapp.com
+My based URL for the api website is https://frozen-lowlands-63435.herokuapp.com
 
 The following are end points you can add on to the based URL for different purposes. Please read description for each. 
 
 To view the following in JSON format, visit: 
-https://tranquil-springs-25959.herokuapp.com/api
+https://frozen-lowlands-63435.herokuapp.com/api
 
-To experience the following with a more appealing interface, check out here: https://tranquil-springs-25959.herokuapp.com/story
+To experience the following with a more appealing interface, check out here: https://https://frozen-lowlands-63435.herokuapp.com/story
 
 data_endpoints: [
   {method: "GET", path: "/", description: "A HTML page that describes all available endpoints"},
