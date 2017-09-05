@@ -18,7 +18,8 @@ legend {
 }
 .footer{
   background-color: black;
-  padding-top: 40px;
+  margin-top: 20px;
+  padding-top: 20px;
   min-height: 200px;
   text-align: center;
   color: white;
