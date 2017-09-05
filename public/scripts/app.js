@@ -119,10 +119,4 @@ function renderMotorcycle(motorcycle) {
       </div>
       </div>
     </section>
-
-
-  `);
-
-// append to div
-  $('#gymDisplay').prepend(motorcycleHtml);
-}
+`);

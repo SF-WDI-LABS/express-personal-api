@@ -10,7 +10,7 @@
 // module.exports = Campsite;
 
 var mongoose = require('mongoose'),
-const Schema = mongoose.Schema;
+Schema = mongoose.Schema;
 
 const ProfileSchema = new Schema ({
   make: String,
