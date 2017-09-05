@@ -6,7 +6,7 @@ const db = require('./models');
 const profileList = [];
 profileList.push({
   name: 'Ray Choi',
-  userName: 'raybchoi',
+  userName: 'rc',
   image: '/images/userimages/ray.png',
   title: 'Student',
   workPlace: 'General Assembly',
@@ -18,7 +18,7 @@ profileList.push({
 })
 profileList.push({
   name: 'Eric Choi',
-  userName: 'ericchoi35',
+  userName: 'ec',
   image: '/images/userimages/ericchoi.jpg',
   title: 'Application Developer',
   workPlace: 'JPMorgan Chase & Co.',
@@ -80,7 +80,7 @@ profileList.push({
 })
 profileList.push({
   name: 'Carlynn Espinoza',
-  userName: 'Carlynn',
+  userName: 'ce',
   image: '/images/userimages/carlynn.jpg',
   title: 'WDI Design Student',
   workPlace: 'General Assembly',

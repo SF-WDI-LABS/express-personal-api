@@ -1,6 +1,9 @@
+body, footer {
+  font-family: 'Jura', sans-serif;
+  /*font-family: 'Raleway', sans-serif;*/
+}
 body {
   color: #333;
-  font-family: Helvetica, Arial, sans-serif;
   background-color: rgb(236, 232, 237); /* Sanity Check! */
   margin: 0 0 100px; /* bottom = footer height => adding marging to just the bottom of the body so it goes up past the footer */
   /*https://stackoverflow.com/questions/3443606/make-footer-stick-to-bottom-of-page-correctly*/
@@ -75,7 +78,7 @@ h1 {
   display: visible;
   font-size: 150%;
 }
-.edit-save-header, .edit-save-about-me, .edit-save-social-network {
+.edit-save-header, .edit-save-about-me, .edit-save-social-network, .input-for-file {
   display: none;
 }
 

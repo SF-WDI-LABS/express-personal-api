@@ -73,6 +73,7 @@ function updateOneProfile(req, res) {
     title: req.body.title,
     workPlace: req.body.workPlace,
     quote: req.body.quote,
+    image: req.body.image,
   }}, {new: true}, function(err, saveProfile) {
     if (err) {
       console.log('THERE WAS AN ERROR DURING updateOneProfile Save', err);

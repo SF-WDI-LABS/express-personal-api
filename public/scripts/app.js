@@ -98,192 +98,8 @@ let renderProfileFromSrp = function() {
     });
     $('.back-to-srp-span').toggle()
 
+    htmlToAppend(currentProfileData);
 
-    let headerAndAboutMeHtml = `
-    <!-- START OF THE PROFILE HEADER DATA  -->
-    <div id="profile-information" data-profile-id='${currentProfileData._id}'>
-
-    <div class="container profile header">
-      <div class="row valign-wrapper profile-header">
-        <div class="col s4 profile-img">
-          <img class="circle responsive-img user-img" src='${currentProfileData.image}'>
-        </div>
-        <div class="col s8 user-info">
-          <div>
-            <div class='right-align'>
-              <img class='edit-icon edit-input-header' src='/images/assets/edit.svg'>
-              <img class='edit-icon edit-save-header' src='/images/assets/edit.svg'>
-            </div>
-            <div>
-             <h1 class='h1-name' name='username'>${currentProfileData.name}</h1>
-               <input class='input-for-profile-header input-for-profile-name' id='input-name' value='${currentProfileData.name}'></input>
-               <label for="input-name" class='label-profile-header'>Name</label>
-           </div>
-          </div>
-          <div>
-            <span class='title profile-header-db-info' name='title' value=''>${currentProfileData.title}</span>
-              <input class='input-for-profile-header input-for-profile-title' id='input-title' value='${currentProfileData.title}'></input>
-              <label for="input-title" class='label-profile-header'>Title</label>
-            <span class='profile-span at-span' name='' value=''>at</span>
-            <span class='profile-header-db-info place-of-work' name='place-of-work' value=''>${currentProfileData.workPlace}</span>
-              <input class='input-for-profile-header input-for-profile-workPlace' id='input-place-of-work' value='${currentProfileData.workPlace}'></input>
-              <label for="input-place-of-work" class='label-profile-header'>Place of Work</label>
-          </div>
-          <div>
-             <span class='profile-header-db-info quote' name='quote' value=''>${currentProfileData.quote}</span>
-             <textarea class='materialize-textarea input-for-profile-header textarea-for-profile-quote' id='textarea-quote' value=''>${currentProfileData.quote}</textarea>
-             <label for="textarea-quote" class='label-profile-header'>Quote</label>
-
-          </div>
-        </div>
-      </div>
-    </div>
-      <!-- END OF THE PROFILE HEADER DATA  -->
-
-       <div id="about-me"></div>
-
-       <!-- START ABOUT ME  -->
-       <div class="container profile about-me">
-         <div class="row about-me">
-           <div class="col s12 about-me-info">
-             <div class='right-align'>
-               <img class='edit-icon edit-input-about-me' src='/images/assets/edit.svg'>
-               <img class='edit-icon edit-save-about-me' src='/images/assets/edit.svg'>
-             </div>
-             <div>
-               <h2 class='aboutme' name='aboutme' value=''>About Me</h2>
-             </div>
-             <div>
-               <p>${currentProfileData.aboutMe}</p>
-             </div>
-           </div>
-         </div>
-       </div>
-
-      <!-- END ABOUT ME  -->
-      <div id="social-network" class='profile'></div>
-      `
-
-      // appending the social HTML - this is done via a if statement to figure out which socialNetworks the user currently has
-      let socialHtml
-        // console.log(currentProfileData.socialNetwork[0] !== '');
-      if (currentProfileData.socialNetwork[0] !== '' && currentProfileData.socialNetwork[1] !== '') {
-        // let socialWithBothHtml
-        socialHtml = `
-          <!-- START SOCIAL  -->
-          <div class="container profile social-network">
-          <div class="row social">
-            <div class="col s12 social-info">
-              <div class='right-align'>
-                <img class='edit-icon edit-input-social-network' src='/images/assets/edit.svg'>
-                <img class='edit-icon edit-save-social-network' src='/images/assets/edit.svg'>
-              </div>
-              <div>
-                <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
-                <a href='${currentProfileData.socialNetwork[0]}' target="_blank"><img class="social-img" src='/images/social/linkedin.png'></a>
-                <a href='${currentProfileData.socialNetwork[1]}' target="_blank"><img class="social-img" src='/images/social/github.png'></a>
-            </div>
-          </div>
-          </div>
-          </div>
-          <!-- END SOCIAL  -->
-          </div>
-          <!-- ONE USER PROFILE  -->
-
-          <div id="delete-user-profile" class='profile'></div>
-        `
-        // if they only have linkedIn
-      } else if ( currentProfileData.socialNetwork[0] !== '' && currentProfileData.socialNetwork[1] === '')  {
-
-          // let socialWithJustLinkedInHtml
-          socialHtml = `
-          <!-- START SOCIAL  -->
-          <div class="container profile social-network">
-            <div class="row social">
-              <div class="col s12 social-info">
-                <div class='right-align'>
-                <img class='edit-icon edit-input-social-network' src='/images/assets/edit.svg'>
-                <img class='edit-icon edit-save-social-network' src='/images/assets/edit.svg'>
-                </div>
-                <div>
-                  <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
-                  <a href='${currentProfileData.socialNetwork[0]}' target="_blank"><img class="social-img" src='/images/social/linkedin.png'></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- END SOCIAL  -->
-          </div>
-          <!-- ONE USER PROFILE  -->
-
-          <div id="delete-user-profile" class='profile'></div>
-          `
-          // if they only have gitHub
-      } else if ( currentProfileData.socialNetwork[0] === '' && currentProfileData.socialNetwork[1] !== '' ) {
-         socialHtml = `
-          <!-- START SOCIAL  -->
-          <div class="container profile social-network">
-            <div class="row social">
-              <div class="col s12 social-info">
-                <div class='right-align'>
-                  <img class='edit-icon edit-input-social-network' src='/images/assets/edit.svg'>
-                  <img class='edit-icon edit-save-social-network' src='/images/assets/edit.svg'>
-                </div>
-                <div>
-                  <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
-                  <a href='${currentProfileData.socialNetwork[1]}' target="_blank"><img class="social-img" src='/images/social/github.png'></a>
-              </div>
-            </div>
-          </div>
-          </div>
-          <!-- END SOCIAL  -->
-          </div>
-          <!-- ONE USER PROFILE  -->
-
-          <div id="delete-user-profile" class='profile'></div>
-        `
-        // if they have none
-      } else {
-        socialHtml = `
-         <!-- START SOCIAL  -->
-         <div class="container profile social-network">
-           <div class="row social">
-             <div class="col s12 social-info">
-               <div class='right-align'>
-                 <img class='edit-icon edit-input-social-network' src='/images/assets/edit.svg'>
-                 <img class='edit-icon edit-save-social-network' src='/images/assets/edit.svg'>
-               </div>
-               <div>
-                 <h2 class='aboutme' name='aboutme' value=''>Social Network</h2>
-                 <p></p>
-             </div>
-           </div>
-         </div>
-         </div>
-         <!-- END SOCIAL  -->
-         </div>
-         <!-- ONE USER PROFILE  -->
-
-         <div id="delete-user-profile" class='profile'></div>
-       `
-      };
-
-      // adding the deleteHTML button
-      let deleteHtml = `
-        <!-- DELETE BUTTON  -->
-          <div class="container profile delete-profile">
-            <div class="row delete">
-              <div class="col s12 delete-user">
-                <a class="waves-effect waves-light btn red">Delete User</a>
-              </div>
-            </div>
-          </div>
-      `
-
-      // appending each of the html pieces
-      $('#user-profile').append(headerAndAboutMeHtml);
-      $('#social-network').append(socialHtml);
-      $('#delete-user-profile').append(deleteHtml);
     });
 
 
@@ -362,6 +178,8 @@ let editProfileHeader = function (e) {
   // hides the edit-header pencil that is currently showing and gets rid of that while showing the new one
   $('.edit-input-header').toggle();
   $('.edit-save-header').toggle();
+  // hides the upload file icon
+  $('.modal-input-for-file').toggle();
 
 
 };
@@ -381,14 +199,16 @@ let saveProfileHeader = function(e) {
   let editedProfileHeaderTitle = editedProfileHeader.find('.input-for-profile-title').val();
   let editedProfileHeaderWorkpalce = editedProfileHeader.find('.input-for-profile-workPlace').val();
   let editedProfileHeaderQuote = editedProfileHeader.find('.textarea-for-profile-quote').val();
+  let editProfileHeaderImg ='/images/userimages/' +  $('.input-for-file').val().split('\\').pop();
+  console.log('THIS IS EDIT PROFILE IMAGE',editProfileHeaderImg )
 
   // create the data object to send back
   let editedProfileHeaderData = {
     name: editedProfileHeaderName,
     title: editedProfileHeaderTitle,
+    image: editProfileHeaderImg,
     workPlace: editedProfileHeaderWorkpalce,
     quote: editedProfileHeaderQuote,
-
   };
   console.log('THIS IS THE DATA TO BE SENT BACK AFTER EDIT', editedProfileHeaderData);
 
@@ -407,6 +227,9 @@ let saveProfileHeader = function(e) {
   });
   // closes the save icon
   $('.edit-save-header').toggle();
+
+  // hides the upload file icon
+  $('.modal-input-for-file').toggle();
 
   // closes the four header icons
   $('.input-for-profile-header').toggle();
@@ -431,6 +254,8 @@ let saveProfileHeader = function(e) {
 
 
 
+
+
 }
 
 // ability to rerender the profile AFTER edit - this is different because we are passing back the data from edit vs going from the SRP
@@ -451,9 +276,43 @@ let renderProfileAfterEdit = function(updatedEditedData) {
 
     // show the back to SRP page
     $('.back-to-srp-span').toggle()
+    htmlToAppend(currentProfileData);
+    });
+};
 
 
 
+// allows the user to remove their profile
+let removeProfile = function() {
+  // get the current user ID
+  let currentProfileId = $(this).closest('#profile-information').attr('data-profile-id');
+  console.log('DELETE BUTTONS CLICKED AND THIS IS THE PROFILE ID', currentProfileId);
+
+  // send back data that shows they are marked for deletion
+  let removeProfileHeaderData = {
+    markedForDeletion: true,
+  };
+
+  if (confirm('We are sad to see you go... are you sure?')) {
+    $.ajax({
+      method: 'DELETE',
+      url: `/api/searchpage/${currentProfileId}`,
+      data: removeProfileHeaderData,
+    })
+    .then(function(removeProfile){
+      console.log('THIS WAS THE PROFILE REMOVED', removeProfile);
+      alert (`Thank you for using Hub and Co! Hope to see you back!`);
+
+      // redirect them back to the main homepage
+      document.location.href="/";
+    })
+  }
+  else alert('Hope you make more friends!');
+};
+
+// contains profile information to append
+let htmlToAppend = function(currentProfileData) {
+  console.log('HTML TO APPEND EXECUTED')
         let headerAndAboutMeHtml = `
         <!-- START OF THE PROFILE HEADER DATA  -->
         <div id="profile-information" data-profile-id='${currentProfileData._id}'>
@@ -462,6 +321,7 @@ let renderProfileAfterEdit = function(updatedEditedData) {
           <div class="row valign-wrapper profile-header">
             <div class="col s4 profile-img">
               <img class="circle responsive-img user-img" src='${currentProfileData.image}'>
+              <input class='input-for-profile-header input-for-file' type="file" id='input-file' type="file"></input>
             </div>
             <div class="col s8 user-info">
               <div>
@@ -639,33 +499,4 @@ let renderProfileAfterEdit = function(updatedEditedData) {
       $('#user-profile').append(headerAndAboutMeHtml);
       $('#social-network').append(socialHtml);
       $('#delete-user-profile').append(deleteHtml);
-    });
-};
-
-// allows the user to remove their profile
-let removeProfile = function() {
-  // get the current user ID
-  let currentProfileId = $(this).closest('#profile-information').attr('data-profile-id');
-  console.log('DELETE BUTTONS CLICKED AND THIS IS THE PROFILE ID', currentProfileId);
-
-  // send back data that shows they are marked for deletion
-  let removeProfileHeaderData = {
-    markedForDeletion: true,
-  };
-
-  if (confirm('We are sad to see you go... are you sure?')) {
-    $.ajax({
-      method: 'DELETE',
-      url: `/api/searchpage/${currentProfileId}`,
-      data: removeProfileHeaderData,
-    })
-    .then(function(removeProfile){
-      console.log('THIS WAS THE PROFILE REMOVED', removeProfile);
-      alert (`Thank you for using Hub and Co! Hope to see you back!`);
-
-      // redirect them back to the main homepage
-      document.location.href="/";
-    })
-  }
-  else alert('Hope you make more friends!');
-};
+    };
