@@ -1,10 +1,30 @@
 body {
-  color: #333;
-  font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  background-image: url("https://i.pinimg.com/originals/ca/53/05/ca5305d77713047ae18bdcc306dfbd04.jpg");
 }
 
-h1 {
-  margin-top: 100px;
-  text-align: center;
+.jumbotron {
+	opacity: 0.95;
+}
+
+.forms{
+	margin:75px;
+}
+
+.card-img-top {
+	width:200px;
+}
+
+.card{
+	opacity:0.85;
+	background-color:black;
+	color:white;
+}
+
+.list-group-flush {
+	color:black;
+	font-weight:bold;
+}
+
+.desc {
+	font-size:24px;
 }
