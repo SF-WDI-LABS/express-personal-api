@@ -21,8 +21,6 @@ data_endpoints: [
   {method: "GET", path: "/api/profile", description: "Data about me"}, 
 
   {method: "GET", path: "/api/images", description: "Images I took from my LA trip"},
-
-  {method: "GET", path: "/api/videos", description: "Open source videos that I found interesting"},
 ],
 
 CRUD_endppoints: [

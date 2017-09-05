@@ -82,9 +82,9 @@ li.list-item {
 
 .card {
 	width: 280px;
-	top:0;
 	margin: 10px;
 	display: inline-block;
+	position: relative;
 }
 
 .card-img-top {

@@ -35,11 +35,14 @@ $(document).ready(function(){
 						method: "POST",
 						url: "/story/create",
 						data: story,
-					}).then(function(created_story){})
+					}).then(function(created_story){
+						var $main_content = $('#main-content');
+						var new_story = templateStory(created_story, "show");
+						$main_content.prepend(new_story);
+					})
 					.catch(function(err){console.log(err);});
 				});
 				// Use index to render all data from server to the page
-				renderDBstoPage();
 			}).catch(function(err){console.log(err);});
 		};
 
