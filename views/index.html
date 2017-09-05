@@ -1,29 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+  <title>Bad and Boujee</title>
 
-    <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/styles.css">
+  <!-- STYLESHEETS -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
 
-    <!-- VENDOR SCRIPTS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <!-- VENDOR SCRIPTS -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 
-    <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/app.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
-        </div>
+  <!-- APPLICATION SCRIPTS -->
+  <script src="/scripts/app.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="jumbotron" style="background-image: url('https://dothedaniel.com/wp-content/uploads/2014/05/Veuve-Clicquot-785x510.jpg')">
+        <h1>Welcome to Bad and Boujee Venues</h1>
+        <p>Come explore an explicit list of swanky botique settings within California.</p>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+    <!--Step 1, 1 of 1: Show data on page-->
+    <div class="container">
+      <div id="venues"></div>
+    </div>
+    <!-- END Venues Container-->
+
+    <!--Step 2, 1 of 1: Show add venue. Create-->
+    <!-- BEGIN FORM SAMPLE -->
+    <div class="container-fluid venue-container margin-top-20" style="background-image: url('https://i.ytimg.com/vi/MYUXPVhFZ8I/maxresdefault.jpg')">
+      <section id='venue-form' class="container">
+
+            <form class="form-horizontal">
+              <fieldset class="venue-content">
+                <!-- Form Name -->
+                <legend><h3>Add a New Venue</h3></legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="name"> Name</label>
+                  <div class="col-md-4">
+                    <input type="text" name="name"  placeholder="" class="form-control input-md" required="">
+                  </div>
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="location"> Location</label>
+                  <div class="col-md-4">
+                    <input name="location" type="text" placeholder="City Name" class="form-control input-md">
+                  </div>
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="website">Website</label>
+                  <div class="col-md-4">
+                    <input class="form-control input-md" name="website" placeholder="http://www.website_example.com">
+                  </div>
+                </div>
+                <!-- Textarea -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="image">Image</label>
+                  <div class="col-md-4">
+                    <input class="form-control" name="image" placeholder="http://www.image_example.jpg">
+                  </div>
+                </div>
+                <!-- Textarea -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="imageBackground">Background Image</label>
+                  <div class="col-md-4">
+                    <input class="form-control" name="imageBackground" placeholder="http://www.image_example.com">
+                  </div>
+                </div>
+                <!-- Textarea -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="notes">Notes</label>
+                  <div class="col-md-4">
+                    <textarea class="form-control" name="notes"></textarea>
+                  </div>
+                </div>
+                <!-- Button -->
+                <div class="form-group">
+                  <div class="col-md-4 control-label"></div>
+                  <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </section>
+        </div>
+        <!--   END FORM SAMPLE -->
+
+        <div class="container">
+            <div id="profiles"></div>
+        </div>
+    </body>
+    </html>

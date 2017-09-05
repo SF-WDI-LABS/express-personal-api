@@ -1,10 +1,91 @@
 body {
-  color: #333;
-  font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  color: #fafafa;
+  font-family: "Open Sans Condensed";
+  font-size: 18px;
+  /*font-weight: 2px;*/
+  background-color: #181818;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 
 h1 {
   margin-top: 100px;
   text-align: center;
+
+  /*color: #181818;*/
 }
+
+h1:after
+{
+    content:' ';
+    display:block;
+    border:2px solid #181818;
+    margin-top: 10px;
+}
+h2 {
+  color: #75b0d4;
+}
+
+h3 {
+  color: #75b0d4;
+}
+
+/*BEG Jumbotron*/
+.jumbotron {
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  text-align: center;
+  text-decoration-color: #181818;
+}
+/*END Jumbotron*/
+
+/*BEG Content*/
+.list-group-item {
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.container  {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.panel-footer {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+/*End Content*/
+
+/*BEG Form */
+.venue-container {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  padding-top: 20px;
+}
+.venue-content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/*End Form*/
+
+
+/*BEG Footer*/
+.bold {
+  font-size: 16px;
+  color: #75b0d4;
+}
+.standard {
+  font-size: 16px;
+}
+div.col-sm-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-row {
+  display: flex;
+}
+
+/*END Footer*/
