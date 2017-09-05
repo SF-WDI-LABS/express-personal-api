@@ -107,4 +107,6 @@ db.Bird.remove({}, function(err, birds) {
 
     console.log("successfully created birdSeed");
   });
+
+  process.exit();  //so it does not hang there
 });
