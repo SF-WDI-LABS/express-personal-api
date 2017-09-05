@@ -29,14 +29,7 @@ venueList.push({
         notes: "Diversity and intelligence with just a touch of the bizarre",
         imageBackground: "https://www.homeadvisor.com/images/consumer/hhi/hero-photos/city/SanFrancisco.jpg",
       });
-      // venueList.push({
-      //         name: "Soho House",
-      //         location: "West Hollywood",
-      //         website: "https://www.sohohousewh.com/",
-      //         image: "https://i.pinimg.com/736x/91/b5/d6/91b5d604798a1fee3b4cf0f433bbf45e--soho-house-west-hollywood.jpg",
-      //         notes: "Assemble communities with creative souls",
-      //         imageBackground: "http://wolfliketheanimal.com/wp-content/uploads/2013/06/12.jpg",
-      //       });
+      
 
       //Step 1, 2 of 2
         //Next step, go to server.js file to set up requests
