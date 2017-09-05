@@ -47,14 +47,12 @@ app.get('/api', function apiIndex(req, res) {
   // It would be seriously overkill to save any of this to your database.
   // But you should change almost every line of this response.
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
+    documentationUrl: "https://github.com/jcheng305/express-personal-api/README.md", // CHANGE ME
+    baseUrl: "https://stark-coast-86694.herokuapp.com/", // CHANGE ME
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
     ]
   })
 });
@@ -69,7 +67,7 @@ app.get('/api/profiles', function apiIndex(req, res) {
       githubProfileImage: "https://avatars2.githubusercontent.com/u/29786912?v=4&s=400",
       personalSiteLink: "https://jcheng305.github.io/index.html",
       currentCity: "Millbrae, CA",
-      hobbies: ""
+      hobbies: "Adrenaline junky, hanging out with friends, trying new food places."
       }]
   })
 })
