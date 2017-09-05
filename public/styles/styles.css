@@ -16,3 +16,10 @@
 legend {
   text: bold;
 }
+.footer{
+  background-color: black;
+  padding-top: 20px;
+  min-height: 200px;
+  text-align: center;
+  color: white;
+}
