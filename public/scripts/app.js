@@ -8,7 +8,6 @@ $.ajax({
 });
 
 
-
   function formData(e){
     e.preventDefault();
     var formData = $(this).serialize();
@@ -18,19 +17,16 @@ $.ajax({
   }
 
 // form submission event handler
-$('.form-horizontal').on('submit', formData)
-  
-
-
+$('.form-horizontal').on('submit', formData);
+$('#gymDisplay').on("click", ".deleteBtn", handleDeleteBjj);
 });
 
 
 
 // loop through data and render to html
 function renderMultipleReviews(reviews) {
-
+console.log(reviews);
   reviews.forEach(function(review) {
-    console.log(review)
   renderBjj(review);
   });
 
@@ -42,7 +38,7 @@ function renderBjj(bjj) {
 
   var bjjHtml = (`
   
-<div class="container forms">
+<div class="container forms" data-bjj='${bjj._id}'>
 <div class="row">
 <div class="col-sm-12">
 <div class="card" style="width: 75%;">
@@ -56,6 +52,7 @@ function renderBjj(bjj) {
     <li class="list-group-item"><span class="desc">Review:</span> ${bjj.reviews}</li>
    
   </ul>
+  <button class="deleteBtn btn-danger" type="click">Remove review</button>
   </div>
 </div>
 
@@ -72,3 +69,14 @@ function renderBjj(bjj) {
 
 
 
+function handleDeleteBjj(e) {
+  console.log('delete-song clicked!');
+  var currentBjjId = $(this).closest('.forms').attr('data-bjj'); // "5665ff1678209c64e51b4e7b"
+  var currentBjjElem =$(this).closest('.card');
+  console.log(currentBjjId);
+ $.ajax({
+  method:"DELETE",
+  url: '/api/bjj/'+currentBjjId,
+  success: currentBjjElem.remove()
+ })
+}

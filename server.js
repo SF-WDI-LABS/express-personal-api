@@ -45,6 +45,7 @@ app.get('/api', controllers.api.index);
 app.get('/api/bjj', controllers.bjj.index);
 app.post('/api/bjj', controllers.bjj.create);
 app.get('/api/bjj', controllers.bjj.show);
+app.delete('/api/bjj/:bjjId', controllers.bjj.destroy);
 
 
 /**********

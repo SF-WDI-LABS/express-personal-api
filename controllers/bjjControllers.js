@@ -37,12 +37,19 @@ function show(req, res) {
 
 
 
+function destroy(req, res) {
 
-
+  
+  db.Bjj.findByIdAndRemove({_id: req.params.bjjId}, (err, response) => {  
+   
+    res.status(200).send(response);
+    console.log("shit did work: buh bye")
+});
+}
 
 module.exports = {
   index: index,
   create: create,
-  show: show
- 
+  show: show,
+  destroy: destroy
 }

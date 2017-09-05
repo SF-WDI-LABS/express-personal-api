@@ -8,8 +8,6 @@ body {
 
 .forms{
 	margin:75px;
-
-	
 }
 
 .card-img-top {
@@ -21,10 +19,10 @@ body {
 	background-color:black;
 	color:white;
 }
+
 .list-group-flush {
 	color:black;
 	font-weight:bold;
-
 }
 
 .desc {
