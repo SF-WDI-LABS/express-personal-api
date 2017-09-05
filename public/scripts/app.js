@@ -275,7 +275,8 @@ let renderProfileAfterEdit = function(updatedEditedData) {
     });
 
     // show the back to SRP page
-    $('.back-to-srp-span').toggle()
+    $('.back-to-srp-span').toggle();
+    $('.add-new-user-button').toggle();
     htmlToAppend(currentProfileData);
     });
 };
