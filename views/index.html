@@ -1,29 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
 
     <title>Blank</title>
 
     <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='styles/styles.css'>
+    <link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Khula|Open+Sans|Roboto|Lato">
 
     <!-- VENDOR SCRIPTS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 
     <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/app.js"></script>
+    <script src='scripts/app.js'></script>
+
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
+
+    <!-- top navbar  -->
+    <nav class='navbar navbar-default navbar-fixed-top'>
+      <div class='container-fluid'>
+        <div class='navbar-header'>
+          <a href='/' class='navbar-text header-title'>San Francisco Stairways DB</a>
         </div>
+        <form class='navbar-form navbar-right' role='search'>
+          <button type='button' class='btn btn-default navbar-btn btnHome'>Home</button>
+          <button type='button' class='btn btn-default navbar-btn btnDisplayAll'>Display All</button>
+          <div class='form-group'>
+            <input type='text' class='form-control' placeholder='Search'>
+          </div>
+          <button type='button' class='btn btn-default navbar-btn btnSubmitSearch'>Submit</button>
+          <button type='button' class='btn btn-default navbar-btn btnAdd'>Add</button>
+        </form>
       </div>
+    </nav>
+
+    <!-- main section container to append home page html, input form for add/update, or results  -->
+    <div class='main-container' id='main'>
+      
+
     </div>
+
+    <!--
+    <table class="results-table">
+      <tr><td>Neighborhood</td><td>Corona Heights</td></tr>
+      <tr><td>Number of Steps</td><td>5</td>
+      <tr><td>Favorite</td><td>false</td>
+    </table>
+    -->
+
+    <!--
+    <div class="message-delete-success">The 'Lyon Steps' have been successfully deleted.</div>
+    -->
+
+
   </body>
 </html>

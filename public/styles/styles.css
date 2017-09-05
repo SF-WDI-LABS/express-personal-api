@@ -1,10 +1,139 @@
 body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  background-color: white; /* Sanity Check! */
 }
 
-h1 {
+.btn:focus {
+  outline: 0;
+}
+
+.api-docs {
+  color: blue;
+  margin-left: 30px;
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+}
+
+.api-docs:hover {
+  color: blue;
+  text-decoration: none;
+}
+
+.intro .title {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.intro {
+  width: 675px;
+  text-align: justify;
+  font-size: 15px;
+  margin: 0 auto;
+  font-family: 'Lato', sans-serif;
+}
+
+.home-image {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.main-container {
   margin-top: 100px;
+}
+
+.header-title {
+  color: rgb(0, 0, 0);
+  font-size: 23px;
+}
+
+.header-title:hover {
+  text-decoration: none;
+}
+
+
+.input-form {
+  margin-bottom: 100px;
+}
+
+.title {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+.image-container {
+  text-align: center;
+}
+
+
+.controls {
+  text-align: center;
+  margin: 20px 5px;
+}
+
+.save-cancel-buttons {
+  text-align: center;
+}
+
+.results {
+  margin: 0 auto;
+  width: 1100px;
+}
+
+.results-item {
+  margin: 100px 10px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.results-left-container {
+  width: 500px;
+  height: 400px;
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.results-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.results-right-container {
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  margin-left: 30px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+}
+
+.results-right-container .results-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.results-table {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+}
+
+th, td {
+    padding-right: 24px;
+    padding-bottom: 6px;
+}
+
+.message-add-success {
+  color: green;
+  font-size: 18px;
+  text-align: center;
+}
+
+.message-delete-success {
+  color: green;
+  font-size: 18px;
   text-align: center;
 }
