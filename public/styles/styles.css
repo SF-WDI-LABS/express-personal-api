@@ -1,10 +1,103 @@
 body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  background: url("http://2.bp.blogspot.com/-WiutMisUm1Q/U6RzsjYbaRI/AAAAAAAAG7Q/a98kbLr7VJs/s1600/DSCF3011.JPG");
+  background-size: 100% 100%;
 }
 
-h1 {
+.mainHeader {
   margin-top: 100px;
   text-align: center;
+}
+
+.profile {
+  font-size: 20px;
+  text-align: center;
+  padding: 2px 15px 2px 15px;
+}
+
+.cats {
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+}
+
+img {
+  margin: 10px auto;
+  padding: 5px;
+}
+
+input {
+  color: black;
+}
+
+.listAndForm {
+  background-color: rgba(0,0,0,.6);
+  padding: 10px;
+  margin-top: 15px;
+}
+
+.ducksTarget li {
+  padding: 10px 0 8px 0;
+}
+
+.newDuckForm {
+  padding: 5px auto;
+}
+
+form {
+  color: white;
+  font-weight: lighter;
+}
+
+label {
+  color: white;
+  font-weight: lighter;
+}
+
+textarea {
+  color: black;
+}
+
+.duckListHeaders {
+  color: white;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.ducksList {
+  color: white;
+  font-weight: lighter;
+}
+
+.duckFormHeader {
+  color: white;
+  font-weight: lighter;
+  text-align: center;
+  margin: 5px 0 10px 0;
+}
+
+.btn-primary {
+  font-size: 12px;
+  background-color: rgb(131,3,0);
+  align-items: center;
+  border: solid white 1px;
+}
+
+.btn-edit {
+  font-size: 12px;
+  background-color: rgb(131,3,0);
+  align-items: center;
+  border: solid white 1px;
+}
+
+.editFormHeader {
+  color: white;
+  text-align: center;
+  margin-top: 30px;
+}
+
+hr {
+  margin-top: 30px;
 }
