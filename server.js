@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
 
 /**********
  * ROUTES *
@@ -28,6 +28,8 @@ app.use(function(req, res, next) {
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));
+
+let controllers = require('./controllers');
 
 /*
  * HTML Endpoints
@@ -47,17 +49,33 @@ app.get('/api', function apiIndex(req, res) {
   // It would be seriously overkill to save any of this to your database.
   // But you should change almost every line of this response.
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
+    documentationUrl: "https://github.com/ellismitchell/express-personal-api/README.md",
+    baseUrl: "http:///tranquil-springs-25959.herokuapp.com",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", path: "/api/profile", description: "Data about me"},
+      {method: "GET", path: "/api/projects", description: "Index of all my projects"},
     ]
   })
 });
+
+app.get('/api/profile', function(req, res){
+  res.json({
+    name: "Ellis Mitchell",
+    githubUsername: "ellismitchell",
+    githubLink: "http://github.com/ellismitchell",
+    personalSiteLink: "http://ellismitchell.github.io",
+    currentCity: "San Francisco, CA",
+
+  })
+});
+
+app.get('/api/projects', controllers.projects.index);
+app.get('/api/projects/:id', controllers.projects.show);
+app.post('/api/projects', controllers.projects.create);
+app.delete('/api/projects/:id', controllers.projects.destroy);
+app.put('/api/projects/:id', controllers.projects.update);
 
 /**********
  * SERVER *
