@@ -5,7 +5,6 @@ var db = require('../models');
 
 // function for initial page render
 function index (req, res) {
-  // console.log('Reached index controller');
   db.Boardgame.find({}, function (err, allGames) {
     if (err) {
       console.log('error from controller index', err);
@@ -16,7 +15,6 @@ function index (req, res) {
 
 // Creates new board game
 function create (req, res) {
-  console.log('Reached create controller', req.body);
   db.Boardgame.create(req.body, function(err, game) {
     if (err) {
       console.log('ERROR from controller create', err);
@@ -38,7 +36,6 @@ function create (req, res) {
 
 // Updates edited game
 function update (req, res) {
-  console.log('reached update', req.body);
   db.Boardgame.findById(req.params.id, function(err, foundGame) {
     foundGame.title = req.body.title,
     foundGame.description = req.body.description,
@@ -53,8 +50,8 @@ function update (req, res) {
   })
 }
 
+// Deletes specified game
 function destroy (req, res) {
-  console.log("destroy controller reached");
   db.Boardgame.findByIdAndRemove(req.params.id, function(err, deletedGame) {
     if (err) {
       console.log(err);
@@ -64,10 +61,18 @@ function destroy (req, res) {
   })
 }
 
+// Shows a single game in JSON
+function show (req, res) {
+  db.Boardgame.findById(req.params.id, function (err, game) {
+    res.json(game);
+  })
+}
+
 
 module.exports = {
   index: index,
   create: create,
   update: update,
   destroy: destroy,
+  show: show,
 }

@@ -90,23 +90,20 @@ function renderOneGame (game) {
   </div>
   `
   $('.display-games').prepend(newHTML);
-  // console.log(game._id);
+
 }
 
 function handleEditGame(event) {
   let $thisGame = $(this).closest('.game');
-  // console.log($whichGame);
   let gameId = $thisGame.data('game-id');
-  // console.log(gameId);
+
   $thisGame.children('.switch').toggle();
 
   $title = $thisGame.find('span.game-title');
   $title.html('<input class="updated-title" value="' + $title.text() + '"></input>');
 
   $description = $thisGame.find('span.game-description');
-  // not sure why I couldn't get this to display as a textarea
-  // $description.html(`<textarea class="updated-description" name="updated-description">${description.text}</textarea>`);
-  $description.html('<input type="textarea" class="updated-description" value="' + $description.text() + '"></input>');
+  $description.html(`<textarea class="updated-description" cols="50" rows="5" name="updated-description">${$description.text()}</textarea>`);
 
   $playtime = $thisGame.find('span.game-playtime');
   $playtime.html('<input class="updated-playtime" value="' + $playtime.text() + '"></input>');
@@ -137,14 +134,6 @@ function handleUpdateGame(event) {
     url: putURL,
     data: updatedGameData,
 
-//     success: function(msg){
-//         alert( "Data Saved: " + msg );
-//   },
-//     error: function(XMLHttpRequest, textStatus, errorThrown) {
-//      alert("some error");
-//   }
-//
-// });
   })
   .then(function(updatedGame) {
     // Reached here

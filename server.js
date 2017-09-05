@@ -57,6 +57,7 @@ app.get('/api', function apiIndex(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "A little information about me"},
+      {method: "GET", path: "/api/boardgames", description: "An index of all the board games in the database in JSON format" },
       {method: "POST", path: "/api/newBoardgame", description: "Create a new board game"},
       {method: "PUT", path: "/api/boardgames/:id", description: "Update board game with passed id"},
       {method: "DELETE", path: "/api/boardgames/:id", description: "Delete board game with passed id"}
@@ -95,6 +96,7 @@ app.get('/api/boardgames', controllers.boardgames.index);
 app.post('/api/newBoardgame', controllers.boardgames.create);
 app.put('/api/boardgames/:id', controllers.boardgames.update);
 app.delete('/api/boardgames/:id', controllers.boardgames.destroy);
+app.get('/api/boardgames/:id', controllers.boardgames.show);
 
 
 
