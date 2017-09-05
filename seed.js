@@ -61,7 +61,7 @@ let birdSeed = [
   {
   name: "Anhinga",
   type: "water bird",
-  comments: "Tropical bird found in the southern swamps. They hunt by spear fishing. They have no fatty glands to repeal water from their features so are often seen spreading their wings to dry out the features.",
+  comments: "Tropical bird found in the southern swamps. They hunt by spear fishing. They have no fatty glands to repel water from their features so are often seen spreading their wings to dry out the features.",
   urlName: "Animal Diversity Web",
   url: "http://animaldiversity.org/accounts/Anhinga_anhinga/",
   photo1: "images/anhinga.jpeg",
