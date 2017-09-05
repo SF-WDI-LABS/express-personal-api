@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+    <title>2017 Supersport Shootout</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -12,18 +12,78 @@
 
     <!-- VENDOR SCRIPTS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
+    <div class="jumbotron">
+          <div class="container">
+            <h1>Welcome to Supersport Shootout!</h1>
+            <p>Your one stop domain for the top motorcycle supersports class of 2017!</p>
+          </div>
         </div>
-      </div>
-    </div>
+
+        <!--BEGIN FORM SAMPLE  -->
+        <section id='album-form' class="container">
+          <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+
+            <form class="form-horizontal" id="singlebutton">
+              <fieldset>
+
+                <!-- Form Name -->
+                <legend>Add New Motorcycle</legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="name">Motorcycle Name:</label>
+                  <div class="col-md-4">
+                  <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="artistName">Brand Name:</label>
+                  <div class="col-md-4">
+                  <input id="textinput" name="brandName" type="text" placeholder="" class="form-control input-md">
+
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="releaseDate">Release Date:</label>
+                  <div class="col-md-4">
+                  <input id="releaseDate" name="releaseDate" type="text" placeholder="1992" class="form-control input-md">
+
+                  </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="engineDisplacement">Engine Displacement (Cylinder Capacity or Cubic Centimeters):</label>
+                  <div class="col-md-4">
+                    <textarea class="form-control" id="engineDisplacement" name="engine displacement">for ex, 999cc</textarea>
+                  </div>
+                </div>
+
+
+                <!-- Button -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="singlebutton">Save Motorcycle</label>
+                  <div class="col-md-4">
+                    <button id="submitbutton" name="singlebutton" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          </div>
+        </section>
+        <!-- END OF FORM SAMPLE -->
   </body>
 </html>

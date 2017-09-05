@@ -58,6 +58,21 @@ app.get('/api', function apiIndex(req, res) {
     ]
   })
 });
+app.get('/api/profiles', function apiIndex(req, res) {
+  res.json({
+    "About Me": [{
+      // method: "GET",
+      // path: "/api/profile",
+      name: "Jimmy Cheng",
+      githubUsername: "jcheng305",
+      githubLink: "https://github.com/jcheng305/express-personal-api",
+      githubProfileImage: "https://avatars2.githubusercontent.com/u/29786912?v=4&s=400",
+      personalSiteLink: "https://jcheng305.github.io/index.html",
+      currentCity: "Millbrae, CA",
+      hobbies: ""
+      }]
+  })
+})
 
 /**********
  * SERVER *
