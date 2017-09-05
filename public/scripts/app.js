@@ -32,16 +32,16 @@ function displayHero(heroes){
       $(this).trigger("reset");
 });
 // Delete button actions on click event
-$("#hero-list").on("click", ".btn.btn-danger", removeHero());
+$("#hero-list").on("click", ".btn-danger", removeHero());
 // DELETE Ajax Call
 $.ajax({
-  url: "/api/heroes/:id",
+  url: "/api/heroes/:Id" + removeHero(),
   method: "DELETE",
   success: removeHero
 });
 // Delete Function
 function removeHero(data){
-  let deletedHero = $(this).parents(".data-hero-id").data("hero._id")
+  let deletedHero = $(this).parents(".data-hero-id").data(".hero.-id")
   $(".data-hero-id" + deletedHero).remove();
 }
 
@@ -51,8 +51,7 @@ function removeHero(data){
 let heroesHTML = (`
   <div class="data-hero-id="${hero._id}">
       <div class="col-md-10 col-md-offset-1">
-        <div class="spacer">
-        <div class="spacer">
+          <br>
             <div class="row">
               </div>
 

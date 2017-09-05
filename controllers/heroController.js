@@ -17,10 +17,9 @@ function createHero(req, res){
 
 function deleteHero(req, res) {
   console.log("delete working");
-  db.Hero.findOneAndRemove({_id: req.params.heroId}, function(err,hero){
+  db.Hero.findOneAndRemove(req.params.Id, function(err,hero){
     if (err){console.log("error");}
-    console.log("delete really working")
-    res.json(hero);
+    res.send("Delete complete")
   })
 }
 
