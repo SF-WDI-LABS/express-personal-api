@@ -56,6 +56,10 @@ app.get('/api', function apiIndex(req, res) {
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"},
       {method: "GET", path: "/api/projects", description: "Index of all my projects"},
+      {method: "POST", path: "/api/projects", description: "Create a new project"},
+      {method: "GET", path: "/api/projects/:id", description: "Get one project with id"},
+      {method: "DELETE", path: "/api/projects/:id", description: "Delete a project"},
+      {method: "PUT", path: "/api/projects/:id", description: "Update a project"},
     ]
   })
 });
