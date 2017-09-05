@@ -1,10 +1,111 @@
+body, footer {
+  font-family: 'Jura', sans-serif;
+  /*font-family: 'Raleway', sans-serif;*/
+}
 body {
   color: #333;
-  font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  background-color: rgb(236, 232, 237); /* Sanity Check! */
+  margin: 0 0 100px; /* bottom = footer height => adding marging to just the bottom of the body so it goes up past the footer */
+  /*https://stackoverflow.com/questions/3443606/make-footer-stick-to-bottom-of-page-correctly*/
+}
+footer{
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  overflow:hidden;
+  z-index: 9999;
+}
+/*navBar*/
+.nav-wrapper{
+  background-color: rgb(213, 154, 226);
+}
+.search{
+  zoom: 110%;
 }
 
+.back-to-srp-span{
+  display: none;
+  font-weight: bold;
+  font-size: 150%;
+  margin: 0;
+}
+/****************SEARCH CARD INFO****************/
+.search-card-span {
+  font-size: 120%;
+  /*background-color: yellow;*/
+}
+.search-card-h1 {
+  font-size: 275%;
+}
+
+/****************PROFILE HEADER ****************/
 h1 {
-  margin-top: 100px;
-  text-align: center;
+  text-align: left;
+  font-size: 300%;
+  margin-bottom: 3%;
+  margin-top: 0;
+  /*padding-bottom: -20%;*/
+}
+
+.profile-header, .search-card-header, .social-info, .about-me{
+  background-color: #FEFEFE;
+}
+.profile-info{
+  /*background-color: lightblue;*/
+}
+.profile-img {
+  /*text-align: center;*/
+  /*background-color: pink;*/
+  max-width: 165px;
+  max-height: 165px;
+  margin: 2%;
+}
+
+.user-info {
+  text-align: left;
+  /*background-color: green;*/
+}
+.profile-header-db-info{
+  font-size: 150%;
+}
+
+/**************** PROFILE ON EDIT ****************/
+.input-for-profile-header, label{
+  display: none;
+}
+
+.at-span {
+  display: visible;
+  font-size: 150%;
+}
+.edit-save-header, .edit-save-about-me, .edit-save-social-network, .input-for-file {
+  display: none;
+}
+
+/***************** ABOUT ME *****************/
+h2 {
+  font-size: 150%;
+  padding: -10%;
+  margin-bottom: 0%;
+  margin-top: 0%;
+}
+
+.social-img {
+  margin-top: 2%;
+  margin-right: 5%;
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.footer-copyright {
+  background-color: rgb(213, 154, 226);
+}
+
+.footer {
+  margin-bottom: 0;
+}
+.edit-icon{
+  max-width: 20px;
+  max-height: 20px;
+  text-align: right;
 }
