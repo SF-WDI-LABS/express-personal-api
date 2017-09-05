@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+    <title>Nuranne's National Park API</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -20,8 +20,21 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
+          <h1>Nuranne's National Park API</h1>
           <h4><a href="/api">Read My API Documentation</a></h4>
+          <form class="form-inline" id="newNationalparksForm">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" name="name" placeholder="Park Name">
+            </div>
+            <div class="form-group">
+              <label for="title">Location</label>
+              <input type="text" class="form-control" name="location" placeholder="Park Location">
+            </div>
+            <button type="submit" class="btn btn-default">Create a park</button>
+          </form>
+          <div id='parksTarget'>
+          </div>
         </div>
       </div>
     </div>
