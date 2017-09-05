@@ -1,10 +1,14 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
-var SkateparkSchema = new Schema({
-  description: String
+var SkatespotSchema = new Schema({
+  spotName: String,
+  address: String,
+  generalDirections: String,
+  attributes: [String],
+  // img:
 });
 
-var Skatepark = mongoose.model('Skatepark', SkateparkSchema);
+var Skatespot = mongoose.model('Skatespot', SkatespotSchema);
 
-module.exports = Skatepark;
+module.exports = Skatespot;
