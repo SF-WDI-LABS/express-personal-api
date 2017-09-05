@@ -1,6 +1,6 @@
 // require express and other modules
-var express = require('express'),
-    app = express();
+var express = require('express')
+var  app = express();
 
 // parse incoming urlencoded form data
 // and populate the req.body object
@@ -19,7 +19,8 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+
+var controllers = require('./controllers');
 
 /**********
  * ROUTES *
@@ -33,6 +34,8 @@ app.use(express.static('public'));
  * HTML Endpoints
  */
 
+
+
 app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
@@ -42,7 +45,12 @@ app.get('/', function homepage(req, res) {
  * JSON API Endpoints
  */
 
+app.get('/api', controllers.api.index);
+app.get('/api/shops', controllers.shops.index);
+app.get('/api/shops', controllers.shops.show);
 
+app.post('/api/shops', controllers.shops.create);
+app.delete('/api/shops/:shopId', controllers.shops.destroy);
 
 /**********
  * SERVER *

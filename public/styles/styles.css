@@ -34,3 +34,6 @@ h1 {
    content: "\2605";
    position: absolute;
 }
+.check {
+  display: inline-block;
+}

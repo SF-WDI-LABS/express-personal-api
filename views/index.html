@@ -1,133 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
-      
-    <!-- JQuery -->
-    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <!-- STYLESHEETS -->
-    <!-- Compiled and minified CSS -->
+  <title>Dog Shop</title>
+
+  <!-- JQuery -->
+  <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js'></script>
+  <!-- STYLESHEETS -->
+  <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/styles.css">
 
-    <!-- VENDOR SCRIPTS -->
+  <!-- VENDOR SCRIPTS -->
   
 
-    <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/app.js"></script>
-  </head>
-  <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo center"><!-- <img src="../images/dog-grooming.png"></img></a> -->
-        <ul id="nav-mobile" class="left hide-on-med-and-down">
+  <!-- APPLICATION SCRIPTS -->
+  <script src="/scripts/app.js"></script>
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center"><!-- <img src="../images/dog-grooming.png"></img></a> -->
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="sass.html">API DOCUMENTATION</a></li>
-          <li><a href="badges.html">BREEDER'S</a></li>
-          <li><a href="collapsible.html">GROOMERS</a></li>
-        </ul>
-      </div>
-    </nav>
-    <div ><img id="dlover" src="../images/dog_lovers.jpg"></div>
-    <div class="container">
-      <div class="row">
-        <div id='modalinfo'>
+        <li><a href="badges.html">BREEDER'S</a></li>
+        <li><a href="collapsible.html">GROOMERS</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div ><img id="dlover" src="../images/dog_lovers.jpg"></div>
+
+  <section id='shop-form' class="container"> 
+    <div class="row">
+      <div id='modalinfo'>
         <div class="col-md-8 col-md-offset-2">
           <!-- Modal Trigger -->
           <div class="center-align" >
-          <a  class="waves-effect black waves-light btn modal-trigger " href="#modal1">ADD BREEDER/GROOMER</a>
+            <a  class="waves-effect black waves-light btn modal-trigger " href="#modal1">ADD BREEDER/GROOMER</a>
           </div>
+
           <!-- Modal Structure -->
           <div id="modal1" class="modal">
             <div class="modal-content">
               <h6>Please fill out your groomer/breeders info</h6>
-              <p> <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input placeholder="Name/Place" id="first_name" type="text" class="validate">
-                      <label for="first_name">Name</label>
-                    </div>
-
-                    <div class="input-field col s6">
-                      <select>   
-                        <option value="1">Breeder</option>
-                        <option value="2">Groomer</option>
-                        <option value="2">Other</option>
-                      </select>
-                      <label>Care Taker Type</label>
-                    </div>
-                   <!--  <div class="input-field col s6">
-                      <input id="last_name" type="text" class="validate">
-                      <label for="last_name">Last Name</label>
-                    </div>
-                  </div> -->
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea1" class="materialize-textarea"></textarea>
-                      <label for="textarea1">Address</label>
-                    </div>
+              <div class="row">
+                <form  id="form" class="col s12">
+                <!-- Input for name breeder option  -->
+                 <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="Name/Place" id="name" type="text" class="validate">
+                    <label for="name">Name</label>
                   </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <input id="tel" type="tel" >
-                      <label for="tel">Telephone Number</label>
-                    </div>
+                  <div class="input-field col s6">
+                    <select>   
+                      <option value="1">Breeder</option>
+                      <option value="2">Groomer</option>
+                      <option value="2">Other</option>
+                    </select>
+                    <label>Care Taker Type</label>
                   </div>
-                  
-                  <div class="center-align">
+                </div>
+                <!-- Input for Address -->
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Address</label>
+                  </div>
+                </div>
+                <!-- Telephone Number Input -->
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="tel" type="tel" >
+                    <label for="tel">Telephone Number</label>
+                  </div>
+                </div>
+                <!-- Start Rating Input -->
+                <div class="center-align">
                   <div class="rating">
                     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                   </div>
+                </div>
+                <!-- Website Input -->
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="url" type="url" >
+                    <label for="url">Website</label>
                   </div>
+                </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                  <button type='button' id="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
+                </div>
 
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <input id="url" type="url" >
-                      <label for="url">Website</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-
-
-
-
-
-             
-             </p>
-            </div>
-            <div class="modal-footer">
-
-              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
-              </div>
-
+              </form>
             </div>
           </div>
-          <h1>Under Construction</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
-
-
-          <div class="col s1">1</div>
-          <div class="col s1">2</div>
-          <div class="col s1">3</div>
-          <div class="col s1">4</div>
-          <div class="col s1">5</div>
-          <div class="col s1">6</div>
-          <div class="col s1">7</div>
-          <div class="col s1">8</div>
-          <div class="col s1">9</div>
-          <div class="col s1">10</div>
-          <div class="col s1">11</div>
-          <div class="col s1">12</div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</section>
+        
+     
+
+
+
+  <h1>Under Construction</h1>
+  <div class="row" >
+  <div class="center-align" >
+  <div class="col s4 ">
+    <div id="shops"> </div>
+  </div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+</div>
+</body>
 </html>
