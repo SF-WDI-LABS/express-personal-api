@@ -104,6 +104,8 @@ function handleEditGame(event) {
   $title.html('<input class="updated-title" value="' + $title.text() + '"></input>');
 
   $description = $thisGame.find('span.game-description');
+  // not sure why I couldn't get this to display as a textarea
+  // $description.html(`<textarea class="updated-description" name="updated-description">${description.text}</textarea>`);
   $description.html('<input type="textarea" class="updated-description" value="' + $description.text() + '"></input>');
 
   $playtime = $thisGame.find('span.game-playtime');

@@ -22,9 +22,17 @@ var gamelist =[];
 gamelist.push({
               title: 'Settlers of Catan',
               description: 'The Settlers of Catan from Mayfair Games is an award-winning strategy game where players collect resources and use them to build roads, settlements and cities on their way to victory. The board itself is variable, making each game a little different from the next.',
-              playtime: '1 Hour',
+              playtime: '90 Minutes',
               players: '3+',
               image: 'images/catanpic.png'
+            });
+//comment
+gamelist.push({
+              title: 'Ticket to Ride',
+              description: 'Race against your opponents to build your railroads across the country and connect major metropolitan areas.',
+              playtime: '45 Minutes',
+              players: '2+',
+              image: 'images/ticket-to-ride.jpg'
             });
 gamelist.push({
               title: 'Carcassonne',
@@ -40,6 +48,15 @@ gamelist.push({
               players: '3-6',
               image: 'images/Betrayal.jpg',
             });
+gamelist.push({
+              title: 'Avalon',
+              description: 'Secret identity card game that is similar the the more well known game mafia but with additional checks and balances to test your poker face and keep you guessing',
+              playtime: '45 Minues',
+              players: '5-10',
+              image: 'images/avalon.jpg',
+            });
+
+
 
 
 
