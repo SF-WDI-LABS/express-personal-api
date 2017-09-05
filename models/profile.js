@@ -8,18 +8,12 @@ var ProfileSchema = new Schema({
   githubProfileImage: String,
   personalSiteLink: String,
   currentCity: String,
-  // hobbies: [
-  //   {
-  //     hobbyOne: String,
-  //     hobbyOneLocation: String,
-  //   },
-  //   {
-  //     hobbyTwo: String,
-  //     DestinationOne: String,
-  //     DestinationTwo: String,
-  //     DestinationThree: String,
-  //   }
-  // ]
+  hobbies: [{
+      hobby: String,
+      destOne: String,
+      destTwo: String,
+      destThree: String,
+    }],
 });
 
 var Profile = mongoose.model('Profile', ProfileSchema);

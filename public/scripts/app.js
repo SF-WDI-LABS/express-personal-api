@@ -62,7 +62,7 @@ $(document).ready(function(){
     var venueId = $(this).parents('.venue').data('venue-id'); // $(this).closest would have worked fine too
     var $venueRow = $('[data-venue-id=' + venueId + ']');
     var data = {
-      venueNotes: $venueRow.find('.edit-venue-notes').val()
+      notes: $venueRow.find('.edit-venue-notes').val()
     };
     console.log('PUTing data for venue', venueId, 'with data', data);
     $.ajax({
@@ -113,36 +113,36 @@ $(document).ready(function(){
   //Step 1a, part 3 of 3:
   function renderVenue(venue) {
     var venueHtml = (`
-      <div class="container-fluid venue col-sm-6" data-venue-id="${venue._id}">
-      <div class="panel panel-default">
-      <div class="panel-body" style="background-image: url('${venue.imageBackground}'); background-repeat: no-repeat; background-size: 100% 100%">
+      <div class="venue col-sm-6" data-venue-id="${venue._id}">
+        <div class="panel panel-default">
+          <div class="panel-body" style="background-image: url('${venue.imageBackground}'); background-repeat: no-repeat; background-size: 100% 100%">
 
-      <!-- begin venue internal row -->
-      <div class="row">
-      <div class="col-sm-3 col-xs-12">
-      <img class="img-responsive" src="${venue.image}" style="width: 200px" />
-      </div>
-      <div class="col-sm-9 col-xs-12" style="color:black">
-      <ul class="list-group">
-      <li class="list-group-item">
-      <h4 class='inline-header'><b>Name: </b></h4>
-      <span>${venue.name}</span>
-      </li>
-      <li class="list-group-item">
-      <h4><b>Location: </b></h4>
-      <span>${venue.location}</span>
-      </li>
-      <li class="list-group-item">
-      <h4><b>Website: </b></h4>
-      <span><a href="${venue.website}">${venue.website}</a></span>
-      </li>
-      <li class="list-group-item">
-      <h4><b>Notes: </b></h4>
-      <span class="venue-notes">${venue.notes}</span>
-      </li>
-      </ul>
-      </div>
-      </div>
+        <!-- begin venue internal row -->
+          <div class="row">
+            <div class="col-sm-3 col-xs-12">
+              <img class="img-responsive" src="${venue.image}" style="width: 200px" />
+            </div>
+            <div class="col-sm-9 col-xs-12" style="color:black">
+              <ul class="list-group">
+              <li class="list-group-item">
+              <h4 class='inline-header'><b>Name: </b></h4>
+              <span>${venue.name}</span>
+              </li>
+              <li class="list-group-item">
+              <h4><b>Location: </b></h4>
+              <span>${venue.location}</span>
+              </li>
+              <li class="list-group-item">
+              <h4><b>Website: </b></h4>
+              <span><a href="${venue.website}">${venue.website}</a></span>
+              </li>
+              <li class="list-group-item">
+              <h4><b>Notes: </b></h4>
+              <span class="venue-notes">${venue.notes}</span>
+              </li>
+              </ul>
+            </div>
+          </div>
       <!-- end of venue internal row -->
       <div class='panel-footer col-sm-9 col-xs-12' style="float: right; border-radius: 4px">
       <button class='btn btn-info edit-venue tgl-btn' style="width: 150px">Edit Notes</button>
@@ -165,25 +165,35 @@ $(document).ready(function(){
         <div class="col-sm-2">
         <img src="https://avatars1.githubusercontent.com/u/29782639?v=4&s=460" class="img-responsive" style="width: 100px"/>
         </div>
-        <div class="col-sm-10" style="border: pink solid 2px">
+        <div class="col-sm-10">
         <div class="margin-top-20">
-        <div>
-        <span class="bold">Name: </span><span class="standard">${profile.name}</span>
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <div>
+            <span class="bold">Name: </span><span class="standard">${profile.name}</span>
+            </div>
+            <div>
+            <span class="bold">Current City: </span><span class="standard">${profile.currentCity}</span>
+            </div>
+            <div>
+            <span class="bold">Github Username: </span><span class="standard">${profile.githubUsername}</span>
+            </div>
         </div>
-        <div>
-        <span class="bold">Github Username: </span><span class="standard">${profile.githubUsername}</span>
+        <div class="col-sm-6 col-xs-12">
+          <div>
+          <span class="bold">Github Link: </span><span class="standard"><a href="${profile.githubLink}">${profile.githubLink}</a></span>
+          </div>
+          <div>
+          <span class="bold">Personal Site Link: </span><span class="standard"><a href="${profile.personalSiteLink}">${profile.personalSiteLink}</a></span>
+          </div>
         </div>
+      </div>
+      <div class="row">
+      <div class="col-sm-12 col-xs-12">
         <div>
-        <span class="bold">Github Link: </span><span class="standard"><a href="${profile.githubLink}">${profile.githubLink}</a></span>
+        <span class="bold">Hobbies: </span><span class="standard">I enjoy many things and my first favorite is to ${profile.hobbies[0].hobby}. I have been to ${profile.hobbies[0].destOne} and want to go to ${profile.hobbies[0].destTwo} and ${profile.hobbies[0].destThree}. In the winter you can usually find me enjoying my second favorite thing and that is   ${profile.hobbies[1].hobby}. I have been to ${profile.hobbies[1].destOne} and would like to go to ${profile.hobbies[1].destTwo} and ${profile.hobbies[1].destThree}.</span>
         </div>
-        <div>
-        <span class="bold">Personal Site Link: </span><span class="standard"><a href="${profile.personalSiteLink}">${profile.personalSiteLink}</a></span>
         </div>
-        <div>
-        <span class="bold">Current City: </span><span class="standard">${profile.currentCity}</span>
-        </div>
-        <div>
-        <span class="bold">Hobbies: </span><span class="standard">test</span>
         </div>
         </div>
         </div>
