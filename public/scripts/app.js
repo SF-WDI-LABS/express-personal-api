@@ -2,26 +2,26 @@ console.log("Sanity Check: JS is working!");
 
 $(document).ready(function(){
 
-// your code
+// Profile GET Statement
 $.ajax({
   method: "GET",
   url:"/api/profile"
 })
-
+// DB GET Statement
 $.ajax({
   method: "GET",
   url: "/api/heroes",
   success: displayHero
 })
 
-$("#hero-list").on("click", ".btn.btn-danger", removeHero())
 
+// Function to show seeded DB
 function displayHero(heroes){
   heroes.forEach(function(hero){
     renderHero(hero);
   });
 }
-
+// Post function
   $("form").on("submit", function(e){
     e.preventDefault();
       let userHero = $(this).serialize();
@@ -31,26 +31,28 @@ function displayHero(heroes){
       });
       $(this).trigger("reset");
 });
-
+// Delete button actions on click event
+$("#hero-list").on("click", ".btn.btn-danger", removeHero());
+// DELETE Ajax Call
 $.ajax({
   url: "/api/heroes/:id",
   method: "DELETE",
   success: removeHero
 });
-
+// Delete Function
 function removeHero(data){
   let deletedHero = $(this).parents(".data-hero-id").data("hero._id")
   $(".data-hero-id" + deletedHero).remove();
 }
 
 });
-
+// Page Render of DB
   function renderHero(hero){
 let heroesHTML = (`
   <div class="data-hero-id="${hero._id}">
       <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-default">
-          <div class="panel-body">
+        <div class="spacer">
+        <div class="spacer">
             <div class="row">
               </div>
 
@@ -85,8 +87,7 @@ let heroesHTML = (`
                 <button type="submit" class="btn btn-danger delete-hero">Delete Hero</button>
               </div>
             </div>
-          </div>
-        </div>
+            </div>
         </div>
       </div>
   `)
