@@ -3,12 +3,14 @@ console.log("Sanity Check: JS is working!");
 $(document).ready(function(){
 console.log('Document ready.')
 
+//populate page on load
 $.ajax({
   method: 'GET',
   url: '/director',
   success: loadDirectors,
 });
 
+//add new director
 $('#add-dir-form form').on('submit', function(e) {
     e.preventDefault();
     var formData = $(this).serialize();
@@ -20,18 +22,24 @@ $('#add-dir-form form').on('submit', function(e) {
     window.location.reload()
   });
 
+//deletes director
 $('#directors').on('click', '.delete-dir-btn', deleteClick)
+
+//toggle between display and edit form
 $('#directors').on('click', '.edit-dir-btn', editClick)
 
-$('#edit-dir-form form').on('submit', function(e) {
+//update director info
+$('.edit-dir-form form').on('submit', function(e) {
+    var directorId = $(this).parents('.director').data('id');
     e.preventDefault();
     var formData = $(this).serialize();
-    console.log(formData)
+    console.log('formData', formData);
   });
 
 // end of document ready
 });
 
+//function to toggle between display and edit form
 function editClick(e){
   var directorId = $(this).parents('.director').data('id');
   var $directorRow = $(this).closest('.director');
@@ -43,7 +51,7 @@ function editClick(e){
   $directorRow.find('.list-edit').toggleClass('hidden');
 
 }
-
+//funciton to save updates
 // function saveClick(){
 //
 //
@@ -54,6 +62,7 @@ function editClick(e){
 //   })
 // }
 
+//function to delete
 function deleteClick(e){
   var directorId = $(this).parents('.director').data('id');
  console.log(directorId)
@@ -65,14 +74,15 @@ function deleteClick(e){
 
 }
 
-
+//function to populate page on load
 function loadDirectors(director){
   director.forEach(function(director){
     renderDirector(director)
   });
 }
 
-
+//formate for director render
+//also includes hidden form and buttons for edit
 function renderDirector(director) {
   console.log("rendering", director)
   var directorHtml = (`
@@ -86,7 +96,7 @@ function renderDirector(director) {
 
           <!-- begin director internal row -->
             <div class='row'>
-              <div class="col-md-9 col-xs-12">
+              <div class="col-md-12 col-xs-12">
                 <ul class="list-group">
                   <li class="list-group-item">
                     <h4 class='inline-header'>Director's Name:</h4>
@@ -111,21 +121,22 @@ function renderDirector(director) {
                   </li>
 
                 </ul>
+                <section class="edit-dir-form container">
                 <form>
                 <ul class="list-edit hidden">
                   <li class="list-group-item">
                     <h4 class='inline-header'>Director's Name:</h4>
-                    <input type='text' class='name' value='${director.name}'>
+                    <input type='text' name='name' value='${director.name}'>
                   </li>
 
                   <li class="list-group-item">
                     <h4 class='inline-header'>Country of Origin:</h4>
-                    <input type='text' class='country-of-origin' value='${director.countryOfOrigin}'>
+                    <input type='text' name='countryOfOrigin' value='${director.countryOfOrigin}'>
                   </li>
 
                   <li class="list-group-item">
                     <h4 class='inline-header'>Alive:</h4>
-                    <input type='text' class='alive' value='${director.alive}'>
+                    <input type='text' name='alive' value='${director.alive}'>
                   </li>
 
                   <li class="list-group-item">
