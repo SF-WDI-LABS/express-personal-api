@@ -23,6 +23,14 @@ function create(req, res) {
         res.json(req.body);
 }
 
+function show(req, res) {
+    // send back all albums as JSON
+    db.Movie.findById({_id: req.params.movieid}, function(err, allMovies) {
+        res.json(allMovies);
+        // console.log(allMovies);
+    });
+}
+
 function destroy(req, res) {
     db.Movie.findOneAndRemove({_id: req.params.movieid}, function(err, remainingMovies) {
     })
@@ -44,7 +52,7 @@ function update(req, res) {
 module.exports = {
     index: index,
     create: create,
-    // show: show,
+    show: show,
     destroy: destroy,
     update: update
 };

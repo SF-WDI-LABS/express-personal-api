@@ -1,6 +1,11 @@
 console.log("Sanity Check: JS is working!");
 
 $(document).ready(function(){
+    $.ajax({
+        method: "GET",
+        url: "api/movies/:id",
+    });
+
     $(document).on("click", '.add-movie-button', function(event) {
         event.preventDefault();
         // console.log($('.title-input').val());
@@ -37,13 +42,13 @@ $(document).ready(function(){
                 director: movies.find('.director-edit').val(),
                 // image: $('.image-input').val(),
             }
-        })
+        });
         $.ajax({
             method: "GET",
             url: "api/movies",
             success: renderMovies,
         });
-    })
+    });
 
     $(document).on("click", '.edit-movies', function(event) {
         event.preventDefault();
@@ -53,9 +58,9 @@ $(document).ready(function(){
         movies.find('.list-display').data('movie-id', movieId).toggle()
         movies.find('.list-edit').data('movie-id', movieId).toggle();
 
-    })
+    });
 
-    $('.project-icon').on("click", function() {
+    $('.movie-icon').on("click", function() {
         $.ajax({
             method: "GET",
             url: "api/movies",
@@ -75,7 +80,7 @@ $(document).ready(function(){
             url: "api/movies",
             success: renderMovies,
         });
-        })
+        });
 });
 
     function renderMovies(movieData) {
