@@ -19,7 +19,8 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
+var Sammich = db.Sammich;
 
 /**********
  * ROUTES *
@@ -42,22 +43,39 @@ app.get('/', function homepage(req, res) {
  * JSON API Endpoints
  */
 
-app.get('/api', function apiIndex(req, res) {
-  // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
-  // It would be seriously overkill to save any of this to your database.
-  // But you should change almost every line of this response.
-  res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
-    message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
-    endpoints: [
-      {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
-    ]
-  })
-});
+ app.get("/api/sammich", function index(req, res){
+   Sammich.find({}, function(err, sammich){
+     res.send(sammich); // all the sammiches
+   });
+ });
+
+ app.get("/api/sammich/:id", function show(req, res){
+   var id = req.params.id;
+   Sammich.findOne({_id: id}, function(err, sammich){
+     res.send(sammich); // one sammich
+   });
+ });
+
+ app.post("/api/sammich", function create(req, res){
+   var newSammich = new Sammich(req.body);
+   newSammich.save(function(err, sammich){
+     if(err) { res.sendStatus(404); }
+     res.send(sammich);  // one newly created sammich
+   });
+ });
+
+ app.delete("/api/sammich/:id", function destroy(req, res){
+  console.log("sammich delete", req.params);
+  var sammichId = req.params.id;
+  db.Sammich.findOneAndRemove({_id: sammichId}, function (err, deletedSammich) {
+    res.sendStatus(204);
+  });
+ });
+
+
+ app.put("/api/sammich/:id", function update(req, res){
+   res.send({}); // one updated sammich
+ });
 
 /**********
  * SERVER *
