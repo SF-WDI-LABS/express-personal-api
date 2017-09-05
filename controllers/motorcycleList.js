@@ -1,24 +1,12 @@
-// This file allows us to seed our application with data
-// simply run: `node seed.js` from the root of this project folder.
+/***********
+* DATABASE *
+************/
 
-// var db = require('./models');
+/* hard-coded data */
+var motorcycleLists = [];
 
-// var new_campsite = {description: "Sharp rocks. Middle of nowhere."}
-
-// db.Campsite.create(new_campsite, function(err, campsite){
-//   if (err){
-//     return console.log("Error:", err);
-//   }
-
-//   console.log("Created new campsite", campsite._id)
-//   process.exit(); // we're all done! Exit the program.
-// })
-
-var db = require("./models");
-
-var motorcycleList = [];
-
-motorcycleList.push({
+motorcycleLists.push({
+              _id: 132,
               make: 'BMW',
               model: 'S1000RR',
               image: '/images/s1000rr.jpg',
@@ -28,7 +16,8 @@ motorcycleList.push({
               maxTorque: '83 lb.-ft. at 10,500 rpm',
               engineDisplacement: '999 cc'
 });
-motorcycleList.push({
+motorcycleLists.push({
+              _id: 133,
               make: 'Honda',
               model: 'CBR1000RR',
               image: '/images/cbr1000rr.jpg',
@@ -38,7 +27,8 @@ motorcycleList.push({
               maxTorque: '78.74 lb.-ft. at 9,400 rpm',
               engineDisplacement: '999 cc'
 });
-motorcycleList.push({
+motorcycleLists.push({
+              _id: 134,
               make: 'Triumph',
               model: 'Daytona 675R',
               image: '/images/675r.jpg',
@@ -48,7 +38,8 @@ motorcycleList.push({
               maxTorque: '53 lb.-ft. at 10,500 rpm',
               engineDisplacement: '674 cc'
 })
-motorcycleList.push({
+motorcycleLists.push({
+              _id: 135,
               make: 'Suzuki',
               model: 'GSX-R 750',
               image: '/images/gsxr750.jpg',
@@ -59,17 +50,38 @@ motorcycleList.push({
               engineDisplacement: '749 cc'
 });
 
-//Need to resolve this issue here, when I run node seed.js
-//I'm getting an error that .remove() is undefined
-db.List.remove({}, function(err, lists){
+// GET /api/albums
+function index(req, res) {
+ // send back all albums as JSON
+}
 
-  db.List.create(motorcycleList, function(err, lists) {
-    if (err) {
-      return console.log('ERROR', err);
-    }
-    console.log("Motorcycle list generated", lists.length, lists);
-    console.log("All motorcycle data displayed", lists);
-    process.exit();
-  });
+// POST /api/albums
+function create(req, res) {
+ // create an album based on request body and send it back as JSON
+}
 
-});
+// GET /api/albums/:albumId
+function show(req, res) {
+ // find one album by id and send it back as JSON
+}
+
+// DELETE /api/albums/:albumId
+function destroy(req, res) {
+ // find one album by id, delete it, and send it back as JSON
+}
+
+// PUT or PATCH /api/albums/:albumId
+function update(req, res) {
+ // find one album by id, update it based on request body,
+ // and send it back as JSON
+}
+
+
+// export public methods here
+module.exports = {
+ index: index,
+ create: create,
+ show: show,
+ destroy: destroy,
+ update: update
+};

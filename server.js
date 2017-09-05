@@ -72,6 +72,7 @@ app.get('/api/profile', function apiIndex(req, res) {
   })
 });
 
+// app.get('api/motorcycleList', controllers.motorcycleList.index);
 /**********
  * SERVER *
  **********/
