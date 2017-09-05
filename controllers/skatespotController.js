@@ -26,7 +26,11 @@ function create(req, res) {
 
 // GET /api/skatespots/:skatespotId
 function show(req, res) {
-
+  db.Skatespot.findById(req.params.skatespotId, function(err, foundSkatespot) {
+    if(err) { console.log('skatespotController.show error', err); }
+    console.log('skatespotController.show responding with', foundSkatespot);
+    res.json(foundSkatespot);
+  });
 }
 
 // DELETE /api/skatespots/:skatespotsId
