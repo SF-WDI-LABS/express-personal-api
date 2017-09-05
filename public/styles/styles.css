@@ -1,10 +1,47 @@
 body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  background-color: black;
 }
 
 h1 {
   margin-top: 100px;
   text-align: center;
+}
+p{
+  text-align: center;
+}
+.jumbotron {
+  background-image: url(/images/film_image.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #e5e51a;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.jumbotron .container {
+  height: 350px;
+}
+.container h2{
+  color: #e5e51a;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.add-dir-btn{
+  margin-bottom: 20px;
+  background-color: #e5e51a;
+  color: black;
+}
+.edit-dir-btn{
+  margin-bottom: 20px;
+  background-color: #e5e51a;
+  color: black;
+}
+.delete-dir-btn{
+  margin-bottom: 20px;
+  background-color: #e5e51a;
+  color: black;
+}
+.save-edit-btn{
+  margin-bottom: 20px;
+  background-color: #e5e51a;
+  color: black;
 }

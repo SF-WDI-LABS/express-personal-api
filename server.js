@@ -1,7 +1,6 @@
 // require express and other modules
 var express = require('express'),
     app = express();
-
 // parse incoming urlencoded form data
 // and populate the req.body object
 var bodyParser = require('body-parser');
@@ -19,7 +18,8 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
+var controllers = require('./controllers');
 
 /**********
  * ROUTES *
@@ -42,22 +42,13 @@ app.get('/', function homepage(req, res) {
  * JSON API Endpoints
  */
 
-app.get('/api', function apiIndex(req, res) {
-  // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
-  // It would be seriously overkill to save any of this to your database.
-  // But you should change almost every line of this response.
-  res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
-    message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
-    endpoints: [
-      {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
-    ]
-  })
-});
+app.get('/api', controllers.api.index);
+app.get('/personal', controllers.personal.index)
+app.get('/director', controllers.director.index)
+app.post('/director', controllers.director.create)
+app.get('/director/:_id', controllers.director.show)
+app.put('/director/:_id', controllers.director.update)
+app.delete('/director/:_id', controllers.director.destroy)
 
 /**********
  * SERVER *
