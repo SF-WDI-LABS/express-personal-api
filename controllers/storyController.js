@@ -24,8 +24,12 @@ function create(req, res){
 	});
 }
 
+// Find a story by id and send it back as JSON
 function show(req, res){
-
+	db.Story.findById(req.params.story_id, function(err, story) {
+	  if(err) { console.log(err); }
+	  res.json(story);
+	});
 }
 
 // Destroy db record based on ID

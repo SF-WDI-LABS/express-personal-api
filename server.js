@@ -28,8 +28,9 @@ app.use(function(req, res, next) {
  **********/
 
 //CRUD
-app.post('/story/create', controllers.story.create);
 app.get('/story/index', controllers.story.index);
+app.post('/story/create', controllers.story.create);
+app.get('/story/show/:story_id', controllers.story.show);
 app.put('/story/update/:story_id', controllers.story.update);
 app.delete('/story/delete/:story_id', controllers.story.destroy);
 
@@ -63,15 +64,22 @@ app.get('/api', function apiIndex(req, res) {
   // It would be seriously overkill to save any of this to your database.
   // But you should change almost every line of this response.
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/hmliao14/express-personal-api/README.md", // CHANGE ME
     baseUrl: "https://frozen-lowlands-63435.herokuapp.com",
-    endpoints: [
-      {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
+    data_endpoints: [
+      {method: "GET", path: "/", description: "A HTML page that describes all available endpoints"},
+      {method: "GET", path: "/api", description: "A JSON view page that describes all available endpoints"},
+      {method: "GET", path: "/api/profile", description: "Data about me"}, 
       {method: "GET", path: "/api/images", description: "Images I took from my LA trip"},
       {method: "GET", path: "/api/videos", description: "Open source videos that I found interesting"},
+    ],
+    CRUD_endppoints: [
+      {method: "GET", path: "/story/index", description: "Retreat all records in story database and render them onto index.html, with additional GUI that user CRUD all records"},
+      {method: "POST", path: "/story/create", description: "Create a entry in the story database after a JSON object is sent to the server", required_JSON_obj_format:{form_title : 'String', form_description: 'String', form_link: 'String'}},
+      {method: "GET", path: "/story/show/:story_id", description: "Display a single record in the database matching the given id"},
+      {method: "PUT", path: "/story/update/:story_id", description: "Update an existing database record with a matched story data-id in the url. Also need send JSON object to the server", required_JSON_obj_format:{name: "String", description: "String"}},
+      {method: "DELETE", path: "/story/delete/:story_id", description: "Delete an existing database record matching the given story id in the url"},
     ]
   })
 });
@@ -95,11 +103,11 @@ app.get('/api/profile', function (req, res) {
           name: "Movie Fantasy",
           description: "Comedy, Sci-Fi, Action, and story with mind-blowing twist are my favorite genres."
         },{
-          name: "Matrix Gaming",
+          name: "Causal Gaming",
           description: "I occasionally practice my logical thinking and analytical skills through an online card game called Hearthstone"
         },{
           name: "Outdoor Adventure",
-          description: "Not all the time its about going to specific places with goal in mind. There are times when my friends and I take on unknown hiking trail and explore random cities and suburban"
+          description: "Not all the time its about going to specific places with a goal in mind. There are times when my friends and I take on unknown hiking trail and explore random cities and suburban"
         }],
     }
   })

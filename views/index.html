@@ -11,8 +11,6 @@
 
   <link rel="stylesheet" href="/styles/styles.css">
 
-  <!-- VENDOR SCRIPTS -->
-  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
@@ -27,26 +25,17 @@
   <div id="header">
     <div id="main-nav" class="">
       <button type="button" class="add-seed btn btn-primary">Add Seed</button>
-      <button type="button" class="add-book btn btn-primary">Add Book</button>
+      <button type="button" class="add-story btn btn-primary">Add story</button>
     </div>
   </div>
   <!-- End of Header -->
 
-
-
-
   <div id="wrapper">
-
-
-
     <div class="main">
-
-
       <div class="row">
         <div id="main-content" class="col">
           <!-- Template data from app.js goes here -->
         </div>
-        <!-- End of main-content -->
       </div>
     </div>
     <!-- End of main row -->
@@ -54,44 +43,36 @@
     <!-- Invinsible side bar on the right
     appear when add form is clicked -->
     <div class="side-bar">
-
       <form class="side-form" method="POST" action="/story/create">
         <div class="card">
-          <div class="img-preview">
 
+          <div class="card-body">
+            Image Link:
+            <input type="url" name="form_link" required>  
+            Caption: 
+            <input type="text" class="card-title" name="form_title" required>
+            Description:
+            <textarea type="text" class="card-text" name="form_description"></textarea>
+            <button name="" type="submit" class="submit-story btn btn-dark">Confirm</button>
+            <button name="" type="button" class="cancel-story btn btn-dark">Cancel</button>
+            <button name="" type="reset" class="clear-story btn btn-danger">Clear</button>
           </div>
-          <!-- Hard to store image directl, URL best for now -->
-<!--           Image File:
-  <input name="story_link" type="file" > -->
+
+        </div>
+      </form>
+    </div>
+    <!-- End of side-bar -->
 
 
-  <div class="card-body">
-    Image Link:
-    <input type="url" name="form_link" required>  
-    Caption: 
-    <input type="text" class="card-title" name="form_title" required>
-    Description:
-    <textarea type="text" class="card-text" name="form_description"></textarea>
-    <button name="" type="submit" class="submit-story btn btn-dark">Confirm</button>
-    <button name="" type="button" class="cancel-story btn btn-dark">Cancel</button>
-    <button name="" type="reset" class="clear-story btn btn-danger">Clear</button>
-
-  </div>
-</div>
-</form>
-
-</div>
+    <footer>
+      <div class="col">
+        <a href="/api">Read My API Documentation</a>
+      </div>
+    </footer>
 
 
-<footer>
-  <div class="col">
-    <a href="/api">Read My API Documentation</a>
-  </div>
-</footer>
-
-
-</div> 
-<!-- End of wrapper -->
+  </div> 
+  <!-- End of wrapper -->
 </div>
 <!-- End of container -->
 </body>

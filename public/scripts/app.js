@@ -6,8 +6,9 @@ $(document).ready(function(){
 	// The main apps being run when the doc is first loaded.
 	// Outside of main are helper functions
 	function main() {
-		// Render all database record to page. Its currently until you seed it or
-		// click the addSeedButton
+		// Render all database record to page. Its currently empty until you run seed.js
+		//or click the add seed button, which submit request to one of my api, submit 
+		// all those data to the db, store them, and make another ajax call to rerender them.
 		renderDBstoPage();
 
 		// Create a new copy set of stories on the page based on data i received from
@@ -18,7 +19,7 @@ $(document).ready(function(){
 				method: "GET",
 				url: "/api/images",
 			}).then(function(data){
-				console.log(data);
+				var $main_content = $('#main-content');
 				data.LA_trip.forEach(function(new_story){
 					// for data I get back, create a entry in the database by
 					// passing in as in the format from the submit form, hence the 
@@ -34,8 +35,8 @@ $(document).ready(function(){
 						method: "POST",
 						url: "/story/create",
 						data: story,
-					}).then(function(created_story){
-					}).catch(function(err){console.log(err);});
+					}).then(function(created_story){})
+					.catch(function(err){console.log(err);});
 				});
 				// Use index to render all data from server to the page
 				renderDBstoPage();
@@ -55,10 +56,10 @@ $(document).ready(function(){
 		// &&  on side-forms
 		var $main_nav = $('#main-nav');
 		var $main_content = $('#main-content');
-		$main_nav.on("click", ".add-book", show_side_form);
-		$main_content.on("click", ".delete-book", deleteStoryBtn);
-		$main_content.on("click", ".edit-book", editStoryBtn);
-		$main_content.on("click", ".update-book", updateStoryBtn);
+		$main_nav.on("click", ".add-story", show_side_form);
+		$main_content.on("click", ".delete-story", deleteStoryBtn);
+		$main_content.on("click", ".edit-story", editStoryBtn);
+		$main_content.on("click", ".update-story", updateStoryBtn);
 		var $side_bar = $('.side-bar');
 		var $img_preview = $('.img-preview');
 		
@@ -66,10 +67,6 @@ $(document).ready(function(){
 			$side_bar.slideToggle();
 			$main_nav.show();
 		});
-		$('.clear-story').on("click", function(){ $img_preview.empty(); });
-		// Preview images after user upload files
-		// $('[name=story_link]').change(previewFile);
-		
 		$('.side-form').on("submit", function(e){
 			e.preventDefault();
 			var story = $(this).serialize();
@@ -81,7 +78,7 @@ $(document).ready(function(){
 				data: story,
 			})
 			.then(function(new_story){
-				// When data is received, template the book and slowly render
+				// When data is received, template the story and slowly render
 				// it on the page using template and css card
 				// Then clear out the form upon success
 				$('#main-content').prepend(templateStory(new_story, "none"));
@@ -93,28 +90,9 @@ $(document).ready(function(){
 		});
 	};
 
-	// Preview img when file is uploaded
-	// Will not work for video file atm.
-	// Its not being used atm but will be in future projects
-	function previewFile(e){
-			for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
-			    var file = e.originalEvent.srcElement.files[i];
-			    var img = document.createElement("img");
-			    var reader = new FileReader();
-			    reader.onloadend = function(event) {
-			    	img.src = event.target.result;
-			    };
-			    $(img).css("width", "250px", "height", "165px");
-			    reader.readAsDataURL(file);
-			    $('.img-preview').empty();
-			    $('.img-preview').append(img);
-			}
-	};
-
 	// For all stories received from server,
 	// create a html template for them and append to the page
 	function renderStories(stories){
-		console.log(stories.length);
 		if(stories.length === 0) return;
 		var $main_content = $('#main-content');
 			stories.forEach(function(story){
@@ -185,9 +163,9 @@ $(document).ready(function(){
 			    <input type="text" name="story_name" class="card-title toggle" style="display: none" value="${story.name}">
 			    <p class="card-text toggle">${story.description}</p>
 			    <textarea type="text" name="story_description" class="card-text toggle" style="display: none" >${story.description}</textarea>
-			    <button type="button" class="delete-book btn btn-dark">Delete</button>
-			    <button type="button" class="edit-book btn btn-dark toggle">Edit</button>
-			    <button type="button" class="update-book btn btn-dark toggle" style="display: none">Update</button>
+			    <button type="button" class="delete-story btn btn-dark">Delete</button>
+			    <button type="button" class="edit-story btn btn-dark toggle">Edit</button>
+			    <button type="button" class="update-story btn btn-dark toggle" style="display: none">Update</button>
 			  </div>	
 		</div>
 		`;

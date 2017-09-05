@@ -1,4 +1,5 @@
 // removeSeed.js
+// used to clear out data in existing db mainly
 
 var db = require('./models');
 
