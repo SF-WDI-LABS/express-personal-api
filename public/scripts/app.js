@@ -19,10 +19,13 @@ function renderMultipleMotorcycles(motorcycleList) {
 function renderList(motorcycle) {
   console.log('rendering motorcycles', motorcycle);
   var motorcycleHtml = (`
-    <div class="row album">
+    <div class="row album" data-album-id="${motorcycle._id}">
+
       <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
           <div class="panel-body">
+
+
           <!-- begin album internal row -->
             <div class='row'>
               <div class="col-md-3 col-xs-12 thumbnail album-art">
@@ -31,16 +34,32 @@ function renderList(motorcycle) {
               <div class="col-md-9 col-xs-12">
                 <ul class="list-group">
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Album Name:</h4>
-                    <span class='album-name'>${motorcycle.name}</span>
+                    <h4 class='inline-header'>Make:</h4>
+                    <span class='motorcycle-name'>${motorcycle.make}</span>
                   </li>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Artist Name:</h4>
-                    <span class='artist-name'>${motorcycle.artistName}</span>
+                    <h4 class='inline-header'>Model:</h4>
+                    <span class='model-name'>${motorcycle.model}</span>
                   </li>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Released date:</h4>
-                    <span class='album-releaseDate'>${motorcycle.releaseDate}</span>
+                    <h4 class='inline-header'>Image:</h4>
+                    <span class='releaseDate'>${motorcycle.image}</span>
+                  </li>
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>Weight:</h4>
+                    <span class='releaseDate'>${motorcycle.weight}</span>
+                  </li>
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>maxPower:</h4>
+                    <span class='releaseDate'>${motorcycle.maxPower}</span>
+                  </li>
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>maxTorque:</h4>
+                    <span class='releaseDate'>${motorcycle.maxTorque}</span>
+                  </li>
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>Engine Displacement:</h4>
+                    <span class='releaseDate'>${motorcycle.engineDisplacement}</span>
                   </li>
                 </ul>
               </div>
