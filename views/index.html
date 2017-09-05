@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+    <title>Personal API</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/styles.css">
 
     <!-- VENDOR SCRIPTS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
@@ -20,10 +20,30 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
+          <h1>Hero API</h1>
           <h4><a href="/api">Read My API Documentation</a></h4>
         </div>
       </div>
+      <!-- Form to add to database -->
+      <div class="form">
+      <form class="hero_add">
+        <div>
+          <h2>Add New Hero</h2>
+          <label for="name">Hero Name</label>
+            <input name="name" type="text" placeholder="Name Your Hero">
+          <label for="powers">Powers</label>
+            <input name="powers" type="text" placeholder="Powers">
+          <label for="age">Age</label>
+            <input name="age" type="number" placeholder="Age">
+          <label for="secret_identity">Secret Identity</label>
+            <input name="secret_identity" type="boolean" placeholder="Secret Identity?">
+          <button type="submit" type="button" class="btn btn-primary">Save New Hero</button>
+          <button type="button" class="btn btn-danger">Cancel</button>
+        </div>
+      </form>
     </div>
+    <div class="spacer"></div>
+    <!-- hero containers -->
+    <div id="hero-list" class="hero-list"></div>
   </body>
 </html>
