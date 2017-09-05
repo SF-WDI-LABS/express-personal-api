@@ -39,13 +39,31 @@ function show(req, res) {
 // DELETE /director/:id
 function destroy(req, res) {
   // find one director by id, delete it, and send it back as JSON
+  db.Director.findByIdAndRemove(req.params._id, function(err, director){
+    console.log('deleting', director)
+  })
 }
 
 // PUT or PATCH /director/:id
 function update(req, res) {
   // find one director by id, update it based on request body,
   // and send it back as JSON
+  console.log(req.body)
+  db.Director.findById(req.params._id,  function(err, foundDirector) {
+
+    if(err) { console.log(err); }
+
+    foundDirector.name = req.body.name || foundDirector.name;
+    foundDirector.alive = req.body.alive || foundDirector.alive;
+    foundDirector.countryOfOrigin = req.body.countryOfOrigin || foundDirector.countryOfOrigin;
+    foundDirector.movieTitles = req.body.movieTitles || foundDirector.movieTitles;
+    foundDirector.save(function(err, saveDirector) {
+        if (err) { console.log(err); }
+        res.json(saveDirector);
+      });
+  });
 }
+
 module.exports = {
   index: index,
   create: create,

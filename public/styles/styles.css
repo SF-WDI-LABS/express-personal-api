@@ -1,7 +1,7 @@
 body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: black; /* Sanity Check! */
+  background-color: black;
 }
 
 h1 {
@@ -26,6 +26,21 @@ p{
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 .add-dir-btn{
+  margin-bottom: 20px;
+  background-color: #e5e51a;
+  color: black;
+}
+.edit-dir-btn{
+  margin-bottom: 20px;
+  background-color: #e5e51a;
+  color: black;
+}
+.delete-dir-btn{
+  margin-bottom: 20px;
+  background-color: #e5e51a;
+  color: black;
+}
+.save-edit-btn{
   margin-bottom: 20px;
   background-color: #e5e51a;
   color: black;
