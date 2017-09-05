@@ -16,11 +16,11 @@ function createHero(req, res){
 }
 
 function deleteHero(req, res) {
-  console.log("working")
-  db.Hero.findByIdAndRemove(req.param.heroId, function(err, hero){
-    res={
-      id: hero._id
-    }
+  console.log("delete working");
+  db.Hero.findOneAndRemove({_id: req.params.heroId}, function(err,hero){
+    if (err){console.log("error");}
+    console.log("delete really working")
+    res.json(hero);
   })
 }
 

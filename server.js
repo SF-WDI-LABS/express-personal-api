@@ -57,15 +57,14 @@ app.get('/api', function apiIndex(req, res) {
       {method: "GET", path: "/api/profile", description: "Data about Bryan"},
       {method: "GET", path: "/api/heroes", description: "Index of all heroes"},
       {method: "POST", path: "/api/heroes", description: "Create a new hero."},
-      {method: "PUT", path: "/api/heroes", description: "Edit a hero and update it."},
-      {method: "DELETE", path: "/api/heroes", description:"Remove a hero from the database."}
+      {method: "DELETE", path: "/api/heroes/:Id", description:"Remove a hero from the database."}
     ]
   })
 });
 app.get("/api/profile", controllers.profile.index);
 app.get("/api/heroes", controllers.heroController.index);
 app.post("/api/heroes", controllers.heroController.create);
-app.delete("/api/heroes/:heroId", controllers.heroController.delete)
+app.delete("/api/heroes/:Id", controllers.heroController.delete)
 
 /**********
  * SERVER *

@@ -14,6 +14,8 @@ $.ajax({
   success: displayHero
 })
 
+$("#hero-list").on("click", ".btn.btn-danger", removeHero())
+
 function displayHero(heroes){
   heroes.forEach(function(hero){
     renderHero(hero);
@@ -29,22 +31,31 @@ function displayHero(heroes){
       });
       $(this).trigger("reset");
 });
+
+$.ajax({
+  url: "/api/heroes/:id",
+  method: "DELETE",
+  success: removeHero
+});
+
+function removeHero(data){
+  let deletedHero = $(this).parents(".data-hero-id").data("hero._id")
+  $(".data-hero-id" + deletedHero).remove();
+}
+
 });
 
   function renderHero(hero){
 let heroesHTML = (`
-  <div class="row album" data-album-id="${hero._id}">
+  <div class="data-hero-id="${hero._id}">
       <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
           <div class="panel-body">
-
-
-          <!-- begin album internal row -->
-            <div class='row'>
+            <div class="row">
               </div>
 
               <div class="col-md-9 col-xs-12">
-                <ul class="list-group">
+                <ul class="list-heroes">
                   <li>
                     <h4>Hero Name:</h4>
                     <span>${hero.name}</span>
@@ -68,11 +79,10 @@ let heroesHTML = (`
               </div>
 
             </div>
-            <!-- end of album internal row -->
 
-            <div class='panel-footer'>
-              <div class='panel-footer'>
-                <button class='btn btn-danger delete-album'>Delete Hero</button>
+            <div class="panel-footer">
+              <div class="panel-footer">
+                <button type="submit" class="btn btn-danger delete-hero">Delete Hero</button>
               </div>
             </div>
           </div>
