@@ -23,11 +23,28 @@ function create(req, res) {
         res.json(req.body);
 }
 
+function destroy(req, res) {
+    db.Movie.findOneAndRemove({_id: req.params.movieid}, function(err, remainingMovies) {
+    })
+}
+
+function update(req, res) {
+    console.log(req.body);
+    db.Movie.findByIdAndUpdate(req.params.movieid, {new: true}, (err, movie) => {
+        movie.title = req.body.title;
+        movie.director= req.body.director;
+        movie.year= req.body.year;
+        movie.image = req.body.image
+        movie.save();
+    })
+    console.log('testing');
+}
+
 // export public methods here
 module.exports = {
     index: index,
     create: create,
     // show: show,
-    // destroy: destroy,
-    // update: update
+    destroy: destroy,
+    update: update
 };

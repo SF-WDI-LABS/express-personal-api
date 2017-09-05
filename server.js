@@ -82,6 +82,8 @@ app.get('/api/profile', function apiProfile(req, res) {
 
 app.post('/api/movies', controllers.movies.create);
 app.get('/api/movies', controllers.movies.index);
+app.delete('/api/movies/:movieid', controllers.movies.destroy);
+app.put('/api/movies/:movieid', controllers.movies.update);
 /**********
  * SERVER *
  **********/
