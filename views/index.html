@@ -4,15 +4,95 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+    <title>Younji's Movie API</title>
 
     <!-- STYLESHEETS -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/styles.css">
 
     <!-- VENDOR SCRIPTS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<!--This is a template to show all the movies.-->
+    <script id="handlebars-template" type="text/x-handlebars-template">
+        <h2>Add a movie below.</h2>
+        <form class='addMovieForm'>
+            <div class='form-group'>
+                <label for='title' type='text'>Title</label>
+                <input name='title' id='title' class="form-control">
+            </div>
+            <div class='form-group'>
+                <label for='genre' type='text'>Genre</label>
+                <input name='genre' id='genre' class="form-control">
+            </div>
+            <div class='form-group'>
+                <label for='tomatoMeter' type='number'>Tomatometer</label>
+                <input name='tomatoMeter' id='tomatoMeter' class="form-control">
+            </div>
+            <div class='form-group'>
+                <label for='haveIseenIt' type='text'>Have I seen it?</label>
+                <input name='haveIseenIt' id='haveIseenIt' class="form-control">
+            </div>
+            <div class='form-group'>
+                <label for='image'>Image</label>
+                <input name='image' id='image' class="form-control">
+            </div>
+            <button type='submit' class='submitAdd btn btn-primary'>Submit</button>
+        </form>
+        <ul>
+            {{#each movies}}
+            <li class='row'>
+                <div class='col-sm-5'><img src={{image}}></div>
+                <div class='col-sm-5'>
+                    <h2>{{title}}</h2>
+                    <h4>Genre:</h4><p>  {{genre}}</p>
+                    <h4>Tomatometer:</h4><p> {{tomatoMeter}}</p>
+                    <h4>Have I seen it?</h4><p> {{haveIseenIt}}</p>
+                    <button class='show btn btn-primary' data-id={{_id}}>Show</button>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
 
+<!--This is a separate template just to show one movie.-->
+    <script id="one-movie-template" type="text/x-handlebars-template">
+        <h2>{{title}}</h2>
+        <img src={{image}}>
+        <p>{{genre}}</p>
+        <p>{{tomatoMeter}}</p>
+        <p>{{haveIseenIt}}</p>
+        <button class='delete btn btn-danger' data-id={{_id}}>Delete</button>
+
+        <button class='home btn btn-success btn-lg btn-block'>Go back home</button>
+
+        <form class='editMovieForm'>
+            <h4>Edit the movie below if you want. :)</h4>
+            <div>
+                <label for='title' type='text'>Title</label>
+                <input name='title' id='title' class="form-control" placeholder='{{title}}'>
+            </div>
+            <div>
+                <label for='genre' type='text'>Genre</label>
+                <input name='genre' id='genre' class="form-control" placeholder='{{genre}}'>
+            </div>
+            <div>
+                <label for='tomatoMeter' type='number'>Tomatometer</label>
+                <input name='tomatoMeter' id='tomatoMeter' class="form-control" placeholder='{{tomatoMeter}}'>
+            </div>
+            <div>
+                <label for='haveIseenIt' type='text'>Have I seen it?</label>
+                <input name='haveIseenIt' id='haveIseenIt' class="form-control" placeholder='{{haveIseenIt}}'>
+            </div>
+            <div>
+                <label for='image'>Image</label>
+                <input name='image' id='image' class="form-control" placeholder='{{image}}'>
+            </div>
+            <button type='submit' class='submitEdit btn btn-primary' data-id={{_id}}>Submit Your Change</button>
+        </form>
+    </script>
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
   </head>
@@ -20,8 +100,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
+          <h1>Younji's Movie API</h1>
           <h4><a href="/api">Read My API Documentation</a></h4>
+          <main></main>
         </div>
       </div>
     </div>
