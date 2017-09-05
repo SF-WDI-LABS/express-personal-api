@@ -1,6 +1,6 @@
 // require express and other modules
-var express = require('express'),
-    app = express();
+var express = require('express');
+var app = express();
 
 // parse incoming urlencoded form data
 // and populate the req.body object
@@ -14,6 +14,8 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+var controllers = require('./controllers');
 
 /************
  * DATABASE *
@@ -59,6 +61,30 @@ app.get('/api', function apiIndex(req, res) {
   })
 });
 
+app.get('/api/profile', function apiProfile(req, res) {
+  res.json({
+      name: 'David Jue',
+      githubUsername: 'Congocash',
+      githubLink: 'https://github.com/CongoCash',
+      githubProfileImage: '../public/images/github-image.png',
+      personalSiteLink: 'https://peaceful-chamber-97994.herokuapp.com/',
+      currentCity: 'San Francisco',
+      hobbies: [{
+        name: 'Basketball',
+        yearsPlaying: 14
+      },
+      {
+        name: 'Tetris',
+        yearsPlaying: 6
+      }]
+  });
+});
+
+app.post('/api/movies', controllers.movies.create);
+app.get('/api/movies', controllers.movies.index);
+app.get('/api/movies/:movieid', controllers.movies.show);
+app.delete('/api/movies/:movieid', controllers.movies.destroy);
+app.put('/api/movies/:movieid', controllers.movies.update);
 /**********
  * SERVER *
  **********/
