@@ -21,23 +21,53 @@ function create (req, res) {
     if (err) {
       console.log('ERROR from controller create', err);
     }
-    res.json(game)
+    if (game.image) {
+      res.json(game);
+    } else {
+      game.image = 'images/generic-game-image.jpg';
+      game.save(function(err, newGame) {
+        if (err) {
+          console.log("ERROR from update controller", err);
+        }
+        res.json(newGame)
+      })
+    }
   })
 }
 
-//Displays game to edit
-function edit (req, res) {
-  console.log('Reached edit controller', req.body);
 
+// Updates edited game
+function update (req, res) {
+  console.log('reached update', req.body);
+  db.Boardgame.findById(req.params.id, function(err, foundGame) {
+    foundGame.title = req.body.title,
+    foundGame.description = req.body.description,
+    foundGame.playtime = req.body.playtime,
+    foundGame.players = req.body.players,
+    foundGame.save(function(err, savedGame) {
+      if (err) {
+        console.log("ERROR from update controller", err);
+      }
+      res.json(savedGame)
+    })
+  })
 }
 
-
-
-
+function destroy (req, res) {
+  console.log("destroy controller reached");
+  db.Boardgame.findByIdAndRemove(req.params.id, function(err, deletedGame) {
+    if (err) {
+      console.log(err);
+    } else {
+    res.json(deletedGame);
+    }
+  })
+}
 
 
 module.exports = {
   index: index,
   create: create,
-  edit: edit,
+  update: update,
+  destroy: destroy,
 }

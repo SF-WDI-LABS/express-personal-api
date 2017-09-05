@@ -17,7 +17,8 @@ $('.new-game').on('click', function() {
 })
 
 // Allows user to go back to main view from new game form
-$('#cancel-btn').on('click', function() {
+$('#cancel-btn').on('click', function(event) {
+  event.preventDefault();
   $('.hidden-form').toggle();
   $('.new-game').toggle();
 })
@@ -26,6 +27,7 @@ $('#cancel-btn').on('click', function() {
 $('.new-game-form').on('submit', function(event) {
   event.preventDefault();
   let formData = $(this).serialize();
+
   // console.log(formData);
   $.ajax({
     type: "POST",
@@ -35,8 +37,10 @@ $('.new-game-form').on('submit', function(event) {
   .then(function(createdGame){
     renderOneGame(createdGame);
     console.log("rendered new game");
+    $('.new-game-form')[0].reset();
     $('.hidden-form').toggle();
     $('.new-game').toggle();
+
   })
   .catch(function (err) {
     console.log(err);
@@ -44,9 +48,11 @@ $('.new-game-form').on('submit', function(event) {
 })
 
 
-$('.display-games').on('click', '.edit-game', handleEditGame)
+$('.display-games').on('click', '.edit-game', handleEditGame);
 
-$('.display-games').on('click', '.save-edits', handleUpdateGame)
+$('.display-games').on('click', '.save-edits', handleUpdateGame);
+
+$('.display-games').on('click', '.delete-game', handleDeleteGame);
 
 
 
@@ -80,6 +86,7 @@ function renderOneGame (game) {
     </ul>
     <button class="btn btn-info edit-game switch">Edit</button>
     <button class="btn btn-success save-edits switch">Save Changes</button>
+    <button class="btn btn-danger delete-game">Delete</button>
   </div>
   `
   $('.display-games').prepend(newHTML);
@@ -97,7 +104,7 @@ function handleEditGame(event) {
   $title.html('<input class="updated-title" value="' + $title.text() + '"></input>');
 
   $description = $thisGame.find('span.game-description');
-  $description.html('<input class="updated-description" value="' + $description.text() + '"></input>');
+  $description.html('<input type="textarea" class="updated-description" value="' + $description.text() + '"></input>');
 
   $playtime = $thisGame.find('span.game-playtime');
   $playtime.html('<input class="updated-playtime" value="' + $playtime.text() + '"></input>');
@@ -120,30 +127,53 @@ function handleUpdateGame(event) {
     players: $thisGame.find('.updated-players').val(),
   }
 
-  let putURL = '/api/newBoardgame/' + gameId
+  let putURL = '/api/boardgames/' + gameId
+  console.log(putURL);
 
-  // $.ajax({
-  //   type: "PUT",
-  //   url: putURL,
-  //   data: updatedGameData,
-  // })
-  // .then(function(updatedGame) {
-  //
-  // })
+  $.ajax({
+    type: "PUT",
+    url: putURL,
+    data: updatedGameData,
 
+//     success: function(msg){
+//         alert( "Data Saved: " + msg );
+//   },
+//     error: function(XMLHttpRequest, textStatus, errorThrown) {
+//      alert("some error");
+//   }
+//
+// });
+  })
+  .then(function(updatedGame) {
+    // Reached here
+    // console.log(updatedGame);
+    $('[data-game-id =' + gameId + ']').remove();
+
+    renderOneGame(updatedGame);
+
+    $('[data-game-id =' + gameId + ']')[0].scrollIntoView();
+
+  })
+  .catch(function(err) {
+    console.log('Ajax put error', err);
+  })
 }
 
-// function handleNewGame(newGameData) {
-//   $.ajax({
-//     type: "POST",
-//     url: '/api/newBoardgame',
-//     data: newGameData,
-//   })
-//   .then(function(createdGame){
-//     renderOneGame(createdGame);
-//     console.log("rendered new game");
-//   })
-//   .catch(function (err) {
-//     console.log(err);
-//   })
-// }
+
+function handleDeleteGame(event) {
+  let $thisGame = $(this).closest('.game');
+  let gameId = $thisGame.data('game-id');
+  console.log(gameId);
+
+  $.ajax({
+    type: "DELETE",
+    url: '/api/boardgames/' + gameId,
+  })
+  .then(function (deletedGame) {
+    console.log('successful delete', deletedGame);
+    $('[data-game-id =' + gameId + ']').remove();
+  })
+  .catch(function (err) {
+    console.log('Ajax delete error', err);
+  })
+}

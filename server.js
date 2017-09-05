@@ -57,7 +57,9 @@ app.get('/api', function apiIndex(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "A little information about me"},
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "POST", path: "/api/newBoardgame", description: "Create a new board game"},
+      {method: "PUT", path: "/api/boardgames/:id", description: "Update board game with passed id"},
+      {method: "DELETE", path: "/api/boardgames/:id", description: "Delete board game with passed id"}
     ]
   })
 });
@@ -91,7 +93,8 @@ app.get('/api/profile', function apiIndex(req, res) {
 
 app.get('/api/boardgames', controllers.boardgames.index);
 app.post('/api/newBoardgame', controllers.boardgames.create);
-app.get('/api/boardgames/:id/edit/', controllers.boardgames.edit)
+app.put('/api/boardgames/:id', controllers.boardgames.update);
+app.delete('/api/boardgames/:id', controllers.boardgames.destroy);
 
 
 
