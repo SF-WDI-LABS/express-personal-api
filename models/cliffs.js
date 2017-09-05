@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 var CliffSchema = new Schema({
   name: String,
   nearestCity: String,
-  gpsCoords: [Number, Number],
+  gpsCoords: String,
   height: String,
   acessibility: String,
   description: String

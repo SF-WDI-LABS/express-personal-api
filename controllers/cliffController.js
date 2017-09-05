@@ -1,8 +1,8 @@
 let db = require('../models');
-// controllers/albumsController.js
-// GET /api/albums
+// controllers/cliffsController.js
+// GET /api/cliffs
 function index(req, res) {
-  // send back all albums as JSON
+  // send back all cliffs as JSON
   db.Cliff.find(function(err, albums){
     if (err) {
       console.log("index error" + err);
@@ -12,43 +12,79 @@ function index(req, res) {
   });
 }
 
-// POST /api/albums
+// POST /api/cliffs
 function create(req, res) {
-  //create album using form data from req parameter
-  var newAlbum = new db.Album({
-    artistName: req.body.artistName,
-    name: req.body.name,
-    releaseDate: req.body.releaseDate,
-    genres: req.body.genres.split(","),
-    songs: []
+  //create cliff using form data from req parameter
+  var newCliff = new db.Cliff({
+    name: req.body.cliffName,
+    nearestCity: req.body.nearestCity,
+    gpsCoords: req.body.gpsCoords,
+    height: req.body.height,
+    accessibility: req.body.accessibility,
+    description: req.body.description
   });
-  // add that album to the database
-newAlbum.save(function(err, album){
+  // add that cliff to the database
+newCliff.save(function(err, cliff){
   if (err) {
-    return console.log("create error: " + err);
+   console.log("create error: " + err);
+   return;
   }
-  console.log("created", album.name);
-  res.json(album);
+  console.log("created", cliff.name);
+  res.json(cliff);
 });
-
-
 }
 
-// GET /api/albums/:albumId
+// GET /api/cliffs/:cliffId
 function retrieve(req, res) {
-  // find one album by id and send it back as JSON
 }
 
-// DELETE /api/albums/:albumId
-function destroy(req, res, id) {
-  // find one album by id, delete it, and send it back as JSON
-}
+// DELETE /api/cliffs/:cliffId
+function destroy(req, res) {
+  console.log(req.params.id);
+  db.Cliff.findByIdAndRemove(req.params.id, (err, Cliff) => {
+    console.log(Cliff);
+    if (err) {
+      console.log(err);
+    }
+    Cliff.save(function(err, cliff) {
+      console.log("hi");
+      if (err) {
+        console.log(err);
+      }
+      let response = {
+          message: "Cliff successfully deleted",
+    }
+    res.status(200).send(response);
+  });
+});
+};
 
-// PUT or PATCH /api/albums/:albumId
+
 function update(req, res) {
-  // find one album by id, update it based on request body,
-  // and send it back as JSON
-}
+  db.Cliff.findById(req.params.id, function(err, foundCliff) {
+    if (err) {
+      console.log('err', err);
+      return;
+    }
+    foundCliff.set({
+      name: req.body.cliffName,
+      nearestCity: req.body.nearestCity,
+      gpsCoords: req.body.gpsCoords,
+      height: req.body.height,
+      acessibility: req.body.accessibility,
+      description: req.body.description,
+    });
+    foundCliff.save(function(err, updateCliff) {
+      if (err) {
+        console.log(err);
+      }
+      console.log('update cliff', updateCliff);
+      res.json(updateCliff);
+    });
+  });
+};
+
+
 
 module.exports = {
   index: index,

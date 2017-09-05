@@ -1,4 +1,4 @@
 module.exports = {
   api: require('./apiController'),
-  cliffs: require('./cliffController'),
+  cliffs: require('./cliffController')
 }

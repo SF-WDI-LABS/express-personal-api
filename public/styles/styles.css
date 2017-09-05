@@ -29,3 +29,14 @@ h2 {
   vertical-align: baseline;
   margin-right: 12px;
 }
+.update-info {
+  display: none;
+
+}
+
+.cliff-info {
+  visibility: visible;
+}
+.saveChangeButton {
+display: none; 
+}
