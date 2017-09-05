@@ -17,11 +17,99 @@
     <script src="/scripts/app.js"></script>
   </head>
   <body>
-    <div class="container">
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome to Cliffly</h1>
+
+      </div>
+    </div>
+    <section id='album-form' class="container">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
+      <div class="col-md-10 col-md-offset-1">
+
+        <form class="form-horizontal" id="singlebutton">
+          <fieldset>
+
+
+            <!-- Form Name -->
+            <legend>Add New Cliff</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="cliffName">Cliff Name</label>
+              <div class="col-md-4">
+              <input id="cliffName" name="cliffName" type="text" placeholder="" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="nearestCity">Nearest City</label>
+              <div class="col-md-4">
+              <input id="textinput" name="nearestCity" type="text" placeholder="" class="form-control input-md">
+
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="GPS">GPS Coordinates</label>
+              <div class="col-md-4">
+              <input id="gpsCoords" name="gpsCoords" type="text" placeholder="26° 49 13.991 N 30° 48 8.993 E" class="form-control input-md">
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="height">Height</label>
+              <div class="col-md-4">
+              <input id="height" name="height" type="text" placeholder="72ft" class="form-control input-md">
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="accessible">Accessibility</label>
+              <div class="col-md-4">
+              <input id="accessibility" name="accessibility" type="text" placeholder="Medium" class="form-control input-md">
+
+              </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="description">Description</label>
+              <div class="col-md-4">
+                <textarea class="form-control" id="description" name="description">Fast drop. Beautiful Waterfall.</textarea>
+              </div>
+            </div>
+
+
+            <!-- Button -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="singlebutton">Save Cliff</label>
+              <div class="col-md-4">
+                <button id="submitbutton" name="singlebutton" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h2>Cliffs</h2>
+        </div>
+      </div>
+
+      <div id='cliffs'>
+      </div>
+    </section>
+      </div>
         </div>
       </div>
     </div>
