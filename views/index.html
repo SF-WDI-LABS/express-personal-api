@@ -12,18 +12,76 @@
 
     <!-- VENDOR SCRIPTS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
-        </div>
+    <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Skatespot.com</h1>
+        <p>Find a Skatespot!</p>
       </div>
     </div>
+
+    <!-- Begin form Section -->
+    <section id="skatepark-form" class="container">
+      <!-- a row can be any size in height, grows   bootstrap -->
+      <div class="row"> <!-- a row just sets up the containters -->
+      <!-- offset is spacing, offest by one leaves the 1st container empty
+      and starts the div one over from the left, since there are 10
+      it centers it, leaving one column empty on both sides   -->
+      <div class="col-lg-10 col-lg-offset-1">
+        <form class="info-form"> <!--allows you to capture info from a form-->
+          <!-- Form Name -->
+          <legend>Add A Skatespot</legend> <!--legend gives semantic meaning-->
+          <!-- Text input-->
+          <div class="form-group"><!--entering col-lg-6 makes it offcenter -->
+            <label class="col-md-6 control-label" for="spotName">Enter a
+            name:</label>
+            <div class="col-md-6">
+            <input id="spotName" name="spotName" type="text" placeholder="" class="form-control input-lg" required="">
+            </div>
+          </div>
+         <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-6 control-label" for="address">Address:</label>
+            <div class="col-md-6">
+            <input id="address" name="address" type="text" placeholder="" class="form-control input-lg">
+            </div>
+          </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-6 control-label" for="generalDirections">General Directions from the address:</label>
+            <div class="col-md-6">
+            <input id="generalDirections" name="generalDirections" type="text" placeholder="" class="form-control input-lg">
+            </div>
+          </div>
+          <!-- Textarea -->
+          <div class="form-group">
+            <label class="col-md-6 control-label" for="attributes">What does this spot have?</label>
+            <div class="col-md-6">
+              <textarea class="form-control" id="attributes" name="attributes">Ledges, Rails, Vert</textarea>
+            </div>
+          </div>
+          <!-- Button -->
+          <div class="form-group">
+            <label class="col-md-6 control-label" for="singlebutton">Save This Spot!</label>
+            <div class="col-md-6">
+              <button id="saveButton" name="saveButton" class="btn btn-primary">Save it, bruh!</button>
+            </div>
+          </div>
+        </fieldset>
+        </form>
+      </div>
+      </div>
+    </section>
+  <div class="footer">
+      <h3>Connect with other people, share your spots, and have an amazing session.</h3>
+  </div>
+</div>
   </body>
 </html>
+<!-- 1.Skate spot name. 2.Address. 3.General Directions from address. 4.What the spot has to offer. 5.Images. -->
