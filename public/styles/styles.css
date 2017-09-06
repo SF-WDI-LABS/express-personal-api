@@ -1,10 +1,39 @@
 body {
+  
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  background-color: white; /* Sanity Check! */
 }
 
 h1 {
   margin-top: 100px;
   text-align: center;
+}
+
+#dlover {
+	
+	max-width: 100%;
+}
+
+.nav-wrapper {
+	background-color: black;
+	color: black;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
+.check {
+  display: inline-block;
 }
