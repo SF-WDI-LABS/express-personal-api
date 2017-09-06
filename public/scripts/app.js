@@ -61,7 +61,7 @@ function renderShop (shop) {
 	console.log('Rending these damn pet shops', shop)
 
 var shopsHTML = (`
-	 	  <div class="card">
+	 	  <div class="card card-shop" data-shop-id = "${shop._id}">
             <div class="card-image waves-effect waves-block waves-light">
               <img class="activator" src="${shop.image}">
             </div>
@@ -93,9 +93,10 @@ $('#shops').prepend(shopsHTML)
 
 
 
+
 function handleAddShopClick(e) {
   console.log('add-shop clicked!');
-  var currentShopId = $(this).closest('#shops').data('shop-id'); // "5665ff1678209c64e51b4e7b"
+  var currentShopId = $(this).closest('.card-shop').data('shop-id'); // "5665ff1678209c64e51b4e7b"
   console.log('id',currentShopId);
   $('#modal1').data('shop-id', currentShopId);
   $('#modal1').modal();  // display the modal!
@@ -106,7 +107,8 @@ function handleAddShopClick(e) {
 
 function handleDeleteShopClick(e) {
   console.log('store deleted!');
-  var shop = $(this).parents('.shop');
+  var shop = $(this).closest('.card-shop');
+  console.log(shop);
   var shopId = shop.data('shop-id')
   console.log('id', shopId);
   $.ajax ({
