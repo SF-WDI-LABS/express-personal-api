@@ -18,7 +18,7 @@ app.use(function(req, res, next) {
 /************
  * DATABASE *
  ************/
-
+var controllers = require('./controllers');
 // var db = require('./models');
 
 /**********
@@ -72,7 +72,7 @@ app.get('/api/profile', function apiIndex(req, res) {
   })
 });
 
-// app.get('api/motorcycleList', controllers.motorcycleList.index);
+app.get('/api/motorcycleList', controllers.motorcycleList.index);
 /**********
  * SERVER *
  **********/

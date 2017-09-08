@@ -1,10 +1,10 @@
 body {
-  color: white;
   font-family: Helvetica, Arial, sans-serif;
   background-color: black; /* Sanity Check! */
 }
 
 h1 {
+  color: white;
   margin-top: -80px;
   text-align: center;
 }

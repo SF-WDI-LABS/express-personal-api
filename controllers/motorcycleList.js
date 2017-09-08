@@ -1,6 +1,7 @@
 /***********
 * DATABASE *
 ************/
+var db = require('../models');
 
 /* hard-coded data */
 var motorcycleLists = [];
@@ -53,6 +54,9 @@ motorcycleLists.push({
 // GET /api/albums
 function index(req, res) {
  // send back all albums as JSON
+
+    res.json(motorcycleLists);
+
 }
 
 // POST /api/albums

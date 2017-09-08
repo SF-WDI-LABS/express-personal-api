@@ -29,7 +29,7 @@ function renderList(motorcycle) {
           <!-- begin album internal row -->
             <div class='row'>
               <div class="col-md-3 col-xs-12 thumbnail album-art">
-                <img src="images/800x800.png" alt="album image">
+                <img src="../images" alt="Motorcycle Image">
               </div>
               <div class="col-md-9 col-xs-12">
                 <ul class="list-group">
@@ -40,10 +40,6 @@ function renderList(motorcycle) {
                   <li class="list-group-item">
                     <h4 class='inline-header'>Model:</h4>
                     <span class='model-name'>${motorcycle.model}</span>
-                  </li>
-                  <li class="list-group-item">
-                    <h4 class='inline-header'>Image:</h4>
-                    <span class='releaseDate'>${motorcycle.image}</span>
                   </li>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Weight:</h4>
@@ -73,7 +69,7 @@ function renderList(motorcycle) {
     </div>
     <!-- end one album -->
   `);
-  $('#albums').prepend(motorcycleHtml);
+  $('#motorcycleList').prepend(motorcycleHtml);
 }
 
 
