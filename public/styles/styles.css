@@ -1,10 +1,43 @@
 body {
-  color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  background-color: black; /* Sanity Check! */
 }
 
 h1 {
-  margin-top: 100px;
+  color: white;
+  margin-top: -80px;
   text-align: center;
+}
+legend {
+  color: white;
+}
+div {
+
+}
+.jumbotron {
+  background-image: url(/images/bmwhp4.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #2D59AD;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  padding-top: 82px;
+}
+.jumbotron .container {
+  height: 600px;
+}
+.jumbotron p {
+  text-align: center;
+  font-size: 25px;
+
+}
+.inline-header {
+  display: inline-block;
+  vertical-align: baseline;
+  margin-right: 12px;
+}
+legend {
+  color: white;
 }
