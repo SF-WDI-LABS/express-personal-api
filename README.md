@@ -7,7 +7,7 @@ Welcome to the 'My Bird API'. You can use it to create and maintain your bird in
 * two images you can add for each bird
 * a url link to learn more about this particular bird
 
-##Technologies Used
+## Technologies Used
 *bootstrap for styling the HTML page
 *ajax to send asynchronous HTTP request to server
 *express and body-parser to provide the access to the server services
