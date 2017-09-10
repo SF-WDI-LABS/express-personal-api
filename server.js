@@ -72,9 +72,10 @@ app.get('/api', function apiIndex(req, res) {
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "About me"},
       {method: "GET", path: "/api/birds", description: "Show all my favorite birds"},
+      {method: "GET", path: "/api/birds/:birdId", description: "Show a specified favorite birds"},
       {method: "POST", path: "/api/birds", description: "Add a new favorite bird"},
-      {method: "PUT", path: "/api/birds", description: "Modify a favorite bird"},
-      {method: "DELETE", path: "/api/birds", description: "Delete a favorite bird"},
+      {method: "PUT", path: "/api/birds/:birdId", description: "Modify a favorite bird"},
+      {method: "DELETE", path: "/api/birds/:birdId", description: "Delete a favorite bird"},
     ]
   })
 });
