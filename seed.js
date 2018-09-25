@@ -5,10 +5,6 @@ var db = require('./models');
 
 var LA_trip = [
     {
-    name: "Adorable Baseball Dudes",
-    link: "/images/LA_trip/baseball_dudes.jpg",
-    description: "These are some adorable toys I saw at one the LA stores"
-    },{
     name: "Delicious Dessert!",
     link: "/images/LA_trip/casino_dessert.jpg",
     description: "Some awesome dessert I had at Morongo Casino Resort"
@@ -24,7 +20,7 @@ var LA_trip = [
     }, {
     name: "Oscar EVERYWHERE!",
     link: "/images/LA_trip/oscar.jpg",
-    description: "Oscars I have earned in my life haha. (Not)"
+    description: "Oscars I have earned in my life."
     }
   ];
 
@@ -37,4 +33,3 @@ db.Story.remove({}, function(err, stories){
 	  process.exit(); // we're all done! Exit the program.
 	});
 });
-

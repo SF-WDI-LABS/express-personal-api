@@ -70,7 +70,7 @@ app.get('/api', function apiIndex(req, res) {
     data_endpoints: [
       {method: "GET", path: "/", description: "A HTML page that describes all available endpoints"},
       {method: "GET", path: "/api", description: "A JSON view page that describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, 
+      {method: "GET", path: "/api/profile", description: "Data about me"},
       {method: "GET", path: "/api/images", description: "Images I took from my LA trip"},
       {method: "GET", path: "/api/videos", description: "Open source videos that I found interesting"},
     ],
@@ -120,10 +120,6 @@ app.get('/api/images', function(req, res){
   res.json({
     LA_trip: [
         {
-        name: "Adorable Baseball Dudes",
-        link: "/images/LA_trip/baseball_dudes.jpg",
-        description: "These are some adorable toys I saw at one the LA stores"
-        },{
         name: "Delicious Dessert!",
         link: "/images/LA_trip/casino_dessert.jpg",
         description: "Some awesome dessert I had at Morongo Casino Resort"
