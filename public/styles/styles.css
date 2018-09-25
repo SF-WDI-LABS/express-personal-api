@@ -97,9 +97,8 @@ input>.card-img-top{
 
 /* The buttons on the main nav should be as big as parent*/
 #main-nav>button{
-	width: auto;
+	width: 49%;
 	margin: 2px 0;
-	display: block;
 }
 
 button{
