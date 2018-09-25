@@ -36,39 +36,66 @@
 	<a href="/story">here.</a>
 	</br>
 	</br>
-	<h3>data_endpoints:</h3>
+	<h3>data_endpoints: [ </h3>
 		<ul>
-		[
 		<li>
-	  {method: "GET", path: "/", description: "A HTML page that describes all available endpoints"},</li>
-	  </br><li>
-	  {method: "GET", path: "/api", description: "A JSON view page that describes all available endpoints"},
+		  {<strong>method:</strong> "GET",</br>
+			 <strong>path:</strong> "/",</br>
+			 <strong>description:</strong> "A HTML page that describes all available endpoints"},
+	 	</li>
+	  </br>
+		<li>
+		  {<strong>method:</strong> "GET",</br>
+			 <strong>path:</strong> "/api",</br>
+			 <strong>description:</strong> "A JSON view page that describes all available endpoints"},
 	  </li>
 	  </br>
 	  <li>
-	  {method: "GET", path: "/api/profile", description: "Data about me"}, </li>
+		  {<strong>method:</strong> "GET",</br>
+			 <strong>path:</strong> "/api/profile",</br>
+			 <strong>description:</strong> "Data about me"},
+	 	</li>
 	  </br>
 	  <li>
-	  {method: "GET", path: "/api/images", description: "Images I took from my LA trip"},</li>
-	  </br>
-	]
+		  {<strong>method:</strong> "GET",</br>
+			 <strong>path:</strong> "/api/images",</br>
+			 <strong>description:</strong> "Images I took from my LA trip"},
+	 	</li>
+	<h3>]</h3>
 	</ul>
-		<h3>CRUD_endpoints:</h3>
+	</br>
 
+		<h3>CRUD_endpoints: [ </h3>
 		<ul>
-		[
 		<li>
-	  {method: "GET", path: "/story/index", description: "Retreat all records in story database and render them onto index.html, with additional GUI that user CRUD all records"},</li>
+		  {<strong>method:</strong> "GET",</br>
+			 <strong>path:</strong> "/story/index",</br>
+			 <strong>description:</strong> "Retreat all records in story database and render them onto index.html, with additional GUI that user CRUD all records"},
+		</li>
 	  </br>
 	  <li>
-	  {method: "POST", path: "/story/create", description: "Create a entry in the story database after a JSON object is sent to the server", required_JSON_obj_format:{form_title : 'String', form_description: 'String', form_link: 'String'}},
+		  {<strong>method:</strong> "POST",</br>
+			 <strong>path:</strong> "/story/create",</br>
+		 	<strong>description:</strong> "Create a entry in the story database after a JSON object is sent to the server", required_JSON_obj_format:{form_title : 'String', form_description: 'String', form_link: 'String'}},
 	  </li>
 	  </br>
-	  <li>{method: "GET", path: "/story/show/:story_id", description: "Display a single record in the database matching the given id"}, </li>
+	  <li>
+			{<strong>method:</strong> "GET",</br>
+			 <strong>path:</strong> "/story/show/:story_id",</br>
+			 <strong>description:</strong> "Display a single record in the database matching the given id"},
+		</li>
 	  </br>
-	  <li>{method: "PUT", path: "/story/update/:story_id", description: "Update an existing database record with a matched story data-id in the url. Also need send JSON object to the server", required_JSON_obj_format:{name: "String", description: "String"}},</li>
+	  <li>
+			{<strong>method:</strong> "PUT",</br>
+			 <strong>path:</strong> "/story/update/:story_id",</br>
+			 <strong>description:</strong> "Update an existing database record with a matched story data-id in the url. Also need send JSON object to the server", required_JSON_obj_format:{name: "String", description: "String"}},
+		</li>
 	  </br>
-	  <li>{method: "DELETE", path: "/story/delete/:story_id", description: "Delete an existing database record matching the given story id in the url"}</li>]
+	  <li>{<strong>method:</strong> "DELETE",</br>
+			 <strong>path:</strong> "/story/delete/:story_id",</br>
+			 <strong>description:</strong> "Delete an existing database record matching the given story id in the url"}
+		</li>
+		<h3>]</h3>
 	</ul>
 	</br>
 
