@@ -31,9 +31,11 @@ li.list-item {
 
 #header{
 	padding:0;
-	background-color: black;
+	background-color: white;
 	position: fixed;
 	z-index: 1;
+  width: 100%;
+  height: auto;
 }
 .add-book{
 	font-size: 1.5rem;
