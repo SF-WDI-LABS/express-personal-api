@@ -67,8 +67,7 @@ $(document).ready(function(){
 		var $img_preview = $('.img-preview');
 
 		$('.cancel-story').on("click", function(){
-			$side_bar.slideToggle();
-			$main_nav.show();
+			$side_bar.hide();
 		});
 		$('.side-form').on("submit", function(e){
 			e.preventDefault();
@@ -87,6 +86,7 @@ $(document).ready(function(){
 				$('#main-content').prepend(templateStory(new_story, "none"));
 				$(`[data-id=${new_story._id}]`).fadeIn(1200);
 				$('[name=form_link],[name=form_title],[name=form_description]').val("");
+				$side_bar.hide();
 			}).catch(function(err){
 				console.log(err);
 			});
@@ -111,7 +111,7 @@ $(document).ready(function(){
 		var $main_content = $('#main-content');
 		var $side_bar = $('.side-bar');
 		// $('#main-nav').hide();
-		$side_bar.slideToggle();
+		$side_bar.show();
 	}
 
 	// Delete story from db and from front-end rendering
