@@ -67,7 +67,7 @@ $(document).ready(function(){
 		var $img_preview = $('.img-preview');
 
 		$('.cancel-story').on("click", function(){
-			$side_bar.hide();
+			$side_bar.toggle();
 		});
 		$('.side-form').on("submit", function(e){
 			e.preventDefault();
@@ -111,7 +111,7 @@ $(document).ready(function(){
 		var $main_content = $('#main-content');
 		var $side_bar = $('.side-bar');
 		// $('#main-nav').hide();
-		$side_bar.show();
+		$side_bar.toggle();
 	}
 
 	// Delete story from db and from front-end rendering
