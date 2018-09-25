@@ -127,6 +127,7 @@ input>.card-img-top{
 
 button{
 	width: auto;
+  cursor: pointer;
 }
 
 .btn{
