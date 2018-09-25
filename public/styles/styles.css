@@ -83,6 +83,7 @@ li.list-item {
 	height: auto;
 	margin: 0;
 	overflow: auto;
+  z-index: 3;
 }
 
 .side-bar.card{
