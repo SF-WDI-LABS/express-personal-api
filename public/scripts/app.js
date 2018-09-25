@@ -1,13 +1,13 @@
 console.log("Sanity Check: JS is working!");
 $(document).ready(function(){
-	
+
 	main();
 
 	// The main apps being run when the doc is first loaded.
 	// Outside of main are helper functions
 	function main() {
 		// Render all database record to page. Its currently empty until you run seed.js
-		//or click the add seed button, which submit request to one of my api, submit 
+		//or click the add seed button, which submit request to one of my api, submit
 		// all those data to the db, store them, and make another ajax call to rerender them.
 		renderDBstoPage();
 
@@ -22,7 +22,7 @@ $(document).ready(function(){
 				var $main_content = $('#main-content');
 				data.LA_trip.forEach(function(new_story){
 					// for data I get back, create a entry in the database by
-					// passing in as in the format from the submit form, hence the 
+					// passing in as in the format from the submit form, hence the
 					// form_title, form_description, form_link, instead of just title, etc...
 					// After all data are created from endpoint. call /story/index page
 					// to render seed to the page
@@ -65,7 +65,7 @@ $(document).ready(function(){
 		$main_content.on("click", ".update-story", updateStoryBtn);
 		var $side_bar = $('.side-bar');
 		var $img_preview = $('.img-preview');
-		
+
 		$('.cancel-story').on("click", function(){
 			$side_bar.slideToggle();
 			$main_nav.show();
@@ -110,7 +110,7 @@ $(document).ready(function(){
 	function show_side_form(event){
 		var $main_content = $('#main-content');
 		var $side_bar = $('.side-bar');
-		$('#main-nav').hide();
+		// $('#main-nav').hide();
 		$side_bar.slideToggle();
 	}
 
@@ -125,7 +125,7 @@ $(document).ready(function(){
 		}).catch(function(err){ console.log(err);})
 	};
 
-	// Toggle input form and display update button 
+	// Toggle input form and display update button
 	// When update is clicked, update db and rerender page
 	function editStoryBtn(event){
 		$(this).parents('.card').find('.toggle').toggle();
@@ -147,7 +147,7 @@ $(document).ready(function(){
 			var story_div = $(`div[data-id=${id}]`);
 			story_div.html(templateStory(update_story, "show"));
 			// Theres a hidden card element behind the 1 that we just updated
-			// need to insert updated_story before the parent before we can remove parent 
+			// need to insert updated_story before the parent before we can remove parent
 			var nodes = $(`div[data-id=${id}]`);
 			nodes.eq(1).insertBefore(nodes.eq(0));
 			nodes.eq(0).remove();
@@ -158,7 +158,7 @@ $(document).ready(function(){
 	// Create a card template from user input
 	// With a hidden input field to toggle when user click 'edit'
 	function templateStory(story, display){
-		return `	
+		return `
 		<div class="card" style="display: ${display}" data-id=${story._id}>
 			  <img class="card-img-top" src=${story.link} alt="Card image cap">
 			  <div class="card-body">
@@ -169,7 +169,7 @@ $(document).ready(function(){
 			    <button type="button" class="delete-story btn btn-dark">Delete</button>
 			    <button type="button" class="edit-story btn btn-dark toggle">Edit</button>
 			    <button type="button" class="update-story btn btn-dark toggle" style="display: none">Update</button>
-			  </div>	
+			  </div>
 		</div>
 		`;
 	}
