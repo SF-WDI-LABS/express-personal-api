@@ -70,8 +70,12 @@ li.list-item {
 }
 
 .navbar{
-  min-height: 50px;
   padding: 0 1rem;
+}
+
+.navbar-brand{
+  line-height: 50px;
+  padding: 0;
 }
 
 .carousel{
