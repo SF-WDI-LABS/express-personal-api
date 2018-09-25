@@ -61,7 +61,7 @@ li.list-item {
   letter-spacing: 3px;
 }
 
-#main-nav button{
+#main-nav button, #main-nav a{
   float:right;
 }
 
@@ -118,11 +118,13 @@ input>.card-img-top{
 }
 
 /* The buttons on the main nav should be as big as parent*/
-#main-nav>button{
+#main-nav>button, #main-nav>a{
 	width: auto;
 	margin: 0;
   border-radius: 0;
   line-height: 29px;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
 button{
