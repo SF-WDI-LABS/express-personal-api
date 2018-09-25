@@ -44,8 +44,15 @@ li.list-item {
 
 #main-nav{
 	z-index: 1;
-	padding:0;
-  text-align: center;
+	padding: 0;
+}
+
+#main-nav span{
+  float:left;
+}
+
+#main-nav button{
+  float:right;
 }
 
 .carousel{
@@ -98,7 +105,7 @@ input>.card-img-top{
 
 /* The buttons on the main nav should be as big as parent*/
 #main-nav>button{
-	width: 49%;
+	width: auto;
 	margin: 2px 0;
 }
 
