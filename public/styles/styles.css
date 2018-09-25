@@ -30,7 +30,7 @@ li.list-item {
 }
 
 #header{
-	padding:5px;
+	padding: 5px 15px;
 	background-color: white;
 	position: fixed;
 	z-index: 1;
@@ -53,6 +53,7 @@ li.list-item {
   font: 1.1rem Impact;
   line-height: 33px;
   text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
 #main-nav button{
