@@ -13,6 +13,11 @@ individual columns and div boxes do the spacing*/
 	width: 100%;
 }
 
+.btn-light{
+  background-color: white;
+  border: none;
+}
+
 h1 {
   margin-top: 100px;
   text-align: center;
