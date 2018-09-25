@@ -30,7 +30,7 @@ li.list-item {
 }
 
 #header{
-	padding: 5px 15px;
+	padding: 0 0 0 15px;
 	background-color: white;
 	position: fixed;
 	z-index: 1;
@@ -51,7 +51,7 @@ li.list-item {
 #main-nav span{
   float:left;
   font: 1.1rem Impact;
-  line-height: 33px;
+  line-height: 45px;
   text-transform: uppercase;
   letter-spacing: 3px;
 }
@@ -116,6 +116,8 @@ input>.card-img-top{
 #main-nav>button{
 	width: auto;
 	margin: 0;
+  border-radius: 0;
+  line-height: 27px;
 }
 
 button{
