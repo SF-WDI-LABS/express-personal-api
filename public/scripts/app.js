@@ -160,7 +160,7 @@ $(document).ready(function(){
 	function templateStory(story, display){
 		return `
 		<div class="card" style="display: ${display}" data-id=${story._id}>
-			  <img class="card-img-top" src=${story.link} alt="Card image cap">
+			  <img class="card-img-top" src=${story.link} alt="Invalid Image URL">
 			  <div class="card-body">
 			    <h4 class="card-title toggle">${story.name}</h4>
 			    <input type="text" name="story_name" class="card-title toggle" style="display: none" value="${story.name}">
