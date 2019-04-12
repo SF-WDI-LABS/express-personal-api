@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My API Documentation</title>
+
+	<!-- STYLESHEETS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+	<!-- VENDOR SCRIPTS -->
+	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+	<style>
+		body{
+			background-color: rgb(239, 239, 239);
+			margin: 0 auto;
+			padding: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<h2>Hello</h2>
+	<br>
+	<p>
+		My name is Huan Ming Liao. This is a mini API I created for one of the General Assembly's projects. It incoporates REST-ful Routes (GET, POST, UPDATE, DELETE), one CRUD-able resource (Create, Read, Update, Destroy), and some basic detail about me at the endpoint /api/profile.
+	</p>
+	<p>
+		My based URL for the api website is https://tranquil-springs-25959.herokuapp.com
+	</p>
+	<p>
+		To experience the following with a more appealing interface,
+		<a href="/story">click here (For a typical vistor).</a></br>
+		To view the following in JSON format,
+		<a href="/api">click here (For tech-savvy).</a>
+	</p>
+	</br>
+	<p>
+		The following are end points you can add on to the based URL for different purposes. Please read each description for detail.
+	</p>
+	<h3>data_endpoints: [ </h3>
+		<ul>
+			<li>
+			  {<strong>method:</strong> "GET",</br>
+				 <strong>path:</strong> "/",</br>
+				 <strong>description:</strong> "A HTML page that describes all available endpoints"},
+		 	</li>
+		  </br>
+			<li>
+			  {<strong>method:</strong> "GET",</br>
+				 <strong>path:</strong> "/api",</br>
+				 <strong>description:</strong> "A JSON view page that describes all available endpoints"},
+		  </li>
+		  </br>
+		  <li>
+			  {<strong>method:</strong> "GET",</br>
+				 <strong>path:</strong> "/api/profile",</br>
+				 <strong>description:</strong> "Data about me"},
+		 	</li>
+		  </br>
+		  <li>
+			  {<strong>method:</strong> "GET",</br>
+				 <strong>path:</strong> "/api/images",</br>
+				 <strong>description:</strong> "Images I took from my LA trip"},
+		 	</li>
+		</ul>
+	<h3>]</h3>
+	</br>
+	<h3>CRUD_endpoints: [ </h3>
+		<ul>
+			<li>
+			  {<strong>method:</strong> "GET",</br>
+				 <strong>path:</strong> "/story/index",</br>
+				 <strong>description:</strong> "Retreat all records in story database and render them onto index.html, with additional GUI that user CRUD all records"},
+			</li>
+		  </br>
+		  <li>
+			  {<strong>method:</strong> "POST",</br>
+				 <strong>path:</strong> "/story/create",</br>
+			 	<strong>description:</strong> "Create a entry in the story database after a JSON object is sent to the server", required_JSON_obj_format:{form_title : 'String', form_description: 'String', form_link: 'String'}},
+		  </li>
+		  </br>
+		  <li>
+				{<strong>method:</strong> "GET",</br>
+				 <strong>path:</strong> "/story/show/:story_id",</br>
+				 <strong>description:</strong> "Display a single record in the database matching the given id"},
+			</li>
+		  </br>
+		  <li>
+				{<strong>method:</strong> "PUT",</br>
+				 <strong>path:</strong> "/story/update/:story_id",</br>
+				 <strong>description:</strong> "Update an existing database record with a matched story data-id in the url. Also need send JSON object to the server", required_JSON_obj_format:{name: "String", description: "String"}},
+			</li>
+		  </br>
+		  <li>{<strong>method:</strong> "DELETE",</br>
+				 <strong>path:</strong> "/story/delete/:story_id",</br>
+				 <strong>description:</strong> "Delete an existing database record matching the given story id in the url"}
+			</li>
+		</ul>
+	<h3>]</h3>
+	</br>
+</body>
+</html>
