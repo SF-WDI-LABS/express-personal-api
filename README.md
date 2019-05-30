@@ -2,7 +2,7 @@
 
 Hello,
 
-My name is Huan Ming Liao. This is a mini API I created for one of the General Assembly's projects. It incoporates REST-ful Routes (GET, POST, UPDATE, DELETE), one CRUD-able resource (Create, Read, Update, Destroy), and some basic detail about me at the endpoint /api/profile.
+This is a mini API I created. It incoporates REST-ful Routes (GET, POST, UPDATE, DELETE), one CRUD-able resource (Create, Read, Update, Destroy), and some basic detail about me at the endpoint /api/profile.
 
 My based URL for the api website is https://frozen-lowlands-63435.herokuapp.com
 
